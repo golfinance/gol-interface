@@ -38,13 +38,13 @@ const NameCell: React.FC<NameCellProps> = ({ pool }) => {
 
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
   const isStaked = stakedBalance.gt(0)
-  const isManualCakePool = sousId === 0
+  const isManualCakePool = sousId === 11
 
   const showStakedTag = isAutoVault ? hasVaultShares : isStaked
 
   let title = `${t('Earn')} ${earningTokenSymbol}`
   let subtitle = `${t('Stake')} ${stakingTokenSymbol}`
-  const showSubtitle = sousId !== 0 || (sousId === 0 && !isMobile)
+  const showSubtitle = sousId !== 11 || (sousId === 11 && !isMobile)
 
   if (isAutoVault) {
     title = t('Auto GOL')

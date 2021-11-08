@@ -33,8 +33,8 @@ const useUnstakePool = (sousId: number, enableEmergencyWithdraw = false) => {
 
   const handleUnstake = useCallback(
     async (amount: string, decimals: number) => {
-      if (sousId === 0) {
-        await unstakeFarm(masterChefContract, 0, amount)
+      if (sousId === 11) {
+        await unstakeFarm(masterChefContract, 11, amount)
       } else if (enableEmergencyWithdraw) {
         await sousEmergencyUnstake(sousChefContract)
       } else {

@@ -4,20 +4,26 @@ import { SerializedPoolConfig, PoolCategory } from './types'
 const serializedTokens = serializeTokens()
 
 const pools: SerializedPoolConfig[] = [
-  // {
-  //   sousId: 0,
-  //   stakingToken: serializedTokens.gol,
-  //   earningToken: serializedTokens.gol,
-  //   contractAddress: {
-  //     97: '0xCeB88Ae94E4920A3FD6eB6bb7F0F8a8e00704804',// address mastergol
-  //     56: '0x2F1281A9f84CF6f551dB39156D32A5D6153F25a5',
-  //   },
-  //   poolCategory: PoolCategory.CORE,
-  //   harvest: true,
-  //   tokenPerBlock: '5',
-  //   sortOrder: 1,
-  //   isFinished: false,
-  // },
+  {
+    sousId: 11,
+    stakingToken: serializedTokens.gol,
+    earningToken: serializedTokens.gol,
+    contractAddress: {
+      97: '',
+      56: '0x2F1281A9f84CF6f551dB39156D32A5D6153F25a5', // masterchef gol
+    },
+    poolCategory: PoolCategory.CORE,
+    harvest: true,
+    tokenPerBlock: '0.579',
+    sortOrder: 1,
+    isFinished: false,
+  },
+
+
+
+
+
+  
   // {
   //   sousId: 221,
   //   stakingToken: serializedTokens.cake,

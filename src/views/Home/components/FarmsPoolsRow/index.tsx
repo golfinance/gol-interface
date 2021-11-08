@@ -54,7 +54,7 @@ const FarmsPoolsRow = () => {
       return t('Auto GOL')
     }
 
-    if (pool.sousId === 0) {
+    if (pool.sousId === 11) {
       return t('Manual GOL')
     }
 

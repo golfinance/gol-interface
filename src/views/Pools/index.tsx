@@ -31,8 +31,8 @@ import Loading from 'components/Loading'
 import PoolCard from './components/PoolCard'
 import CakeVaultCard from './components/CakeVaultCard'
 import PoolTabButtons from './components/PoolTabButtons'
-import BountyCard from './components/BountyCard'
-import HelpButton from './components/HelpButton'
+// import BountyCard from './components/BountyCard'
+// import HelpButton from './components/HelpButton'
 import PoolsTable from './components/PoolsTable/PoolsTable'
 import { getAprData, getCakeVaultEarnings } from './helpers'
 
@@ -106,7 +106,7 @@ const Pools: React.FC = () => {
   const performanceFeeAsDecimal = performanceFee && performanceFee / 100
 
   const pools = useMemo(() => {
-    const cakePool = poolsWithoutAutoVault.find((pool) => pool.sousId === 0)
+    const cakePool = poolsWithoutAutoVault.find((pool) => pool.sousId === 11)
     const cakeAutoVault = { ...cakePool, isAutoVault: true }
     return [cakeAutoVault, ...poolsWithoutAutoVault]
   }, [poolsWithoutAutoVault])
@@ -201,7 +201,7 @@ const Pools: React.FC = () => {
                   pool.stakingToken.decimals,
                 )
               }
-            } else if (pool.sousId === 0) {
+            } else if (pool.sousId === 11) {
               if (pool.totalStaked?.isFinite() && totalCakeInVault.isFinite()) {
                 const manualCakeTotalMinusAutoVault = ethers.BigNumber.from(pool.totalStaked.toString()).sub(
                   totalCakeInVault.toString(),
@@ -257,7 +257,7 @@ const Pools: React.FC = () => {
         <Flex justifyContent="space-between" flexDirection={['column', null, null, 'row']}>
           <Flex flex="1" flexDirection="column" mr={['8px', 0]}>
             <Heading as="h1" scale="xxl" color="secondary" mb="24px">
-              {t('Syrup Pools')}
+              {t('GolFinance Pools')}
             </Heading>
             <Heading scale="md" color="text">
               {t('Just stake some tokens to earn.')}
@@ -266,10 +266,10 @@ const Pools: React.FC = () => {
               {t('High APR, low risk.')}
             </Heading>
           </Flex>
-          <Flex flex="1" height="fit-content" justifyContent="center" alignItems="center" mt={['24px', null, '0']}>
+          {/* <Flex flex="1" height="fit-content" justifyContent="center" alignItems="center" mt={['24px', null, '0']}>
             <HelpButton />
             <BountyCard />
-          </Flex>
+          </Flex> */}
         </Flex>
       </PageHeader>
       <Page>
@@ -333,10 +333,10 @@ const Pools: React.FC = () => {
         <Image
           mx="auto"
           mt="12px"
-          src="/images/decorations/3d-syrup-bunnies.png"
-          alt="Pancake illustration"
-          width={192}
-          height={184.5}
+          src="logo.png"
+          alt="Gol Football Soccer illustration"
+          width={100}
+          height={100}
         />
       </Page>
     </>

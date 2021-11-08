@@ -25,7 +25,7 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
   useEffect(() => {
     const fetchFarmData = async () => {
       setFetchStatus(FetchStatus.FETCHING)
-      const activeFarms = nonArchivedFarms.filter((farm) => farm.pid !== 0)
+      const activeFarms = nonArchivedFarms.filter((farm) => farm.pid !== 99999)
       try {
         await dispatch(fetchFarmsPublicDataAsync(activeFarms.map((farm) => farm.pid)))
         setFetchStatus(FetchStatus.SUCCESS)

@@ -7,11 +7,11 @@ import { getAddress } from 'utils/addressHelpers'
 import { simpleRpcProvider } from 'utils/providers'
 import BigNumber from 'bignumber.js'
 
-// Pool 0, Cake / Cake is a different kind of contract (master chef)
+// Pool 0, GOL / Cake is a different kind of contract (master chef)
 // BNB pools use the native BNB token (wrapping ? unwrapping is done at the contract level)
 const nonBnbPools = poolsConfig.filter((pool) => pool.stakingToken.symbol !== 'BNB')
 const bnbPools = poolsConfig.filter((pool) => pool.stakingToken.symbol === 'BNB')
-const nonMasterPools = poolsConfig.filter((pool) => pool.sousId !== 0)
+const nonMasterPools = poolsConfig.filter((pool) => pool.sousId !== 11)
 const masterChefContract = getMasterchefContract()
 
 export const fetchPoolsAllowance = async (account) => {
