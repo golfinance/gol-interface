@@ -1,6 +1,6 @@
 export default {
   masterChef: {
-    97: '0xCeB88Ae94E4920A3FD6eB6bb7F0F8a8e00704804',
+    97: '',
     56: '0x2F1281A9f84CF6f551dB39156D32A5D6153F25a5', // too to pool staking
   },
   sousChef: {

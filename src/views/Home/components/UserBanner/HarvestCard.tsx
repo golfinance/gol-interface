@@ -27,7 +27,7 @@ const HarvestCard = () => {
   const cakePriceBusd = usePriceCakeBusd()
   const earningsBusd = new BigNumber(farmEarningsSum).multipliedBy(cakePriceBusd)
   const numTotalToCollect = farmsWithStakedBalance.length
-  const numFarmsToCollect = farmsWithStakedBalance.filter((value) => value.pid !== 0).length
+  const numFarmsToCollect = farmsWithStakedBalance.filter((value) => value.pid !== 11).length // OjO Maradona. Va 11
   const hasCakePoolToCollect = numTotalToCollect - numFarmsToCollect > 0
 
   const earningsText = getEarningsText(numFarmsToCollect, hasCakePoolToCollect, earningsBusd, t)

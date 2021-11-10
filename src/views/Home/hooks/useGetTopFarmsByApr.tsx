@@ -46,7 +46,7 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
         (farm) =>
           farm.lpTotalInQuoteToken &&
           farm.quoteTokenPriceBusd &&
-          farm.pid !== 0 &&
+          farm.pid !== 11 && // OjO Maradona
           farm.multiplier &&
           farm.multiplier !== '0X',
       )
