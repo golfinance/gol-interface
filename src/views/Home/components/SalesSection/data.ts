@@ -10,7 +10,7 @@ export const swapSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.gol.finance/',
+    to: 'https://https://golfinance.gitbook.io/golfinance/protocol/golfinance-v1/golswap',
     text: 'Learn',
     external: true,
   },
