@@ -29,7 +29,7 @@ const TotalStakedCell: React.FC<TotalStakedCellProps> = ({ pool }) => {
       return getBalanceNumber(totalCakeInVault, stakingToken.decimals)
     }
     if (isManualCakePool) {
-      const manualCakeTotalMinusAutoVault = new BigNumber(totalStaked).minus(totalCakeInVault)
+      const manualCakeTotalMinusAutoVault = new BigNumber(totalStaked) // .minus(totalCakeInVault)
       return getBalanceNumber(manualCakeTotalMinusAutoVault, stakingToken.decimals)
     }
     return getBalanceNumber(totalStaked, stakingToken.decimals)
@@ -44,6 +44,7 @@ const TotalStakedCell: React.FC<TotalStakedCellProps> = ({ pool }) => {
         {totalStaked && totalStaked.gte(0) ? (
           <Flex height="20px" alignItems="center">
             <Balance fontSize="16px" value={totalStakedBalance} decimals={0} unit={` ${stakingToken.symbol}`} />
+            {console.log("TotalStakedCell.tsx %o", totalStakedBalance)}
           </Flex>
         ) : (
           <Skeleton width="80px" height="16px" />

@@ -53,7 +53,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePric
     farm.liquidity && farm.liquidity.gt(0)
       ? `$${farm.liquidity.toNumber().toLocaleString(undefined, { maximumFractionDigits: 0 })}`
       : ''
-  console.log("desde view/farms/components/farmcard/farmcards.tsx %o",totalValueFormatted ) // Maradona
+  // console.log("desde view/farms/components/farmcard/farmcards.tsx %o",totalValueFormatted ) // Maradona
 
   const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('GPACA', '')
   const earnLabel = farm.dual ? farm.dual.earnLabel : t('GOL + Fees')
@@ -65,7 +65,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePric
   const addLiquidityUrl = `${BASE_ADD_LIQUIDITY_URL}/${liquidityUrlPathParts}`
   const lpAddress = getAddress(farm.lpAddresses)
   const isPromotedFarm = farm.token.symbol === 'GOL'
-  console.log("desde view/farms/components/farmcard/farmcards.tsx lpAddress %o", lpAddress ) // Maradona
+  // console.log("desde view/farms/components/farmcard/farmcards.tsx lpAddress %o", lpAddress ) // Maradona
 
   return (
     <StyledCard isActive={isPromotedFarm}>

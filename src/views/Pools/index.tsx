@@ -167,7 +167,7 @@ const Pools: React.FC = () => {
         // Ternary is needed to prevent pools without APR (like MIX) getting top spot
         return orderBy(
           poolsToSort,
-          (pool: DeserializedPool) => (pool.apr ? getAprData(pool, performanceFeeAsDecimal).apr : 0),
+          (pool: DeserializedPool) => (pool.apr ? getAprData(pool, performanceFeeAsDecimal).apr : 11),
           'desc',
         )
       case 'earned':
