@@ -55,8 +55,8 @@ const Home: React.FC = () => {
         innerProps={{ style: { margin: '0', width: '100%' } }}
         background={
           theme.isDark
-            ? 'radial-gradient(180% 50% at 50% 50%, #f1eeee 0%, #f7941d 100%)'
-            : 'linear-gradient(180deg, #f7941d 0%, #F3EFFF 100%)' 
+            ? 'radial-gradient(180% 50% at 50% 50%, #373357 0%, #27262c 100%)'
+            : 'linear-gradient(180deg, #373357 0%, #27262c 100%)' 
         }
         index={2}
         hasCurvedDivider={false}
@@ -75,6 +75,14 @@ const Home: React.FC = () => {
         </Flex> */}
         {/* <Hero /> */}
       </StyledHeroSection>
+      <PageSection
+        innerProps={{ style: HomeSectionContainerStyles }}
+        background="linear-gradient(180deg, #373357 0%, #27262c 100%)"
+        index={2}
+        hasCurvedDivider={false}
+      >
+        <Footer />
+      </PageSection>
       <PageSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         background={
@@ -134,14 +142,6 @@ const Home: React.FC = () => {
       > */}
         {/* <SalesSection {...cakeSectionData} /> */}
         <CakeDataRow />
-      </PageSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background="linear-gradient(180deg, #f1eeee 0%, #f4ae01 100%)"
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <Footer />
       </PageSection>
     </>
   )
