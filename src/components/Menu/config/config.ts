@@ -22,12 +22,12 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     ],
   },
   {
-    label: t('Win'),
+    label: t('GolFarm'),
     href: '/farms',
     icon: 'Earn',
     items: [
       {
-        label: t('Farms'),
+        label: t('Fields'),
         href: '/farms',
       },
       {
