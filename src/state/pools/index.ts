@@ -59,7 +59,7 @@ export const fetchPoolsPublicDataAsync = (currentBlock: number) => async (dispat
 
     const earningTokenAddress = pool.earningToken.address ? pool.earningToken.address.toLowerCase() : null
     const earningTokenPrice = earningTokenAddress ? prices[earningTokenAddress] : 0
-    const apr = !isPoolFinished
+    const apr1 = !isPoolFinished
       ? getPoolApr(
           stakingTokenPrice,
           earningTokenPrice,
@@ -67,7 +67,7 @@ export const fetchPoolsPublicDataAsync = (currentBlock: number) => async (dispat
           parseFloat(pool.tokenPerBlock),
         )
       : 0
-
+    const apr = apr1 / 1000 // Maradona OjO con esto.
     return {
       ...blockLimit,
       ...totalStaking,
