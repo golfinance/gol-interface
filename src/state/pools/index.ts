@@ -67,7 +67,7 @@ export const fetchPoolsPublicDataAsync = (currentBlock: number) => async (dispat
           parseFloat(pool.tokenPerBlock),
         )
       : 0
-    const apr = apr1 / 100 // Maradona OjO con esto.
+    const apr = (apr1 / 100) * 5 // Maradona OjO con esto.
     return {
       ...blockLimit,
       ...totalStaking,
