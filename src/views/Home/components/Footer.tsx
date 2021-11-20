@@ -75,9 +75,9 @@ const topLeftImage = {
 const bottomRightImage = {
   path: '/images/home/flying-pancakes/',
   attributes: [
-      { src: '1-left', alt: 'Gol flying on the left' },
+    // { src: '1-left', alt: 'Gol flying on the left' },
     // { src: '1-bottom', alt: 'Gol flying on the bottom' },
-    // { src: '1-top', alt: 'Gol flying on the top' },
+    { src: '1-top', alt: 'Gol flying on the top' },
     // { src: '2-right', alt: 'Gol flying on the right' },
   ],
 }
@@ -102,17 +102,17 @@ const Footer = () => {
         </BottomRightImgWrapper>
       </FloatingPancakesWrapper>
       <Wrapper>
-        <Heading mb="24px" scale="xl" color="#36319b">
+        <Heading mb="24px" scale="xl" color="#f4ae01">
           {t('Welcome to GolFinance')}
         </Heading>
-        <Text textAlign="center" color="#36319b">
+        <Text textAlign="center" color="#f4ae01">
           {t('Connect your crypto wallet to start using the app in seconds.')}
         </Text>
-        <Text mb="24px" bold color="#36319b">
+        <Text mb="24px" bold color="#f4ae01">
           {t('No registration needed.')}
         </Text>
 
-        <Link external href="https://golfinance.gitbook.io/" color="#36319b">
+        <Link external href="https://golfinance.gitbook.io/" color="#f4ae01">
           {t('Learn how to start')}
         </Link>
         {!account && <ConnectWalletButton mt="24px" />}

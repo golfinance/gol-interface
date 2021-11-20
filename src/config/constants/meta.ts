@@ -4,7 +4,7 @@ import { PageMeta } from './types'
 export const DEFAULT_META: PageMeta = {
   title: 'GolSwap',
   description:
-    'The next generation AMM on BSC by user count! Earn GOL through yield farming or win it in the Lottery, then stake it in Syrup Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by GolSwap), NFTs, and more, on a platform you can trust.',
+    'The next generation AMM on BSC by user count! Earn GOL through yield farming or win it in the Lottery, then stake it in $gol Pools to earn more tokens!.',
   image: 'https://gol.finance/images/hero.png',
 }
 

@@ -4787,9 +4787,9 @@
     "@types/node" "*"
 
 "@types/lodash@^4.14.168":
-  version "4.14.176"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.176.tgz#641150fc1cda36fbfa329de603bbb175d7ee20c0"
-  integrity sha512-xZmuPTa3rlZoIbtDUyJKZQimJV3bxCmzMIO2c9Pz9afyDro6kr7R79GwcB6mRhuoPmV2p1Vb66WOJH7F886WKQ==
+  version "4.14.177"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.177.tgz#f70c0d19c30fab101cad46b52be60363c43c4578"
+  integrity sha512-0fDwydE2clKe9MNfvXHBHF9WEahRuj+msTuQqOmAApNORFvhMYZKNGGJdCzuhheVjMps/ti0Ak/iJPACMaevvw==
 
 "@types/long@^4.0.0", "@types/long@^4.0.1":
   version "4.0.1"
@@ -9077,9 +9077,9 @@ cssstyle@^2.3.0:
     cssom "~0.3.6"
 
 csstype@^3.0.2:
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.9.tgz#6410af31b26bd0520933d02cbc64fce9ce3fbf0b"
-  integrity sha512-rpw6JPxK6Rfg1zLOYCSwle2GFOOsnjmDYDaBwEcwoOg4qlsIVCN789VkBZDJAGi4T07gI4YSutR43t9Zz4Lzuw==
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.10.tgz#2ad3a7bed70f35b965707c092e5f30b327c290e5"
+  integrity sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==
 
 cyclist@^1.0.1:
   version "1.0.1"
@@ -12383,9 +12383,9 @@ globby@^6.1.0:
     pinkie-promise "^2.0.0"
 
 gol-uikit@^0.1.0:
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/gol-uikit/-/gol-uikit-0.1.15.tgz#9ae2539e2453948b5449b43b940db2219c74f1e7"
-  integrity sha512-k3ynAYXopB7zzhO8fBnPRmA1gc8iFh+HUbOPeBcmW+2D/rgakuB/KfEbcre3qdDtepY+CaFqBxdWctC9WBI9hg==
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/gol-uikit/-/gol-uikit-0.1.17.tgz#c573ed135d21a1d1d5dfd979d3bf73c3f367f757"
+  integrity sha512-+x9obP0ySq88wwg6lc0HG2vobMW2a9WH2iIgjeEoMZWXHiV+npEsTWxxZ7QrSq19nf4cazvTrMPldXsmrElaEQ==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/lodash" "^4.14.168"

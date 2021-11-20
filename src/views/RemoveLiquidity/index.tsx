@@ -245,7 +245,7 @@ export default function RemoveLiquidity({
           signatureData.r,
           signatureData.s,
         ]
-        console.log("remove liq A %o", args) // Maradona.
+        // console.log("remove liq A %o", args) // Maradona.
       }
       // removeLiquidityETHWithPermit
       else {
@@ -263,7 +263,7 @@ export default function RemoveLiquidity({
           signatureData.r,
           signatureData.s,
         ]
-        console.log("remove liq B %o", args) // Maradona.
+        // console.log("remove liq B %o", args) // Maradona.
       }
     } else {
       throw new Error('Attempting to confirm without approval or a signature. Please contact support.')

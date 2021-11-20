@@ -66,7 +66,7 @@ const Footer = () => {
             id="clickExchangeHelp"
             as="a"
             external
-            href="https://docs.gol.finance/products/golswap-exchange"
+            href="https://golfinance.gitbook.io/golfinance/protocol/golfinance-v1/golswap"
             variant="subtle"
           >
             {t('Need help ?')}

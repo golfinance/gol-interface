@@ -1,11 +1,11 @@
 export default {
   masterChef: {
-    97: '0xCeB88Ae94E4920A3FD6eB6bb7F0F8a8e00704804',
-    56: '0x2F1281A9f84CF6f551dB39156D32A5D6153F25a5',
+    97: '',
+    56: '0x2F1281A9f84CF6f551dB39156D32A5D6153F25a5', // too to pool staking
   },
   sousChef: {
     97: '',
-    56: '',
+    56: '0x2F1281A9f84CF6f551dB39156D32A5D6153F25a5', // Only test
   },
   lotteryV2: {
     97: '0x5790c3534F30437641541a0FA04C992799602998',
@@ -48,8 +48,8 @@ export default {
     97: '0x24ec6962dbe874F6B67B5C50857565667fA0854F',
   },
   cakeVault: {
-    56: '0xa80240Eb5d7E05d3F250cF000eEc0891d00b51CC', // pool del stake auto./manual.
-    97: '0x445da526B05FC90558ed1869AA22a6FFd49ce44e', // my adress dev. only for test
+    56: '0xa80240Eb5d7E05d3F250cF000eEc0891d00b51CC', // cakevault.sol = pool del stake autocompund.
+    97: '',
   },
   predictions: {
     56: '0x18B2A687610328590Bc8F2e5fEdDe3b582A49cdA',

@@ -46,7 +46,7 @@ export const fetchFarmsPublicDataAsync = createAsyncThunk<SerializedFarm[], numb
     const farmsWithoutHelperLps = farmsWithPrices.filter((farm: SerializedFarm) => {
       return farm.pid || farm.pid === 0 // pid 0 to 11? Maradona
     })
-    console.log("desde state/farms/index.ts 1 %o",farmsWithoutHelperLps) // Maradona
+    // console.log("desde state/farms/index.ts 11-es-GOL %o",farmsWithoutHelperLps) // Maradona
     return farmsWithoutHelperLps
   },
 )

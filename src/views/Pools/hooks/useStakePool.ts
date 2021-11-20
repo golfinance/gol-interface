@@ -41,8 +41,8 @@ const useStakePool = (sousId: number, isUsingBnb = false) => {
 
   const handleStake = useCallback(
     async (amount: string, decimals: number) => {
-      if (sousId === 0) {
-        await stakeFarm(masterChefContract, 0, amount)
+      if (sousId === 11) {
+        await stakeFarm(masterChefContract, 11, amount) // OjO Maradona
       } else if (isUsingBnb) {
         await sousStakeBnb(sousChefContract, amount)
       } else {

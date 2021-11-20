@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 import poolsConfig from 'config/constants/pools'
-import sousChefABI from 'config/abi/sousChef.json'
-import cakeABI from 'config/abi/cake.json'
+import sousChefABI from 'config/abi/sousChef.json' // Deploy Souschef Ojo Maradona
+import cakeABI from 'config/abi/gol.json'
 import wbnbABI from 'config/abi/weth.json'
 import multicall from 'utils/multicall'
 import { getAddress } from 'utils/addressHelpers'
@@ -10,16 +10,17 @@ import { getSouschefV2Contract } from 'utils/contractHelpers'
 import tokens from 'config/constants/tokens'
 
 export const fetchPoolsBlockLimits = async () => {
-  const poolsWithEnd = poolsConfig.filter((p) => p.sousId !== 0)
+  const poolsWithEnd = poolsConfig.filter((p) => p.sousId !== 11) // OjO Maradona
+  // Pools con final - 
   const callsStartBlock = poolsWithEnd.map((poolConfig) => {
     return {
-      address: getAddress(poolConfig.contractAddress),
+      address: getAddress(poolConfig.contractAddress), // SC souschef
       name: 'startBlock',
     }
   })
   const callsEndBlock = poolsWithEnd.map((poolConfig) => {
     return {
-      address: getAddress(poolConfig.contractAddress),
+      address: getAddress(poolConfig.contractAddress), // SC souschef
       name: 'bonusEndBlock',
     }
   })
@@ -60,6 +61,8 @@ export const fetchPoolsTotalStaking = async () => {
 
   const nonBnbPoolsTotalStaked = await multicall(cakeABI, callsNonBnbPools)
   const bnbPoolsTotalStaked = await multicall(wbnbABI, callsBnbPools)
+  console.log("TotalStakedNONBNB %o",nonBnbPoolsTotalStaked)
+  // console.log("TotalStakedBNB %o",bnbPoolsTotalStaked)
 
   return [
     ...nonBnbPools.map((p, index) => ({

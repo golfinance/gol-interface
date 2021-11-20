@@ -165,9 +165,9 @@ const App: React.FC = () => {
             <Route path="/syrup">
               <Redirect to="/pools" />
             </Route>
-            <Route path="/collectibles">
+            {/* <Route path="/collectibles">
               <Redirect to="/nfts" />
-            </Route>
+            </Route> */}
             <Route path="/profile">
               <Redirect to={`${nftsBaseUrl}/profile/${account?.toLowerCase() || ''}`} />
             </Route>

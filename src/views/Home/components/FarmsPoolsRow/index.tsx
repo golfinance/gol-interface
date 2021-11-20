@@ -54,7 +54,7 @@ const FarmsPoolsRow = () => {
       return t('Auto GOL')
     }
 
-    if (pool.sousId === 0) {
+    if (pool.sousId === 11) {
       return t('Manual GOL')
     }
 
@@ -68,7 +68,7 @@ const FarmsPoolsRow = () => {
     <div ref={observerRef}>
       <Flex flexDirection="column" mt="24px">
         <Flex mb="24px">
-          <RowHeading text={showFarms ? t('Top Farms') : t('Top Syrup Pools')} />
+          <RowHeading text={showFarms ? t('Top Farms') : t('Top GolSwap Pools')} />
           <IconButton
             variant="text"
             height="100%"

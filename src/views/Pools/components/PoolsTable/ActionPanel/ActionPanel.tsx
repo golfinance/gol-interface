@@ -130,7 +130,7 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
   const cakeVaultContractAddress = getCakeVaultAddress()
   const { currentBlock } = useBlock()
   const { isXs, isSm, isMd } = breakpoints
-  const showSubtitle = (isXs || isSm) && sousId === 0
+  const showSubtitle = (isXs || isSm) && sousId === 11
 
   const { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay } =
     getPoolBlockInfo(pool, currentBlock)
@@ -153,7 +153,7 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
     : stakedBalance.plus(stakingTokenBalance)
 
   const performanceFeeAsDecimal = performanceFee && performanceFee / 100
-  const isManualCakePool = sousId === 0
+  const isManualCakePool = sousId === 11
 
   const getTotalStakedBalance = () => {
     if (isAutoVault) {
@@ -250,11 +250,11 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
         {(isXs || isSm) && aprRow}
         {(isXs || isSm || isMd) && totalStakedRow}
         {shouldShowBlockCountdown && blocksRow}
-        <Flex mb="8px" justifyContent={['flex-end', 'flex-end', 'flex-start']}>
+        {/* <Flex mb="8px" justifyContent={['flex-end', 'flex-end', 'flex-start']}>
           <LinkExternal href={`/info/token/${earningToken.address}`} bold={false}>
             {t('See Token Info')}
           </LinkExternal>
-        </Flex>
+        </Flex> */}
         <Flex mb="8px" justifyContent={['flex-end', 'flex-end', 'flex-start']}>
           <LinkExternal href={earningToken.projectLink} bold={false}>
             {t('View Project Site')}

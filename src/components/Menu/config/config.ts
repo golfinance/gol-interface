@@ -27,13 +27,13 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     icon: 'Earn',
     items: [
       {
-        label: t('Farms'),
+        label: t('Fields'),
         href: '/farms',
       },
-      // {
-      //   label: t('Pools'),
-      //   href: '/pools',
-      // },
+      {
+        label: t('Pools'),
+        href: '/pools',
+      },
     ],
   },
   // {

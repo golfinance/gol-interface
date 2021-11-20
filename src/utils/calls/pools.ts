@@ -11,7 +11,7 @@ import { getAddress } from '../addressHelpers'
  */
 export const getActivePools = async (block?: number) => {
   const eligiblePools = pools
-    .filter((pool) => pool.sousId !== 0)
+    .filter((pool) => pool.sousId !== 11)
     .filter((pool) => pool.isFinished === false || pool.isFinished === undefined)
   const blockNumber = block || (await simpleRpcProvider.getBlockNumber())
   const startBlockCalls = eligiblePools.map(({ contractAddress }) => ({

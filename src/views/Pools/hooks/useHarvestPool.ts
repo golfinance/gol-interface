@@ -33,8 +33,8 @@ const useHarvestPool = (sousId, isUsingBnb = false) => {
   const masterChefContract = useMasterchef()
 
   const handleHarvest = useCallback(async () => {
-    if (sousId === 0) {
-      await harvestFarm(masterChefContract, 0)
+    if (sousId === 11) {
+      await harvestFarm(masterChefContract, 11)
     } else if (isUsingBnb) {
       await harvestPoolBnb(sousChefContract)
     } else {

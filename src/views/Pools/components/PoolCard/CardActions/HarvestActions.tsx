@@ -32,7 +32,7 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
 
   const fullBalance = getFullDisplayBalance(earnings, earningToken.decimals)
   const hasEarnings = earnings.toNumber() > 0
-  const isCompoundPool = sousId === 0
+  const isCompoundPool = sousId === 11
 
   const [onPresentCollect] = useModal(
     <CollectModal

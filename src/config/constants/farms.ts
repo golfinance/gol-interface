@@ -9,7 +9,7 @@ const farms: SerializedFarmConfig[] = [
    */
    {
     pid: 11,
-    lpSymbol: 'GOL', //
+    lpSymbol: 'GOL', // CAKE = PID 0
     lpAddresses: {
       97: '',
       56: '0x52f6a03a53840c01470f33a0b016e4c3e3dfe796',
@@ -19,13 +19,33 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 0,
-    lpSymbol: 'GOL-BNB LP',
+    lpSymbol: 'GOL-BNB LP', // CAKE-BNB = (251)
     lpAddresses: {
       97: '',
       56: '0x813f158efa2f375e1d82c92208c8727b03f05d62',
     },
     token: serializedTokens.gol,
     quoteToken: serializedTokens.wbnb,
+  },
+  {
+    pid: 3,
+    lpSymbol: 'BUSD-BNB LP', // BUSD-BNB = (252)
+    lpAddresses: {
+      97: '',
+      56: '0xc5b252caf7435080d0ba04df2683d710a4d994a0',
+    },
+    token: serializedTokens.busd,
+    quoteToken: serializedTokens.wbnb,
+  },
+  {
+    pid: 2,
+    lpSymbol: 'GOL-BUSD LP',
+    lpAddresses: {
+      97: '',
+      56: '0xef1d3deceb43d85d84842032d404ade23eb31b1d', 
+    },
+    token: serializedTokens.gol,
+    quoteToken: serializedTokens.busd,
   },
   {
     pid: 1,
@@ -37,27 +57,6 @@ const farms: SerializedFarmConfig[] = [
     token: serializedTokens.gol,
     quoteToken: serializedTokens.usdt,
   },
-  {
-    pid: 2,
-    lpSymbol: 'GOL-BUSD LP', // CAKE-BUSD (251) cambiar x 2
-    lpAddresses: {
-      97: '',
-      56: '0xef1d3deceb43d85d84842032d404ade23eb31b1d', 
-    },
-    token: serializedTokens.gol,
-    quoteToken: serializedTokens.busd,
-  },
-  {
-    pid: 3,
-    lpSymbol: 'BUSD-BNB LP', // BUSD-BNB (252) cambiar x 3
-    lpAddresses: {
-      97: '',
-      56: '0xc5b252caf7435080d0ba04df2683d710a4d994a0',
-    },
-    token: serializedTokens.busd,
-    quoteToken: serializedTokens.wbnb,
-  },
-  
   {
     pid: 4,
     lpSymbol: 'USDT-BNB LP',

@@ -25,7 +25,7 @@ const EndsInCell: React.FC<FinishCellProps> = ({ pool }) => {
   const { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay } =
     getPoolBlockInfo(pool, currentBlock)
 
-  const isCakePool = sousId === 0
+  const isCakePool = sousId === 11
 
   const renderBlocks = shouldShowBlockCountdown ? (
     <Flex alignItems="center">
