@@ -32,6 +32,14 @@ export const mainnetTokens = {
     'https://gol.finance/',
   
   ),
+  milk: new Token(
+    MAINNET,
+    '0xe5bd6c5b1c2df8f499847a545838c09e45f4a262',
+    18,
+    'MILK',
+    'MILK Token',
+    'https://app.cashcowprotocol.com/',
+  ),
   cake: new Token(
     MAINNET,
     '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
