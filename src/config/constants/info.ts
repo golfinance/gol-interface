@@ -8,6 +8,8 @@ export const TREASURY_FEE = 0.0003
 export const BUYBACK_FEE = 0.0005
 
 export const PCS_V2_START = 1619136000 // April 23, 2021, 12:00:00 AM
+export const GOL_START = 1635735600 // Nov 1, 2021, 00:00:00
+export const GOL_TOKEN_CONTRACT = "0x52f6A03a53840C01470f33A0b016E4C3E3DFe796" // just for testing
 export const ONE_DAY_UNIX = 86400 // 24h * 60m * 60s
 export const ONE_HOUR_SECONDS = 3600
 

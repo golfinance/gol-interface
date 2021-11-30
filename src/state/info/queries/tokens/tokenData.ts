@@ -1,7 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { useState, useEffect } from 'react'
 import { request, gql } from 'graphql-request'
-import { INFO_CLIENT } from 'config/constants/endpoints'
+import { INFO_CLIENT, GOL_EXCHANGE } from 'config/constants/endpoints'
+import { GOL_TOKEN_CONTRACT } from 'config/constants/info'
 import { getDeltaTimestamps } from 'views/Info/utils/infoQueryHelpers'
 import { useBlocksFromTimestamps } from 'views/Info/hooks/useBlocksFromTimestamps'
 import { getPercentChange, getChangeForPeriod, getAmountChange } from 'views/Info/utils/infoDataHelpers'
@@ -40,6 +41,13 @@ interface TokenQueryResponse {
  * Main token data to display on Token page
  */
 const TOKEN_AT_BLOCK = (block: number | undefined, tokens: string[]) => {
+  console.log(GOL_TOKEN_CONTRACT.toLowerCase())
+  console.log(tokens)
+  if (tokens.includes(GOL_TOKEN_CONTRACT.toLowerCase())) {
+    console.log('incluye el contract de $GOL')
+  } else {
+    console.log('NO incluye el contract de $GOL')
+  }
   const addressesString = `["${tokens.join('","')}"]`
   const blockString = block ? `block: {number: ${block}}` : ``
   return `tokens(
