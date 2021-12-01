@@ -39,9 +39,6 @@ interface TokenQueryResponse {
   twoWeeksAgo: TokenFields[]
 }
 
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
-
 /**
  * Main token data to display on Token page
  */
