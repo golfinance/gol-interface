@@ -89,12 +89,7 @@ const fetchTokenData = async (
         twoWeeksAgo: ${TOKEN_AT_BLOCK(block14d, tokenAddresses)}
       }
     `
-    let data;
-    if (hasGolContract) {
-      data = await request<TokenQueryResponse>(GOL_EXCHANGE, query)
-    } else {
-      data = await request<TokenQueryResponse>(INFO_CLIENT, query)
-    }
+    const data = hasGolContract ? await request<TokenQueryResponse>(GOL_EXCHANGE, query) : await request<TokenQueryResponse>(INFO_CLIENT, query); 
     
     return { data, error: false }
   } catch (error) {
