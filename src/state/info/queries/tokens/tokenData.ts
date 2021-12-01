@@ -42,16 +42,10 @@ interface TokenQueryResponse {
 /**
  * Main token data to display on Token page
  */
-const TOKEN_AT_BLOCK = (block: number | undefined, tokens: string[]) => {
-  console.log(GOL_TOKEN_CONTRACT.toLowerCase())
-  console.log(tokens)
-  if (tokens.includes(GOL_TOKEN_CONTRACT.toLowerCase())) {
-    console.log('incluye el contract de $GOL')
-    hasGolContract = true;
-  } else {
-    console.log('NO incluye el contract de $GOL')
-    hasGolContract = false;
-  }
+const TOKEN_AT_BLOCK = (block: number | undefined, tokens: string[]) => {  
+
+  hasGolContract = tokens.includes(GOL_TOKEN_CONTRACT.toLowerCase());
+ 
   const addressesString = `["${tokens.join('","')}"]`
   const blockString = block ? `block: {number: ${block}}` : ``
   return `tokens(
