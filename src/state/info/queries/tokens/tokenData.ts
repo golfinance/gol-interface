@@ -9,6 +9,8 @@ import { getPercentChange, getChangeForPeriod, getAmountChange } from 'views/Inf
 import { TokenData } from 'state/info/types'
 import { useBnbPrices } from 'views/Info/hooks/useBnbPrices'
 
+let hasGolContract;
+
 interface TokenFields {
   id: string
   symbol: string
@@ -37,6 +39,9 @@ interface TokenQueryResponse {
   twoWeeksAgo: TokenFields[]
 }
 
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+
 /**
  * Main token data to display on Token page
  */
@@ -45,8 +50,10 @@ const TOKEN_AT_BLOCK = (block: number | undefined, tokens: string[]) => {
   console.log(tokens)
   if (tokens.includes(GOL_TOKEN_CONTRACT.toLowerCase())) {
     console.log('incluye el contract de $GOL')
+    hasGolContract = true;
   } else {
     console.log('NO incluye el contract de $GOL')
+    hasGolContract = false;
   }
   const addressesString = `["${tokens.join('","')}"]`
   const blockString = block ? `block: {number: ${block}}` : ``
@@ -85,7 +92,13 @@ const fetchTokenData = async (
         twoWeeksAgo: ${TOKEN_AT_BLOCK(block14d, tokenAddresses)}
       }
     `
-    const data = await request<TokenQueryResponse>(INFO_CLIENT, query)
+    let data;
+    if (hasGolContract) {
+      data = await request<TokenQueryResponse>(GOL_EXCHANGE, query)
+    } else {
+      data = await request<TokenQueryResponse>(INFO_CLIENT, query)
+    }
+    
     return { data, error: false }
   } catch (error) {
     console.error('Failed to fetch token data', error)
