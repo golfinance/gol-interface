@@ -19,7 +19,7 @@ export const CurrencyLogo: React.FC<{
   const src = useMemo(() => {
     const checksummedAddress = isAddress(address)
     if (checksummedAddress) {
-      return `https://assets.trustwalletapp.com/blockchains/smartchain/assets/${checksummedAddress}/logo.png`
+      return `${process.env.PUBLIC_URL}/images/tokens/${address}.png`
     }
     return null
   }, [address])
