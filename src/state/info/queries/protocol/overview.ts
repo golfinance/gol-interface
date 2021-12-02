@@ -35,6 +35,7 @@ const getOverviewData = async (block?: number): Promise<{ data?: OverviewRespons
     */
     const query = gql`query overview {
       pancakeFactories(
+        ${block ? `block: { number: ${block}}` : ``} 
         first: 1) {
         totalTransactions
         totalVolumeUSD

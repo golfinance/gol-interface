@@ -84,7 +84,7 @@ const fetchTokenData = async (
       }
     `
     // const data = hasGolContract ? await request<TokenQueryResponse>(GOL_EXCHANGE, query) : await request<TokenQueryResponse>(INFO_CLIENT, query); 
-    const data = await request<TokenQueryResponse>(INFO_CLIENT, query); 
+    const data = await request<TokenQueryResponse>(GOL_EXCHANGE, query); 
     // const requestedTokenAddress = (window.location.pathname).split('/')[3];
     // console.log('Contract: ', requestedTokenAddress);
     // const data = requestedTokenAddress === GOL_TOKEN_CONTRACT.toLowerCase() ? await request<TokenQueryResponse>(GOL_EXCHANGE, query) : await request<TokenQueryResponse>(INFO_CLIENT, query); 
