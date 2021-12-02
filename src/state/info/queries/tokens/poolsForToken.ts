@@ -1,5 +1,5 @@
 import { request, gql } from 'graphql-request'
-import { INFO_CLIENT } from 'config/constants/endpoints'
+import { INFO_CLIENT, GOL_EXCHANGE } from 'config/constants/endpoints'
 import { TOKEN_BLACKLIST } from 'config/constants/info'
 
 /**
@@ -42,7 +42,7 @@ const fetchPoolsForToken = async (
   addresses?: string[]
 }> => {
   try {
-    const data = await request<PoolsForTokenResponse>(INFO_CLIENT, POOLS_FOR_TOKEN, {
+    const data = await request<PoolsForTokenResponse>(GOL_EXCHANGE, POOLS_FOR_TOKEN, {
       address,
       blacklist: TOKEN_BLACKLIST,
     })

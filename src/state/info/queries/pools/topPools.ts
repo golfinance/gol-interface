@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { request, gql } from 'graphql-request'
-import { INFO_CLIENT } from 'config/constants/endpoints'
+import { INFO_CLIENT, GOL_EXCHANGE } from 'config/constants/endpoints'
 import { TOKEN_BLACKLIST } from 'config/constants/info'
 import { getDeltaTimestamps } from 'views/Info/utils/infoQueryHelpers'
 
@@ -18,8 +18,7 @@ const fetchTopPools = async (timestamp24hAgo: number): Promise<string[]> => {
     const query = gql`
       query topPools($blacklist: [String!], $timestamp24hAgo: Int) {
         pairDayDatas(
-          first: 30
-          where: { dailyTxns_gt: 300, token0_not_in: $blacklist, token1_not_in: $blacklist, date_gt: $timestamp24hAgo }
+          first: 30 
           orderBy: dailyVolumeUSD
           orderDirection: desc
         ) {
@@ -27,7 +26,7 @@ const fetchTopPools = async (timestamp24hAgo: number): Promise<string[]> => {
         }
       }
     `
-    const data = await request<TopPoolsResponse>(INFO_CLIENT, query, { blacklist: TOKEN_BLACKLIST, timestamp24hAgo })
+    const data = await request<TopPoolsResponse>(GOL_EXCHANGE, query, { blacklist: TOKEN_BLACKLIST, timestamp24hAgo })
     // pairDayDatas id has compound id "0xPOOLADDRESS-NUMBERS", extracting pool address with .split('-')
     return data.pairDayDatas.map((p) => p.id.split('-')[0])
   } catch (error) {

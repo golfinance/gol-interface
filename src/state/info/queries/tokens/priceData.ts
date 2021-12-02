@@ -3,7 +3,7 @@ import { gql } from 'graphql-request'
 import { getBlocksFromTimestamps } from 'views/Info/hooks/useBlocksFromTimestamps'
 import { multiQuery } from 'views/Info/utils/infoQueryHelpers'
 import { PriceChartEntry } from 'state/info/types'
-import { INFO_CLIENT } from 'config/constants/endpoints'
+import { INFO_CLIENT, GOL_EXCHANGE } from 'config/constants/endpoints'
 
 const getPriceSubqueries = (tokenAddress: string, blocks: any) =>
   blocks.map(
@@ -56,7 +56,7 @@ const fetchTokenPriceData = async (
     const prices: any | undefined = await multiQuery(
       priceQueryConstructor,
       getPriceSubqueries(address, blocks),
-      INFO_CLIENT,
+      GOL_EXCHANGE,
       200,
     )
 

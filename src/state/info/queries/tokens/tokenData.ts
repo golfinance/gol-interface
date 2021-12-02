@@ -83,8 +83,12 @@ const fetchTokenData = async (
         twoWeeksAgo: ${TOKEN_AT_BLOCK(block14d, tokenAddresses)}
       }
     `
-    const data = hasGolContract ? await request<TokenQueryResponse>(GOL_EXCHANGE, query) : await request<TokenQueryResponse>(INFO_CLIENT, query); 
-    
+    // const data = hasGolContract ? await request<TokenQueryResponse>(GOL_EXCHANGE, query) : await request<TokenQueryResponse>(INFO_CLIENT, query); 
+    const data = await request<TokenQueryResponse>(GOL_EXCHANGE, query); 
+    // const requestedTokenAddress = (window.location.pathname).split('/')[3];
+    // console.log('Contract: ', requestedTokenAddress);
+    // const data = requestedTokenAddress === GOL_TOKEN_CONTRACT.toLowerCase() ? await request<TokenQueryResponse>(GOL_EXCHANGE, query) : await request<TokenQueryResponse>(INFO_CLIENT, query); 
+
     return { data, error: false }
   } catch (error) {
     console.error('Failed to fetch token data', error)
