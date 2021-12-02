@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { request, gql } from 'graphql-request'
-import { INFO_CLIENT, GOL_EXCHANGE } from 'config/constants/endpoints'
+import { INFO_CLIENT } from 'config/constants/endpoints'
 import { getChangeForPeriod, getPercentChange } from 'views/Info/utils/infoDataHelpers'
 import { ProtocolData } from 'state/info/types'
 import { getDeltaTimestamps } from 'views/Info/utils/infoQueryHelpers'
@@ -20,19 +20,7 @@ interface OverviewResponse {
  * Latest Liquidity, Volume and Transaction count
  */
 const getOverviewData = async (block?: number): Promise<{ data?: OverviewResponse; error: boolean }> => {
-  try {
-    /** const query = gql`query overview {
-      pancakeFactories(
-        ${block ? `block: { number: ${block}}` : ``} 
-        first: 1) {
-        totalTransactions
-        totalVolumeUSD
-        totalLiquidityUSD
-      }
-    }`
-    * reemplazamos por GOL_EXCHANGE endpoint, solo para esta query, el resto se recicla
-    * const data = await request<OverviewResponse>(INFO_CLIENT, query)
-    */
+  try {  
     const query = gql`query overview {
       pancakeFactories(
         ${block ? `block: { number: ${block}}` : ``} 
@@ -42,7 +30,7 @@ const getOverviewData = async (block?: number): Promise<{ data?: OverviewRespons
         totalLiquidityUSD
       }
     }`
-    const data = await request<OverviewResponse>(GOL_EXCHANGE, query)
+    const data = await request<OverviewResponse>(INFO_CLIENT, query)
     return { data, error: false }
   } catch (error) {
     console.error('Failed to fetch info overview', error)

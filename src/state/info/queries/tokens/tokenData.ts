@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { useState, useEffect } from 'react'
 import { request, gql } from 'graphql-request'
-import { INFO_CLIENT, GOL_EXCHANGE } from 'config/constants/endpoints'
+import { INFO_CLIENT } from 'config/constants/endpoints'
 import { GOL_TOKEN_CONTRACT } from 'config/constants/info'
 import { getDeltaTimestamps } from 'views/Info/utils/infoQueryHelpers'
 import { useBlocksFromTimestamps } from 'views/Info/hooks/useBlocksFromTimestamps'
@@ -81,13 +81,9 @@ const fetchTokenData = async (
         twoDaysAgo: ${TOKEN_AT_BLOCK(block48h, tokenAddresses)}
         oneWeekAgo: ${TOKEN_AT_BLOCK(block7d, tokenAddresses)}
         twoWeeksAgo: ${TOKEN_AT_BLOCK(block14d, tokenAddresses)}
-      }
-    `
-    // const data = hasGolContract ? await request<TokenQueryResponse>(GOL_EXCHANGE, query) : await request<TokenQueryResponse>(INFO_CLIENT, query); 
-    const data = await request<TokenQueryResponse>(GOL_EXCHANGE, query); 
-    // const requestedTokenAddress = (window.location.pathname).split('/')[3];
-    // console.log('Contract: ', requestedTokenAddress);
-    // const data = requestedTokenAddress === GOL_TOKEN_CONTRACT.toLowerCase() ? await request<TokenQueryResponse>(GOL_EXCHANGE, query) : await request<TokenQueryResponse>(INFO_CLIENT, query); 
+      }    `
+   
+    const data = await request<TokenQueryResponse>(INFO_CLIENT, query);     
 
     return { data, error: false }
   } catch (error) {

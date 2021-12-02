@@ -1,5 +1,5 @@
 import { request, gql } from 'graphql-request'
-import { INFO_CLIENT, GOL_EXCHANGE } from 'config/constants/endpoints'
+import { INFO_CLIENT} from 'config/constants/endpoints'
 import { Transaction } from 'state/info/types'
 import { MintResponse, SwapResponse, BurnResponse } from 'state/info/queries/types'
 import { mapMints, mapBurns, mapSwaps } from 'state/info/queries/helpers'
@@ -75,7 +75,7 @@ interface TransactionResults {
 
 const fetchTopTransactions = async (): Promise<Transaction[] | undefined> => {
   try {
-    const data = await request<TransactionResults>(GOL_EXCHANGE, GLOBAL_TRANSACTIONS)
+    const data = await request<TransactionResults>(INFO_CLIENT, GLOBAL_TRANSACTIONS)
 
     if (!data) {
       return undefined

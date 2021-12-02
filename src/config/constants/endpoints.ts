@@ -14,7 +14,14 @@ export const BITQUERY_API = 'https://graphql.bitquery.io'
  */
 export const GRAPH_API_PREDICTION_V1 = 'https://api.thegraph.com/subgraphs/name/pancakeswap/prediction'
 
+/**
+ * subgrafico de pancake de volumen y liquidez
+ * export const INFO_CLIENT = 'https://bsc.streamingfast.io/subgraphs/name/pancakeswap/exchange-v2'
+*/
+
+/**
+ * subgrafico de gol finance de volumen y liquidez
+ */
 export const INFO_CLIENT = 'https://api.thegraph.com/subgraphs/name/topospec/topo-subgraph'
-export const GOL_EXCHANGE = 'https://api.thegraph.com/subgraphs/name/topospec/topo-subgraph'
 export const BLOCKS_CLIENT = 'https://api.thegraph.com/subgraphs/name/pancakeswap/blocks'
 export const GRAPH_API_NFTMARKET = process.env.REACT_APP_GRAPH_API_NFT_MARKET

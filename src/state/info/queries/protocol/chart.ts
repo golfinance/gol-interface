@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
 import { useState, useEffect } from 'react'
 import { request, gql } from 'graphql-request'
-import { INFO_CLIENT, GOL_EXCHANGE } from 'config/constants/endpoints'
+import { INFO_CLIENT} from 'config/constants/endpoints'
 import { PCS_V2_START, GOL_START } from 'config/constants/info'
 import { ChartEntry } from 'state/info/types'
 import { PancakeDayDatasResponse } from '../types'
@@ -22,7 +22,7 @@ const PANCAKE_DAY_DATAS = gql`
 
 const getOverviewChartData = async (skip: number): Promise<{ data?: ChartEntry[]; error: boolean }> => {
   try {
-    const { pancakeDayDatas } = await request<PancakeDayDatasResponse>(GOL_EXCHANGE, PANCAKE_DAY_DATAS, {
+    const { pancakeDayDatas } = await request<PancakeDayDatasResponse>(INFO_CLIENT, PANCAKE_DAY_DATAS, {
       startTime: GOL_START,
       skip,
     })
