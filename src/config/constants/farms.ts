@@ -149,6 +149,28 @@ const farms: SerializedFarmConfig[] = [
     quoteToken: serializedTokens.busd,
     isCommunity: true,
   },
+  {
+    pid: 14,
+    lpSymbol: 'GOL-bFLUX LP',
+    lpAddresses: {
+      97: '',
+      56: '0x41bbb75618e94e22b66fa45fdee196de058b3fe5',
+    },
+    token: serializedTokens.gol,
+    quoteToken: serializedTokens.bflux,
+    isCommunity: true,
+  },
+  {
+    pid: 15,
+    lpSymbol: 'bFLUX-USDT LP',
+    lpAddresses: {
+      97: '',
+      56: '0xf0044d21a0d29692fbdb67e14ff4dcc5bbed86f2',
+    },
+    token: serializedTokens.bflux,
+    quoteToken: serializedTokens.usdt,
+    isCommunity: true,
+  },
 
 ]
 
