@@ -23,15 +23,17 @@ export const mainnetTokens = {
   ),
   // bnb here points to the wbnb contract. Wherever the currency BNB is required, conditional checks for the symbol 'BNB' can be used
   bnb: new Token(MAINNET, '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c', 18, 'BNB', 'BNB', 'https://www.binance.com/'),
+  
   gol: new Token(
     MAINNET,
-    '0x52f6a03a53840c01470f33a0b016e4c3e3dfe796',
+    '0x52f6A03a53840C01470f33A0b016E4C3E3DFe796',
     18,
     'GOL',
     'GOLToken',
     'https://gol.finance/',
   
   ),
+  
   milk: new Token(
     MAINNET,
     '0xe5bd6c5b1c2df8f499847a545838c09e45f4a262',
@@ -40,6 +42,19 @@ export const mainnetTokens = {
     'MILK Token',
     'https://app.cashcowprotocol.com/',
   ),
+  
+  bflux: new Token(
+    MAINNET,
+    '0x1aB6478B47270fF05Af11A012Ac17b098758e193',
+    18,
+    'bFLUX',
+    'FLUX Token',
+    'https://flux.01.finance/',
+  ),
+
+
+
+
   cake: new Token(
     MAINNET,
     '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',

@@ -190,7 +190,7 @@ export const PoolsSlice = createSlice({
       const { field, value, sousId } = action.payload
       const index = state.data.findIndex((p) => p.sousId === sousId)
 
-      if (index >= 0) {
+      if (index === 11) { // (index >= 0) Acá va 11? seguro que si.
         state.data[index] = { ...state.data[index], userData: { ...state.data[index].userData, [field]: value } }
       }
     },
