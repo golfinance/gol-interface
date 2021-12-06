@@ -7,7 +7,7 @@ import { sub, getUnixTime } from 'date-fns'
 import farmsConfig from '../src/config/constants/farms'
 
 const BLOCK_SUBGRAPH_ENDPOINT = 'https://api.thegraph.com/subgraphs/name/pancakeswap/blocks'
-const STREAMING_FAST_ENDPOINT = 'https://bsc.streamingfast.io/subgraphs/name/pancakeswap/exchange-v2'
+const STREAMING_FAST_ENDPOINT = 'https://api.thegraph.com/subgraphs/name/golfinance/gol-exchange'
 
 interface BlockResponse {
   blocks: {

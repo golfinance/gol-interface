@@ -37,11 +37,17 @@ export const getFarmApr = (
   farmAddress: string,
 ): { cakeRewardsApr: number; lpRewardsApr: number } => {
   const yearlyCakeRewardAllocation = poolWeight ? poolWeight.times(CAKE_PER_YEAR) : new BigNumber(NaN)
+  console.log('yearlycakerewardsallocation',yearlyCakeRewardAllocation)
+  console.log('poolWeight',poolWeight)
+  console.log('cakePriceUsd',cakePriceUsd)
+  console.log('poolLiquidityUsd',poolLiquidityUsd)
   const cakeRewardsApr = yearlyCakeRewardAllocation.times(cakePriceUsd).div(poolLiquidityUsd).times(100)
   let cakeRewardsAprAsNumber = null
   if (!cakeRewardsApr.isNaN() && cakeRewardsApr.isFinite()) {
+    console.log('entro al if de getfarmapr')
     cakeRewardsAprAsNumber = cakeRewardsApr.toNumber()
   }
+  console.log('cakeRewardsAprAsNumber',cakeRewardsAprAsNumber)
   const lpRewardsApr = lpAprs[farmAddress?.toLocaleLowerCase()] ?? 0
   return { cakeRewardsApr: cakeRewardsAprAsNumber, lpRewardsApr }
 }

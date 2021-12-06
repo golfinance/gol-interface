@@ -155,16 +155,30 @@ const Farms: React.FC = () => {
   )
 
   const farmsList = useCallback(
+    /* eslint-disable no-param-reassign */
     (farmsToDisplay: DeserializedFarm[]): FarmWithStakedValue[] => {
+      console.log('farm to display', farmsToDisplay);
+      farmsToDisplay[0].multiplier = '10X'
       let farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map((farm) => {
+        
         if (!farm.lpTotalInQuoteToken || !farm.quoteTokenPriceBusd) {
+          console.log('farm', farm);
           return farm
         }
-        const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
-        const { cakeRewardsApr, lpRewardsApr } = isActive
-          ? getFarmApr(new BigNumber(farm.poolWeight), cakePrice, totalLiquidity, farm.lpAddresses[ChainId.MAINNET])
-          : { cakeRewardsApr: 0, lpRewardsApr: 0 }
+       
+        console.log('farm', farm);
 
+        farm.quoteTokenPriceBusd = '1';
+        const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
+        // const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times('1')
+
+        const { cakeRewardsApr, lpRewardsApr } = !isActive
+          ? getFarmApr(new BigNumber(farm.poolWeight), cakePrice, totalLiquidity, farm.lpAddresses[ChainId.MAINNET])
+          : { cakeRewardsApr: 10, lpRewardsApr: 0 }
+        
+
+        console.log('cake rewards apr', cakeRewardsApr)
+        console.log('totalLiquidity', totalLiquidity);
         return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
       })
 
@@ -176,7 +190,8 @@ const Farms: React.FC = () => {
       }
       return farmsToDisplayWithAPR
     },
-    [cakePrice, query, isActive],
+    /* eslint-enable no-param-reassign */
+    [cakePrice, query,isActive],
   )
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {

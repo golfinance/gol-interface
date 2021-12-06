@@ -9,8 +9,6 @@ import { getPercentChange, getChangeForPeriod, getAmountChange } from 'views/Inf
 import { TokenData } from 'state/info/types'
 import { useBnbPrices } from 'views/Info/hooks/useBnbPrices'
 
-let hasGolContract;
-
 interface TokenFields {
   id: string
   symbol: string
@@ -42,9 +40,7 @@ interface TokenQueryResponse {
 /**
  * Main token data to display on Token page
  */
-const TOKEN_AT_BLOCK = (block: number | undefined, tokens: string[]) => {  
-
-  hasGolContract = tokens.includes(GOL_TOKEN_CONTRACT.toLowerCase());
+const TOKEN_AT_BLOCK = (block: number | undefined, tokens: string[]) => {    
  
   const addressesString = `["${tokens.join('","')}"]`
   const blockString = block ? `block: {number: ${block}}` : ``
