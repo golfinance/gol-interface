@@ -160,7 +160,17 @@ const farms: SerializedFarmConfig[] = [
     quoteToken: serializedTokens.bflux,
     isCommunity: true,
   },
-  
+  {
+    pid: 15,
+    lpSymbol: 'bFLUX-USDT LP',
+    lpAddresses: {
+      97: '',
+      56: '0xf0044d21a0d29692fbdb67e14ff4dcc5bbed86f2',
+    },
+    token: serializedTokens.bflux,
+    quoteToken: serializedTokens.usdt,
+    isCommunity: true,
+  },
   {
     pid: 16,
     lpSymbol: 'MILK-BNB LP',
