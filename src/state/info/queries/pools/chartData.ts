@@ -1,5 +1,5 @@
 import { request, gql } from 'graphql-request'
-import { INFO_CLIENT } from 'config/constants/endpoints'
+import { INFO_CLIENT} from 'config/constants/endpoints'
 import { ChartEntry } from 'state/info/types'
 import { PCS_V2_START } from 'config/constants/info'
 import { PairDayDatasResponse } from '../types'
