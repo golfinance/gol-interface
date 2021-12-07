@@ -19,7 +19,7 @@ export const CurrencyLogo: React.FC<{
   const src = useMemo(() => {
     const checksummedAddress = isAddress(address)
     if (checksummedAddress) {
-      return `/images/tokens/${address}.svg`
+      return `/images/tokens/${address.toLocaleLowerCase()}.svg`
     }
     return null
   }, [address])
