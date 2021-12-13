@@ -37,7 +37,7 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     ],
   },
   {
-    label: t('Stats'),
+    label: t('Analytics'),
     icon: 'info',
     href: '/info',
     items: [],
