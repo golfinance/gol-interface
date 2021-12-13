@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
-import { isAddress } from 'utils'
+import { utils } from 'ethers'
 import LogoLoader from './LogoLoader'
 
 const StyledLogo = styled(LogoLoader)<{ size: string }>`
@@ -17,7 +17,7 @@ export const CurrencyLogo: React.FC<{
   size?: string
 }> = ({ address, size = '24px', ...rest }) => {
   const src = useMemo(() => {
-    return `/images/tokens/${address.toLocaleLowerCase()}.svg`
+    return `/images/tokens/${utils.getAddress(address)}.svg`
   }, [address])
 
   return <StyledLogo size={size} src={src} alt="token logo" {...rest} />
