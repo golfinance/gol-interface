@@ -17,11 +17,7 @@ export const CurrencyLogo: React.FC<{
   size?: string
 }> = ({ address, size = '24px', ...rest }) => {
   const src = useMemo(() => {
-    const checksummedAddress = isAddress(address)
-    if (checksummedAddress) {
-      return `/images/tokens/${address.toLocaleLowerCase()}.svg`
-    }
-    return null
+    return `/images/tokens/${address.toLocaleLowerCase()}.svg`
   }, [address])
 
   return <StyledLogo size={size} src={src} alt="token logo" {...rest} />
