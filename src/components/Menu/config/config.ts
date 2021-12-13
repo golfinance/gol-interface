@@ -33,8 +33,14 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
       {
         label: t('Pools'),
         href: '/pools',
-      },
+      }
     ],
+  },
+  {
+    label: t('Stats'),
+    icon: 'info',
+    href: '/info',
+    items: [],
   },
   // {
   //   label: t('Win'),
@@ -76,28 +82,6 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     icon: 'More',
     hideSubNav: true,
     items: [
-      {
-        label: t('Info'),
-        href: '/info',
-      },
-      // {
-      //   label: t('IFO'),
-      //   href: '/ifo',
-      // },
-      // {
-      //   label: t('Voting'),
-      //   href: '/voting',
-      // },
-      // {
-      //   type: DropdownMenuItemType.DIVIDER,
-      // },
-      // {
-      //   label: t('Leaderboard'),
-      //   href: '/teams',
-      // },
-      // {
-      //   type: DropdownMenuItemType.DIVIDER,
-      // },
       {
         label: t('Blog'),
         href: 'https://medium.com/@gol.finance',
