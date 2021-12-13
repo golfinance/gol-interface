@@ -20,7 +20,7 @@ interface OverviewResponse {
  * Latest Liquidity, Volume and Transaction count
  */
 const getOverviewData = async (block?: number): Promise<{ data?: OverviewResponse; error: boolean }> => {
-  try {
+  try {  
     const query = gql`query overview {
       pancakeFactories(
         ${block ? `block: { number: ${block}}` : ``} 
