@@ -12382,10 +12382,9 @@ globby@^6.1.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-gol-uikit@^0.1.0:
+"gol-uikit@https://github.com/golfinance/gol-uikit.git":
   version "0.1.17"
-  resolved "https://registry.yarnpkg.com/gol-uikit/-/gol-uikit-0.1.17.tgz#c573ed135d21a1d1d5dfd979d3bf73c3f367f757"
-  integrity sha512-+x9obP0ySq88wwg6lc0HG2vobMW2a9WH2iIgjeEoMZWXHiV+npEsTWxxZ7QrSq19nf4cazvTrMPldXsmrElaEQ==
+  resolved "https://github.com/golfinance/gol-uikit.git#c39dfeba36f7d5c3fd6d956df308c4af18686e8c"
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/lodash" "^4.14.168"
@@ -12394,10 +12393,9 @@ gol-uikit@^0.1.0:
     react-popper "^2.2.5"
     styled-system "^5.1.5"
 
-golswap-sdk@^0.1.0:
+"golswap-sdk@https://github.com/golfinance/golswap-sdk.git":
   version "0.1.3"
-  resolved "https://registry.yarnpkg.com/golswap-sdk/-/golswap-sdk-0.1.3.tgz#112486259b8a4d0c0c89faf7b606b2b0d103e8be"
-  integrity sha512-PiJen0pHfQ049vKgSYjKpMB/B0enqy9nMZQG+vA2F4XF2i7+Q1pKdqpqd5bApdo4+JcKr4kAtC+8jaKJUjYK8A==
+  resolved "https://github.com/golfinance/golswap-sdk.git#7ace136a5035509b48bb72f2875a010d81cbdea7"
   dependencies:
     "@pancakeswap-libs/pancake-swap-core" "^0.1.0"
     big.js "^5.2.2"
