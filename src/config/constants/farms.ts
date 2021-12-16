@@ -172,6 +172,18 @@ const farms: SerializedFarmConfig[] = [
     isCommunity: true,
   },
 
+  {
+    pid: 16,
+    lpSymbol: 'MILK-BNB LP',
+    lpAddresses: {
+      97: '',
+      56: '0xc3f91f5958d874cd1ce46a98c54088cbdd8d9188',
+    },
+    token: serializedTokens.milk,
+    quoteToken: serializedTokens.wbnb,
+    isCommunity: true,
+  },
+
 ]
 
 export default farms
