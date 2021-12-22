@@ -160,7 +160,9 @@ const Farms: React.FC = () => {
         if (!farm.lpTotalInQuoteToken || !farm.quoteTokenPriceBusd) {
           return farm
         }
+
         const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
+
         const { cakeRewardsApr, lpRewardsApr } = isActive
           ? getFarmApr(new BigNumber(farm.poolWeight), cakePrice, totalLiquidity, farm.lpAddresses[ChainId.MAINNET])
           : { cakeRewardsApr: 0, lpRewardsApr: 0 }
@@ -189,6 +191,7 @@ const Farms: React.FC = () => {
     let chosenFarms = []
 
     const sortFarms = (farms: FarmWithStakedValue[]): FarmWithStakedValue[] => {
+
       switch (sortOption) {
         case 'apr':
           return orderBy(farms, (farm: FarmWithStakedValue) => farm.apr + farm.lpRewardsApr, 'desc')

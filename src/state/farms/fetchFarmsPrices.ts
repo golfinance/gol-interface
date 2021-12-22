@@ -53,6 +53,13 @@ const getFarmBaseTokenPrice = (
       : BIG_ZERO
   }
 
+  if (quoteTokenFarm.quoteToken.symbol === tokens.bflux.symbol) {
+    const quoteTokenInBusd = quoteTokenFarm.tokenPriceVsQuote
+    return hasTokenPriceVsQuote && quoteTokenInBusd
+      ? new BigNumber(farm.tokenPriceVsQuote).times(quoteTokenInBusd)
+      : BIG_ZERO
+  }
+
   // Catch in case token does not have immediate or once-removed BUSD/WBNB quoteToken
   return BIG_ZERO
 }
@@ -82,6 +89,10 @@ const getFarmQuoteTokenPrice = (
     return quoteTokenFarm.tokenPriceVsQuote ? new BigNumber(quoteTokenFarm.tokenPriceVsQuote) : BIG_ZERO
   }
 
+  if (quoteTokenFarm.quoteToken.symbol === "bFLUX") {
+    return quoteTokenFarm.tokenPriceVsQuote ? new BigNumber(quoteTokenFarm.tokenPriceVsQuote) : BIG_ZERO
+  }
+
   return BIG_ZERO
 }
 
@@ -104,4 +115,4 @@ const fetchFarmsPrices = async (farms: SerializedFarm[]) => {
   return farmsWithPrices
 }
 
-export default fetchFarmsPrices
+export { fetchFarmsPrices, getFarmQuoteTokenPrice, getFarmBaseTokenPrice, getFarmFromTokenSymbol }

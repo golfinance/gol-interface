@@ -52,9 +52,6 @@ export const mainnetTokens = {
     'https://flux.01.finance/',
   ),
 
-
-
-
   cake: new Token(
     MAINNET,
     '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',

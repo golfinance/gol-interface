@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'
 import { useWeb3React } from '@web3-react/core'
 import BigNumber from 'bignumber.js'
-import { BIG_ZERO } from 'utils/bigNumber'
+import { BIG_ZERO, BIG_ONE } from 'utils/bigNumber'
 import { getBalanceAmount } from 'utils/formatBalance'
 import { farmsConfig } from 'config/constants'
 import useRefresh from 'hooks/useRefresh'
 import { deserializeToken } from 'state/user/hooks/helpers'
+import tokens from 'config/constants/tokens'
+import { getFarmFromTokenSymbol, getFarmBaseTokenPrice, getFarmQuoteTokenPrice } from './fetchFarmsPrices'
 import { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync, nonArchivedFarms } from '.'
 import { State, SerializedFarm, DeserializedFarmUserData, DeserializedFarm, DeserializedFarmsState } from '../types'
 
@@ -21,7 +23,13 @@ const deserializeFarmUserData = (farm: SerializedFarm): DeserializedFarmUserData
 }
 
 const deserializeFarm = (farm: SerializedFarm): DeserializedFarm => {
-  const { lpAddresses, lpSymbol, pid, dual, multiplier, isCommunity, quoteTokenPriceBusd, tokenPriceBusd } = farm
+
+  const { lpAddresses, lpSymbol, pid, dual, multiplier, isCommunity } = farm
+
+  const bnbPriceBusd = farm.tokenPriceVsQuote ? BIG_ONE.div(farm.tokenPriceVsQuote) : BIG_ZERO
+
+  const tokenPriceBusd = getFarmBaseTokenPrice(farm, farm, bnbPriceBusd).toJSON()
+  const quoteTokenPriceBusd = getFarmQuoteTokenPrice(farm, farm, bnbPriceBusd).toJSON()
 
   return {
     lpAddresses,
@@ -82,13 +90,15 @@ export const usePollCoreFarmData = () => {
   const { fastRefresh } = useRefresh()
 
   useEffect(() => {
-    dispatch(fetchFarmsPublicDataAsync([0,3]))
+    dispatch(fetchFarmsPublicDataAsync([0, 3]))
   }, [dispatch, fastRefresh])
 }
 
 export const useFarms = (): DeserializedFarmsState => {
   const farms = useSelector((state: State) => state.farms)
+
   const deserializedFarmsData = farms.data.map(deserializeFarm)
+
   const { loadArchivedFarmsData, userDataLoaded } = farms
   return {
     loadArchivedFarmsData,

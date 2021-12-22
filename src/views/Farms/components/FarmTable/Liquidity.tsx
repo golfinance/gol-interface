@@ -36,6 +36,7 @@ const Liquidity: React.FunctionComponent<LiquidityProps> = ({ liquidity }) => {
     ) : (
       <Skeleton width={60} />
     )
+
   const { t } = useTranslation()
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     t('Total value of the funds in this farm’s liquidity pool'),
