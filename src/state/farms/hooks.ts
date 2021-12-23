@@ -28,11 +28,6 @@ const deserializeFarm = (farm: SerializedFarm): DeserializedFarm => {
   const quoteTokenPriceBusd = (farm.pid !== 11 && farm.multiplier === '0X' && !isArchivedPid(farm.pid)) ? farm.tokenPriceVsQuote : farm?.quoteTokenPriceBusd;
   const tokenPriceBusd = (farm.pid !== 11 && farm.multiplier === '0X' && !isArchivedPid(farm.pid)) ? farm.tokenPriceVsQuote : farm?.tokenPriceBusd;
 
-  // const bnbPriceBusd = farm.tokenPriceVsQuote ? BIG_ONE.div(farm.tokenPriceVsQuote) : BIG_ZERO
-
-  // const tokenPriceBusd = getFarmBaseTokenPrice(farm, farm, bnbPriceBusd).toJSON()
-  // const quoteTokenPriceBusd = getFarmQuoteTokenPrice(farm, farm, bnbPriceBusd).toJSON()
-
   return {
     lpAddresses,
     lpSymbol,
@@ -101,17 +96,6 @@ export const useFarms = (): DeserializedFarmsState => {
 
   const deserializedFarmsData = farms.data.map(deserializeFarm)
 
-  // const allTokens = useAllTokenData()
-
-  // const formattedTokens = useMemo(() => {
-  //   return Object.values(allTokens)
-  //     .map((token) => token.data)
-  //     .filter((token) => token)
-  // }, [allTokens])
-
-  // console.log('farms', farms);
-  // console.log('formattedTokens', formattedTokens);
-
   const { loadArchivedFarmsData, userDataLoaded } = farms
   return {
     loadArchivedFarmsData,
@@ -168,9 +152,7 @@ export const useLpTokenPrice = (symbol: string) => {
 // /!\ Deprecated , use the BUSD hook in /hooks
 
 export const usePriceCakeBusd = (): BigNumber => {
-  const cakeBnbFarm = useFarmFromPid(0) // precio en la barra GOL-BNB LP
-
-  console.log('cakeBnbFarm', cakeBnbFarm);
+  const cakeBnbFarm = useFarmFromPid(0) // precio en la barra GOL-BNB L
 
   const cakePriceBusdAsString = cakeBnbFarm.tokenPriceBusd
 
