@@ -31,7 +31,7 @@ import Loading from 'components/Loading'
 import PoolCard from './components/PoolCard'
 import CakeVaultCard from './components/CakeVaultCard'
 import PoolTabButtons from './components/PoolTabButtons'
-// import BountyCard from './components/BountyCard'
+import BountyCard from './components/BountyCard'
 // import HelpButton from './components/HelpButton'
 import PoolsTable from './components/PoolsTable/PoolsTable'
 import { getAprData, getCakeVaultEarnings } from './helpers'
@@ -107,8 +107,8 @@ const Pools: React.FC = () => {
 
   const pools = useMemo(() => {
     const cakePool = poolsWithoutAutoVault.find((pool) => pool.sousId === 11)
-    // const cakeAutoVault = { ...cakePool, isAutoVault: true }
-    return [...poolsWithoutAutoVault] // return [cakeAutoVault, ...poolsWithoutAutoVault]
+    const cakeAutoVault = { ...cakePool, isAutoVault: true }
+    return [cakeAutoVault, ...poolsWithoutAutoVault]
   }, [poolsWithoutAutoVault])
 
   // TODO aren't arrays in dep array checked just by reference, i.e. it will rerender every time reference changes?
@@ -266,10 +266,10 @@ const Pools: React.FC = () => {
               {t('High APR, low risk.')}
             </Heading>
           </Flex>
-          {/* <Flex flex="1" height="fit-content" justifyContent="center" alignItems="center" mt={['24px', null, '0']}>
-            <HelpButton />
+          <Flex flex="1" height="fit-content" justifyContent="center" alignItems="center" mt={['24px', null, '0']}>
+            {/* <HelpButton /> */}
             <BountyCard />
-          </Flex> */}
+          </Flex>
         </Flex>
       </PageHeader>
       <Page>

@@ -16,7 +16,7 @@ import Footer from './components/Footer'
 import CakeDataRow from './components/CakeDataRow'
 import { WedgeTopLeft, InnerWedgeWrapper, OuterWedgeWrapper, WedgeTopRight } from './components/WedgeSvgs'
 import UserBanner from './components/UserBanner'
-// import PancakeSquadBanner from './components/Banners/PancakeSquadBanner'
+import PancakeSquadBanner from './components/Banners/PancakeSquadBanner'
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
@@ -66,13 +66,7 @@ const Home: React.FC = () => {
             <UserBanner />
           </UserBannerWrapper>
         )}
-        {/* <Flex
-          pt={[account ? '220px' : '0', null, null, account ? '76px' : '0']}
-          mt={[account ? '0' : '-16px', null, null, account ? '0' : '-48px']}
-          pb="24px"
-        >
-          <PancakeSquadBanner />
-        </Flex> */}
+
         {/* <Hero /> */}
       </StyledHeroSection>
       <PageSection
@@ -83,6 +77,7 @@ const Home: React.FC = () => {
       >
         <Footer />
       </PageSection>
+    
       <PageSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         background={
@@ -143,6 +138,13 @@ const Home: React.FC = () => {
         {/* <SalesSection {...cakeSectionData} /> */}
         <CakeDataRow />
       </PageSection>
+      <Flex
+          pt={[account ? '220px' : '0', null, null, account ? '76px' : '0']}
+          mt={[account ? '0' : '-16px', null, null, account ? '0' : '-48px']}
+          pb="24px"
+        >
+          <PancakeSquadBanner />
+        </Flex>
     </>
   )
 }

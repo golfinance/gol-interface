@@ -154,7 +154,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'GOL-bFLUX LP',
     lpAddresses: {
       97: '',
-      56: '0x41bbb75618e94e22b66fa45fdee196de058b3fe5',
+      56: '0x41Bbb75618E94E22b66Fa45fDeE196dE058b3fE5',
     },
     token: serializedTokens.gol,
     quoteToken: serializedTokens.bflux,
@@ -171,7 +171,6 @@ const farms: SerializedFarmConfig[] = [
     quoteToken: serializedTokens.usdt,
     isCommunity: true,
   },
-
   {
     pid: 16,
     lpSymbol: 'MILK-BNB LP',
