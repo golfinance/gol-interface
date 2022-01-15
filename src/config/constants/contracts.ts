@@ -1,19 +1,24 @@
 export default {
   masterChef: {
     97: '',
-    56: '0x2F1281A9f84CF6f551dB39156D32A5D6153F25a5', // too to pool staking
+    56: '0x2F1281A9f84CF6f551dB39156D32A5D6153F25a5',
   },
+  cakeVault: {
+    56: '0x994cFb1Ea386e73C0E7Ef5c6846E7AE32d7E9428',
+    97: '',
+  },
+  multiCall: {
+    56: '0xfF6FD90A470Aaa0c1B8A54681746b07AcdFedc9B',
+    97: '',
+  },
+  // //////////////////////
   sousChef: {
     97: '',
-    56: '0x2F1281A9f84CF6f551dB39156D32A5D6153F25a5', // Only test
+    56: '0x2F1281A9f84CF6f551dB39156D32A5D6153F25a5',
   },
   lotteryV2: {
     97: '0x5790c3534F30437641541a0FA04C992799602998',
     56: '0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c',
-  },
-  multiCall: {
-    56: '0xfF6FD90A470Aaa0c1B8A54681746b07AcdFedc9B',
-    97: '0x476dceF5698440beb28A175871fBD3143a3d45FD',
   },
   pancakeProfile: {
     56: '0xDf4dBf6536201370F95e06A0F8a7a70fE40E388a',
@@ -46,10 +51,6 @@ export default {
   easterNft: {
     56: '0x23c41D28A239dDCAABd1bb1deF8d057189510066',
     97: '0x24ec6962dbe874F6B67B5C50857565667fA0854F',
-  },
-  cakeVault: {
-    56: '0xa80240Eb5d7E05d3F250cF000eEc0891d00b51CC', // cakevault.sol = pool del stake autocompund.
-    97: '',
   },
   predictions: {
     56: '0x18B2A687610328590Bc8F2e5fEdDe3b582A49cdA',

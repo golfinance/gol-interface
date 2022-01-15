@@ -26,7 +26,7 @@ export const mainnetTokens = {
   
   gol: new Token(
     MAINNET,
-    '0x52f6a03a53840c01470f33a0b016e4c3e3dfe796',
+    '0x52f6A03a53840C01470f33A0b016E4C3E3DFe796',
     18,
     'GOL',
     'GOLToken',
@@ -45,7 +45,7 @@ export const mainnetTokens = {
   
   bflux: new Token(
     MAINNET,
-    '0x1ab6478b47270ff05af11a012ac17b098758e193',
+    '0x1aB6478B47270fF05Af11A012Ac17b098758e193',
     18,
     'bFLUX',
     'FLUX Token',

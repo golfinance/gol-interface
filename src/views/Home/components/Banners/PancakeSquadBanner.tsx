@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'contexts/Localization'
 
 const StyledSubheading = styled(Heading)`
-  background: -webkit-linear-gradient(#ffd800, #eb8c00);
+  background: -webkit-linear-gradient(#eb8c00, #eb8c00);
   font-size: 20px;
   background-clip: text;
   -webkit-background-clip: text;
@@ -22,10 +22,10 @@ const StyledSubheading = styled(Heading)`
 
 const StyledHeading = styled(Heading)`
   color: #ffffff;
-  background: -webkit-linear-gradient(#7645d9 0%, #452a7a 100%);
+  background: -webkit-linear-gradient(#000 0%, #000 100%);
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-stroke: 6px transparent;
+  -webkit-text-stroke: 2px transparent;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 16px;
 `
@@ -33,7 +33,7 @@ const StyledHeading = styled(Heading)`
 const Wrapper = styled.div`
   border-radius: 32px;
   width: 100%;
-  background-image: linear-gradient(#7645d9, #452a7a);
+  background-image: linear-gradient(#2d2b3c, #2d2b3c);
   max-height: max-content;
   overflow: hidden;
 `
@@ -88,19 +88,19 @@ const PancakeSquadBanner = () => {
     <Wrapper>
       <Inner>
         <LeftWrapper>
-          <StyledSubheading>PancakeSquad NFT</StyledSubheading>
-          <StyledHeading scale="xl">{t('Coming Oct. 7')}</StyledHeading>
-          <Link to="/pancake-squad">
+          <StyledSubheading>GolFinance News</StyledSubheading>
+          <StyledHeading scale="xl">{t('RugDoc Verification')}</StyledHeading>
+          <Link to={{ pathname: "https://rugdoc.io/project/golfinance/" }} target="_blank">
             <Button>
               <Text color="invertedContrast" bold fontSize="16px" mr="4px">
-                {t('Learn more')}
+                {t('View')}
               </Text>
               <ArrowForwardIcon color="invertedContrast" />
             </Button>
           </Link>
         </LeftWrapper>
         <RightWrapper>
-          <img src="/images/decorations/pancakesquad.png" alt={t('Gol Squad')} />
+          <img src="https://rugdoc.io/assets/2021/06/rugdoc-review-badge-with-glow.png" alt={t('Gol Verified')} />
         </RightWrapper>
       </Inner>
     </Wrapper>

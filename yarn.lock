@@ -3484,9 +3484,9 @@
     source-map "^0.7.3"
 
 "@popperjs/core@^2.9.2":
-  version "2.10.2"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.2.tgz#0798c03351f0dea1a5a4cabddf26a55a7cbee590"
-  integrity sha512-IXf3XA7+XyN7CP9gGh/XB0UxVMlvARGEgGXLubFICsUMGz6Q+DU+i4gGlpOxTjKvXjkJDJC8YdqdKkDj9qZHEQ==
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.0.tgz#6734f8ebc106a0860dff7f92bf90df193f0935d7"
+  integrity sha512-zrsUxjLOKAzdewIDRWy9nsV1GQsKBCWaGwsZQlCgr6/q+vjyZhFgqedLfFBuI9anTPEUT4APq9Mu0SZBTzIcGQ==
 
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
@@ -10950,7 +10950,7 @@ ethers@^4.0.32:
     uuid "2.0.1"
     xmlhttprequest "1.8.0"
 
-ethers@^5.0.13:
+ethers@^5.0.13, ethers@^5.1.4:
   version "5.5.1"
   resolved "https://registry.yarnpkg.com/ethers/-/ethers-5.5.1.tgz#d3259a95a42557844aa543906c537106c0406fbf"
   integrity sha512-RodEvUFZI+EmFcE6bwkuJqpCYHazdzeR1nMzg+YWQSmQEsNtfl1KHGfp/FWZYl48bI/g7cgBeP2IlPthjiVngw==
@@ -10986,7 +10986,7 @@ ethers@^5.0.13:
     "@ethersproject/web" "5.5.0"
     "@ethersproject/wordlists" "5.5.0"
 
-ethers@^5.1.4, ethers@^5.4.0:
+ethers@^5.4.0:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/ethers/-/ethers-5.4.1.tgz#bcff1e9f45bf1a061bf313ec04e8d9881d2d53f9"
   integrity sha512-SrcddMdCgP1hukDvCPd87Aipbf4NWjQvdfAbZ65XSZGbfyuYPtIrUJPDH5B1SBRsdlfiEgX3eoz28DdBDzMNFg==
@@ -12382,9 +12382,16 @@ globby@^6.1.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
+<<<<<<< HEAD
 "gol-uikit@https://github.com/golfinance/gol-uikit.git":
   version "0.1.17"
   resolved "https://github.com/golfinance/gol-uikit.git#c39dfeba36f7d5c3fd6d956df308c4af18686e8c"
+=======
+gol-uikit@^0.1.0:
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/gol-uikit/-/gol-uikit-0.1.18.tgz#72194de5411a74cea9fdd8bca5f84ddbbae52c11"
+  integrity sha512-gkwHyWo/3BoFKFw/jA0MIetEXd4qNcUqfoUB1/QaUaRALCHMRjETMi61iVkgFZ8si3KpqYD013JF6776dmGLMg==
+>>>>>>> origin/auto-compound
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/lodash" "^4.14.168"
