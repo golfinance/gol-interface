@@ -138,13 +138,7 @@ const Home: React.FC = () => {
         {/* <SalesSection {...cakeSectionData} /> */}
         <CakeDataRow />
       </PageSection>
-      <Flex
-          pt={[account ? '220px' : '0', null, null, account ? '76px' : '0']}
-          mt={[account ? '0' : '-16px', null, null, account ? '0' : '-48px']}
-          pb="24px"
-        >
-          <PancakeSquadBanner />
-        </Flex>
+     
     </>
   )
 }
