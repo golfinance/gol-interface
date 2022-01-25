@@ -109,7 +109,6 @@ export default function Swap({ history }: RouteComponentProps) {
     [Field.INPUT]: { currencyId: inputCurrencyId },
     [Field.OUTPUT]: { currencyId: outputCurrencyId },
   } = useSwapState()
-  // console.log(currencies)
   const {
     wrapType,
     execute: onWrap,
