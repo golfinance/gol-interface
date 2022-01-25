@@ -31,6 +31,9 @@ import {
   updateUserPredictionAcceptedRisk,
   updateUserUsernameVisibility,
   updateUserExpertModeAcknowledgementShow,
+  ChartViewMode,
+  setChartViewMode,
+  setIsExchangeChartDisplayed,
 } from '../actions'
 import { deserializeToken, GAS_PRICE_GWEI, serializeToken } from './helpers'
 
@@ -417,4 +420,38 @@ export const useWatchlistPools = (): [string[], (address: string) => void] => {
     [dispatch],
   )
   return [savedPools, updateSavedPools]
+}
+
+export const useExchangeChartViewManager = () => {
+  const dispatch = useDispatch<AppDispatch>()
+  const chartViewMode = useSelector<AppState, AppState['user']['userChartViewMode']>(
+    (state) => state.user.userChartViewMode,
+  )
+
+  const setUserChartViewPreference = useCallback(
+    (view: ChartViewMode) => {
+      dispatch(setChartViewMode(view))
+    },
+    [dispatch],
+  )
+
+  return [chartViewMode, setUserChartViewPreference] as const
+}
+
+// Get user preference for exchange price chart
+// For mobile layout chart is hidden by default
+export const useExchangeChartManager = (isMobile: boolean): [boolean, (isDisplayed: boolean) => void] => {
+  const dispatch = useDispatch<AppDispatch>()
+  const isChartDisplayed = useSelector<AppState, AppState['user']['isExchangeChartDisplayed']>(
+    (state) => state.user.isExchangeChartDisplayed,
+  )
+
+  const setUserChartPreference = useCallback(
+    (isDisplayed: boolean) => {
+      dispatch(setIsExchangeChartDisplayed(isDisplayed))
+    },
+    [dispatch],
+  )
+
+  return [isMobile ? false : isChartDisplayed, setUserChartPreference]
 }

@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { Field, replaceSwapState, selectCurrency, setRecipient, switchCurrencies, typeInput } from './actions'
+import { Field, replaceSwapState, selectCurrency, setRecipient, switchCurrencies, typeInput, updateDerivedPairData, updatePairData, } from './actions'
+import { DerivedPairDataNormalized, PairDataNormalized } from './types'
 
 export interface SwapState {
   readonly independentField: Field
@@ -12,6 +13,8 @@ export interface SwapState {
   }
   // the typed recipient address or ENS name, or null if swap should go to sender
   readonly recipient: string | null
+  readonly pairDataById: Record<number, Record<string, PairDataNormalized>> | null
+  readonly derivedPairDataById: Record<number, Record<string, DerivedPairDataNormalized>> | null
 }
 
 const initialState: SwapState = {
@@ -21,8 +24,10 @@ const initialState: SwapState = {
     currencyId: '',
   },
   [Field.OUTPUT]: {
-    currencyId: '',
+    currencyId: '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
   },
+  pairDataById: {},
+  derivedPairDataById: {},
   recipient: null,
 }
 
@@ -41,6 +46,8 @@ export default createReducer<SwapState>(initialState, (builder) =>
           independentField: field,
           typedValue,
           recipient,
+          pairDataById: state.pairDataById,
+          derivedPairDataById: state.derivedPairDataById,
         }
       },
     )
@@ -78,5 +85,17 @@ export default createReducer<SwapState>(initialState, (builder) =>
     })
     .addCase(setRecipient, (state, { payload: { recipient } }) => {
       state.recipient = recipient
+    })
+    .addCase(updatePairData, (state, { payload: { pairData, pairId, timeWindow } }) => {
+      if (!state.pairDataById[pairId]) {
+        state.pairDataById[pairId] = {}
+      }
+      state.pairDataById[pairId][timeWindow] = pairData
+    })
+    .addCase(updateDerivedPairData, (state, { payload: { pairData, pairId, timeWindow } }) => {
+      if (!state.derivedPairDataById[pairId]) {
+        state.derivedPairDataById[pairId] = {}
+      }
+      state.derivedPairDataById[pairId][timeWindow] = pairData
     }),
 )
