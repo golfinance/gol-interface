@@ -28,6 +28,9 @@ import {
   updateUserPredictionChartDisclaimerShow,
   updateUserUsernameVisibility,
   updateUserExpertModeAcknowledgementShow,
+  ChartViewMode,
+  setIsExchangeChartDisplayed,
+  setChartViewMode,
 } from './actions'
 import { GAS_PRICE_GWEI } from './hooks/helpers'
 
@@ -64,6 +67,8 @@ export interface UserState {
   timestamp: number
   audioPlay: boolean
   isDark: boolean
+  userChartViewMode: ChartViewMode
+  isExchangeChartDisplayed: boolean
   userFarmStakedOnly: FarmStakedOnly
   userPoolStakedOnly: boolean
   userPoolsViewMode: ViewMode
@@ -93,6 +98,8 @@ export const initialState: UserState = {
   isDark: false,
   userFarmStakedOnly: FarmStakedOnly.ON_FINISHED,
   userPoolStakedOnly: false,
+  isExchangeChartDisplayed: true,
+  userChartViewMode: ChartViewMode.BASIC,
   userPoolsViewMode: ViewMode.TABLE,
   userFarmsViewMode: ViewMode.TABLE,
   userPredictionAcceptedRisk: false,
@@ -228,5 +235,11 @@ export default createReducer(initialState, (builder) =>
         const newPools = state.watchlistPools.filter((x) => x !== address)
         state.watchlistPools = newPools
       }
+    })
+    .addCase(setIsExchangeChartDisplayed, (state, { payload }) => {
+      state.isExchangeChartDisplayed = payload
+    })
+    .addCase(setChartViewMode, (state, { payload }) => {
+      state.userChartViewMode = payload
     }),
 )
