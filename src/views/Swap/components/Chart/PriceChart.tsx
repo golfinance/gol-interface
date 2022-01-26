@@ -73,7 +73,7 @@ const PriceChart = ({
             <SyncAltIcon ml="6px" color="primary" />
           </IconButton>
           <Flex>
-            <ChartButton
+            {/* <ChartButton
               aria-label={t('Basic')}
               title={t('Basic')}
               $active={chartView === ChartViewMode.BASIC}
@@ -88,8 +88,8 @@ const PriceChart = ({
                   <path d="M17.553 3.091v.001c0 .55.19 1.081.541 1.502l-3.68 7.364a2.346 2.346 0 00-.827.108L10.833 8.97c.14-.3.217-.63.22-.967h0v-.003a2.35 2.35 0 00-2.35-2.35 2.35 2.35 0 00-2.35 2.35V8c.004.499.165.984.465 1.384l-3.477 6.082A2.35 2.35 0 00.75 17.803a2.35 2.35 0 002.35 2.35 2.35 2.35 0 002.35-2.35V17.8a2.338 2.338 0 00-.464-1.384l3.472-6.081c.322.037.65.004.957-.098l2.751 3.096a2.38 2.38 0 00-.216.967v.002a2.352 2.352 0 002.34 2.36 2.352 2.352 0 002.36-2.342v0c0-.55-.19-1.086-.54-1.51l3.68-7.365A2.35 2.35 0 0022.25 3.1a2.347 2.347 0 00-4.697-.01z" stroke="currentColor" strokeWidth="0.5" />
                 </svg>
               }
-            </ChartButton>
-            <ChartButton
+            </ChartButton> */}
+            {/* <ChartButton
               aria-label="TradingView"
               title="TradingView"
               $active={chartView === ChartViewMode.TRADING_VIEW}
@@ -102,7 +102,7 @@ const PriceChart = ({
                   <path d="M.504.591l8.09.002.043 10.19-4.09-.03-.001-6.113L.5 4.633.504.591zM11.652 4.535a2.042 2.042 0 100-4.083 2.042 2.042 0 000 4.083zM15.787.598L20.5.603l-4.27 10.105-4.663-.01L15.754.606l.033-.008z" />
                 </svg>
               }
-            </ChartButton>
+            </ChartButton> */}
           </Flex>
         </Flex>
         {!isMobile && (
