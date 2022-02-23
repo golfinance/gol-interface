@@ -76,7 +76,10 @@ const StarsWrapper = styled.div`
 `
 
 const imagePath = '/images/home/lunar-bunny/'
-const imageSrc = 'bunny'
+// FIXME: Image must be of 18cm of height
+// const imageSrc = 'player'
+const imageSrc = 'player_2'
+// const imageSrc = 'bunny'
 
 const starsImage: CompositeImageProps = {
   path: '/images/home/lunar-bunny/',
@@ -107,7 +110,7 @@ const Hero = () => {
       >
         <Flex flex="1" flexDirection="column">
           <Heading scale="xxl" color="secondary" mb="24px">
-            {t('Goles son amores.')}
+            {t('Monetize your passion!')}
           </Heading>
           <Heading scale="md" mb="24px">
             {t('Trade, earn, and win crypto on the most popular decentralized platform in the galaxy.')}
@@ -127,7 +130,10 @@ const Hero = () => {
           position="relative"
         >
           <BunnyWrapper>
-            <img src={`${imagePath}${imageSrc}.png`} srcSet={getSrcSet(imagePath, imageSrc)} alt={t('Lunar bunny')} />
+            <img
+              src={`${imagePath}${imageSrc}.png`} 
+              // srcSet={getSrcSet(imagePath, imageSrc)} 
+              alt={t('Lunar bunny')} />
           </BunnyWrapper>
           <StarsWrapper>
             <CompositeImage {...starsImage} />

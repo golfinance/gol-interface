@@ -67,7 +67,7 @@ const Home: React.FC = () => {
           </UserBannerWrapper>
         )}
 
-        {/* <Hero /> */}
+      <Hero />
       </StyledHeroSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
@@ -88,33 +88,33 @@ const Home: React.FC = () => {
         index={2}
         hasCurvedDivider={false}
       >
-        {/* <MetricsSection /> */}
-      {/* </PageSection>
+      {/* <MetricsSection /> */}
+      </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.background}
         index={2}
         hasCurvedDivider={false}
-      > */}
-        {/* <OuterWedgeWrapper>
+      >
+        <OuterWedgeWrapper>
           <InnerWedgeWrapper top fill={theme.isDark ? '#201335' : '#D8CBED'}>
             <WedgeTopLeft />
           </InnerWedgeWrapper>
-        </OuterWedgeWrapper> */}
+        </OuterWedgeWrapper>
         {/* <SalesSection {...swapSectionData} /> */}
-      {/* </PageSection>
+      </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.gradients.cardHeader}
         index={2}
         hasCurvedDivider={false}
-      > */}
-        {/* <OuterWedgeWrapper>
+      >
+        <OuterWedgeWrapper>
           <InnerWedgeWrapper width="150%" top fill={theme.colors.background}>
             <WedgeTopRight />
           </InnerWedgeWrapper>
-        </OuterWedgeWrapper> */}
-        {/* <SalesSection {...earnSectionData} /> */}
+        </OuterWedgeWrapper>
+        <SalesSection {...earnSectionData} />
         {/* <FarmsPoolsRow /> */}
       {/* </PageSection>
       <PageSection

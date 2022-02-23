@@ -26,7 +26,7 @@ export const swapSectionData: SalesSectionProps = {
 
 export const earnSectionData: SalesSectionProps = {
   headingText: 'Earn passive income with crypto.',
-  bodyText: 'GolSwap makes it easy to make your crypto work for you.',
+  bodyText: 'GolToken is the core of the whole GolFinance ecosystem. Deflationary tokenomics, scarcity, buybacks (for redistribution and liquidity), burning are some of $GOL features, making it the core of the protocols incentive mechanisms..',
   reverse: true,
   primaryButton: {
     to: '/farms',
@@ -34,16 +34,17 @@ export const earnSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.pancakeswap.finance/products/yield-farming',
+    to: 'https://golfinance.gitbook.io/golfinance/protocol/goltoken',
     text: 'Learn',
     external: true,
   },
   images: {
     path: '/images/home/earn/',
     attributes: [
-      { src: 'pie', alt: 'Pie chart' },
-      { src: 'stonks', alt: 'Stocks chart' },
-      { src: 'folder', alt: 'Folder with cake token' },
+      // { src: 'pie', alt: 'Pie chart' },
+      // { src: 'stonks', alt: 'Stocks chart' },
+      { src: 'gol_token', alt: 'Gol Token' },
+      // { src: 'folder', alt: 'Folder with cake token' },
     ],
   },
 }
