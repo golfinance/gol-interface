@@ -1,7 +1,7 @@
 import { SalesSectionProps } from '.'
 
 export const swapSectionData: SalesSectionProps = {
-  headingText: 'Trade anything. No registration, no hassle.',
+  headingText: 'Invest in $GOL to win.',
   bodyText: 'Trade any token on Binance Smart Chain in seconds, just by connecting your wallet.',
   reverse: false,
   primaryButton: {
@@ -17,9 +17,9 @@ export const swapSectionData: SalesSectionProps = {
   images: {
     path: '/images/home/trade/',
     attributes: [
-      { src: 'BNB', alt: 'BNB token' },
-      { src: 'BTC', alt: 'BTC token' },
-      { src: 'GOL', alt: 'GOL token' },
+      // { src: 'BNB', alt: 'BNB token' },
+      // { src: 'BTC', alt: 'BTC token' },
+      { src: 'TOKENS', alt: 'GOL token' },
     ],
   },
 }

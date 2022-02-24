@@ -103,7 +103,7 @@ const Footer = () => {
       </FloatingPancakesWrapper>
       <Wrapper>
         <Heading mb="24px" scale="xl" color="#f4ae01">
-          {t('Welcome to GolFinance')}
+          {t('Start in seconds')}
         </Heading>
         <Text textAlign="center" color="#f4ae01">
           {t('Connect your crypto wallet to start using the app in seconds.')}
