@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex } from 'gol-uikit'
+import { Cards, Flex } from 'gol-uikit'
 import PageSection from 'components/PageSection'
 import { useWeb3React } from '@web3-react/core'
 import useTheme from 'hooks/useTheme'
 import Container from 'components/Layout/Container'
 import { PageMeta } from 'components/Layout/Page'
 import Hero from './components/Hero'
+import GolCards from './components/GolCards'
 import { swapSectionData, earnSectionData, cakeSectionData } from './components/SalesSection/data'
 import MetricsSection from './components/MetricsSection'
 import SalesSection from './components/SalesSection'
@@ -17,6 +18,7 @@ import CakeDataRow from './components/CakeDataRow'
 import { WedgeTopLeft, InnerWedgeWrapper, OuterWedgeWrapper, WedgeTopRight } from './components/WedgeSvgs'
 import UserBanner from './components/UserBanner'
 import PancakeSquadBanner from './components/Banners/PancakeSquadBanner'
+
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
@@ -41,6 +43,9 @@ const UserBannerWrapper = styled(Container)`
     padding-right: 24px;
   }
 `
+const ImagePath = '/images/home/lunar-bunny/'
+const backgroundImageSrc1 = 'GOL-PLAYER'
+const backgroundImageSrc2 = 'GOOOL TEXT'
 
 const Home: React.FC = () => {
   const { theme } = useTheme()
@@ -72,6 +77,58 @@ const Home: React.FC = () => {
       </StyledHeroSection>
 
       <PageSection
+        
+        background={theme.colors.background}
+        index={3}
+        hasCurvedDivider={false}
+        style={{
+          backgroundImage: `url(${ImagePath}${backgroundImageSrc1}.png)`,
+          backgroundPosition: 'center',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat'
+        }}
+        
+      >
+        <GolCards/>
+
+      </PageSection>
+
+      {/* <PageSection
+        innerProps={{ style: { margin: '0', width: '100%' } }}
+        background={theme.colors.background}
+        index={4}
+        hasCurvedDivider={false}
+      >
+        <GolCarousel />
+
+      </PageSection> */}
+
+
+
+      {/* <StyledHeroSection
+        innerProps={{ style: { margin: '0', width: '100%' } }}
+        background={
+          theme.isDark
+            ? 'radial-gradient(180% 50% at 50% 50%, #373357 0%, #27262c 100%)'
+            : 'linear-gradient(180deg, #373357 0%, #27262c 100%)'
+        }
+        index={2}
+        hasCurvedDivider={false}
+      >
+        {account && (
+          <UserBannerWrapper>
+            <UserBanner />
+          </UserBannerWrapper>
+        )}
+
+        <Hero />
+
+      </StyledHeroSection> */}
+
+    
+
+
+      <PageSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         background={
           theme.isDark
@@ -96,8 +153,8 @@ const Home: React.FC = () => {
             <WedgeTopLeft />
           </InnerWedgeWrapper>
         </OuterWedgeWrapper>
-        
-      {/* Invest in $GOL to win */}
+
+        {/* Invest in $GOL to win */}
         <SalesSection {...swapSectionData} />
 
       </PageSection>
@@ -140,6 +197,7 @@ const Home: React.FC = () => {
         <SalesSection {...cakeSectionData} />
         <CakeDataRow />
       </PageSection>
+
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background="linear-gradient(180deg, #373357 0%, #27262c 100%)"
