@@ -56,6 +56,8 @@ const Home: React.FC = () => {
   return (
     <>
       <PageMeta />
+
+      {/* Monetize your passion */}
       <StyledHeroSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         background={
@@ -71,13 +73,11 @@ const Home: React.FC = () => {
             <UserBanner />
           </UserBannerWrapper>
         )}
-
         <Hero />
-
       </StyledHeroSection>
 
+      {/* Cards */}
       <PageSection
-        
         background={theme.colors.background}
         index={3}
         hasCurvedDivider={false}
@@ -87,47 +87,11 @@ const Home: React.FC = () => {
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat'
         }}
-        
       >
-        <GolCards/>
-
+        <GolCards />
       </PageSection>
 
-      {/* <PageSection
-        innerProps={{ style: { margin: '0', width: '100%' } }}
-        background={theme.colors.background}
-        index={4}
-        hasCurvedDivider={false}
-      >
-        <GolCarousel />
-
-      </PageSection> */}
-
-
-
-      {/* <StyledHeroSection
-        innerProps={{ style: { margin: '0', width: '100%' } }}
-        background={
-          theme.isDark
-            ? 'radial-gradient(180% 50% at 50% 50%, #373357 0%, #27262c 100%)'
-            : 'linear-gradient(180deg, #373357 0%, #27262c 100%)'
-        }
-        index={2}
-        hasCurvedDivider={false}
-      >
-        {account && (
-          <UserBannerWrapper>
-            <UserBanner />
-          </UserBannerWrapper>
-        )}
-
-        <Hero />
-
-      </StyledHeroSection> */}
-
-    
-
-
+      {/* Invest in GOL */}
       <PageSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         background={
@@ -138,26 +102,15 @@ const Home: React.FC = () => {
         index={2}
         hasCurvedDivider={false}
       >
-
-        {/* <MetricsSection /> */}
-
-      {/* </PageSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
-        index={2}
-        hasCurvedDivider={false}
-      > */}
         <OuterWedgeWrapper>
           <InnerWedgeWrapper top fill={theme.isDark ? '#201335' : '#D8CBED'}>
             <WedgeTopLeft />
           </InnerWedgeWrapper>
         </OuterWedgeWrapper>
-
-        {/* Invest in $GOL to win */}
         <SalesSection {...swapSectionData} />
-
       </PageSection>
+
+      {/* Earn passive income with crypto */}
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.gradients.cardHeader}
@@ -169,35 +122,21 @@ const Home: React.FC = () => {
             <WedgeTopRight />
           </InnerWedgeWrapper>
         </OuterWedgeWrapper>
-
-        {/* Earn passive income with crypto... */}
         <SalesSection {...earnSectionData} />
-
-        {/* <FarmsPoolsRow /> */}
-        {/* </PageSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background={
-          theme.isDark
-            ? 'linear-gradient(180deg, #0B4576 0%, #091115 100%)'
-            : 'linear-gradient(180deg, #6FB6F1 0%, #EAF2F6 100%)'
-        }
-        index={2}
-        hasCurvedDivider={false}
-      > */}
-        {/* <WinSection /> */}
       </PageSection>
+
+      {/* GOL makes your world go around  */}
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.background}
         index={2}
         hasCurvedDivider={false}
       >
-        {/* GOL makes your world go around...  */}
         <SalesSection {...cakeSectionData} />
         <CakeDataRow />
       </PageSection>
 
+      {/* Start in seconds  */}
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background="linear-gradient(180deg, #373357 0%, #27262c 100%)"

@@ -8,31 +8,6 @@ import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'
 import { SlideSvgDark, SlideSvgLight } from './SlideSvg'
 
-
-const flyingAnim = () => keyframes`
-  from {
-    transform: translate(0,  0px);
-  }
-  50% {
-    transform: translate(-5px, -5px);
-  }
-  to {
-    transform: translate(0, 0px);
-  }  
-`
-
-const fading = () => keyframes`
-  from {
-    opacity: 0.9;
-  }
-  50% {
-    opacity: 0.1;
-  }
-  to {
-    opacity: 0.9;
-  }  
-`
-
 const BgWrapper = styled.div`
   z-index: -1;
   overflow: hidden;
@@ -42,42 +17,12 @@ const BgWrapper = styled.div`
   bottom: 0px;
   left: 0px;
 `
-
 const InnerWrapper = styled.div`
   position: absolute;
   width: 100%;
   bottom: -3px;
 `
-
-const BunnyWrapper = styled.div`
-  width: 100%;
-  animation: ${flyingAnim} 3.5s ease-in-out infinite;
-`
-
-const StarsWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  & :nth-child(2) {
-    animation: ${fading} 2s ease-in-out infinite;
-    animation-delay: 1s;
-  }
-
-  & :nth-child(3) {
-    animation: ${fading} 5s ease-in-out infinite;
-    animation-delay: 0.66s;
-  }
-
-  & :nth-child(4) {
-    animation: ${fading} 2.5s ease-in-out infinite;
-    animation-delay: 0.33s;
-  }
-`
-
 const ImagePath = '/images/home/lunar-bunny/'
-const backgroundImageSrc1 = 'GOL-PLAYER'
-const backgroundImageSrc2 = 'GOOOL TEXT'
 
 // Array of card Images 
 const CardsImages = [
