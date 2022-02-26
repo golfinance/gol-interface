@@ -10,7 +10,7 @@ export const swapSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://https://golfinance.gitbook.io/golfinance/protocol/golfinance-v1/golswap',
+    to: 'https://golfinance.gitbook.io/golfinance/protocol/golfinance-v1/golswap',
     text: 'Learn',
     external: true,
   },
@@ -60,7 +60,7 @@ export const cakeSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.pancakeswap.finance/tokenomics/cake',
+    to: 'https://golfinance.gitbook.io/golfinance/protocol/golfinance-v1/golswap',
     text: 'Learn',
     external: true,
   },
@@ -68,10 +68,10 @@ export const cakeSectionData: SalesSectionProps = {
   images: {
     path: '/images/home/cake/',
     attributes: [
-      { src: 'bottom-right', alt: 'Small 3d pancake' },
-      { src: 'top-right', alt: 'Small 3d pancake' },
-      { src: 'coin', alt: 'GOL token' },
-      { src: 'top-left', alt: 'Small 3d pancake' },
+      // { src: 'bottom-right-v2', alt: 'Small 3d pancake' },
+      // { src: 'top-right-v2', alt: 'Small 3d pancake' },
+      { src: 'player-v2', alt: 'GOL token' },
+      // { src: 'top-left', alt: 'Small 3d pancake' },
     ],
   },
 }

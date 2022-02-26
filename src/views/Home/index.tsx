@@ -141,13 +141,13 @@ const Home: React.FC = () => {
 
         {/* <MetricsSection /> */}
 
-      </PageSection>
+      {/* </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.background}
         index={2}
         hasCurvedDivider={false}
-      >
+      > */}
         <OuterWedgeWrapper>
           <InnerWedgeWrapper top fill={theme.isDark ? '#201335' : '#D8CBED'}>
             <WedgeTopLeft />
