@@ -45,7 +45,7 @@ const UserBannerWrapper = styled(Container)`
 `
 const ImagePath = '/images/home/lunar-bunny/'
 const backgroundImageSrc1 = 'GOL-PLAYER'
-const backgroundImageSrc2 = 'GOOOL TEXT'
+const backgroundImageSrc2 = '02-LANDING-PAGE-GOL-BG_02'
 
 const Home: React.FC = () => {
   const { theme } = useTheme()
@@ -79,16 +79,16 @@ const Home: React.FC = () => {
       {/* Cards */}
       <PageSection
         background={theme.colors.background}
-        index={3}
+        index={2}
         hasCurvedDivider={false}
         style={{
-          backgroundImage: `url(${ImagePath}${backgroundImageSrc1}.png)`,
+          backgroundImage: `url(${ImagePath}${backgroundImageSrc2}.jpg)`,
           backgroundPosition: 'center',
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat'
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',          
         }}
       >
-        <GolCards />
+        <GolCards/>
       </PageSection>
 
       {/* Invest in GOL */}

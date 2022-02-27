@@ -54,7 +54,7 @@ const GolCards = () => {
   const { theme } = useTheme()
 
   return (
-    <>
+    <div >
       <BgWrapper>
         <InnerWrapper>{theme.isDark ? <SlideSvgDark width="100%" /> : <SlideSvgLight width="100%" />}</InnerWrapper>
       </BgWrapper>
@@ -65,8 +65,9 @@ const GolCards = () => {
         justifyContent="center"
         mt={[account ? '380px' : '50px', null, 0]}
         id="homepage-hero"
+        style={{height:'800px'}}
       >
-        <Container fluid>
+        <Container fluid >
           <Row className="justify-content-center"> 
             {CardsImages.map((props) => {
               return (
@@ -83,7 +84,7 @@ const GolCards = () => {
           </Row>
         </Container>
       </Flex>     
-    </>
+    </div>
   )
 }
 
