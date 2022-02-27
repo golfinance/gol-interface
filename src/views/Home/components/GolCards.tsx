@@ -1,12 +1,13 @@
 import React from 'react';
 import { Col, Container, Row, Card } from 'react-bootstrap'
+import { motion } from 'framer-motion'
 import styled, { keyframes } from 'styled-components'
 import { Flex, Heading, Button } from 'gol-uikit'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
-
 import useTheme from 'hooks/useTheme'
 import { SlideSvgDark, SlideSvgLight } from './SlideSvg'
+
 
 const BgWrapper = styled.div`
   z-index: -1;
@@ -54,36 +55,33 @@ const GolCards = () => {
   const { theme } = useTheme()
 
   return (
-    <div >
+    <div style={{ justifyContent: "center" }}>
       <BgWrapper>
         <InnerWrapper>{theme.isDark ? <SlideSvgDark width="100%" /> : <SlideSvgLight width="100%" />}</InnerWrapper>
       </BgWrapper>
-      <Flex
-        position="relative"
-        flexDirection={['column-reverse', null, null, 'row']}
-        alignItems={['flex-end', null, null, 'center']}
-        justifyContent="center"
-        mt={[account ? '380px' : '50px', null, 0]}
-        id="homepage-hero"
-        style={{height:'800px'}}
+      <Flex        
+        alignItems={['flex-end', null, null, 'center']}      
+        style={{ height: '800px' }}
       >
         <Container fluid >
-          <Row className="justify-content-center"> 
+          <Row >
             {CardsImages.map((props) => {
               return (
                 <a href={props.linkTo} target="_blank" rel="noopener noreferrer" >
-                  <Card.Img
-                    variant="top"
-                    src={`${props.imagePath}${props.imageSrc}`}
+                  <motion.img
+                    whileHover={{
+                      scale: 0.9
+                    }}
+                    src={`${props.imagePath}${props.imageSrc}`}                 
                     width={265}
                     height={325}
-                  />
+                  />                  
                 </a>
               )
-            })}            
+            })}  
           </Row>
         </Container>
-      </Flex>     
+      </Flex>
     </div>
   )
 }

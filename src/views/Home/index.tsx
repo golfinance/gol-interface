@@ -85,7 +85,7 @@ const Home: React.FC = () => {
           backgroundImage: `url(${ImagePath}${backgroundImageSrc2}.jpg)`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',          
+          backgroundRepeat: 'no-repeat',                    
         }}
       >
         <GolCards/>

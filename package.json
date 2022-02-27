@@ -54,6 +54,7 @@
     "date-fns": "^2.21.3",
     "easymde": "^2.15.0",
     "ethers": "^5.1.4",
+    "framer-motion": "^4.1.17",
     "gh-pages": "^3.2.3",
     "gol-uikit": "https://github.com/golfinance/gol-uikit.git",
     "golswap-sdk": "https://github.com/golfinance/golswap-sdk.git",
