@@ -442,7 +442,7 @@ const Farms: React.FC = () => {
           </Flex>
         )}
         <div ref={observerRef} />
-        <StyledImage src="/images/home/flying-pancakes/1-top@2x.png" alt="Gol football Soccer" width={90} height={90} />
+        <StyledImage src="/images/home/earn/gol_token.png" alt="Gol football Soccer" width={120} height={100} />
       </Page>
     </>
   )

@@ -56,29 +56,30 @@ const GolCards = () => {
 
   return (
     <div style={{ justifyContent: "center" }}>
-      <BgWrapper>
+      {/* <BgWrapper>
         <InnerWrapper>{theme.isDark ? <SlideSvgDark width="100%" /> : <SlideSvgLight width="100%" />}</InnerWrapper>
-      </BgWrapper>
-      <Flex        
-        alignItems={['flex-end', null, null, 'center']}      
-        style={{ height: '800px' }}
+      </BgWrapper> */}
+      <Flex
+        alignItems={['flex-end', null, null, 'center']}
+        mt='150px'
+        mb='150px'    
       >
         <Container fluid >
-          <Row >
+          <Row style={{ textAlign: 'center' }}>
             {CardsImages.map((props) => {
-              return (
-                <a href={props.linkTo} target="_blank" rel="noopener noreferrer" >
-                  <motion.img
-                    whileHover={{
-                      scale: 0.9
-                    }}
-                    src={`${props.imagePath}${props.imageSrc}`}                 
-                    width={265}
-                    height={325}
-                  />                  
-                </a>
+              return (                
+                  <a href={props.linkTo} target="_blank" rel="noopener noreferrer" >
+                    <motion.img
+                      whileHover={{
+                        scale: 0.9
+                      }}
+                      src={`${props.imagePath}${props.imageSrc}`}
+                      width={265}
+                      height={325}
+                    />
+                  </a>               
               )
-            })}  
+            })}
           </Row>
         </Container>
       </Flex>

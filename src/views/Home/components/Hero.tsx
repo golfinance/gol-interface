@@ -129,11 +129,12 @@ const Hero = () => {
           mb={['24px', null, null, '0']}
           position="relative"
         >
-          <BunnyWrapper>
+          <BunnyWrapper >
             <img
               src={`${imagePath}${imageSrc}.png`} 
               // srcSet={getSrcSet(imagePath, imageSrc)} 
-              alt={t('Lunar bunny')} />
+              alt={t('Lunar bunny')} 
+              style={{marginTop:'20px'}}/>
           </BunnyWrapper>
           <StarsWrapper>
             <CompositeImage {...starsImage} />

@@ -77,7 +77,7 @@ const Home: React.FC = () => {
       </StyledHeroSection>
 
       {/* Cards */}
-      <PageSection
+      <PageSection     
         background={theme.colors.background}
         index={2}
         hasCurvedDivider={false}
@@ -85,10 +85,10 @@ const Home: React.FC = () => {
           backgroundImage: `url(${ImagePath}${backgroundImageSrc}.jpg)`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
+          backgroundRepeat: 'no-repeat',          
         }}
       >
-        <GolCards />
+        <GolCards/>
       </PageSection>
 
       {/* Invest in GOL */}
@@ -137,9 +137,9 @@ const Home: React.FC = () => {
       </PageSection>
 
       {/* Play today to win  */}
-      <img
+      {/* <img
         src={`${ImagePath}${playToWin}.jpg`}
-        alt={playToWin}/>      
+        alt={playToWin}/>       */}
 
       {/* Start in seconds  */}
       <PageSection

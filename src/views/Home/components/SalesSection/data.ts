@@ -52,7 +52,7 @@ export const earnSectionData: SalesSectionProps = {
 export const cakeSectionData: SalesSectionProps = {
   headingText: 'GOL makes our world go round.',
   bodyText:
-    'GOL token is at the heart of the GolSwap ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
+    'Gol Finance is a football soccer themed DeFi ecosystem with the mission creating an ALL-IN-ONE solution for maximizing users yields providing a secure, fast and low gas fee experience.',
   reverse: false,
   primaryButton: {
     to: '/swap?outputCurrency=0x52f6a03a53840c01470f33a0b016e4c3e3dfe796',
@@ -60,7 +60,7 @@ export const cakeSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://golfinance.gitbook.io/golfinance/protocol/golfinance-v1/golswap',
+    to: 'https://www.youtube.com/watch?v=MTCx8C1yWvE',
     text: 'Learn',
     external: true,
   },
