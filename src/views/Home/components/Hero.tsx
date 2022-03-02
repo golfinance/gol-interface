@@ -125,8 +125,11 @@ const Hero = () => {
         <Flex
           height={['192px', null, null, '100%']}
           width={['192px', null, null, '100%']}
-          flex={[null, null, null, '1']}
+          flex={['1', null, null, '1']}
+          mt={[null, null, null, null]}
           mb={['24px', null, null, '0']}
+          mr={['20vw', null, null, null]}
+
           position="relative"
         >
           <BunnyWrapper >
