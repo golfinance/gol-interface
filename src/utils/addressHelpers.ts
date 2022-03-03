@@ -73,3 +73,10 @@ export const getNftSaleAddress = () => {
 export const getPancakeSquadAddress = () => {
   return getAddress(addresses.pancakeSquad)
 }
+export const getNonFungiblePlayerAddress = () => {
+  return getAddress(addresses.nonFungiblePlayer)
+}
+export const getGolTokenAddress = () => {
+  return getAddress(addresses.golToken)
+}
+

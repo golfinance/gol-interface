@@ -37,6 +37,25 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     ],
   },
   {
+    label: t('GolNFT'),
+    href: '/nft-marketplace',
+    icon: 'Earn',
+    items: [
+      {
+        label: t('Marketplace'),
+        href: '/nft-marketplace'
+      },
+      {
+        label: t('NFT Box'),
+        href: '/nft-box'
+      },
+      {
+        label: t('Staking'),
+        href: '/nft-staking'
+      },
+    ]
+  },
+  {
     label: t('Analytics'),
     icon: 'info',
     href: '/info',

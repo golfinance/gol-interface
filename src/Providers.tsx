@@ -8,7 +8,9 @@ import { useThemeManager } from 'state/user/hooks'
 import { getLibrary } from 'utils/web3React'
 import { LanguageProvider } from 'contexts/Localization'
 import { RefreshContextProvider } from 'contexts/RefreshContext'
+import { LoadingContextProvider } from 'contexts/LoadingContext'
 import { ToastsProvider } from 'contexts/ToastsContext'
+import getRpcUrl from 'utils/getRpcUrl'
 import store from 'state'
 
 const ThemeProviderWrapper = (props) => {
@@ -17,6 +19,7 @@ const ThemeProviderWrapper = (props) => {
 }
 
 const Providers: React.FC = ({ children }) => {
+  const rpcUrl = getRpcUrl()
   return (
     <Web3ReactProvider getLibrary={getLibrary}>
       <Provider store={store}>
@@ -25,7 +28,9 @@ const Providers: React.FC = ({ children }) => {
             <ThemeProviderWrapper>
               <LanguageProvider>
                 <RefreshContextProvider>
-                  <ModalProvider>{children}</ModalProvider>
+                  <LoadingContextProvider>
+                    <ModalProvider>{children}</ModalProvider>
+                  </LoadingContextProvider>
                 </RefreshContextProvider>
               </LanguageProvider>
             </ThemeProviderWrapper>

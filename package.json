@@ -31,6 +31,7 @@
   "dependencies": {
     "@binance-chain/bsc-connector": "^1.0.0",
     "@ethersproject/experimental": "^5.0.1",
+    "@pancakeswap-libs/uikit": "^0.29.4",
     "@reduxjs/toolkit": "^1.5.0",
     "@types/multicodec": "^1.0.0",
     "@types/node": "^13.13.5",
@@ -73,6 +74,7 @@
     "react-dom": "^17.0.1",
     "react-feather": "^2.0.8",
     "react-helmet-async": "^1.0.9",
+    "react-hot-toast": "^2.2.0",
     "react-markdown": "^6.0.2",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",

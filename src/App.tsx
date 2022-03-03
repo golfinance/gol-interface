@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import React, { lazy, useContext } from 'react'
 import { Router, Redirect, Route, Switch } from 'react-router-dom'
 import { ResetCSS } from 'gol-uikit'
 import { useWeb3React } from '@web3-react/core'
@@ -11,6 +11,7 @@ import { usePollCoreFarmData } from 'state/farms/hooks'
 import { useFetchProfile } from 'state/profile/hooks'
 import { DatePickerPortal } from 'components/DatePicker'
 import { nftsBaseUrl } from 'views/Nft/market/constants'
+import { LoadingContext } from 'contexts/LoadingContext'
 import GlobalStyle from './style/Global'
 import Menu from './components/Menu'
 import SuspenseWithChunkError from './components/SuspenseWithChunkError'
@@ -18,6 +19,7 @@ import { ToastListener } from './contexts/ToastsContext'
 import PageLoader from './components/Loader/PageLoader'
 import EasterEgg from './components/EasterEgg'
 import GlobalCheckClaimStatus from './components/GlobalCheckClaimStatus'
+import BackLoader from './components/BackLoader'
 import history from './routerHistory'
 // Views included in the main bundle
 import Pools from './views/Pools'
@@ -52,6 +54,8 @@ const PoolFinder = lazy(() => import('./views/PoolFinder'))
 const RemoveLiquidity = lazy(() => import('./views/RemoveLiquidity'))
 const Info = lazy(() => import('./views/Info'))
 const NftMarket = lazy(() => import('./views/Nft/market'))
+const NftBox = lazy(() => import('./views/NftBox'))
+const NftBoxDetail = lazy(() => import('./views/NftBox/NftBoxDetail'))
 const ProfileCreation = lazy(() => import('./views/ProfileCreation'))
 const PancakeSquad = lazy(() => import('./views/PancakeSquad'))
 
@@ -64,6 +68,8 @@ BigNumber.config({
 const App: React.FC = () => {
   const { account } = useWeb3React()
 
+  const { loading } = useContext(LoadingContext)
+
   usePollBlockNumber()
   useEagerConnect()
   useFetchProfile()
@@ -75,6 +81,7 @@ const App: React.FC = () => {
     <Router history={history}>
       <ResetCSS />
       <GlobalStyle />
+      {loading && <BackLoader />}
       <GlobalCheckClaimStatus excludeLocations={[]} />
       <Menu>
         <SuspenseWithChunkError fallback={<PageLoader />}>
@@ -125,13 +132,24 @@ const App: React.FC = () => {
               <Proposal />
             </Route>
 
-            {/* NFT */}
-            <Route path="/nfts">
+            <Route path="/pancake-squad">
+              <PancakeSquad />
+            </Route>
+
+            <Route exact path="/nft-box">
+              <NftBox />
+            </Route>
+
+            <Route path="/nft-box/:index">
+              <NftBoxDetail />
+            </Route>
+
+            <Route path="/nft-marketplace">
               <NftMarket />
             </Route>
 
-            <Route path="/pancake-squad">
-              <PancakeSquad />
+            <Route path="/nft-staking">
+              <NftMarket />
             </Route>
 
             {/* Info pages */}
@@ -165,9 +183,7 @@ const App: React.FC = () => {
             <Route path="/syrup">
               <Redirect to="/pools" />
             </Route>
-            {/* <Route path="/collectibles">
-              <Redirect to="/nfts" />
-            </Route> */}
+
             <Route path="/profile">
               <Redirect to={`${nftsBaseUrl}/profile/${account?.toLowerCase() || ''}`} />
             </Route>

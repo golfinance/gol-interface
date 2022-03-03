@@ -3537,6 +3537,19 @@
     truffle-flattener "^1.4.4"
     truffle-hdwallet-provider "^1.0.17"
 
+"@pancakeswap-libs/uikit@^0.29.4":
+  version "0.29.4"
+  resolved "https://registry.yarnpkg.com/@pancakeswap-libs/uikit/-/uikit-0.29.4.tgz#3c28d1c8ced84feb87ebf3c8a64ab32d97b3f148"
+  integrity sha512-imXRUtv2RHR6vI+KMA4vTyBecznN0hIh45T4dn48MzqdFsLXJLEg06R4A8ba/1wF8P+ntpvCDEfvjYORBkL6bg==
+  dependencies:
+    "@popperjs/core" "^2.9.2"
+    "@types/lodash" "^4.14.168"
+    "@types/styled-system" "^5.1.10"
+    lodash "^4.17.20"
+    react-popper "^2.2.5"
+    react-transition-group "^4.4.1"
+    styled-system "^5.1.5"
+
 "@pancakeswap/eslint-config-pancake@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@pancakeswap/eslint-config-pancake/-/eslint-config-pancake-1.1.0.tgz#ddb916af3726359095207306cfc87098cec43f41"
@@ -12490,6 +12503,11 @@ globby@^6.1.0:
     tiny-warning "^1.0.3"
     toformat "^2.0.0"
 
+goober@^2.1.1:
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/goober/-/goober-2.1.8.tgz#e592c04d093cb38f77b38cfcb012b7811c85765e"
+  integrity sha512-S0C85gCzcfFCMSdjD/CxyQMt1rbf2qEg6hmDzxk2FfD7+7Ogk55m8ZFUMtqNaZM4VVX/qaU9AzSORG+Gf4ZpAQ==
+
 google-protobuf@^3.13.0, google-protobuf@^3.17.3:
   version "3.19.1"
   resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.19.1.tgz#5af5390e8206c446d8f49febaffd4b7f4ac28f41"
@@ -19719,6 +19737,13 @@ react-helmet-async@^1.0.9:
     prop-types "^15.7.2"
     react-fast-compare "^3.2.0"
     shallowequal "^1.1.0"
+
+react-hot-toast@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-hot-toast/-/react-hot-toast-2.2.0.tgz#ab6f4caed4214b9534f94bb8cfaaf21b051e62b9"
+  integrity sha512-248rXw13uhf/6TNDVzagX+y7R8J183rp7MwUMNkcrBRyHj/jWOggfXTGlM8zAOuh701WyVW+eUaWG2LeSufX9g==
+  dependencies:
+    goober "^2.1.1"
 
 react-is@16.10.2:
   version "16.10.2"
