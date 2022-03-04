@@ -14,16 +14,22 @@ const Collections = lazy(() => import('./Collections'))
 const Market = () => {
   const { account } = useWeb3React()
   const initializationState = useGetNFTInitializationState()
+  // const initializationState = 'INITIALIZED'
+
 
   useFetchCollections()
 
+  console.log("Home")
+
   if (initializationState !== NFTMarketInitializationState.INITIALIZED) {
+    console.log('error al cargar')
     return <PageLoader />
   }
 
   return (
     <>
       <Route exact path={nftsBaseUrl}>
+        {console.log('home 2')}
         <Home />
       </Route>
       <Route exact path={`${nftsBaseUrl}/collections`}>

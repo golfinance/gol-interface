@@ -11,8 +11,10 @@ const MAX_GEN0_ID = 4
 
 export const useFetchCollections = () => {
   const dispatch = useAppDispatch()
+  
   useEffect(() => {
     dispatch(fetchCollections())
+    console.log('useFetch...')
   }, [dispatch])
 }
 
