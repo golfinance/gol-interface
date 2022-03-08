@@ -13,8 +13,7 @@ export const useFetchCollections = () => {
   const dispatch = useAppDispatch()
   
   useEffect(() => {
-    dispatch(fetchCollections())
-    console.log('useFetch...')
+    dispatch(fetchCollections())    
   }, [dispatch])
 }
 
