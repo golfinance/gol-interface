@@ -19,17 +19,14 @@ const Market = () => {
 
   useFetchCollections()
 
-  console.log("Home")
 
   if (initializationState !== NFTMarketInitializationState.INITIALIZED) {
-    console.log('error al cargar')
     return <PageLoader />
   }
 
   return (
     <>
       <Route exact path={nftsBaseUrl}>
-        {console.log('home 2')}
         <Home />
       </Route>
       <Route exact path={`${nftsBaseUrl}/collections`}>
