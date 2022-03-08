@@ -24,8 +24,8 @@ const Mobile = styled(Flex)`
 const Sticker = styled(Flex)`
   height: 92px;
   width: 92px;
-  background-color: ${({ theme }) => theme.colors.invertedContrast};
-  border: 3px solid ${({ theme }) => theme.colors.invertedContrast};
+  // background-color: ${({ theme }) => theme.colors.invertedContrast};
+  // border: 3px solid ${({ theme }) => theme.colors.invertedContrast};
   border-radius: ${({ theme }) => theme.radii.circle};
   box-shadow: ${({ theme }) => theme.card.boxShadow};
 `
@@ -69,7 +69,7 @@ const UserDetail = () => {
     <>
       <Desktop>
         <Box mr="24px">
-          <Sticker>{profile ? <ProfileAvatarWithTeam profile={profile} /> : <StyledNoProfileAvatarIcon />}</Sticker>
+          <Sticker>{profile ? <ProfileAvatarWithTeam profile={profile} /> : <StyledNoProfileAvatarIcon style={{height:'100px', width:'100px'}}/>}</Sticker>
         </Box>
         <Flex flexDirection="column">
           {getDesktopHeading()}

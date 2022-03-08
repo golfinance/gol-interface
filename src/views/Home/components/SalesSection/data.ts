@@ -1,7 +1,7 @@
 import { SalesSectionProps } from '.'
 
 export const swapSectionData: SalesSectionProps = {
-  headingText: 'Trade anything. No registration, no hassle.',
+  headingText: 'Invest in $GOL to win.',
   bodyText: 'Trade any token on Binance Smart Chain in seconds, just by connecting your wallet.',
   reverse: false,
   primaryButton: {
@@ -10,23 +10,23 @@ export const swapSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://https://golfinance.gitbook.io/golfinance/protocol/golfinance-v1/golswap',
+    to: 'https://golfinance.gitbook.io/golfinance/protocol/golfinance-v1/golswap',
     text: 'Learn',
     external: true,
   },
   images: {
     path: '/images/home/trade/',
     attributes: [
-      { src: 'BNB', alt: 'BNB token' },
-      { src: 'BTC', alt: 'BTC token' },
-      { src: 'GOL', alt: 'GOL token' },
+      // { src: 'BNB', alt: 'BNB token' },
+      // { src: 'BTC', alt: 'BTC token' },
+      { src: 'TOKENS', alt: 'GOL token' },
     ],
   },
 }
 
 export const earnSectionData: SalesSectionProps = {
   headingText: 'Earn passive income with crypto.',
-  bodyText: 'GolSwap makes it easy to make your crypto work for you.',
+  bodyText: 'GolToken is the core of the whole GolFinance ecosystem. Deflationary tokenomics, scarcity, buybacks (for redistribution and liquidity), burning are some of $GOL features, making it the core of the protocols incentive mechanisms..',
   reverse: true,
   primaryButton: {
     to: '/farms',
@@ -34,16 +34,17 @@ export const earnSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.pancakeswap.finance/products/yield-farming',
+    to: 'https://golfinance.gitbook.io/golfinance/protocol/goltoken',
     text: 'Learn',
     external: true,
   },
   images: {
     path: '/images/home/earn/',
     attributes: [
-      { src: 'pie', alt: 'Pie chart' },
-      { src: 'stonks', alt: 'Stocks chart' },
-      { src: 'folder', alt: 'Folder with cake token' },
+      // { src: 'pie', alt: 'Pie chart' },
+      // { src: 'stonks', alt: 'Stocks chart' },
+      { src: 'gol_token', alt: 'Gol Token' },
+      // { src: 'folder', alt: 'Folder with cake token' },
     ],
   },
 }
@@ -51,7 +52,7 @@ export const earnSectionData: SalesSectionProps = {
 export const cakeSectionData: SalesSectionProps = {
   headingText: 'GOL makes our world go round.',
   bodyText:
-    'GOL token is at the heart of the GolSwap ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
+    'Gol Finance is a football soccer themed DeFi ecosystem with the mission creating an ALL-IN-ONE solution for maximizing users yields providing a secure, fast and low gas fee experience.',
   reverse: false,
   primaryButton: {
     to: '/swap?outputCurrency=0x52f6a03a53840c01470f33a0b016e4c3e3dfe796',
@@ -59,7 +60,7 @@ export const cakeSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.pancakeswap.finance/tokenomics/cake',
+    to: 'https://www.youtube.com/watch?v=MTCx8C1yWvE',
     text: 'Learn',
     external: true,
   },
@@ -67,10 +68,10 @@ export const cakeSectionData: SalesSectionProps = {
   images: {
     path: '/images/home/cake/',
     attributes: [
-      { src: 'bottom-right', alt: 'Small 3d pancake' },
-      { src: 'top-right', alt: 'Small 3d pancake' },
-      { src: 'coin', alt: 'GOL token' },
-      { src: 'top-left', alt: 'Small 3d pancake' },
+      // { src: 'bottom-right-v2', alt: 'Small 3d pancake' },
+      // { src: 'top-right-v2', alt: 'Small 3d pancake' },
+      { src: 'player-v2', alt: 'GOL token' },
+      // { src: 'top-left', alt: 'Small 3d pancake' },
     ],
   },
 }

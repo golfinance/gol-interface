@@ -333,9 +333,9 @@ const Pools: React.FC = () => {
         <Image
           mx="auto"
           mt="12px"
-          src="logo.png"
+          src="/images/home/earn/gol_token.png"
           alt="Gol Football Soccer illustration"
-          width={100}
+          width={120}
           height={100}
         />
       </Page>
