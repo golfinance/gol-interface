@@ -62,8 +62,6 @@ const BoxBuyDetailComponent = () => {
   /** Calling Smart Contract Function */
 
   useEffect(() => {
-    console.log(account)
-
     const getTotalSupply = async () => {
       const web3 = new Web3(Web3.givenProvider)
       const nfpContract = new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())

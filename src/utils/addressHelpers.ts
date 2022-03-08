@@ -79,4 +79,6 @@ export const getNonFungiblePlayerAddress = () => {
 export const getGolTokenAddress = () => {
   return getAddress(addresses.golToken)
 }
-
+export const getMarketAddress = () => {
+  return getAddress(addresses.market)
+}

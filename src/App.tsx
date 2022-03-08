@@ -53,7 +53,10 @@ const Liquidity = lazy(() => import('./views/Pool'))
 const PoolFinder = lazy(() => import('./views/PoolFinder'))
 const RemoveLiquidity = lazy(() => import('./views/RemoveLiquidity'))
 const Info = lazy(() => import('./views/Info'))
-const NftMarket = lazy(() => import('./views/Nft/market'))
+const NftMarket = lazy(() => import('./views/NftMarket'))
+const NftMarketDetail = lazy(() => import('./views/NftMarket/NftMarketDetail'))
+const MyNfts = lazy(() => import('./views/MyNfts'))
+const MyNftsDetail = lazy(() => import('./views/MyNfts/MyNftsDeatail'))
 const NftBox = lazy(() => import('./views/NftBox'))
 const NftBoxDetail = lazy(() => import('./views/NftBox/NftBoxDetail'))
 const ProfileCreation = lazy(() => import('./views/ProfileCreation'))
@@ -136,6 +139,14 @@ const App: React.FC = () => {
               <PancakeSquad />
             </Route>
 
+            <Route exact path="/myNfts">
+              <MyNfts />
+            </Route>
+
+            <Route path="/myNfts/:myTokenId">
+              <MyNftsDetail />
+            </Route>
+
             <Route exact path="/nft-box">
               <NftBox />
             </Route>
@@ -144,8 +155,12 @@ const App: React.FC = () => {
               <NftBoxDetail />
             </Route>
 
-            <Route path="/nft-marketplace">
+            <Route exact path="/nft-marketplace">
               <NftMarket />
+            </Route>
+
+            <Route path="/nft-marketplace/:itemId">
+              <NftMarketDetail />
             </Route>
 
             <Route path="/nft-staking">
