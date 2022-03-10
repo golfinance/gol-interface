@@ -1,11 +1,11 @@
 import React, { useEffect, useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import NonFungiblePlayer from 'config/abi/NonFungiblePlayer.json'
-// import AirNfts from 'config/abi/AirNft.json'
+import Genesis from 'config/abi/Genesis.json'
 import { useWeb3React } from '@web3-react/core'
 import { AbiItem, toBN } from 'web3-utils'
 import Web3 from 'web3'
-import { getNonFungiblePlayerAddress } from 'utils/addressHelpers'
+import { getNonFungiblePlayerAddress, getAirNftAddress } from 'utils/addressHelpers'
 import useTheme from 'hooks/useTheme'
 
 const NftOnChainDataContainer = styled.div`
@@ -73,9 +73,9 @@ const MyNftDataRightComponent = ({ myToken }: MyNftDataRightComponentInterface) 
     return new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())
   }, [])
 
-  // const airnftContract = useMemo(() => {
-  //   return new web3.eth.Contract(AirNfts.abi as AbiItem[], getAirNftAddress())
-  // }, [])
+  const airnftContract = useMemo(() => {
+    return new web3.eth.Contract(Genesis.abi as AbiItem[], getAirNftAddress())
+  }, [])
 
   const fetchNft = useCallback(async () => {
     if (!myToken) return
@@ -87,14 +87,14 @@ const MyNftDataRightComponent = ({ myToken }: MyNftDataRightComponentInterface) 
     if (!myToken.isAIR) {
       nftHash = await nfpContract.methods.tokenURI(toBN(tmpTokenId)).call({ from: account })
     } else {
-      // nftHash = await airnftContract.methods.tokenURI(toBN(tmpTokenId)).call({ from: account })
+      nftHash = await airnftContract.methods.tokenURI(toBN(tmpTokenId)).call({ from: account })
     }
     const res = await fetch(nftHash)
     const json = await res.json()
     setDna(json.dna)
     setAttr(json.attributes)
     setTokenId(myToken.tokenId)
-  }, [myToken, account, nfpContract])
+  }, [myToken, account, nfpContract, airnftContract])
 
   useEffect(() => {
     fetchNft()
@@ -126,7 +126,7 @@ const MyNftDataRightComponent = ({ myToken }: MyNftDataRightComponentInterface) 
                 href={`https://bscscan.com/address/${myToken.isAIR ? '' : getNonFungiblePlayerAddress()}`}
                 style={{ textDecoration: 'underline', color: isDark ? 'white' : '#431216' }}
               >
-                {myToken.isAIR ? '' : getNonFungiblePlayerAddress()}
+                {myToken.isAIR ? getAirNftAddress() : getNonFungiblePlayerAddress()}
               </a>
             </NftOnChainLinkStyle>
           </NftOnChainEachData>

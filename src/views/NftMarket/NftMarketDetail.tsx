@@ -30,7 +30,7 @@ const NftMarketDetail = () => {
           NFT MarketPlace
         </Heading>
       </StyledHero>
-      <NftDetailHeader collectionName="HappyCow" />
+      <NftDetailHeader collectionName="Sale Detail" />
       <NftDetailContainer>
         <NftData itemId={itemId} />
       </NftDetailContainer>

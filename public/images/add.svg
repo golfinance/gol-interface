@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="278px" height="278px" viewBox="0 0 278 278" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>5</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="278" height="278"></rect>
+        <linearGradient x1="50%" y1="0.232263514%" x2="50%" y2="99.5418184%" id="linearGradient-3">
+            <stop stop-color="#00D86C" offset="0%"></stop>
+            <stop stop-color="#00D86C" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Pool-2" transform="translate(-1306.000000, -1572.000000)">
+            <g id="NFT" transform="translate(384.000000, 1017.000000)">
+                <g id="5" transform="translate(922.000000, 555.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#F9F4D3" opacity="0" xlink:href="#path-1"></use>
+                    <g id="+" mask="url(#mask-2)">
+                        <g transform="translate(83.000000, 83.000000)">
+                            <circle id="Oval" fill="url(#linearGradient-3)" cx="56" cy="56" r="56"></circle>
+                            <path d="M56,31 C58.4852814,31 60.5,33.0147186 60.5,35.5 L60.5,51.5 L76.5,51.5 C78.9852814,51.5 81,53.5147186 81,56 C81,58.4852814 78.9852814,60.5 76.5,60.5 L60.5,60.5 L60.5,76.5 C60.5,78.9852814 58.4852814,81 56,81 C53.5147186,81 51.5,78.9852814 51.5,76.5 L51.5,60.5 L35.5,60.5 C33.0147186,60.5 31,58.4852814 31,56 C31,53.5147186 33.0147186,51.5 35.5,51.5 L51.5,51.5 L51.5,35.5 C51.5,33.0147186 53.5147186,31 56,31 Z" id="fill" fill="#FFFFFF"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

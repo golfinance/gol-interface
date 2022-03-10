@@ -3,13 +3,14 @@ import styled from 'styled-components'
 import toast from 'react-hot-toast'
 import { Button, Heading } from '@pancakeswap-libs/uikit'
 import Market from 'config/abi/Market.json'
-// import AirNfts from 'config/abi/AirNft.json'
+import Genesis from 'config/abi/Genesis.json'
 import NonFungiblePlayer from 'config/abi/NonFungiblePlayer.json'
+import { usePriceCakeBusd } from 'state/farms/hooks'
 import { useWeb3React } from '@web3-react/core'
 import { fromWei, AbiItem, toBN, toWei } from 'web3-utils'
 import Modal from 'react-modal'
 import Web3 from 'web3'
-import { getNonFungiblePlayerAddress, getMarketAddress } from 'utils/addressHelpers'
+import { getNonFungiblePlayerAddress, getMarketAddress, getAirNftAddress } from 'utils/addressHelpers'
 import { LoadingContext } from 'contexts/LoadingContext'
 import useTheme from 'hooks/useTheme'
 import { PINATA_BASE_URI } from 'config/constants/nfts'
@@ -134,6 +135,7 @@ const customStyles = {}
 const web3 = new Web3(Web3.givenProvider)
 
 const nfpContract = new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())
+const airnftContract = new web3.eth.Contract(Genesis.abi as AbiItem[], getAirNftAddress())
 const marketContract = new web3.eth.Contract(Market.abi as AbiItem[], getMarketAddress())
 
 export interface NftDataLeftComponentInterface {
@@ -143,8 +145,6 @@ export interface NftDataLeftComponentInterface {
 const MyNftDataLeftComponent = ({ myToken }: NftDataLeftComponentInterface) => {
   const { isDark } = useTheme()
   const { account } = useWeb3React()
-  // const [selectedToken, setSelectedToken] = useState('Milk');
-  const selectedToken = 'Milk'
   const [image, setImage] = useState('')
   const [salePrice, setSalePrice] = useState('')
   const [tokenName, setTokenName] = useState('')
@@ -155,9 +155,8 @@ const MyNftDataLeftComponent = ({ myToken }: NftDataLeftComponentInterface) => {
   const [modalIsOpen, setIsOpen] = useState(false)
   const [flgButtonState, setFlgButtonState] = useState(true)
   const { setLoading } = useContext(LoadingContext)
-  const cakePriceUsd = 0
-
-  // const milkTokenContract = new web3.eth.Contract(MilkToken.abi as AbiItem[], getMilkAddress());
+  const [golPrice, setGolPrice] = useState(0)
+  const cakePriceUsd = usePriceCakeBusd()
 
   const fetchNft = useCallback(async () => {
     const marketItems = await marketContract.methods.fetchMarketItems().call({ from: account })
@@ -177,7 +176,7 @@ const MyNftDataLeftComponent = ({ myToken }: NftDataLeftComponentInterface) => {
     if (!myToken.isAIR) {
       nftHash = await nfpContract.methods.tokenURI(toBN(tmpTokenId)).call({ from: account })
     } else {
-      // nftHash = await airnftContract.methods.tokenURI(toBN(tmpTokenId)).call({ from: account })
+      nftHash = await airnftContract.methods.tokenURI(toBN(tmpTokenId)).call({ from: account })
     }
     const res = await fetch(nftHash)
     const json = await res.json()
@@ -185,13 +184,16 @@ const MyNftDataLeftComponent = ({ myToken }: NftDataLeftComponentInterface) => {
     setDescription(json.description)
 
     let imageUrl = json.image
-    if (!myToken.isAIR) {
-      imageUrl = imageUrl.slice(7)
-      setImage(`${PINATA_BASE_URI}${imageUrl}`)
-    } else {
-      setImage(imageUrl)
-    }
-  }, [account, myToken])
+    // if (!myToken.isAIR) {
+    //   imageUrl = imageUrl.slice(7)
+    //   setImage(`${PINATA_BASE_URI}${imageUrl}`)
+    // } else {
+    //   setImage(imageUrl)
+    // }
+    imageUrl = imageUrl.slice(7)
+    setImage(`${PINATA_BASE_URI}${imageUrl}`)
+    setGolPrice(cakePriceUsd.toNumber())
+  }, [account, myToken, cakePriceUsd])
 
   useEffect(() => {
     fetchNft()
@@ -205,23 +207,23 @@ const MyNftDataLeftComponent = ({ myToken }: NftDataLeftComponentInterface) => {
     closeModal()
 
     if (myToken.isAIR) {
-      // const approvedAddress = await airnftContract.methods.getApproved(toBN(myToken.tokenId)).call()
-      // if (approvedAddress !== getMarketAddress()) {
-      //   await airnftContract.methods.approve(getMarketAddress(), toBN(myToken.tokenId)).send({ from: account })
-      //   toast.success('Approved AirtNFT token.')
-      // }
+      const approvedAddress = await airnftContract.methods.getApproved(toBN(myToken.tokenId)).call()
+      if (approvedAddress !== getMarketAddress()) {
+        await airnftContract.methods.approve(getMarketAddress(), toBN(myToken.tokenId)).send({ from: account })
+        toast.success('Approved AirtNFT token.')
+      }
     } else {
       const isApproved = await nfpContract.methods.isApprovedForAll(account, getMarketAddress()).call()
       if (!isApproved) {
         await nfpContract.methods.setApprovalForAll(getMarketAddress(), true).send({ from: account })
-        toast.success('Approved Milk token.')
+        toast.success('Approved GOL token.')
       }
     }
 
     try {
       await marketContract.methods
         .createMarketItem(
-          myToken.isAIR ? '' : getNonFungiblePlayerAddress(),
+          myToken.isAIR ? getAirNftAddress() : getNonFungiblePlayerAddress(),
           toBN(myToken.tokenId),
           toWei(priceNft, 'ether'),
         )
@@ -310,10 +312,10 @@ const MyNftDataLeftComponent = ({ myToken }: NftDataLeftComponentInterface) => {
                     <div style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
                       <img
                         style={{ width: '16px', height: '16px', marginRight: '5px', transform: 'translateY(-.5px)' }}
-                        alt="Milk Token Icon"
-                        src="/images/farms/milk.png"
+                        src="/images/favicon-32x32.png"
+                        alt="GolToken"
                       />
-                      Milk
+                      Gol
                     </div>
                   </div>
                 </TokenSelectContainer>
@@ -321,14 +323,14 @@ const MyNftDataLeftComponent = ({ myToken }: NftDataLeftComponentInterface) => {
               <NftSalePriceDetail style={{ color: isDark ? 'white' : '' }}>
                 <img
                   style={{ width: '24px', height: '24px', marginRight: '8px' }}
-                  src={selectedToken === 'Milk' ? '/images/farms/milk.png' : '/images/tokens/darkBNB.png'}
-                  alt="Token Icon"
+                  src="/images/favicon-32x32.png"
+                  alt="GolToken"
                 />
                 {getNumberSuffix(salePrice)}
                 <span
                   style={{ fontSize: '14px', color: isDark ? 'white' : '#694f4e', fontWeight: 400, marginLeft: '4px' }}
                 >
-                  ≈ ${0}
+                  ≈ ${getNumberSuffix(Math.round(golPrice * parseInt(salePrice) * 100) / 100)}
                 </span>
               </NftSalePriceDetail>
             </NftSalePrice>
@@ -406,11 +408,11 @@ const MyNftDataLeftComponent = ({ myToken }: NftDataLeftComponentInterface) => {
             />
             <ItemValueToken>
               <img
-                src="/images/farms/milk.png"
-                alt="token"
+                src="/images/favicon-32x32.png"
+                alt="GolToken"
                 style={{ width: '26px', height: '26px', marginRight: '4px' }}
               />
-              MILK
+              GOL
             </ItemValueToken>
           </div>
           <Button onClick={listNFTHandler}>List NFT</Button>

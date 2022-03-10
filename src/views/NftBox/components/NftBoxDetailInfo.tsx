@@ -38,7 +38,7 @@ const BlindBoxDetailInfo = () => {
         <BoxInfoRulesContainer style={{ color: isDark ? 'white' : '' }}>Blind Box Rules</BoxInfoRulesContainer>
         <BoxInfoMainContainer style={{ color: isDark ? 'white' : '' }}>
           <p style={{ lineHeight: 1.2, margin: '7px 0' }}>
-            1. You can mint CashCow NFTs only with $MILK, and get a randomly generated NFT after purchase.
+            1. You can mint CashCow NFTs only with $GOL, and get a randomly generated NFT after purchase.
           </p>
           <p style={{ lineHeight: 1.2, margin: '7px 0' }}>
             2. HappyCows Collectibles NFT will make the owner a CashCow Community Rare Member, and be traded freely on

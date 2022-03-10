@@ -103,5 +103,13 @@ export default {
   market:{
     56: '0x',
     97: '0x5a3385517c34aB13BEa7589ED5EAD5C005447AC7'
+  },
+  genesis:{
+    56: '0x',
+    97: '0x06337dd5ccD59AfBFBACBE9638cfE8a57A9fdc04'
+  },
+  staking:{
+    56: '0x',
+    97: '0xE46C026478cDC8c283Ec30c6d42c3C0ed1cca906'
   }
 }

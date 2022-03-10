@@ -84,7 +84,7 @@ const sortByItems = [
 
 const filterByCollection = [
   { label: 'All NFTs', value: { field: 'All', direction: 'asc' } },
-  { label: 'HappyCows', value: { field: 'HappyCows', direction: 'desc' } },
+  { label: 'NonFungiblePlayer', value: { field: 'NonFungiblePlayer', direction: 'desc' } },
   { label: 'Genesis', value: { field: 'AirNFT', direction: 'asc' } },
 ]
 
@@ -94,7 +94,7 @@ const NftHeader = () => {
 
   return (
     <NftHeaderContainer>
-      <LeftContainer style={{ color: isDark ? 'white' : '' }}>Nft Marketplace</LeftContainer>
+      <LeftContainer style={{ color: isDark ? 'white' : '#f4ae01' }}>Nft Marketplace</LeftContainer>
       <RightContainer>
         <Select
           options={sortByItems}

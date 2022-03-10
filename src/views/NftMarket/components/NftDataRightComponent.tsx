@@ -1,12 +1,12 @@
 import React, { useEffect, useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
-// import AirNfts from 'config/abi/AirNft.json'
+import Genesis from 'config/abi/Genesis.json'
 import Market from 'config/abi/Market.json'
 import NonFungiblePlayer from 'config/abi/NonFungiblePlayer.json'
 import { useWeb3React } from '@web3-react/core'
 import { AbiItem, toBN } from 'web3-utils'
 import Web3 from 'web3'
-import { getNonFungiblePlayerAddress, getMarketAddress } from 'utils/addressHelpers'
+import { getNonFungiblePlayerAddress, getMarketAddress, getAirNftAddress } from 'utils/addressHelpers'
 import useTheme from 'hooks/useTheme'
 
 const NftOnChainDataContainer = styled.div`
@@ -80,9 +80,9 @@ const NftDataRightComponent = ({ itemId }: NftDataRightComponentInterface) => {
     return new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())
   }, [])
 
-  // const airnftContract = useMemo(() => {
-  //   return new web3.eth.Contract(AirNfts.abi as AbiItem[], getAirNftAddress())
-  // }, [])
+  const airnftContract = useMemo(() => {
+    return new web3.eth.Contract(Genesis.abi as AbiItem[], getAirNftAddress())
+  }, [])
 
   const fetchNft = useCallback(async () => {
     const marketItems = await marketContract.methods.fetchMarketItems().call({ from: account })
@@ -90,8 +90,7 @@ const NftDataRightComponent = ({ itemId }: NftDataRightComponentInterface) => {
     let isTokenAir = false
     for (let i = 0; i < marketItems.length; i++) {
       if (marketItems[i].itemId === itemId) {
-        // isTokenAir = marketItems[i].nftContract === getAirNftAddress()
-        isTokenAir = false
+        isTokenAir = marketItems[i].nftContract === getAirNftAddress()
         setTokenId(marketItems[i].tokenId.toString())
         setOwnerAddress(marketItems[i].seller.toString())
         index = i
@@ -100,16 +99,15 @@ const NftDataRightComponent = ({ itemId }: NftDataRightComponentInterface) => {
     }
 
     let nftHash = null
-    // if (isTokenAir)
-    //   nftHash = await airnftContract.methods.tokenURI(toBN(marketItems[index].tokenId)).call({ from: account })
-    // else nftHash = await nfpContract.methods.tokenURI(toBN(marketItems[index].tokenId)).call({ from: account })
-    nftHash = await nfpContract.methods.tokenURI(toBN(marketItems[index].tokenId)).call({ from: account })
+    if (isTokenAir)
+      nftHash = await airnftContract.methods.tokenURI(toBN(marketItems[index].tokenId)).call({ from: account })
+    else nftHash = await nfpContract.methods.tokenURI(toBN(marketItems[index].tokenId)).call({ from: account })
     const res = await fetch(nftHash)
     const json = await res.json()
     setIsAIR(isTokenAir)
     setDna(json.dna)
     setAttr(json.attributes)
-  }, [account, marketContract, itemId, nfpContract])
+  }, [account, marketContract, itemId, nfpContract, airnftContract])
 
   useEffect(() => {
     fetchNft()
@@ -141,7 +139,7 @@ const NftDataRightComponent = ({ itemId }: NftDataRightComponentInterface) => {
                 href={`https://bscscan.com/address/${isAIR ? '' : getNonFungiblePlayerAddress()}`}
                 style={{ textDecoration: 'underline', color: isDark ? 'white' : '#431216' }}
               >
-                {isAIR ? '' : getNonFungiblePlayerAddress()}
+                {isAIR ? getAirNftAddress() : getNonFungiblePlayerAddress()}
               </a>
             </NftOnChainLinkStyle>
           </NftOnChainEachData>

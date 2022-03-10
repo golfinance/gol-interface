@@ -9,6 +9,7 @@ import { getLibrary } from 'utils/web3React'
 import { LanguageProvider } from 'contexts/Localization'
 import { RefreshContextProvider } from 'contexts/RefreshContext'
 import { LoadingContextProvider } from 'contexts/LoadingContext'
+import { StakeContextProvider } from 'contexts/StakeContext'
 import { ToastsProvider } from 'contexts/ToastsContext'
 import getRpcUrl from 'utils/getRpcUrl'
 import store from 'state'
@@ -29,7 +30,9 @@ const Providers: React.FC = ({ children }) => {
               <LanguageProvider>
                 <RefreshContextProvider>
                   <LoadingContextProvider>
-                    <ModalProvider>{children}</ModalProvider>
+                    <StakeContextProvider>
+                      <ModalProvider>{children}</ModalProvider>
+                    </StakeContextProvider>
                   </LoadingContextProvider>
                 </RefreshContextProvider>
               </LanguageProvider>

@@ -82,3 +82,9 @@ export const getGolTokenAddress = () => {
 export const getMarketAddress = () => {
   return getAddress(addresses.market)
 }
+export const getAirNftAddress = () => {
+  return getAddress(addresses.genesis)
+}
+export const getStakingAddress = () => {
+  return getAddress(addresses.staking)
+}

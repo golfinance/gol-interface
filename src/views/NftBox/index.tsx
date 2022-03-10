@@ -9,7 +9,7 @@ const boxData = [
   {
     id: 0,
     image: 'banner_tamano_desenfocado_2940x510.png',
-    itemTitle: 'HappyCows Box',
+    itemTitle: 'NonFungiblePlayer Box',
   },
 ]
 

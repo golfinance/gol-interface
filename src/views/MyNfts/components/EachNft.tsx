@@ -4,6 +4,7 @@ import Web3 from 'web3'
 import Market from 'config/abi/Market.json'
 import { fromWei, AbiItem } from 'web3-utils'
 import { useWeb3React } from '@web3-react/core'
+import { usePriceCakeBusd } from 'state/farms/hooks'
 import { getMarketAddress } from 'utils/addressHelpers'
 import useTheme from 'hooks/useTheme'
 import { PINATA_BASE_URI } from 'config/constants/nfts'
@@ -125,25 +126,24 @@ const EachNft = ({ eachMyToken }: EachNftInterface) => {
   const [flgList, setFlgList] = useState(false)
   const [listedPrice, setListedPrice] = useState('')
   // const [itemId, setItemId] = useState(0);
-  const [milkPrice, setMilkPrice] = useState(0)
+  const [golPrice, setGolPrice] = useState(0)
+  const cakePriceUsd = usePriceCakeBusd()
 
   const marketContract = useMemo(() => {
     return new web3.eth.Contract(Market.abi as AbiItem[], getMarketAddress())
   }, [])
-
-  // const happyCowContract = useMemo(() => {
-  //     return new web3.eth.Contract(HappyCows.abi as AbiItem[], getHappyCowAddress())
-  // }, [])
 
   const fetchMyNftImage = useCallback(async () => {
     try {
       const res = await fetch(eachMyToken.tokenHash)
       const json = await res.json()
       let imageUrl = json.image
-      if (!eachMyToken.isAIR) {
-        imageUrl = imageUrl.slice(7)
-        setImageIpfsHash(`${PINATA_BASE_URI}${imageUrl}`)
-      } else setImageIpfsHash(imageUrl)
+      // if (!eachMyToken.isAIR) {
+      //   imageUrl = imageUrl.slice(7)
+      //   setImageIpfsHash(`${PINATA_BASE_URI}${imageUrl}`)
+      // } else setImageIpfsHash(imageUrl)
+      imageUrl = imageUrl.slice(7)
+      setImageIpfsHash(`${PINATA_BASE_URI}${imageUrl}`)
       setName(json.name)
     } catch (e) {
       // console.log(e);
@@ -160,11 +160,8 @@ const EachNft = ({ eachMyToken }: EachNftInterface) => {
       }
     }
 
-    // const owner = await happyCowContract.methods.ownerOf(eachMyToken.tokenId).call();
-    // setItemId(eachMyToken.itemId);
-
-    setMilkPrice(0)
-  }, [account, marketContract, eachMyToken])
+    setGolPrice(cakePriceUsd.toNumber())
+  }, [account, marketContract, eachMyToken, cakePriceUsd])
 
   useEffect(() => {
     fetchMyNftImage()
@@ -189,17 +186,17 @@ const EachNft = ({ eachMyToken }: EachNftInterface) => {
           <ItemBottom>
             <ItemTitle style={{ color: isDark ? 'white' : '' }}>
               Sale Price
-              <span> ≈ ${getNumberSuffix(Math.round(milkPrice * parseInt(listedPrice) * 100) / 100)}</span>
+              <span> ≈ ${getNumberSuffix(Math.round(golPrice * parseInt(listedPrice) * 100) / 100)}</span>
             </ItemTitle>
             <ItemValue style={{ color: isDark ? 'white' : '' }}>
               <ItemValueText>{getNumberSuffix(listedPrice)}</ItemValueText>
               <ItemValueToken>
                 <img
-                  src="/images/farms/milk.png"
-                  alt="token"
+                  src="/images/favicon-32x32.png"
+                  alt="GolToken"
                   style={{ width: '18px', height: '18px', marginRight: '4px' }}
                 />
-                MILK
+                GOL
               </ItemValueToken>
             </ItemValue>
           </ItemBottom>

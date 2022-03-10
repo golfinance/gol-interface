@@ -3,14 +3,20 @@ import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import toast from 'react-hot-toast'
 import { Button } from '@pancakeswap-libs/uikit'
-// import AirNfts from 'config/abi/AirNft.json'
+import Genesis from 'config/abi/Genesis.json'
 import Market from 'config/abi/Market.json'
 import NonFungiblePlayer from 'config/abi/NonFungiblePlayer.json'
 import GolToken from 'config/abi/GolToken.json'
+import { usePriceCakeBusd } from 'state/farms/hooks'
 import { useWeb3React } from '@web3-react/core'
 import { fromWei, AbiItem, toBN, toWei } from 'web3-utils'
 import Web3 from 'web3'
-import { getNonFungiblePlayerAddress, getGolTokenAddress, getMarketAddress } from 'utils/addressHelpers'
+import {
+  getNonFungiblePlayerAddress,
+  getGolTokenAddress,
+  getMarketAddress,
+  getAirNftAddress,
+} from 'utils/addressHelpers'
 import useTheme from 'hooks/useTheme'
 import { LoadingContext } from 'contexts/LoadingContext'
 import { PINATA_BASE_URI } from 'config/constants/nfts'
@@ -111,17 +117,17 @@ const NftDataLeftComponent = ({ itemId }: NftDataLeftComponentInterface) => {
   const { isDark } = useTheme()
   const history = useHistory()
   const { account } = useWeb3React()
-  // const [selectedToken, setSelectedToken] = useState('Milk');
-  const selectedToken = 'Milk'
+  const selectedToken = 'Gol'
   const [isAIR, setIsAIR] = useState(false)
   const [image, setImage] = useState('')
   const [name, setName] = useState('')
   const [salePrice, setSalePrice] = useState('')
-  const [milkPrice, setMilkPrice] = useState(0)
+  const [golPrice, setGolPrice] = useState(0)
   const [description, setDescription] = useState('')
   const [flgButtonState, setFlgButtonState] = useState(true)
   const [flgMyNft, setFlgMyNft] = useState(false)
   const { setLoading } = useContext(LoadingContext)
+  const cakePriceUsd = usePriceCakeBusd()
 
   const nfpContract = useMemo(() => {
     return new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())
@@ -131,9 +137,9 @@ const NftDataLeftComponent = ({ itemId }: NftDataLeftComponentInterface) => {
     return new web3.eth.Contract(Market.abi as AbiItem[], getMarketAddress())
   }, [])
 
-  // const airnftContract = useMemo(() => {
-  //   return new web3.eth.Contract(AirNfts.abi as AbiItem[], getAirNftAddress())
-  // }, [])
+  const airnftContract = useMemo(() => {
+    return new web3.eth.Contract(Genesis.abi as AbiItem[], getAirNftAddress())
+  }, [])
   const golTokenContract = new web3.eth.Contract(GolToken.abi as AbiItem[], getGolTokenAddress())
 
   const fetchNft = useCallback(async () => {
@@ -142,8 +148,7 @@ const NftDataLeftComponent = ({ itemId }: NftDataLeftComponentInterface) => {
     let tokenId = null
     for (let i = 0; i < marketItems.length; i++) {
       if (marketItems[i].itemId === itemId) {
-        // isAirToken = marketItems[i].nftContract === getAirNftAddress()
-        isAirToken = false
+        isAirToken = marketItems[i].nftContract === getAirNftAddress()
         tokenId = marketItems[i].tokenId
         setSalePrice(fromWei(marketItems[i].price, 'ether'))
         if (marketItems[i].seller === account) {
@@ -156,25 +161,26 @@ const NftDataLeftComponent = ({ itemId }: NftDataLeftComponentInterface) => {
     if (!tokenId) return
 
     let nftHash = null
-    // if (isAirToken) nftHash = await airnftContract.methods.tokenURI(toBN(tokenId)).call({ from: account })
-    // else nftHash = await nfpContract.methods.tokenURI(toBN(tokenId)).call({ from: account })
-    nftHash = await nfpContract.methods.tokenURI(toBN(tokenId)).call({ from: account })
+    if (isAirToken) nftHash = await airnftContract.methods.tokenURI(toBN(tokenId)).call({ from: account })
+    else nftHash = await nfpContract.methods.tokenURI(toBN(tokenId)).call({ from: account })
     const res = await fetch(nftHash)
     const json = await res.json()
 
     let imageUrl = json.image
-    if (isAirToken) {
-      setImage(imageUrl)
-    } else {
-      imageUrl = imageUrl.slice(7)
-      setImage(`${PINATA_BASE_URI}${imageUrl}`)
-    }
+    // if (isAirToken) {
+    //   setImage(imageUrl)
+    // } else {
+    //   imageUrl = imageUrl.slice(7)
+    //   setImage(`${PINATA_BASE_URI}${imageUrl}`)
+    // }
+    imageUrl = imageUrl.slice(7)
+    setImage(`${PINATA_BASE_URI}${imageUrl}`)
     setIsAIR(isAirToken)
     setName(json.name)
     setDescription(json.description)
 
-    setMilkPrice(0)
-  }, [account, marketContract, itemId, nfpContract])
+    setGolPrice(cakePriceUsd.toNumber())
+  }, [account, marketContract, itemId, nfpContract, airnftContract, cakePriceUsd])
   useEffect(() => {
     fetchNft()
   }, [fetchNft])
@@ -189,11 +195,10 @@ const NftDataLeftComponent = ({ itemId }: NftDataLeftComponentInterface) => {
 
       if (parseInt(allowance.toString()) < parseInt(salePrice)) {
         await golTokenContract.methods.approve(getMarketAddress(), priceWei).send({ from: account })
-        toast.success('Approved Milk token.')
+        toast.success('Approved Gol token.')
       }
-      // if (isAIR) await marketContract.methods.createMarketSale(getAirNftAddress(), itemId).send({ from: account })
-      // else await marketContract.methods.createMarketSale(getNonFungiblePlayerAddress(), itemId).send({ from: account })
-      await marketContract.methods.createMarketSale(getNonFungiblePlayerAddress(), itemId).send({ from: account })
+      if (isAIR) await marketContract.methods.createMarketSale(getAirNftAddress(), itemId).send({ from: account })
+      else await marketContract.methods.createMarketSale(getNonFungiblePlayerAddress(), itemId).send({ from: account })
       history.push('/nft-marketplace')
       toast.success('Successfully bought NFT.')
     } catch (error) {
@@ -226,8 +231,8 @@ const NftDataLeftComponent = ({ itemId }: NftDataLeftComponentInterface) => {
               <TokenSelectContainer>
                 <div
                   style={{
-                    color: `${selectedToken === 'Milk' ? '#00d86c' : '#694f4e'}`,
-                    fontWeight: selectedToken === 'Milk' ? 700 : 400,
+                    color: `${selectedToken === 'Gol' ? '#00d86c' : '#694f4e'}`,
+                    fontWeight: selectedToken === 'Gol' ? 700 : 400,
                   }}
                 >
                   <div
@@ -235,10 +240,10 @@ const NftDataLeftComponent = ({ itemId }: NftDataLeftComponentInterface) => {
                   >
                     <img
                       style={{ width: '16px', height: '16px', marginRight: '5px', transform: 'translateY(-.5px)' }}
-                      alt="Milk Token Icon"
-                      src="/images/farms/milk.png"
+                      src="/images/favicon-32x32.png"
+                      alt="GolToken"
                     />
-                    Milk
+                    Gol
                   </div>
                 </div>
               </TokenSelectContainer>
@@ -246,14 +251,14 @@ const NftDataLeftComponent = ({ itemId }: NftDataLeftComponentInterface) => {
             <NftSalePriceDetail style={{ color: isDark ? 'white' : '' }}>
               <img
                 style={{ width: '24px', height: '24px', marginRight: '8px' }}
-                src={selectedToken === 'Milk' ? '/images/farms/milk.png' : '/images/tokens/darkBNB.png'}
-                alt="Token Icon"
+                src="/images/favicon-32x32.png"
+                alt="GolToken"
               />
               {getNumberSuffix(salePrice)}
               <span
                 style={{ fontSize: '14px', color: isDark ? 'white' : '#694f4e', fontWeight: 400, marginLeft: '4px' }}
               >
-                ≈ ${getNumberSuffix(Math.round(milkPrice * parseInt(salePrice) * 100) / 100)}
+                ≈ ${getNumberSuffix(Math.round(golPrice * parseInt(salePrice) * 100) / 100)}
               </span>
             </NftSalePriceDetail>
           </NftSalePrice>

@@ -37,21 +37,29 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     ],
   },
   {
-    label: t('GolNFT'),
+    label: t('NFT Box'),
+    href: '/nft-box',
+    icon: 'Earn',
+    items: [],
+  },
+  {
+    label: t('Marketplace'),
     href: '/nft-marketplace',
+    icon: 'Earn',
+    items: [],
+  },
+  {
+    label: t('NFT Staking'),
+    href: '/nft-staking/1',
     icon: 'Earn',
     items: [
       {
-        label: t('Marketplace'),
-        href: '/nft-marketplace'
+        label: t('NonFungiblePlayer'),
+        href: '/nft-staking/1'
       },
       {
-        label: t('NFT Box'),
-        href: '/nft-box'
-      },
-      {
-        label: t('Staking'),
-        href: '/nft-staking'
+        label: t('Genesis'),
+        href: '/nft-staking/2'
       },
     ]
   },

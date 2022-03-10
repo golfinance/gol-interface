@@ -6,12 +6,12 @@ import { Heading } from '@pancakeswap-libs/uikit'
 import { AbiItem } from 'web3-utils'
 import { useWeb3React } from '@web3-react/core'
 import Web3 from 'web3'
-// import AirNfts from 'config/abi/AirNft.json'
+import Genesis from 'config/abi/Genesis.json'
 import NonFungiblePlayer from 'config/abi/NonFungiblePlayer.json'
 import Market from 'config/abi/Market.json'
-import { getNonFungiblePlayerAddress, getMarketAddress } from 'utils/addressHelpers'
+import { getNonFungiblePlayerAddress, getMarketAddress, getAirNftAddress } from 'utils/addressHelpers'
+import airNFTs from 'config/constants/airnfts'
 import Page from '../../components/Layout/Page'
-// import airNFTs from 'config/constants/airnfts'
 import EachNft from './components/EachNft'
 
 const StyledHero = styled.div`
@@ -38,29 +38,29 @@ const MyNfts = () => {
     return new web3.eth.Contract(Market.abi as AbiItem[], getMarketAddress())
   }, [])
 
-  // const airnftContract = useMemo(() => {
-  //   return new web3.eth.Contract(AirNfts.abi as AbiItem[], getAirNftAddress())
-  // }, [])
+  const airnftContract = useMemo(() => {
+    return new web3.eth.Contract(Genesis.abi as AbiItem[], getAirNftAddress())
+  }, [])
 
   const getTokenHashes = useCallback(async () => {
     const tmpMyTokens = []
-    const happyCowTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
+    const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
     const tokenIds = []
-    _.map(happyCowTokens, (itm) => {
+    _.map(nfpTokens, (itm) => {
       tokenIds.push({ tokenId: itm, isAIR: false })
     })
 
     // retrieve my nft from air
-    // const airNftOwners = []
-    // _.map(airNFTs, (nft) => {
-    //   airNftOwners.push(airnftContract.methods.ownerOf(nft).call())
-    // })
-    // const owners = await Promise.all(airNftOwners)
-    // _.map(owners, (owner, idx) => {
-    //   if (owner !== account) return
+    const airNftOwners = []
+    _.map(airNFTs, (nft) => {
+      airNftOwners.push(airnftContract.methods.ownerOf(nft).call())
+    })
+    const owners = await Promise.all(airNftOwners)
+    _.map(owners, (owner, idx) => {
+      if (owner !== account) return
 
-    //   tokenIds.push({ tokenId: airNFTs[idx], isAIR: true })
-    // })
+      tokenIds.push({ tokenId: airNFTs[idx], isAIR: true })
+    })
 
     const items = await marketContract.methods.fetchItemsCreated().call({ from: account })
     const tokenIdLength = tokenIds.length
@@ -81,7 +81,8 @@ const MyNfts = () => {
     const myTokenHashes = []
     for (let i = 0; i < tokenIds.length; i++) {
       if (!tokenIds[i].isAIR) myTokenHashes.push(nfpContract.methods.tokenURI(tokenIds[i].tokenId).call())
-      // else myTokenHashes.push(airnftContract.methods.tokenURI(tokenIds[i].tokenId).call())
+      else myTokenHashes.push(airnftContract.methods.tokenURI(tokenIds[i].tokenId).call())
+      console.log(myTokenHashes)
     }
     const result = await Promise.all(myTokenHashes)
 
@@ -92,7 +93,7 @@ const MyNfts = () => {
       tmpMyTokens[i].isAIR = tokenIds[i].isAIR
     }
     setMyTokens(tmpMyTokens)
-  }, [account, nfpContract, marketContract])
+  }, [account, nfpContract, marketContract, airnftContract])
   useEffect(() => {
     getTokenHashes()
   }, [getTokenHashes])

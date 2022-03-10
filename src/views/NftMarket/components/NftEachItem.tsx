@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Web3 from 'web3'
 import { fromWei, AbiItem } from 'web3-utils'
-// import AirNfts from 'config/abi/AirNft.json'
+import Genesis from 'config/abi/Genesis.json'
 import NonFungiblePlayer from 'config/abi/NonFungiblePlayer.json'
+import { usePriceCakeBusd } from 'state/farms/hooks'
 import { useWeb3React } from '@web3-react/core'
-import { getNonFungiblePlayerAddress } from 'utils/addressHelpers'
+import { getNonFungiblePlayerAddress, getAirNftAddress } from 'utils/addressHelpers'
 import useTheme from 'hooks/useTheme'
 import { PINATA_BASE_URI } from 'config/constants/nfts'
 import { getNumberSuffix } from 'utils/formatBalance'
@@ -121,23 +122,22 @@ const NftEachItem = ({ nftEachItem }: NftEachItemInterface) => {
   const [flgMyNft, setFlgMyNft] = useState(false)
   const [name, setName] = useState('')
   const [image, setImage] = useState('')
-  const [milkPrice, setMilkPrice] = useState(0)
+  const cakePriceUsd = usePriceCakeBusd()
+  const [golPrice, setGolPrice] = useState(0)
 
   const nfpContract = useMemo(() => {
     return new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())
   }, [])
 
-  // const airnftContract = useMemo(() => {
-  //   return new web3.eth.Contract(AirNfts.abi as AbiItem[], getAirNftAddress())
-  // }, [])
+  const airnftContract = useMemo(() => {
+    return new web3.eth.Contract(Genesis.abi as AbiItem[], getAirNftAddress())
+  }, [])
 
   const fetchNft = useCallback(async () => {
     let nftHash = null
-    // const isAIR = nftEachItem.nftContract === getAirNftAddress()
-    const isAIR = false
-    // if (isAIR) nftHash = await airnftContract.methods.tokenURI(nftEachItem.tokenId).call({ from: account })
-    // else nftHash = await nfpContract.methods.tokenURI(nftEachItem.tokenId).call({ from: account })
-    nftHash = await nfpContract.methods.tokenURI(nftEachItem.tokenId).call({ from: account })
+    const isAIR = nftEachItem.nftContract === getAirNftAddress()
+    if (isAIR) nftHash = await airnftContract.methods.tokenURI(nftEachItem.tokenId).call({ from: account })
+    else nftHash = await nfpContract.methods.tokenURI(nftEachItem.tokenId).call({ from: account })
     if (nftEachItem.seller === account) {
       setFlgMyNft(true)
     }
@@ -145,16 +145,18 @@ const NftEachItem = ({ nftEachItem }: NftEachItemInterface) => {
     const json = await res.json()
 
     let imageUrl = json.image
-    if (isAIR) {
-      setImage(imageUrl)
-    } else {
-      imageUrl = imageUrl.slice(7)
-      setImage(`${PINATA_BASE_URI}${imageUrl}`)
-    }
+    // if (isAIR) {
+    //   setImage(imageUrl)
+    // } else {
+    //   imageUrl = imageUrl.slice(7)
+    //   setImage(`${PINATA_BASE_URI}${imageUrl}`)
+    // }
+    imageUrl = imageUrl.slice(7)
+    setImage(`${PINATA_BASE_URI}${imageUrl}`)
     setName(json.name)
 
-    setMilkPrice(0)
-  }, [account, nfpContract, nftEachItem])
+    setGolPrice(cakePriceUsd.toNumber())
+  }, [account, nfpContract, nftEachItem, airnftContract, cakePriceUsd])
 
   useEffect(() => {
     fetchNft()
@@ -195,7 +197,7 @@ const NftEachItem = ({ nftEachItem }: NftEachItemInterface) => {
             Sale Price
             <span>
               {' '}
-              ≈ $ {getNumberSuffix(Math.floor(milkPrice * parseInt(fromWei(nftEachItem.price, 'ether')) * 100) / 100)}
+              ≈ $ {getNumberSuffix(Math.floor(golPrice * parseInt(fromWei(nftEachItem.price, 'ether')) * 100) / 100)}
             </span>
           </ItemTitle>
           <ItemValue>
@@ -204,11 +206,11 @@ const NftEachItem = ({ nftEachItem }: NftEachItemInterface) => {
             </ItemValueText>
             <ItemValueToken style={{ color: isDark ? 'white' : '' }}>
               <img
-                src="/images/farms/milk.png"
-                alt="token"
+                src="/images/favicon-32x32.png"
+                alt="GolToken"
                 style={{ width: '18px', height: '18px', marginRight: '4px' }}
               />
-              MILK
+              GOL
             </ItemValueToken>
           </ItemValue>
         </ItemBottom>
