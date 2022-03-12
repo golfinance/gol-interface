@@ -39,13 +39,13 @@ const StatisticsInfo = ({ index }) => {
   })
 
   const fetchInfo = useCallback(async () => {
-    const pendingGol = await stakingContract.methods.getPendingMilk(index, account).call()
+    const pendingGol = await stakingContract.methods.getPendingGol(index, account).call()
     const pool = await stakingContract.methods.pools(index).call()
     const totalStkCount = pool.stakedCount
     console.log('Totla Staked Count', totalStkCount)
-    const tmpTotalGolToken = await stakingContract.methods.getTotalMilkPower(index).call()
-    const tmpMyGolPower = await stakingContract.methods.getMyMilkPower(index, account).call()
-    const tmpDailyGolRate = await stakingContract.methods.getDailyMilkRate(index).call()
+    const tmpTotalGolToken = await stakingContract.methods.getTotalGolPower(index).call()
+    const tmpMyGolPower = await stakingContract.methods.getMyGolPower(index, account).call()
+    const tmpDailyGolRate = await stakingContract.methods.getDailyGolRate(index).call()
     setPoolInfo({
       rewardAllGol: pendingGol,
       totalStakedCount: totalStkCount,

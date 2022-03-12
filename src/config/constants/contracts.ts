@@ -110,6 +110,6 @@ export default {
   },
   staking:{
     56: '0x',
-    97: '0xE46C026478cDC8c283Ec30c6d42c3C0ed1cca906'
+    97: '0x1A3b2671a86944e2C038b1f4F08bFb4eC09430f4'
   }
 }

@@ -4182,7 +4182,7 @@
         2772
       ],
       "IGolToken": [
-        5614
+        5613
       ]
     },
     "id": 2773,
@@ -4219,7 +4219,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 2773,
-        "sourceUnit": 5615,
+        "sourceUnit": 5614,
         "src": "113:36:14",
         "symbolAliases": [],
         "unitAlias": ""
@@ -4244,7 +4244,7 @@
               "id": 2352,
               "name": "IGolToken",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 5614,
+              "referencedDeclaration": 5613,
               "src": "183:9:14"
             },
             "id": 2353,
@@ -4258,7 +4258,7 @@
         "id": 2772,
         "linearizedBaseContracts": [
           2772,
-          5614,
+          5613,
           1616
         ],
         "name": "GolToken",
@@ -4928,7 +4928,7 @@
           },
           {
             "baseFunctions": [
-              5533
+              5532
             ],
             "body": {
               "id": 2415,
@@ -5023,7 +5023,7 @@
           },
           {
             "baseFunctions": [
-              5539
+              5538
             ],
             "body": {
               "id": 2425,
@@ -5118,7 +5118,7 @@
           },
           {
             "baseFunctions": [
-              5545
+              5544
             ],
             "body": {
               "id": 2435,
@@ -5213,7 +5213,7 @@
           },
           {
             "baseFunctions": [
-              5527
+              5526
             ],
             "body": {
               "id": 2445,
@@ -5308,7 +5308,7 @@
           },
           {
             "baseFunctions": [
-              5553
+              5552
             ],
             "body": {
               "id": 2459,
@@ -5457,7 +5457,7 @@
           },
           {
             "baseFunctions": [
-              5563
+              5562
             ],
             "body": {
               "id": 2480,
@@ -5715,7 +5715,7 @@
           },
           {
             "baseFunctions": [
-              5573
+              5572
             ],
             "body": {
               "id": 2498,
@@ -5917,7 +5917,7 @@
           },
           {
             "baseFunctions": [
-              5583
+              5582
             ],
             "body": {
               "id": 2519,
@@ -6175,7 +6175,7 @@
           },
           {
             "baseFunctions": [
-              5595
+              5594
             ],
             "body": {
               "id": 2556,
@@ -8142,7 +8142,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5604,
+                      "referencedDeclaration": 5603,
                       "src": "5499:8:14",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -8748,7 +8748,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5604,
+                      "referencedDeclaration": 5603,
                       "src": "6145:8:14",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -9329,7 +9329,7 @@
                       "name": "Approval",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5613,
+                      "referencedDeclaration": 5612,
                       "src": "6972:8:14",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -9490,7 +9490,7 @@
         2772
       ],
       "IGolToken": [
-        5614
+        5613
       ]
     },
     "id": 2773,
@@ -9527,7 +9527,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 2773,
-        "sourceUnit": 5615,
+        "sourceUnit": 5614,
         "src": "113:36:14",
         "symbolAliases": [],
         "unitAlias": ""
@@ -9552,7 +9552,7 @@
               "id": 2352,
               "name": "IGolToken",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 5614,
+              "referencedDeclaration": 5613,
               "src": "183:9:14"
             },
             "id": 2353,
@@ -9566,7 +9566,7 @@
         "id": 2772,
         "linearizedBaseContracts": [
           2772,
-          5614,
+          5613,
           1616
         ],
         "name": "GolToken",
@@ -10236,7 +10236,7 @@
           },
           {
             "baseFunctions": [
-              5533
+              5532
             ],
             "body": {
               "id": 2415,
@@ -10331,7 +10331,7 @@
           },
           {
             "baseFunctions": [
-              5539
+              5538
             ],
             "body": {
               "id": 2425,
@@ -10426,7 +10426,7 @@
           },
           {
             "baseFunctions": [
-              5545
+              5544
             ],
             "body": {
               "id": 2435,
@@ -10521,7 +10521,7 @@
           },
           {
             "baseFunctions": [
-              5527
+              5526
             ],
             "body": {
               "id": 2445,
@@ -10616,7 +10616,7 @@
           },
           {
             "baseFunctions": [
-              5553
+              5552
             ],
             "body": {
               "id": 2459,
@@ -10765,7 +10765,7 @@
           },
           {
             "baseFunctions": [
-              5563
+              5562
             ],
             "body": {
               "id": 2480,
@@ -11023,7 +11023,7 @@
           },
           {
             "baseFunctions": [
-              5573
+              5572
             ],
             "body": {
               "id": 2498,
@@ -11225,7 +11225,7 @@
           },
           {
             "baseFunctions": [
-              5583
+              5582
             ],
             "body": {
               "id": 2519,
@@ -11483,7 +11483,7 @@
           },
           {
             "baseFunctions": [
-              5595
+              5594
             ],
             "body": {
               "id": 2556,
@@ -13450,7 +13450,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5604,
+                      "referencedDeclaration": 5603,
                       "src": "5499:8:14",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -14056,7 +14056,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5604,
+                      "referencedDeclaration": 5603,
                       "src": "6145:8:14",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -14637,7 +14637,7 @@
                       "name": "Approval",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5613,
+                      "referencedDeclaration": 5612,
                       "src": "6972:8:14",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -14807,7 +14807,7 @@
     }
   },
   "schemaVersion": "3.4.5",
-  "updatedAt": "2022-03-09T19:00:30.596Z",
+  "updatedAt": "2022-03-12T15:48:32.443Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

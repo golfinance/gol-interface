@@ -120,7 +120,7 @@ const StakeItem = ({ data, index }) => {
 
   const fetchGolPower = useCallback(async () => {
     const poolInfo = await stakingContract.methods.pools(index).call()
-    const tmpGolPower = poolInfo.milkPower
+    const tmpGolPower = poolInfo.golPower
     setGolPower(tmpGolPower)
   }, [index])
   useEffect(() => {
