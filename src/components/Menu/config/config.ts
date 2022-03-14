@@ -40,18 +40,24 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     label: t('NFT Box'),
     href: '/nft-box',
     icon: 'Earn',
+    showItemsOnMobile: false,
+    showOnMobile: true,
     items: [],
   },
   {
     label: t('Marketplace'),
     href: '/nft-marketplace',
     icon: 'Earn',
+    showItemsOnMobile: false,
+    showOnMobile: true,
     items: [],
   },
   {
     label: t('NFT Staking'),
     href: '/nft-staking/1',
     icon: 'Earn',
+    showItemsOnMobile: false,
+    showOnMobile: true,
     items: [
       {
         label: t('NonFungiblePlayer'),
@@ -67,6 +73,8 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     label: t('Analytics'),
     icon: 'Info',
     href: '/info',
+    showItemsOnMobile: false,
+    showOnMobile: true,
     items: [],
   },
   // {

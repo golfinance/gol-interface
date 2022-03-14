@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
       max-width: 100%;
     }
   }
+  .bqVoIi {
+    background: none;
+    backdrop-filter: none;
+  }
 `
 
 export default GlobalStyle

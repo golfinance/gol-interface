@@ -74,7 +74,7 @@ const StatisticsInfo = ({ index }) => {
 
   return (
     <BoxShadow style={{ borderRadius: '32px', padding: '24px' }}>
-      <Flex flexDirection="column" alignItems="cneter">
+      <Flex flexDirection="column" alignItems="center">
         <BoxShadow style={{ borderRadius: '16px', padding: '24px' }}>
           {index === '1' ? 'NFT Staking Pool (NonFungiblePlayer)' : 'NFT Staking Pool (Genesis)'}
         </BoxShadow>
