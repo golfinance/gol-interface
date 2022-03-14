@@ -14,8 +14,11 @@ const Collections = lazy(() => import('./Collections'))
 const Market = () => {
   const { account } = useWeb3React()
   const initializationState = useGetNFTInitializationState()
+  // const initializationState = 'INITIALIZED'
+
 
   useFetchCollections()
+
 
   if (initializationState !== NFTMarketInitializationState.INITIALIZED) {
     return <PageLoader />

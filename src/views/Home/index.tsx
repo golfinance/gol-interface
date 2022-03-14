@@ -1,14 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex } from 'gol-uikit'
+import { Cards, Flex } from 'gol-uikit'
 import PageSection from 'components/PageSection'
 import { useWeb3React } from '@web3-react/core'
 import useTheme from 'hooks/useTheme'
 import Container from 'components/Layout/Container'
 import { PageMeta } from 'components/Layout/Page'
 import Hero from './components/Hero'
+import GolCards from './components/GolCards'
 import { swapSectionData, earnSectionData, cakeSectionData } from './components/SalesSection/data'
-// import MetricsSection from './components/MetricsSection'
+import MetricsSection from './components/MetricsSection'
 import SalesSection from './components/SalesSection'
 import WinSection from './components/WinSection'
 import FarmsPoolsRow from './components/FarmsPoolsRow'
@@ -17,6 +18,7 @@ import CakeDataRow from './components/CakeDataRow'
 import { WedgeTopLeft, InnerWedgeWrapper, OuterWedgeWrapper, WedgeTopRight } from './components/WedgeSvgs'
 import UserBanner from './components/UserBanner'
 import PancakeSquadBanner from './components/Banners/PancakeSquadBanner'
+
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
@@ -41,6 +43,9 @@ const UserBannerWrapper = styled(Container)`
     padding-right: 24px;
   }
 `
+const ImagePath = '/images/home/lunar-bunny/'
+const backgroundImageSrc = '02-LANDING-PAGE-GOL-BG_02'
+const playToWin = '06-LANDING-PAGE-GOL-EXAMPLE'
 
 const Home: React.FC = () => {
   const { theme } = useTheme()
@@ -51,12 +56,14 @@ const Home: React.FC = () => {
   return (
     <>
       <PageMeta />
+
+      {/* Monetize your passion */}
       <StyledHeroSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         background={
           theme.isDark
             ? 'radial-gradient(180% 50% at 50% 50%, #373357 0%, #27262c 100%)'
-            : 'linear-gradient(180deg, #373357 0%, #27262c 100%)' 
+            : 'linear-gradient(180deg, #373357 0%, #27262c 100%)'
         }
         index={2}
         hasCurvedDivider={false}
@@ -66,18 +73,25 @@ const Home: React.FC = () => {
             <UserBanner />
           </UserBannerWrapper>
         )}
-
-        {/* <Hero /> */}
+        <Hero />
       </StyledHeroSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background="linear-gradient(180deg, #373357 0%, #27262c 100%)"
+
+      {/* Cards */}
+      <PageSection     
+        background={theme.colors.background}
         index={2}
         hasCurvedDivider={false}
+        style={{
+          backgroundImage: `url(${ImagePath}${backgroundImageSrc}.jpg)`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',          
+        }}
       >
-        <Footer />
+        <GolCards/>
       </PageSection>
-    
+
+      {/* Invest in GOL */}
       <PageSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         background={
@@ -88,57 +102,55 @@ const Home: React.FC = () => {
         index={2}
         hasCurvedDivider={false}
       >
-        {/* <MetricsSection /> */}
-      {/* </PageSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
-        index={2}
-        hasCurvedDivider={false}
-      > */}
-        {/* <OuterWedgeWrapper>
+        <OuterWedgeWrapper>
           <InnerWedgeWrapper top fill={theme.isDark ? '#201335' : '#D8CBED'}>
             <WedgeTopLeft />
           </InnerWedgeWrapper>
-        </OuterWedgeWrapper> */}
-        {/* <SalesSection {...swapSectionData} /> */}
-      {/* </PageSection>
+        </OuterWedgeWrapper>
+        <SalesSection {...swapSectionData} />
+      </PageSection>
+
+      {/* Earn passive income with crypto */}
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.gradients.cardHeader}
         index={2}
         hasCurvedDivider={false}
-      > */}
-        {/* <OuterWedgeWrapper>
+      >
+        <OuterWedgeWrapper>
           <InnerWedgeWrapper width="150%" top fill={theme.colors.background}>
             <WedgeTopRight />
           </InnerWedgeWrapper>
-        </OuterWedgeWrapper> */}
-        {/* <SalesSection {...earnSectionData} /> */}
-        {/* <FarmsPoolsRow /> */}
-      {/* </PageSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background={
-          theme.isDark
-            ? 'linear-gradient(180deg, #0B4576 0%, #091115 100%)'
-            : 'linear-gradient(180deg, #6FB6F1 0%, #EAF2F6 100%)'
-        }
-        index={2}
-        hasCurvedDivider={false}
-      > */}
-        {/* <WinSection /> */}
-      {/* </PageSection>
+        </OuterWedgeWrapper>
+        <SalesSection {...earnSectionData} />
+      </PageSection>
+
+      {/* GOL makes your world go around  */}
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.background}
         index={2}
         hasCurvedDivider={false}
-      > */}
-        {/* <SalesSection {...cakeSectionData} /> */}
+      >
+        <SalesSection {...cakeSectionData} />
         <CakeDataRow />
       </PageSection>
-     
+
+      {/* Play today to win  */}
+      {/* <img
+        src={`${ImagePath}${playToWin}.jpg`}
+        alt={playToWin}/>       */}
+
+      {/* Start in seconds  */}
+      <PageSection
+        innerProps={{ style: HomeSectionContainerStyles }}
+        background="linear-gradient(180deg, #373357 0%, #27262c 100%)"
+        index={2}
+        hasCurvedDivider={false}
+      >
+        <Footer />
+      </PageSection>
+
     </>
   )
 }
