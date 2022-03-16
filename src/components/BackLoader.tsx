@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import useTheme from 'hooks/useTheme'
-import { Spinner } from '@pancakeswap-libs/uikit'
+import { Spinner } from 'gol-uikit'
 
 const BackLoader: React.FC = () => {
   const { isDark } = useTheme()
