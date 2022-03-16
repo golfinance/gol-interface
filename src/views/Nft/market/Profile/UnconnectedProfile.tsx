@@ -35,7 +35,6 @@ const UnconnectedProfile = () => {
 
   return (
     <>
-    {console.log('unconnected profile...')}
       <MarketPageHeader position="relative">
         <ProfileHeader
           accountPath={accountAddress}

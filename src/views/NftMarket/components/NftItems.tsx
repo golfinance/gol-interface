@@ -20,7 +20,6 @@ const web3 = new Web3(Web3.givenProvider)
 
 const NftItems = () => {
   const { account } = useWeb3React()
-  console.log(account)
   const [marketItems, setMarketItems] = useState([])
   const sortOrder = useSelector((state: State) => state.markets.sortOrder)
   const collectionType = useSelector((state: State) => state.markets.collectionType)
@@ -53,7 +52,6 @@ const NftItems = () => {
         break
       case 'AirNFT':
         for (let i = 0; i < filteredTmpMarketItems.length; i++) {
-          console.log(filteredTmpMarketItems)
           if (filteredTmpMarketItems[i].nftContract === addresses.genesis[chainId]) {
             filteredMarketItems[index] = filteredTmpMarketItems[i]
             index++

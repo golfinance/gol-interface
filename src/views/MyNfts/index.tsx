@@ -82,7 +82,6 @@ const MyNfts = () => {
     for (let i = 0; i < tokenIds.length; i++) {
       if (!tokenIds[i].isAIR) myTokenHashes.push(nfpContract.methods.tokenURI(tokenIds[i].tokenId).call())
       else myTokenHashes.push(airnftContract.methods.tokenURI(tokenIds[i].tokenId).call())
-      console.log(myTokenHashes)
     }
     const result = await Promise.all(myTokenHashes)
 

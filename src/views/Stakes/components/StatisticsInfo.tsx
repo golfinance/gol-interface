@@ -42,7 +42,6 @@ const StatisticsInfo = ({ index }) => {
     const pendingGol = await stakingContract.methods.getPendingGol(index, account).call()
     const pool = await stakingContract.methods.pools(index).call()
     const totalStkCount = pool.stakedCount
-    console.log('Totla Staked Count', totalStkCount)
     const tmpTotalGolToken = await stakingContract.methods.getTotalGolPower(index).call()
     const tmpMyGolPower = await stakingContract.methods.getMyGolPower(index, account).call()
     const tmpDailyGolRate = await stakingContract.methods.getDailyGolRate(index).call()

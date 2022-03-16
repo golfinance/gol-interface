@@ -91,7 +91,6 @@ const BoxBuyDetailComponent = () => {
   const buyButtonHandler = async () => {
     setMintingState(false)
     setLoading(true)
-    console.log('set loading')
     const priceWei = toWei(toBN('10000000000000000000000000000000000000000'), 'ether')
     const web3 = new Web3(Web3.givenProvider)
     const nfpContract = new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())

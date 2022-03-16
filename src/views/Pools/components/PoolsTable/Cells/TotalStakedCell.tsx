@@ -44,7 +44,6 @@ const TotalStakedCell: React.FC<TotalStakedCellProps> = ({ pool }) => {
         {totalStaked && totalStaked.gte(0) ? (
           <Flex height="20px" alignItems="center">
             <Balance fontSize="16px" value={totalStakedBalance} decimals={0} unit={` ${stakingToken.symbol}`} />
-            {/* {console.log("TotalStakedCell.tsx %o", totalStakedBalance)} */}
           </Flex>
         ) : (
           <Skeleton width="80px" height="16px" />
