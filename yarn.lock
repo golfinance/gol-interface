@@ -12578,7 +12578,7 @@ globby@^6.1.0:
 
 "gol-uikit@https://github.com/golfinance/gol-uikit.git":
   version "0.1.17"
-  resolved "https://github.com/golfinance/gol-uikit.git#bab4e620d8823918c374fff8d9d409a6379fa213"
+  resolved "https://github.com/golfinance/gol-uikit.git#39416be983abe1e62760f9f316eee1c92e69f924"
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/lodash" "^4.14.168"
