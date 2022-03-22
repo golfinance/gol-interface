@@ -57,7 +57,7 @@
     "ethers": "^5.1.4",
     "framer-motion": "^4.1.17",
     "gh-pages": "^3.2.3",
-    "gol-uikit": "https://github.com/golfinance/gol-uikit.git",
+    "gol-uikit": "https://github.com/golfinance/gol-uikit.git#features/Spinner",
     "golswap-sdk": "https://github.com/golfinance/golswap-sdk.git",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
