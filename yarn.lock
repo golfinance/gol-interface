@@ -12576,9 +12576,9 @@ globby@^6.1.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-"gol-uikit@https://github.com/golfinance/gol-uikit.git":
+"gol-uikit@https://github.com/golfinance/gol-uikit.git#features/Spinner":
   version "0.1.17"
-  resolved "https://github.com/golfinance/gol-uikit.git#39416be983abe1e62760f9f316eee1c92e69f924"
+  resolved "https://github.com/golfinance/gol-uikit.git#e664b4690b1b9c44844f526d1928b47a4d57b82e"
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/lodash" "^4.14.168"
