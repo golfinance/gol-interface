@@ -12578,7 +12578,7 @@ globby@^6.1.0:
 
 "gol-uikit@https://github.com/golfinance/gol-uikit.git#features/Spinner":
   version "0.1.17"
-  resolved "https://github.com/golfinance/gol-uikit.git#e664b4690b1b9c44844f526d1928b47a4d57b82e"
+  resolved "https://github.com/golfinance/gol-uikit.git#46ac925c6d3698b23da9abb9bdeac3bddd00a336"
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/lodash" "^4.14.168"
