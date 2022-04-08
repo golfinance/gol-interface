@@ -173,7 +173,7 @@ const NftBoxDetail = () => {
             <NftBoxDetailInfo />
           </BoxContainerRight>
         </BoxDetailContainer>
-        <Heading
+        {/* <Heading
           as="h1"
           color="primary"
           mt="35px"
@@ -190,7 +190,7 @@ const NftBoxDetail = () => {
               </ItemEachContainer>
             )
           })}
-        </ItemContainer>
+        </ItemContainer> */}
       </Page>
     </StyledWrapper>
   )
