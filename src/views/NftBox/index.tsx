@@ -8,7 +8,7 @@ import NftBoxItem from './components/NftBoxItem'
 const boxData = [
   {
     id: 0,
-    image: 'banner_tamano_desenfocado_2940x510.png',
+    image: 'Cover_NFP.jpg',
     itemTitle: 'NonFungiblePlayer Box',
   },
 ]
