@@ -4,8 +4,8 @@
     <defs>
         <rect id="path-1" x="0" y="0" width="278" height="278"></rect>
         <linearGradient x1="50%" y1="0.232263514%" x2="50%" y2="99.5418184%" id="linearGradient-3">
-            <stop stop-color="#00D86C" offset="0%"></stop>
-            <stop stop-color="#00D86C" offset="100%"></stop>
+            <stop stop-color="#F7941D" offset="0%"></stop>
+            <stop stop-color="#F7941D" offset="100%"></stop>
         </linearGradient>
     </defs>
     <g id="page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
