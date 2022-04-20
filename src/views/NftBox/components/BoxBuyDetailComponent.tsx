@@ -141,7 +141,7 @@ const BoxBuyDetailComponent = () => {
           Price
           <PriceDetailContainer style={{ color: isDark ? 'white' : '' }}>
             <img
-              src="/images/favicon-32x32.png"
+              src="/images/binance-usd-busd-logo.png"
               alt="GolToken"
               style={{ width: '24px', height: '24px', marginRight: '8px' }}
             />

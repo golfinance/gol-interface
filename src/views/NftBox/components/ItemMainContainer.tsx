@@ -77,9 +77,7 @@ const ItemMainContainer = ({ itemId, itemTitle }: ItemMainContainerInterface) =>
 
   return (
     <MainContainer>
-      <PhaseContainer>Collection #1</PhaseContainer>
-      <TitleContainer>{itemTitle}</TitleContainer>
-      {currentBlock !== 0 && startBlock !== 0 && currentBlock < startBlock && <StartTime countdown={startTime} />}
+      {/* {currentBlock !== 0 && startBlock !== 0 && currentBlock < startBlock && <StartTime countdown={startTime} />}
       <div
         style={{
           paddingTop: '10px',
@@ -91,7 +89,7 @@ const ItemMainContainer = ({ itemId, itemTitle }: ItemMainContainerInterface) =>
       >
         {currentBlock < startBlock && 'Not started'}
         {currentBlock > startBlock && (mintedAmount === 1000 ? 'Mint is finished' : 'Live now')}
-      </div>
+      </div> */}
     </MainContainer>
   )
 }

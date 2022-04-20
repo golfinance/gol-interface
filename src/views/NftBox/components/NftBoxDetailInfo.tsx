@@ -38,11 +38,13 @@ const BlindBoxDetailInfo = () => {
         <BoxInfoRulesContainer style={{ color: isDark ? 'white' : '' }}>Blind Box Rules</BoxInfoRulesContainer>
         <BoxInfoMainContainer style={{ color: isDark ? 'white' : '' }}>
           <p style={{ lineHeight: 1.2, margin: '7px 0' }}>
-            1. You can mint CashCow NFTs only with $GOL, and get a randomly generated NFT after purchase.
+            1. You can mint Generation 0 Non-Fungible Players with BUSD and receive a unique randomly generated NFT.
           </p>
           <p style={{ lineHeight: 1.2, margin: '7px 0' }}>
-            2. HappyCows Collectibles NFT will make the owner a CashCow Community Rare Member, and be traded freely on
-            the NFT Market.
+            2. Each Player NFT can be utilized within the GOL ecosystem and can be openly traded on the NFT marketplace.
+          </p>
+          <p style={{ lineHeight: 1.2, margin: '7px 0' }}>
+            2. Collect, Train and Level up players to build the Ultimate team!
           </p>
         </BoxInfoMainContainer>
       </BoxInfoContainer>

@@ -166,7 +166,7 @@ const NftBoxDetail = () => {
         <BoxDetailContainer>
           <GradientBack />
           <BoxContainerLeft>
-            <BoxContainerComponent boxTitle="NonFungiblePlayer" boxImage="misterybox360cow.low.gif" />
+            <BoxContainerComponent boxTitle="NonFungiblePlayer" boxImage="Player_box_3.gif" />
           </BoxContainerLeft>
           <BoxContainerRight>
             <BoxBuyDetailComponent />
