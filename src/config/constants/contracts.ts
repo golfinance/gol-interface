@@ -101,7 +101,7 @@ export default {
     97: '0x8d4dec2E61a8BA0B79FFF3523738cBc33789BC08'
   },
   market:{
-    56: '0x',
+    56: '0xF9cFB63F143278a37A31FEEAfD0C525B39e2Cf1E',
     97: '0xF9cFB63F143278a37A31FEEAfD0C525B39e2Cf1E'
   },
   genesis:{
@@ -109,7 +109,7 @@ export default {
     97: '0x06337dd5ccD59AfBFBACBE9638cfE8a57A9fdc04'
   },
   staking:{
-    56: '0x',
+    56: '0xCf1d3f76FEcD517AeE7f518f059f2C6D0a3aA5f9',
     97: '0xCf1d3f76FEcD517AeE7f518f059f2C6D0a3aA5f9'
   }
 }
