@@ -37,14 +37,6 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     ],
   },
   {
-    label: t('NFT Box'),
-    href: '/nft-box',
-    icon: 'Earn',
-    showItemsOnMobile: false,
-    showOnMobile: true,
-    items: [],
-  },
-  {
     label: t('Marketplace'),
     href: '/nft-marketplace',
     icon: 'Earn',
