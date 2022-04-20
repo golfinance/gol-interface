@@ -94,7 +94,7 @@ export default {
   },
   nonFungiblePlayer: {
     56: '0x',
-    97: '0x96bb623E0A649bE4259fE1dAF3b3b7774e61Cf4A'
+    97: '0x8327673dF57ABA541Fd0132005fA5E83d670b0ab'
   },
   golToken: {
     56: '0x',
