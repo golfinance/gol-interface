@@ -93,11 +93,11 @@ export default {
     97: '0xEf12ef570300bFA65c4F022deAaA3dfF4f5d5c91',
   },
   nonFungiblePlayer: {
-    56: '0x',
+    56: '0x96bb623E0A649bE4259fE1dAF3b3b7774e61Cf4A',
     97: '0x96bb623E0A649bE4259fE1dAF3b3b7774e61Cf4A'
   },
   golToken: {
-    56: '0x',
+    56: '0x8d4dec2E61a8BA0B79FFF3523738cBc33789BC08',
     97: '0x8d4dec2E61a8BA0B79FFF3523738cBc33789BC08'
   },
   market:{
