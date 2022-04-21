@@ -105,7 +105,7 @@ export default {
     97: '0xF9cFB63F143278a37A31FEEAfD0C525B39e2Cf1E'
   },
   genesis:{
-    56: '0x',
+    56: '0xF5db804101d8600c26598A1Ba465166c33CdAA4b',
     97: '0x06337dd5ccD59AfBFBACBE9638cfE8a57A9fdc04'
   },
   staking:{
