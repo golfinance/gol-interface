@@ -44,11 +44,11 @@ const MyNfts = () => {
 
   const getTokenHashes = useCallback(async () => {
     const tmpMyTokens = []
-    const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
     const tokenIds = []
-    _.map(nfpTokens, (itm) => {
-      tokenIds.push({ tokenId: itm, isAIR: false })
-    })
+    // const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
+    // _.map(nfpTokens, (itm) => {
+    //   tokenIds.push({ tokenId: itm, isAIR: false })
+    // })
 
     // retrieve my nft from air
     const airNftOwners = []

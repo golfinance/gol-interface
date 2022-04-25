@@ -8,6 +8,9 @@ declare module 'styled-components' {
 }
 
 const GlobalStyle = createGlobalStyle`
+  #root {
+    position: relative;
+  }
   * {
     font-family: 'Poppins', sans-serif;
   }

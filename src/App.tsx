@@ -81,9 +81,9 @@ const App: React.FC = () => {
 
   return (
     <Router history={history}>
+      {loading && <BackLoader />}
       <ResetCSS />
       <GlobalStyle />
-      {loading && <BackLoader />}
       <GlobalCheckClaimStatus excludeLocations={[]} />
       <Menu>
         <SuspenseWithChunkError fallback={<PageLoader />}>
