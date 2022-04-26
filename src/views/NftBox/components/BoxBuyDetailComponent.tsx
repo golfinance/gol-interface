@@ -69,6 +69,7 @@ const BoxBuyDetailComponent = () => {
       const web3 = new Web3(Web3.givenProvider)
       const nfpContract = new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())
       const amount = await nfpContract.methods.totalSupply().call()
+      console.log('Amount: ', amount)
       const tmpPrice = await nfpContract.methods.price().call()
       setPrice(tmpPrice)
       setMintedAmount(parseInt(amount))

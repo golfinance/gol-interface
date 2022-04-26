@@ -115,5 +115,9 @@ export default {
   bsud: {
     56: '0x',
     97: '0x1B92f86093C784CFE259F092BCA41C1Fc3Bb99F2'
+  },
+  training: {
+    56: '0x1',
+    97: '0x0E67B7351bb423C484a11F9Ee18c6E65393753dD'
   }
 }
