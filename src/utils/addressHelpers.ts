@@ -91,3 +91,6 @@ export const getStakingAddress = () => {
 export const getTrainingAddress = () => {
   return getAddress(addresses.training)
 }
+export const getBusdAddress = () => {
+  return getAddress(addresses.busd)
+}

@@ -112,7 +112,7 @@ export default {
     56: '0x',
     97: '0x1A3b2671a86944e2C038b1f4F08bFb4eC09430f4'
   },
-  bsud: {
+  busd: {
     56: '0x',
     97: '0x1B92f86093C784CFE259F092BCA41C1Fc3Bb99F2'
   },

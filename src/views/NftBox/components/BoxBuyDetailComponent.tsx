@@ -4,11 +4,11 @@ import toast from 'react-hot-toast'
 import { Button } from '@pancakeswap-libs/uikit'
 import { useWeb3React } from '@web3-react/core'
 import NonFungiblePlayer from 'config/abi/NonFungiblePlayer.json'
-import GolToken from 'config/abi/GolToken.json'
+import Busd from 'config/abi/Busd.json'
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import { toWei, AbiItem, toBN } from 'web3-utils'
 import { LoadingContext } from 'contexts/LoadingContext'
-import { getNonFungiblePlayerAddress, getGolTokenAddress } from 'utils/addressHelpers'
+import { getNonFungiblePlayerAddress, getBusdAddress } from 'utils/addressHelpers'
 import Web3 from 'web3'
 import useTheme from 'hooks/useTheme'
 
@@ -95,10 +95,10 @@ const BoxBuyDetailComponent = () => {
     const priceWei = toWei(toBN('10000000000000000000000000000000000000000'), 'ether')
     const web3 = new Web3(Web3.givenProvider)
     const nfpContract = new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())
-    const golTokenContract = new web3.eth.Contract(GolToken.abi as AbiItem[], getGolTokenAddress())
-    const allowance = await golTokenContract.methods.allowance(account, getNonFungiblePlayerAddress()).call()
+    const busdContract = new web3.eth.Contract(Busd.abi as AbiItem[], getBusdAddress())
+    const allowance = await busdContract.methods.allowance(account, getNonFungiblePlayerAddress()).call()
     if (parseInt(allowance.toString()) < parseInt(price))
-      await golTokenContract.methods.approve(getNonFungiblePlayerAddress(), priceWei).send({ from: account })
+      await busdContract.methods.approve(getNonFungiblePlayerAddress(), priceWei).send({ from: account })
 
     try {
       await nfpContract.methods
