@@ -7,7 +7,7 @@ import { AbiItem } from 'web3-utils'
 import { useWeb3React } from '@web3-react/core'
 import { StakeContext } from 'contexts/StakeContext'
 import { getTrainingAddress } from 'utils/addressHelpers'
-import { TrainingLevel, TotalStaked } from './StaticComponents'
+import { TrainingLevel, TotalStaked, TrainingInfo } from './StaticComponents'
 
 const StaticInfoCard = styled(BaseLayout)`
   ${({ theme }) => theme.mediaQueries.xs} {
@@ -21,6 +21,21 @@ const StaticInfoCard = styled(BaseLayout)`
   }
   width: 100%;
 `
+
+const StaticInfoRuleCard = styled(BaseLayout)`
+  padding-top: 15px;
+  width: 80%;
+  ${({ theme }) => theme.mediaQueries.xs} {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  ${({ theme }) => theme.mediaQueries.sm} {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`
+
 const BoxShadow = styled.div`
   background: #27262c;
   box-shadow: 0px 2px 12px -8px rgba(203, 203, 203, 0.7), 0px 1px 1px rgba(203, 203, 203, 0.05);
@@ -67,6 +82,11 @@ const StatisticsInfo = () => {
             <TotalStaked totalStakedCount={poolInfo.totalStakedCount} />
           </InfoWrapper>
         </StaticInfoCard>
+        <StaticInfoRuleCard>
+          <InfoWrapper>
+            <TrainingInfo />
+          </InfoWrapper>
+        </StaticInfoRuleCard>
       </Flex>
     </BoxShadow>
   )
