@@ -66,7 +66,7 @@ const airnftContract = new web3.eth.Contract(AirNfts.abi as AbiItem[], getAirNft
 const StakeItem = ({ data, index }) => {
   const { account } = useWeb3React()
   const { setLoading } = useContext(LoadingContext)
-  const { appendCandidate, initMyNFTS, initSelectedNFTs } = useContext(StakeContext)
+  const { initMyNFTS, initSelectedNFTs } = useContext(StakeContext)
 
   const [golPower, setGolPower] = useState(0)
 

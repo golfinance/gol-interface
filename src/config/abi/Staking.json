@@ -1082,7 +1082,7 @@
                 }
               ]
             },
-            "name": "abi_decode_tuple_t_contract$_IGolToken_$7836_fromMemory",
+            "name": "abi_decode_tuple_t_contract$_IGolToken_$8083_fromMemory",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -1110,7 +1110,7 @@
           }
         ]
       },
-      "contents": "{\n    { }\n    function abi_decode_tuple_t_contract$_IGolToken_$7836_fromMemory(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(value0, value0) }\n        let value := mload(headStart)\n        if iszero(eq(value, and(value, sub(exp(2, 160), 1)))) { revert(value0, value0) }\n        value0 := value\n    }\n}",
+      "contents": "{\n    { }\n    function abi_decode_tuple_t_contract$_IGolToken_$8083_fromMemory(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(value0, value0) }\n        let value := mload(headStart)\n        if iszero(eq(value, and(value, sub(exp(2, 160), 1)))) { revert(value0, value0) }\n        value0 := value\n    }\n}",
       "id": 26,
       "language": "Yul",
       "name": "#utility.yul"
@@ -12292,7 +12292,7 @@
         1526
       ],
       "IGolToken": [
-        7836
+        8083
       ],
       "Ownable": [
         486
@@ -12377,7 +12377,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 7212,
-        "sourceUnit": 7837,
+        "sourceUnit": 8084,
         "src": "289:36:21",
         "symbolAliases": [],
         "unitAlias": ""
@@ -13561,7 +13561,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IGolToken_$7836",
+              "typeIdentifier": "t_contract$_IGolToken_$8083",
               "typeString": "contract IGolToken"
             },
             "typeName": {
@@ -13571,13 +13571,13 @@
                 "id": 5774,
                 "name": "IGolToken",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 7836,
+                "referencedDeclaration": 8083,
                 "src": "1687:9:21"
               },
-              "referencedDeclaration": 7836,
+              "referencedDeclaration": 8083,
               "src": "1687:9:21",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IGolToken_$7836",
+                "typeIdentifier": "t_contract$_IGolToken_$8083",
                 "typeString": "contract IGolToken"
               }
             },
@@ -13833,7 +13833,7 @@
                       "referencedDeclaration": 5776,
                       "src": "1996:8:21",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IGolToken_$7836",
+                        "typeIdentifier": "t_contract$_IGolToken_$8083",
                         "typeString": "contract IGolToken"
                       }
                     },
@@ -13847,13 +13847,13 @@
                       "referencedDeclaration": 5797,
                       "src": "2007:9:21",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IGolToken_$7836",
+                        "typeIdentifier": "t_contract$_IGolToken_$8083",
                         "typeString": "contract IGolToken"
                       }
                     },
                     "src": "1996:20:21",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IGolToken_$7836",
+                      "typeIdentifier": "t_contract$_IGolToken_$8083",
                       "typeString": "contract IGolToken"
                     }
                   },
@@ -14074,7 +14074,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IGolToken_$7836",
+                    "typeIdentifier": "t_contract$_IGolToken_$8083",
                     "typeString": "contract IGolToken"
                   },
                   "typeName": {
@@ -14084,13 +14084,13 @@
                       "id": 5795,
                       "name": "IGolToken",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 7836,
+                      "referencedDeclaration": 8083,
                       "src": "1964:9:21"
                     },
-                    "referencedDeclaration": 7836,
+                    "referencedDeclaration": 8083,
                     "src": "1964:9:21",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IGolToken_$7836",
+                      "typeIdentifier": "t_contract$_IGolToken_$8083",
                       "typeString": "contract IGolToken"
                     }
                   },
@@ -14178,7 +14178,7 @@
                               "referencedDeclaration": 5776,
                               "src": "2349:8:21",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IGolToken_$7836",
+                                "typeIdentifier": "t_contract$_IGolToken_$8083",
                                 "typeString": "contract IGolToken"
                               }
                             },
@@ -14189,7 +14189,7 @@
                             "lValueRequested": false,
                             "memberName": "balanceOf",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 7775,
+                            "referencedDeclaration": 8022,
                             "src": "2349:18:21",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -14779,7 +14779,7 @@
                         "referencedDeclaration": 5776,
                         "src": "2701:8:21",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IGolToken_$7836",
+                          "typeIdentifier": "t_contract$_IGolToken_$8083",
                           "typeString": "contract IGolToken"
                         }
                       },
@@ -14790,7 +14790,7 @@
                       "lValueRequested": false,
                       "memberName": "transferFrom",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 7817,
+                      "referencedDeclaration": 8064,
                       "src": "2701:21:21",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -15370,7 +15370,7 @@
                               "referencedDeclaration": 5776,
                               "src": "3195:8:21",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IGolToken_$7836",
+                                "typeIdentifier": "t_contract$_IGolToken_$8083",
                                 "typeString": "contract IGolToken"
                               }
                             },
@@ -15381,7 +15381,7 @@
                             "lValueRequested": false,
                             "memberName": "balanceOf",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 7775,
+                            "referencedDeclaration": 8022,
                             "src": "3195:18:21",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -16425,7 +16425,7 @@
                         "referencedDeclaration": 5776,
                         "src": "3650:8:21",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IGolToken_$7836",
+                          "typeIdentifier": "t_contract$_IGolToken_$8083",
                           "typeString": "contract IGolToken"
                         }
                       },
@@ -16436,7 +16436,7 @@
                       "lValueRequested": false,
                       "memberName": "transferFrom",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 7817,
+                      "referencedDeclaration": 8064,
                       "src": "3650:21:21",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -25779,7 +25779,7 @@
                               "referencedDeclaration": 5776,
                               "src": "10438:8:21",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IGolToken_$7836",
+                                "typeIdentifier": "t_contract$_IGolToken_$8083",
                                 "typeString": "contract IGolToken"
                               }
                             },
@@ -25790,7 +25790,7 @@
                             "lValueRequested": false,
                             "memberName": "balanceOf",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 7775,
+                            "referencedDeclaration": 8022,
                             "src": "10438:18:21",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -26090,7 +26090,7 @@
                         "referencedDeclaration": 5776,
                         "src": "10573:8:21",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IGolToken_$7836",
+                          "typeIdentifier": "t_contract$_IGolToken_$8083",
                           "typeString": "contract IGolToken"
                         }
                       },
@@ -26101,7 +26101,7 @@
                       "lValueRequested": false,
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 7785,
+                      "referencedDeclaration": 8032,
                       "src": "10573:17:21",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -31668,7 +31668,7 @@
                         "referencedDeclaration": 5776,
                         "src": "14424:8:21",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IGolToken_$7836",
+                          "typeIdentifier": "t_contract$_IGolToken_$8083",
                           "typeString": "contract IGolToken"
                         }
                       },
@@ -31679,7 +31679,7 @@
                       "lValueRequested": false,
                       "memberName": "balanceOf",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 7775,
+                      "referencedDeclaration": 8022,
                       "src": "14424:18:21",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -31769,7 +31769,7 @@
                         "referencedDeclaration": 5776,
                         "src": "14468:8:21",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IGolToken_$7836",
+                          "typeIdentifier": "t_contract$_IGolToken_$8083",
                           "typeString": "contract IGolToken"
                         }
                       },
@@ -31780,7 +31780,7 @@
                       "lValueRequested": false,
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 7785,
+                      "referencedDeclaration": 8032,
                       "src": "14468:17:21",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -31934,7 +31934,7 @@
         1526
       ],
       "IGolToken": [
-        7836
+        8083
       ],
       "Ownable": [
         486
@@ -32019,7 +32019,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 7212,
-        "sourceUnit": 7837,
+        "sourceUnit": 8084,
         "src": "289:36:21",
         "symbolAliases": [],
         "unitAlias": ""
@@ -33203,7 +33203,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IGolToken_$7836",
+              "typeIdentifier": "t_contract$_IGolToken_$8083",
               "typeString": "contract IGolToken"
             },
             "typeName": {
@@ -33213,13 +33213,13 @@
                 "id": 5774,
                 "name": "IGolToken",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 7836,
+                "referencedDeclaration": 8083,
                 "src": "1687:9:21"
               },
-              "referencedDeclaration": 7836,
+              "referencedDeclaration": 8083,
               "src": "1687:9:21",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IGolToken_$7836",
+                "typeIdentifier": "t_contract$_IGolToken_$8083",
                 "typeString": "contract IGolToken"
               }
             },
@@ -33475,7 +33475,7 @@
                       "referencedDeclaration": 5776,
                       "src": "1996:8:21",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IGolToken_$7836",
+                        "typeIdentifier": "t_contract$_IGolToken_$8083",
                         "typeString": "contract IGolToken"
                       }
                     },
@@ -33489,13 +33489,13 @@
                       "referencedDeclaration": 5797,
                       "src": "2007:9:21",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IGolToken_$7836",
+                        "typeIdentifier": "t_contract$_IGolToken_$8083",
                         "typeString": "contract IGolToken"
                       }
                     },
                     "src": "1996:20:21",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IGolToken_$7836",
+                      "typeIdentifier": "t_contract$_IGolToken_$8083",
                       "typeString": "contract IGolToken"
                     }
                   },
@@ -33716,7 +33716,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IGolToken_$7836",
+                    "typeIdentifier": "t_contract$_IGolToken_$8083",
                     "typeString": "contract IGolToken"
                   },
                   "typeName": {
@@ -33726,13 +33726,13 @@
                       "id": 5795,
                       "name": "IGolToken",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 7836,
+                      "referencedDeclaration": 8083,
                       "src": "1964:9:21"
                     },
-                    "referencedDeclaration": 7836,
+                    "referencedDeclaration": 8083,
                     "src": "1964:9:21",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IGolToken_$7836",
+                      "typeIdentifier": "t_contract$_IGolToken_$8083",
                       "typeString": "contract IGolToken"
                     }
                   },
@@ -33820,7 +33820,7 @@
                               "referencedDeclaration": 5776,
                               "src": "2349:8:21",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IGolToken_$7836",
+                                "typeIdentifier": "t_contract$_IGolToken_$8083",
                                 "typeString": "contract IGolToken"
                               }
                             },
@@ -33831,7 +33831,7 @@
                             "lValueRequested": false,
                             "memberName": "balanceOf",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 7775,
+                            "referencedDeclaration": 8022,
                             "src": "2349:18:21",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -34421,7 +34421,7 @@
                         "referencedDeclaration": 5776,
                         "src": "2701:8:21",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IGolToken_$7836",
+                          "typeIdentifier": "t_contract$_IGolToken_$8083",
                           "typeString": "contract IGolToken"
                         }
                       },
@@ -34432,7 +34432,7 @@
                       "lValueRequested": false,
                       "memberName": "transferFrom",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 7817,
+                      "referencedDeclaration": 8064,
                       "src": "2701:21:21",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -35012,7 +35012,7 @@
                               "referencedDeclaration": 5776,
                               "src": "3195:8:21",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IGolToken_$7836",
+                                "typeIdentifier": "t_contract$_IGolToken_$8083",
                                 "typeString": "contract IGolToken"
                               }
                             },
@@ -35023,7 +35023,7 @@
                             "lValueRequested": false,
                             "memberName": "balanceOf",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 7775,
+                            "referencedDeclaration": 8022,
                             "src": "3195:18:21",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -36067,7 +36067,7 @@
                         "referencedDeclaration": 5776,
                         "src": "3650:8:21",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IGolToken_$7836",
+                          "typeIdentifier": "t_contract$_IGolToken_$8083",
                           "typeString": "contract IGolToken"
                         }
                       },
@@ -36078,7 +36078,7 @@
                       "lValueRequested": false,
                       "memberName": "transferFrom",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 7817,
+                      "referencedDeclaration": 8064,
                       "src": "3650:21:21",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -45421,7 +45421,7 @@
                               "referencedDeclaration": 5776,
                               "src": "10438:8:21",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IGolToken_$7836",
+                                "typeIdentifier": "t_contract$_IGolToken_$8083",
                                 "typeString": "contract IGolToken"
                               }
                             },
@@ -45432,7 +45432,7 @@
                             "lValueRequested": false,
                             "memberName": "balanceOf",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 7775,
+                            "referencedDeclaration": 8022,
                             "src": "10438:18:21",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -45732,7 +45732,7 @@
                         "referencedDeclaration": 5776,
                         "src": "10573:8:21",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IGolToken_$7836",
+                          "typeIdentifier": "t_contract$_IGolToken_$8083",
                           "typeString": "contract IGolToken"
                         }
                       },
@@ -45743,7 +45743,7 @@
                       "lValueRequested": false,
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 7785,
+                      "referencedDeclaration": 8032,
                       "src": "10573:17:21",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -51310,7 +51310,7 @@
                         "referencedDeclaration": 5776,
                         "src": "14424:8:21",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IGolToken_$7836",
+                          "typeIdentifier": "t_contract$_IGolToken_$8083",
                           "typeString": "contract IGolToken"
                         }
                       },
@@ -51321,7 +51321,7 @@
                       "lValueRequested": false,
                       "memberName": "balanceOf",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 7775,
+                      "referencedDeclaration": 8022,
                       "src": "14424:18:21",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -51411,7 +51411,7 @@
                         "referencedDeclaration": 5776,
                         "src": "14468:8:21",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IGolToken_$7836",
+                          "typeIdentifier": "t_contract$_IGolToken_$8083",
                           "typeString": "contract IGolToken"
                         }
                       },
@@ -51422,7 +51422,7 @@
                       "lValueRequested": false,
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 7785,
+                      "referencedDeclaration": 8032,
                       "src": "14468:17:21",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -51640,7 +51640,7 @@
     }
   },
   "schemaVersion": "3.4.5",
-  "updatedAt": "2022-04-20T15:42:28.020Z",
+  "updatedAt": "2022-04-27T01:17:02.243Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

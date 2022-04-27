@@ -77,6 +77,23 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     showOnMobile: true,
     items: [],
   },
+  {
+    label: t('Game'),
+    href: '/game-training',
+    icon: 'Earn',
+    showItemsOnMobile: false,
+    showOnMobile: true,
+    items: [
+      {
+        label: t('Training'),
+        href: '/game-training'
+      },
+      {
+        label: t('Fusion'),
+        href: '/game-fusion'
+      },
+    ]
+  },
   // {
   //   label: t('Win'),
   //   href: '/prediction',

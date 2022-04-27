@@ -4182,7 +4182,7 @@
         3881
       ],
       "IGolToken": [
-        7836
+        8083
       ]
     },
     "id": 3882,
@@ -4219,7 +4219,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 3882,
-        "sourceUnit": 7837,
+        "sourceUnit": 8084,
         "src": "113:36:18",
         "symbolAliases": [],
         "unitAlias": ""
@@ -4244,7 +4244,7 @@
               "id": 3461,
               "name": "IGolToken",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 7836,
+              "referencedDeclaration": 8083,
               "src": "183:9:18"
             },
             "id": 3462,
@@ -4258,7 +4258,7 @@
         "id": 3881,
         "linearizedBaseContracts": [
           3881,
-          7836,
+          8083,
           1998
         ],
         "name": "GolToken",
@@ -4928,7 +4928,7 @@
           },
           {
             "baseFunctions": [
-              7755
+              8002
             ],
             "body": {
               "id": 3524,
@@ -5023,7 +5023,7 @@
           },
           {
             "baseFunctions": [
-              7761
+              8008
             ],
             "body": {
               "id": 3534,
@@ -5118,7 +5118,7 @@
           },
           {
             "baseFunctions": [
-              7767
+              8014
             ],
             "body": {
               "id": 3544,
@@ -5213,7 +5213,7 @@
           },
           {
             "baseFunctions": [
-              7749
+              7996
             ],
             "body": {
               "id": 3554,
@@ -5308,7 +5308,7 @@
           },
           {
             "baseFunctions": [
-              7775
+              8022
             ],
             "body": {
               "id": 3568,
@@ -5457,7 +5457,7 @@
           },
           {
             "baseFunctions": [
-              7785
+              8032
             ],
             "body": {
               "id": 3589,
@@ -5715,7 +5715,7 @@
           },
           {
             "baseFunctions": [
-              7795
+              8042
             ],
             "body": {
               "id": 3607,
@@ -5917,7 +5917,7 @@
           },
           {
             "baseFunctions": [
-              7805
+              8052
             ],
             "body": {
               "id": 3628,
@@ -6175,7 +6175,7 @@
           },
           {
             "baseFunctions": [
-              7817
+              8064
             ],
             "body": {
               "id": 3665,
@@ -8142,7 +8142,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 7826,
+                      "referencedDeclaration": 8073,
                       "src": "5499:8:18",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -8748,7 +8748,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 7826,
+                      "referencedDeclaration": 8073,
                       "src": "6145:8:18",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -9329,7 +9329,7 @@
                       "name": "Approval",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 7835,
+                      "referencedDeclaration": 8082,
                       "src": "6972:8:18",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -9490,7 +9490,7 @@
         3881
       ],
       "IGolToken": [
-        7836
+        8083
       ]
     },
     "id": 3882,
@@ -9527,7 +9527,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 3882,
-        "sourceUnit": 7837,
+        "sourceUnit": 8084,
         "src": "113:36:18",
         "symbolAliases": [],
         "unitAlias": ""
@@ -9552,7 +9552,7 @@
               "id": 3461,
               "name": "IGolToken",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 7836,
+              "referencedDeclaration": 8083,
               "src": "183:9:18"
             },
             "id": 3462,
@@ -9566,7 +9566,7 @@
         "id": 3881,
         "linearizedBaseContracts": [
           3881,
-          7836,
+          8083,
           1998
         ],
         "name": "GolToken",
@@ -10236,7 +10236,7 @@
           },
           {
             "baseFunctions": [
-              7755
+              8002
             ],
             "body": {
               "id": 3524,
@@ -10331,7 +10331,7 @@
           },
           {
             "baseFunctions": [
-              7761
+              8008
             ],
             "body": {
               "id": 3534,
@@ -10426,7 +10426,7 @@
           },
           {
             "baseFunctions": [
-              7767
+              8014
             ],
             "body": {
               "id": 3544,
@@ -10521,7 +10521,7 @@
           },
           {
             "baseFunctions": [
-              7749
+              7996
             ],
             "body": {
               "id": 3554,
@@ -10616,7 +10616,7 @@
           },
           {
             "baseFunctions": [
-              7775
+              8022
             ],
             "body": {
               "id": 3568,
@@ -10765,7 +10765,7 @@
           },
           {
             "baseFunctions": [
-              7785
+              8032
             ],
             "body": {
               "id": 3589,
@@ -11023,7 +11023,7 @@
           },
           {
             "baseFunctions": [
-              7795
+              8042
             ],
             "body": {
               "id": 3607,
@@ -11225,7 +11225,7 @@
           },
           {
             "baseFunctions": [
-              7805
+              8052
             ],
             "body": {
               "id": 3628,
@@ -11483,7 +11483,7 @@
           },
           {
             "baseFunctions": [
-              7817
+              8064
             ],
             "body": {
               "id": 3665,
@@ -13450,7 +13450,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 7826,
+                      "referencedDeclaration": 8073,
                       "src": "5499:8:18",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -14056,7 +14056,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 7826,
+                      "referencedDeclaration": 8073,
                       "src": "6145:8:18",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -14637,7 +14637,7 @@
                       "name": "Approval",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 7835,
+                      "referencedDeclaration": 8082,
                       "src": "6972:8:18",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -14807,7 +14807,7 @@
     }
   },
   "schemaVersion": "3.4.5",
-  "updatedAt": "2022-04-20T15:43:31.216Z",
+  "updatedAt": "2022-04-27T01:18:01.913Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

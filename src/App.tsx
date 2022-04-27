@@ -60,6 +60,7 @@ const MyNftsDetail = lazy(() => import('./views/MyNfts/MyNftsDeatail'))
 const NftBox = lazy(() => import('./views/NftBox'))
 const NftBoxDetail = lazy(() => import('./views/NftBox/NftBoxDetail'))
 const Stakes = lazy(() => import('./views/Stakes'))
+const Training = lazy(() => import('./views/Training'))
 const ProfileCreation = lazy(() => import('./views/ProfileCreation'))
 const PancakeSquad = lazy(() => import('./views/PancakeSquad'))
 
@@ -165,6 +166,14 @@ const App: React.FC = () => {
             </Route>
 
             <Route path="/nft-staking/:index">
+              <Stakes />
+            </Route>
+
+            <Route exact path="/game-training">
+              <Training />
+            </Route>
+
+            <Route exact path="/game-fusion">
               <Stakes />
             </Route>
 
