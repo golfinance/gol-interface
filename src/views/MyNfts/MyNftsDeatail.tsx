@@ -110,7 +110,7 @@ const MyNftsDeatail = () => {
           My NFT Detail
         </Heading>
       </StyledHero>
-      <MyNftDetailHeader collectionName={isAIR ? 'Air NFT' : 'NonFungiblePlayer'} />
+      <MyNftDetailHeader collectionName={isAIR ? 'Gol Genesis NFT' : 'NonFungiblePlayer'} />
       <NftDetailContainer>
         <MyNftData myToken={myToken} />
       </NftDetailContainer>
