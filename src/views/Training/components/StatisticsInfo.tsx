@@ -59,13 +59,24 @@ const StatisticsInfo = () => {
   const [poolInfo, setPoolInfo] = useState({
     trainingLevel: 0,
     totalStakedCount: 0,
+    updateTrainingLevelFee: 0,
+    updateHour: 0,
   })
 
   const fetchInfo = useCallback(async () => {
     const tmpTrainingLevel = await trainingContract.methods.trainingLevel(account).call()
-    console.log(poolInfo.trainingLevel)
-    setPoolInfo({ trainingLevel: tmpTrainingLevel, totalStakedCount: selectedNFTS.length })
-  }, [account, selectedNFTS, poolInfo])
+    const tmpUpdateTrainingLevelFee = await trainingContract.methods.updateTrainingLevelFee().call()
+    const maxStakedBlock = await trainingContract.methods.maxStakedBlock().call()
+
+    const hour = (parseInt(maxStakedBlock.toString()) * 3) / 999 / 3600
+    const feeToString = tmpUpdateTrainingLevelFee.toString()
+    setPoolInfo({
+      trainingLevel: tmpTrainingLevel,
+      totalStakedCount: selectedNFTS.length,
+      updateTrainingLevelFee: feeToString,
+      updateHour: hour,
+    })
+  }, [account, selectedNFTS])
 
   useEffect(() => {
     fetchInfo()
@@ -84,7 +95,7 @@ const StatisticsInfo = () => {
         </StaticInfoCard>
         <StaticInfoRuleCard>
           <InfoWrapper>
-            <TrainingInfo />
+            <TrainingInfo updateTrainingLevelFee={poolInfo.updateTrainingLevelFee} updateHour={poolInfo.updateHour} />
           </InfoWrapper>
         </StaticInfoRuleCard>
       </Flex>
