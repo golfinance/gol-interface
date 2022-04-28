@@ -66,7 +66,7 @@ const TrainingLevel = ({ trainingLevel }) => {
             width: '120px',
           }}
         >
-          Update Level
+          Upgrade Level
         </Button>
       </Flex>
       <Flex mt="12px">
