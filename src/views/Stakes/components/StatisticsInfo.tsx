@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Flex, BaseLayout } from '@pancakeswap-libs/uikit'
 import Staking from 'config/abi/Staking.json'
-import { getStakingAddress } from 'utils/addressHelpers'
+import { getStakingAddress, getAirNftAddress } from 'utils/addressHelpers'
 import Web3 from 'web3'
 import { AbiItem } from 'web3-utils'
 import { useWeb3React } from '@web3-react/core'
@@ -39,12 +39,13 @@ const StatisticsInfo = ({ index }) => {
   })
 
   const fetchInfo = useCallback(async () => {
-    const pendingGol = await stakingContract.methods.getPendingGol(index, account).call()
-    const pool = await stakingContract.methods.pools(index).call()
+    const poolId = await stakingContract.methods.poolIdOfContract(getAirNftAddress()).call()
+    const pendingGol = await stakingContract.methods.getPendingGol(poolId.toString(), account).call()
+    const pool = await stakingContract.methods.pools(poolId.toString()).call()
     const totalStkCount = pool.stakedCount
-    const tmpTotalGolToken = await stakingContract.methods.getTotalGolPower(index).call()
-    const tmpMyGolPower = await stakingContract.methods.getMyGolPower(index, account).call()
-    const tmpDailyGolRate = await stakingContract.methods.getDailyGolRate(index).call()
+    const tmpTotalGolToken = await stakingContract.methods.getTotalGolPower(poolId.toString()).call()
+    const tmpMyGolPower = await stakingContract.methods.getMyGolPower(poolId.toString(), account).call()
+    const tmpDailyGolRate = await stakingContract.methods.getDailyGolRate(poolId.toString()).call()
     setPoolInfo({
       rewardAllGol: pendingGol,
       totalStakedCount: totalStkCount,
@@ -53,7 +54,7 @@ const StatisticsInfo = ({ index }) => {
       myGolPower: tmpMyGolPower,
       dailyGolRate: tmpDailyGolRate,
     })
-  }, [account, selectedNFTS, index])
+  }, [account, selectedNFTS])
 
   useEffect(() => {
     fetchInfo()
