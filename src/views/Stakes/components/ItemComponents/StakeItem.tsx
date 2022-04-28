@@ -117,10 +117,11 @@ const StakeItem = ({ data, index }) => {
   }, [data])
 
   const fetchGolPower = useCallback(async () => {
-    const poolInfo = await stakingContract.methods.pools(index).call()
+    const poolId = await stakingContract.methods.poolIdOfContract(getAirNftAddress()).call()
+    const poolInfo = await stakingContract.methods.pools(poolId.toString()).call()
     const tmpGolPower = poolInfo.golPower
     setGolPower(tmpGolPower)
-  }, [index])
+  }, [])
   useEffect(() => {
     fetchNft()
     fetchGolPower()
