@@ -75,7 +75,8 @@ const MyNftsDeatail = () => {
     let currentIndex = 0
     for (let i = 0; i < items.length; i++) {
       if (items[i].isSold === false) {
-        tokenIds.push({ tokenId: items[i].tokenId, isAIR: false })
+        if (items[i].nftContract === getAirNftAddress()) tokenIds.push({ tokenId: items[i].tokenId, isAIR: true })
+        else tokenIds.push({ tokenId: items[i].tokenId, isAIR: false })
         if (!tmpMyTokens[currentIndex + tokenIdLength]) tmpMyTokens[currentIndex + tokenIdLength] = {}
         tmpMyTokens[currentIndex + tokenIdLength].itemId = items[i].itemId
         currentIndex++
@@ -84,8 +85,9 @@ const MyNftsDeatail = () => {
 
     const myTokenHashes = []
     for (let i = 0; i < tokenIds.length; i++) {
-      if (!tokenIds[i].isAIR) myTokenHashes.push(nfpContract.methods.tokenURI(tokenIds[i].tokenId).call())
-      else myTokenHashes.push(airnftContract.methods.tokenURI(tokenIds[i].tokenId).call())
+      // if (!tokenIds[i].isAIR) myTokenHashes.push(nfpContract.methods.tokenURI(tokenIds[i].tokenId).call())
+      // else myTokenHashes.push(airnftContract.methods.tokenURI(tokenIds[i].tokenId).call())
+      myTokenHashes.push(airnftContract.methods.tokenURI(tokenIds[i].tokenId).call())
     }
     const result = await Promise.all(myTokenHashes)
 
@@ -98,7 +100,7 @@ const MyNftsDeatail = () => {
 
     setIsAIR(tmpMyTokens[myTokenId].isAIR)
     setMyToken(tmpMyTokens[myTokenId])
-  }, [account, nfpContract, marketContract, myTokenId, airnftContract])
+  }, [account, marketContract, myTokenId, airnftContract])
   useEffect(() => {
     getTokenHashes()
   }, [getTokenHashes])

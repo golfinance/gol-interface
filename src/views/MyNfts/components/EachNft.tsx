@@ -138,6 +138,7 @@ const EachNft = ({ eachMyToken }: EachNftInterface) => {
       const res = await fetch(eachMyToken.tokenHash)
       const json = await res.json()
       let imageUrl = json.image
+      console.log(imageUrl)
       if (!eachMyToken.isAIR) {
         imageUrl = imageUrl.slice(7)
         setImageIpfsHash(`${PINATA_BASE_URI}${imageUrl}`)

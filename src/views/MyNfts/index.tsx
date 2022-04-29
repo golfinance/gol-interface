@@ -55,6 +55,7 @@ const MyNfts = () => {
     _.map(airNFTs, (nft) => {
       airNftOwners.push(airnftContract.methods.ownerOf(nft).call())
     })
+
     const owners = await Promise.all(airNftOwners)
     _.map(owners, (owner, idx) => {
       if (owner !== account) return
@@ -71,7 +72,8 @@ const MyNfts = () => {
     let currentIndex = 0
     for (let i = 0; i < items.length; i++) {
       if (items[i].isSold === false) {
-        tokenIds.push({ tokenId: items[i].tokenId, isAIR: false })
+        if (items[i].nftContract === getAirNftAddress()) tokenIds.push({ tokenId: items[i].tokenId, isAIR: true })
+        else tokenIds.push({ tokenId: items[i].tokenId, isAIR: false })
         if (!tmpMyTokens[currentIndex + tokenIdLength]) tmpMyTokens[currentIndex + tokenIdLength] = {}
         tmpMyTokens[currentIndex + tokenIdLength].itemId = items[i].itemId
         currentIndex++
@@ -80,11 +82,11 @@ const MyNfts = () => {
 
     const myTokenHashes = []
     for (let i = 0; i < tokenIds.length; i++) {
-      if (!tokenIds[i].isAIR) myTokenHashes.push(nfpContract.methods.tokenURI(tokenIds[i].tokenId).call())
-      else myTokenHashes.push(airnftContract.methods.tokenURI(tokenIds[i].tokenId).call())
+      // if (!tokenIds[i].isAIR) myTokenHashes.push(nfpContract.methods.tokenURI(tokenIds[i].tokenId).call())
+      // else myTokenHashes.push(airnftContract.methods.tokenURI(tokenIds[i].tokenId).call())
+      myTokenHashes.push(airnftContract.methods.tokenURI(tokenIds[i].tokenId).call())
     }
     const result = await Promise.all(myTokenHashes)
-
     for (let i = 0; i < tokenIds.length; i++) {
       if (!tmpMyTokens[i]) tmpMyTokens[i] = {}
       tmpMyTokens[i].tokenId = tokenIds[i].tokenId
@@ -92,7 +94,7 @@ const MyNfts = () => {
       tmpMyTokens[i].isAIR = tokenIds[i].isAIR
     }
     setMyTokens(tmpMyTokens)
-  }, [account, nfpContract, marketContract, airnftContract])
+  }, [account, marketContract, airnftContract])
   useEffect(() => {
     getTokenHashes()
   }, [getTokenHashes])
