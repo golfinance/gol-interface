@@ -561,6 +561,15 @@ export interface UserRound {
 
 export type UserTicketsResponse = [ethers.BigNumber[], number[], boolean[]]
 
+export interface SortOrderType {
+  field: string
+  direction: string
+}
+
+export interface MarketState {
+  sortOrder: SortOrderType
+  collectionType: SortOrderType
+}
 // Global state
 
 export interface State {
@@ -574,4 +583,5 @@ export interface State {
   voting: VotingState
   lottery: LotteryState
   nftMarket: NftMarketState
+  markets: MarketState
 }

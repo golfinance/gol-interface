@@ -37,9 +37,36 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     ],
   },
   {
+    label: t('Marketplace'),
+    href: '/nft-marketplace',
+    icon: 'Earn',
+    showItemsOnMobile: false,
+    showOnMobile: true,
+    items: [],
+  },
+  {
+    label: t('NFT Staking'),
+    href: '/nft-staking/1',
+    icon: 'Earn',
+    showItemsOnMobile: false,
+    showOnMobile: true,
+    items: [
+      {
+        label: t('NonFungiblePlayer'),
+        href: '/nft-staking/1'
+      },
+      {
+        label: t('Genesis'),
+        href: '/nft-staking/2'
+      },
+    ]
+  },
+  {
     label: t('Analytics'),
     icon: 'Info',
     href: '/info',
+    showItemsOnMobile: false,
+    showOnMobile: true,
     items: [],
   },
   // {

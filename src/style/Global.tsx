@@ -8,6 +8,9 @@ declare module 'styled-components' {
 }
 
 const GlobalStyle = createGlobalStyle`
+  #root {
+    position: relative;
+  }
   * {
     font-family: 'Poppins', sans-serif;
   }
@@ -18,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
       height: auto;
       max-width: 100%;
     }
+  }
+  .bqVoIi {
+    background: none;
+    backdrop-filter: none;
   }
 `
 
