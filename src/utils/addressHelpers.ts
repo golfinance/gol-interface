@@ -94,3 +94,6 @@ export const getTrainingAddress = () => {
 export const getBusdAddress = () => {
   return getAddress(addresses.busd)
 }
+export const getFusionAddress = () => {
+  return getAddress(addresses.fusion)
+}
