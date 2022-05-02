@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { StakeContext } from 'contexts/StakeContext'
@@ -32,9 +33,11 @@ const fusionContract = new web3.eth.Contract(Fusion.abi as AbiItem[], getFusionA
 const golTokenContract = new web3.eth.Contract(GolToken.abi as AbiItem[], getGolTokenAddress())
 
 const FusionContainer = () => {
-  const { selectedFirstNft, selectedSecondNft } = useContext(StakeContext)
-
   const { account } = useWeb3React()
+  const { initMyNFTS, initSelectedFirstNft, initSelectedSecondNft } = useContext(StakeContext)
+  const { setLoading } = useContext(LoadingContext)
+
+  const { selectedFirstNft, selectedSecondNft } = useContext(StakeContext)
 
   const [fusionAvailable, setFusionAvailable] = useState(false)
   const [tokenId1, setTokenId1] = useState(0)
@@ -66,15 +69,15 @@ const FusionContainer = () => {
   }, [selectedFirstNft, selectedSecondNft])
 
   const fusionNFP = async () => {
+    setLoading(true)
     console.log(tokenId1, tokenId2)
 
     const priceWei = toWei(toBN('10000000000000000000000000000000000000000'), 'ether')
     const allowance = await golTokenContract.methods.allowance(account, getFusionAddress()).call()
     const fusionFee = await fusionContract.methods.fusionFee().call()
-
-    if (parseInt(allowance.toString()) < parseInt(fusionFee) * 100000000000000000000)
+    if (parseInt(allowance.toString()) < parseInt(fusionFee) * 100000000000000000000) {
       await golTokenContract.methods.approve(getFusionAddress(), priceWei).send({ from: account })
-
+    }
     try {
       await fusionContract.methods
         .fusionNFPs(tokenId1, tokenId2)
@@ -90,6 +93,34 @@ const FusionContainer = () => {
       const { message } = err as Error
       toast.error(message)
     }
+
+    const tokenIds = []
+    const tmpMyTokens = []
+    const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
+    console.log('NFP Tokens: ', nfpTokens)
+    _.map(nfpTokens, (itm) => {
+      tokenIds.push({ tokenId: itm, isAIR: false })
+    })
+
+    const myTokenHashes = []
+    for (let i = 0; i < tokenIds.length; i++) {
+      myTokenHashes.push(nfpContract.methods.tokenURI(tokenIds[i].tokenId).call())
+    }
+
+    const result = await Promise.all(myTokenHashes)
+    for (let i = 0; i < tokenIds.length; i++) {
+      if (!tmpMyTokens[i]) tmpMyTokens[i] = {}
+      tmpMyTokens[i].tokenId = tokenIds[i].tokenId
+      tmpMyTokens[i].tokenHash = result[i]
+      tmpMyTokens[i].isAIR = tokenIds[i].isAIR
+      tmpMyTokens[i].contractAddress = getNonFungiblePlayerAddress()
+    }
+    initMyNFTS(tmpMyTokens)
+
+    // initSelectedFirstNft({ tokenId: 0, isAir: false })
+    // initSelectedSecondNft({ tokenId: 0, isAir: false })
+
+    setLoading(false)
   }
   return (
     <FusionControlContainer>
