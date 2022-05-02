@@ -94,7 +94,7 @@ export default {
   },
   nonFungiblePlayer: {
     56: '0x',
-    97: '0xD89fE1490c68f8a6BcE9aa3A8C6A39d50160b5bf'
+    97: '0xB0A5bd99821108a7eAA0fc24cA65dbEFad11b965'
   },
   golToken: {
     56: '0x',
@@ -122,6 +122,6 @@ export default {
   },
   fusion: {
     56: '0x1',
-    97: '0x427A9790c5C70F85Ae8a8E4071e14adDa7470096'
+    97: '0x91ff7Ea4355CC9E9b6811D90fb576fBEe6dcaC86'
   }
 }
