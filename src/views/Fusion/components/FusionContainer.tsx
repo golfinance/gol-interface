@@ -9,8 +9,6 @@ const FusionControlContainer = styled.div`
   align-items: center;
 `
 
-const GapAdjust = styled.div``
-
 const StakeItemEach = styled.div`
   width: 25%;
   @media (max-width: 500px) {
@@ -22,11 +20,11 @@ const FusionContainer = () => {
   return (
     <FusionControlContainer>
       <StakeItemEach>
-        <NewItem />
+        <NewItem index={1} />
       </StakeItemEach>
-      <Button style={{ width: '25%' }}>{`<=  Fusion  =>`}</Button>
+      <Button style={{ width: '25%' }}>Fusion</Button>
       <StakeItemEach>
-        <NewItem />
+        <NewItem index={2} />
       </StakeItemEach>
     </FusionControlContainer>
   )

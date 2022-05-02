@@ -6,7 +6,7 @@ import { Heading } from '@pancakeswap-libs/uikit'
 import Modal from 'react-modal'
 import FusionCandidate from './FusionCandidate'
 
-const SelectNFT = ({ isOpen, closeDialog, addNFTHandler }) => {
+const SelectNFT = ({ isOpen, closeDialog, index }) => {
   const { myNFTS } = useContext(StakeContext)
   const [modalIsOpen, setIsOpen] = useState(false)
   const closeModal = () => {
@@ -58,7 +58,7 @@ const SelectNFT = ({ isOpen, closeDialog, addNFTHandler }) => {
 
       <div style={{ display: 'flex', width: '100%', flexWrap: 'wrap', justifyContent: 'center' }}>
         {_.map(myNFTS, (nft) => (
-          <FusionCandidate data={nft} closeRequest={closeDialog} />
+          <FusionCandidate data={nft} closeRequest={closeDialog} index={index} />
         ))}
       </div>
     </Modal>

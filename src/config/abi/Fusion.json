@@ -52,7 +52,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -65,7 +66,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -456,7 +458,7 @@
                 }
               ]
             },
-            "name": "abi_decode_tuple_t_contract$_IGolToken_$8083t_contract$_INonFungiblePlayer_$8221t_address_fromMemory",
+            "name": "abi_decode_tuple_t_contract$_IGolToken_$8103t_contract$_INonFungiblePlayer_$8241t_address_fromMemory",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -640,7 +642,7 @@
           }
         ]
       },
-      "contents": "{\n    { }\n    function abi_decode_tuple_t_contract$_IGolToken_$8083t_contract$_INonFungiblePlayer_$8221t_address_fromMemory(headStart, dataEnd) -> value0, value1, value2\n    {\n        if slt(sub(dataEnd, headStart), 96) { revert(value0, value0) }\n        let value := mload(headStart)\n        validator_revert_address(value)\n        value0 := value\n        let value_1 := mload(add(headStart, 32))\n        validator_revert_address(value_1)\n        value1 := value_1\n        let value_2 := mload(add(headStart, 64))\n        validator_revert_address(value_2)\n        value2 := value_2\n    }\n    function validator_revert_address(value)\n    {\n        if iszero(eq(value, and(value, sub(exp(2, 160), 1)))) { revert(0, 0) }\n    }\n}",
+      "contents": "{\n    { }\n    function abi_decode_tuple_t_contract$_IGolToken_$8103t_contract$_INonFungiblePlayer_$8241t_address_fromMemory(headStart, dataEnd) -> value0, value1, value2\n    {\n        if slt(sub(dataEnd, headStart), 96) { revert(value0, value0) }\n        let value := mload(headStart)\n        validator_revert_address(value)\n        value0 := value\n        let value_1 := mload(add(headStart, 32))\n        validator_revert_address(value_1)\n        value1 := value_1\n        let value_2 := mload(add(headStart, 64))\n        validator_revert_address(value_2)\n        value2 := value_2\n    }\n    function validator_revert_address(value)\n    {\n        if iszero(eq(value, and(value, sub(exp(2, 160), 1)))) { revert(0, 0) }\n    }\n}",
       "id": 26,
       "language": "Yul",
       "name": "#utility.yul"
@@ -5934,10 +5936,10 @@
         1526
       ],
       "IGolToken": [
-        8083
+        8103
       ],
       "INonFungiblePlayer": [
-        8221
+        8241
       ],
       "Ownable": [
         486
@@ -6019,7 +6021,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 3039,
-        "sourceUnit": 8084,
+        "sourceUnit": 8104,
         "src": "289:36:16",
         "symbolAliases": [],
         "unitAlias": ""
@@ -6031,7 +6033,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 3039,
-        "sourceUnit": 8222,
+        "sourceUnit": 8242,
         "src": "327:45:16",
         "symbolAliases": [],
         "unitAlias": ""
@@ -6105,7 +6107,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IGolToken_$8083",
+              "typeIdentifier": "t_contract$_IGolToken_$8103",
               "typeString": "contract IGolToken"
             },
             "typeName": {
@@ -6115,13 +6117,13 @@
                 "id": 2751,
                 "name": "IGolToken",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 8083,
+                "referencedDeclaration": 8103,
                 "src": "443:9:16"
               },
-              "referencedDeclaration": 8083,
+              "referencedDeclaration": 8103,
               "src": "443:9:16",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IGolToken_$8083",
+                "typeIdentifier": "t_contract$_IGolToken_$8103",
                 "typeString": "contract IGolToken"
               }
             },
@@ -6139,7 +6141,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+              "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
               "typeString": "contract INonFungiblePlayer"
             },
             "typeName": {
@@ -6149,13 +6151,13 @@
                 "id": 2754,
                 "name": "INonFungiblePlayer",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 8221,
+                "referencedDeclaration": 8241,
                 "src": "476:18:16"
               },
-              "referencedDeclaration": 8221,
+              "referencedDeclaration": 8241,
               "src": "476:18:16",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                 "typeString": "contract INonFungiblePlayer"
               }
             },
@@ -6257,7 +6259,7 @@
                       "referencedDeclaration": 2753,
                       "src": "724:8:16",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IGolToken_$8083",
+                        "typeIdentifier": "t_contract$_IGolToken_$8103",
                         "typeString": "contract IGolToken"
                       }
                     },
@@ -6271,13 +6273,13 @@
                       "referencedDeclaration": 2761,
                       "src": "735:9:16",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IGolToken_$8083",
+                        "typeIdentifier": "t_contract$_IGolToken_$8103",
                         "typeString": "contract IGolToken"
                       }
                     },
                     "src": "724:20:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IGolToken_$8083",
+                      "typeIdentifier": "t_contract$_IGolToken_$8103",
                       "typeString": "contract IGolToken"
                     }
                   },
@@ -6300,7 +6302,7 @@
                       "referencedDeclaration": 2756,
                       "src": "755:17:16",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                        "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                         "typeString": "contract INonFungiblePlayer"
                       }
                     },
@@ -6314,13 +6316,13 @@
                       "referencedDeclaration": 2764,
                       "src": "775:18:16",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                        "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                         "typeString": "contract INonFungiblePlayer"
                       }
                     },
                     "src": "755:38:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                      "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                       "typeString": "contract INonFungiblePlayer"
                     }
                   },
@@ -6396,7 +6398,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IGolToken_$8083",
+                    "typeIdentifier": "t_contract$_IGolToken_$8103",
                     "typeString": "contract IGolToken"
                   },
                   "typeName": {
@@ -6406,13 +6408,13 @@
                       "id": 2759,
                       "name": "IGolToken",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 8083,
+                      "referencedDeclaration": 8103,
                       "src": "583:9:16"
                     },
-                    "referencedDeclaration": 8083,
+                    "referencedDeclaration": 8103,
                     "src": "583:9:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IGolToken_$8083",
+                      "typeIdentifier": "t_contract$_IGolToken_$8103",
                       "typeString": "contract IGolToken"
                     }
                   },
@@ -6430,7 +6432,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                    "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                     "typeString": "contract INonFungiblePlayer"
                   },
                   "typeName": {
@@ -6440,13 +6442,13 @@
                       "id": 2762,
                       "name": "INonFungiblePlayer",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 8221,
+                      "referencedDeclaration": 8241,
                       "src": "613:18:16"
                     },
-                    "referencedDeclaration": 8221,
+                    "referencedDeclaration": 8241,
                     "src": "613:18:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                      "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                       "typeString": "contract INonFungiblePlayer"
                     }
                   },
@@ -7132,7 +7134,7 @@
                                 "referencedDeclaration": 2756,
                                 "src": "1371:17:16",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                                  "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                                   "typeString": "contract INonFungiblePlayer"
                                 }
                               },
@@ -7241,7 +7243,7 @@
                                 "referencedDeclaration": 2756,
                                 "src": "1442:17:16",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                                  "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                                   "typeString": "contract INonFungiblePlayer"
                                 }
                               },
@@ -7404,7 +7406,7 @@
                               "referencedDeclaration": 2753,
                               "src": "1566:8:16",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IGolToken_$8083",
+                                "typeIdentifier": "t_contract$_IGolToken_$8103",
                                 "typeString": "contract IGolToken"
                               }
                             },
@@ -7415,7 +7417,7 @@
                             "lValueRequested": false,
                             "memberName": "balanceOf",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 8022,
+                            "referencedDeclaration": 8042,
                             "src": "1566:18:16",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -7650,7 +7652,7 @@
                         "referencedDeclaration": 2756,
                         "src": "1726:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -7661,7 +7663,7 @@
                       "lValueRequested": false,
                       "memberName": "getClass",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8173,
+                      "referencedDeclaration": 8193,
                       "src": "1726:26:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_string_memory_ptr_$",
@@ -7750,7 +7752,7 @@
                         "referencedDeclaration": 2756,
                         "src": "1797:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -7761,7 +7763,7 @@
                       "lValueRequested": false,
                       "memberName": "getClass",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8173,
+                      "referencedDeclaration": 8193,
                       "src": "1797:26:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_string_memory_ptr_$",
@@ -7850,7 +7852,7 @@
                         "referencedDeclaration": 2756,
                         "src": "1871:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -7861,7 +7863,7 @@
                       "lValueRequested": false,
                       "memberName": "getPosition",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8159,
+                      "referencedDeclaration": 8179,
                       "src": "1871:29:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_string_memory_ptr_$",
@@ -7950,7 +7952,7 @@
                         "referencedDeclaration": 2756,
                         "src": "1948:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -7961,7 +7963,7 @@
                       "lValueRequested": false,
                       "memberName": "getPosition",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8159,
+                      "referencedDeclaration": 8179,
                       "src": "1948:29:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_string_memory_ptr_$",
@@ -8050,7 +8052,7 @@
                         "referencedDeclaration": 2756,
                         "src": "2015:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -8061,7 +8063,7 @@
                       "lValueRequested": false,
                       "memberName": "getGeneration",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8145,
+                      "referencedDeclaration": 8165,
                       "src": "2015:31:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_uint256_$",
@@ -8150,7 +8152,7 @@
                         "referencedDeclaration": 2756,
                         "src": "2084:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -8161,7 +8163,7 @@
                       "lValueRequested": false,
                       "memberName": "getGeneration",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8145,
+                      "referencedDeclaration": 8165,
                       "src": "2084:31:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_uint256_$",
@@ -8901,7 +8903,7 @@
                         "referencedDeclaration": 2753,
                         "src": "2492:8:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IGolToken_$8083",
+                          "typeIdentifier": "t_contract$_IGolToken_$8103",
                           "typeString": "contract IGolToken"
                         }
                       },
@@ -8912,7 +8914,7 @@
                       "lValueRequested": false,
                       "memberName": "transferFrom",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8064,
+                      "referencedDeclaration": 8084,
                       "src": "2492:21:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -9633,7 +9635,7 @@
                         "referencedDeclaration": 2756,
                         "src": "3052:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -9644,7 +9646,7 @@
                       "lValueRequested": false,
                       "memberName": "mintFusionedNFP",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8131,
+                      "referencedDeclaration": 8151,
                       "src": "3052:33:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$_t_uint256_$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$__$",
@@ -9701,7 +9703,7 @@
                         "referencedDeclaration": 2756,
                         "src": "3228:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -9712,7 +9714,7 @@
                       "lValueRequested": false,
                       "memberName": "burn",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8220,
+                      "referencedDeclaration": 8240,
                       "src": "3228:22:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$__$",
@@ -9769,7 +9771,7 @@
                         "referencedDeclaration": 2756,
                         "src": "3272:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -9780,7 +9782,7 @@
                       "lValueRequested": false,
                       "memberName": "burn",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8220,
+                      "referencedDeclaration": 8240,
                       "src": "3272:22:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$__$",
@@ -9931,10 +9933,10 @@
         1526
       ],
       "IGolToken": [
-        8083
+        8103
       ],
       "INonFungiblePlayer": [
-        8221
+        8241
       ],
       "Ownable": [
         486
@@ -10016,7 +10018,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 3039,
-        "sourceUnit": 8084,
+        "sourceUnit": 8104,
         "src": "289:36:16",
         "symbolAliases": [],
         "unitAlias": ""
@@ -10028,7 +10030,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 3039,
-        "sourceUnit": 8222,
+        "sourceUnit": 8242,
         "src": "327:45:16",
         "symbolAliases": [],
         "unitAlias": ""
@@ -10102,7 +10104,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IGolToken_$8083",
+              "typeIdentifier": "t_contract$_IGolToken_$8103",
               "typeString": "contract IGolToken"
             },
             "typeName": {
@@ -10112,13 +10114,13 @@
                 "id": 2751,
                 "name": "IGolToken",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 8083,
+                "referencedDeclaration": 8103,
                 "src": "443:9:16"
               },
-              "referencedDeclaration": 8083,
+              "referencedDeclaration": 8103,
               "src": "443:9:16",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IGolToken_$8083",
+                "typeIdentifier": "t_contract$_IGolToken_$8103",
                 "typeString": "contract IGolToken"
               }
             },
@@ -10136,7 +10138,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+              "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
               "typeString": "contract INonFungiblePlayer"
             },
             "typeName": {
@@ -10146,13 +10148,13 @@
                 "id": 2754,
                 "name": "INonFungiblePlayer",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 8221,
+                "referencedDeclaration": 8241,
                 "src": "476:18:16"
               },
-              "referencedDeclaration": 8221,
+              "referencedDeclaration": 8241,
               "src": "476:18:16",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                 "typeString": "contract INonFungiblePlayer"
               }
             },
@@ -10254,7 +10256,7 @@
                       "referencedDeclaration": 2753,
                       "src": "724:8:16",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IGolToken_$8083",
+                        "typeIdentifier": "t_contract$_IGolToken_$8103",
                         "typeString": "contract IGolToken"
                       }
                     },
@@ -10268,13 +10270,13 @@
                       "referencedDeclaration": 2761,
                       "src": "735:9:16",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IGolToken_$8083",
+                        "typeIdentifier": "t_contract$_IGolToken_$8103",
                         "typeString": "contract IGolToken"
                       }
                     },
                     "src": "724:20:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IGolToken_$8083",
+                      "typeIdentifier": "t_contract$_IGolToken_$8103",
                       "typeString": "contract IGolToken"
                     }
                   },
@@ -10297,7 +10299,7 @@
                       "referencedDeclaration": 2756,
                       "src": "755:17:16",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                        "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                         "typeString": "contract INonFungiblePlayer"
                       }
                     },
@@ -10311,13 +10313,13 @@
                       "referencedDeclaration": 2764,
                       "src": "775:18:16",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                        "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                         "typeString": "contract INonFungiblePlayer"
                       }
                     },
                     "src": "755:38:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                      "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                       "typeString": "contract INonFungiblePlayer"
                     }
                   },
@@ -10393,7 +10395,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IGolToken_$8083",
+                    "typeIdentifier": "t_contract$_IGolToken_$8103",
                     "typeString": "contract IGolToken"
                   },
                   "typeName": {
@@ -10403,13 +10405,13 @@
                       "id": 2759,
                       "name": "IGolToken",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 8083,
+                      "referencedDeclaration": 8103,
                       "src": "583:9:16"
                     },
-                    "referencedDeclaration": 8083,
+                    "referencedDeclaration": 8103,
                     "src": "583:9:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IGolToken_$8083",
+                      "typeIdentifier": "t_contract$_IGolToken_$8103",
                       "typeString": "contract IGolToken"
                     }
                   },
@@ -10427,7 +10429,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                    "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                     "typeString": "contract INonFungiblePlayer"
                   },
                   "typeName": {
@@ -10437,13 +10439,13 @@
                       "id": 2762,
                       "name": "INonFungiblePlayer",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 8221,
+                      "referencedDeclaration": 8241,
                       "src": "613:18:16"
                     },
-                    "referencedDeclaration": 8221,
+                    "referencedDeclaration": 8241,
                     "src": "613:18:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                      "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                       "typeString": "contract INonFungiblePlayer"
                     }
                   },
@@ -11129,7 +11131,7 @@
                                 "referencedDeclaration": 2756,
                                 "src": "1371:17:16",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                                  "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                                   "typeString": "contract INonFungiblePlayer"
                                 }
                               },
@@ -11238,7 +11240,7 @@
                                 "referencedDeclaration": 2756,
                                 "src": "1442:17:16",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                                  "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                                   "typeString": "contract INonFungiblePlayer"
                                 }
                               },
@@ -11401,7 +11403,7 @@
                               "referencedDeclaration": 2753,
                               "src": "1566:8:16",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IGolToken_$8083",
+                                "typeIdentifier": "t_contract$_IGolToken_$8103",
                                 "typeString": "contract IGolToken"
                               }
                             },
@@ -11412,7 +11414,7 @@
                             "lValueRequested": false,
                             "memberName": "balanceOf",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 8022,
+                            "referencedDeclaration": 8042,
                             "src": "1566:18:16",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -11647,7 +11649,7 @@
                         "referencedDeclaration": 2756,
                         "src": "1726:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -11658,7 +11660,7 @@
                       "lValueRequested": false,
                       "memberName": "getClass",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8173,
+                      "referencedDeclaration": 8193,
                       "src": "1726:26:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_string_memory_ptr_$",
@@ -11747,7 +11749,7 @@
                         "referencedDeclaration": 2756,
                         "src": "1797:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -11758,7 +11760,7 @@
                       "lValueRequested": false,
                       "memberName": "getClass",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8173,
+                      "referencedDeclaration": 8193,
                       "src": "1797:26:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_string_memory_ptr_$",
@@ -11847,7 +11849,7 @@
                         "referencedDeclaration": 2756,
                         "src": "1871:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -11858,7 +11860,7 @@
                       "lValueRequested": false,
                       "memberName": "getPosition",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8159,
+                      "referencedDeclaration": 8179,
                       "src": "1871:29:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_string_memory_ptr_$",
@@ -11947,7 +11949,7 @@
                         "referencedDeclaration": 2756,
                         "src": "1948:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -11958,7 +11960,7 @@
                       "lValueRequested": false,
                       "memberName": "getPosition",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8159,
+                      "referencedDeclaration": 8179,
                       "src": "1948:29:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_string_memory_ptr_$",
@@ -12047,7 +12049,7 @@
                         "referencedDeclaration": 2756,
                         "src": "2015:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -12058,7 +12060,7 @@
                       "lValueRequested": false,
                       "memberName": "getGeneration",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8145,
+                      "referencedDeclaration": 8165,
                       "src": "2015:31:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_uint256_$",
@@ -12147,7 +12149,7 @@
                         "referencedDeclaration": 2756,
                         "src": "2084:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -12158,7 +12160,7 @@
                       "lValueRequested": false,
                       "memberName": "getGeneration",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8145,
+                      "referencedDeclaration": 8165,
                       "src": "2084:31:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_uint256_$",
@@ -12898,7 +12900,7 @@
                         "referencedDeclaration": 2753,
                         "src": "2492:8:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IGolToken_$8083",
+                          "typeIdentifier": "t_contract$_IGolToken_$8103",
                           "typeString": "contract IGolToken"
                         }
                       },
@@ -12909,7 +12911,7 @@
                       "lValueRequested": false,
                       "memberName": "transferFrom",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8064,
+                      "referencedDeclaration": 8084,
                       "src": "2492:21:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -13630,7 +13632,7 @@
                         "referencedDeclaration": 2756,
                         "src": "3052:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -13641,7 +13643,7 @@
                       "lValueRequested": false,
                       "memberName": "mintFusionedNFP",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8131,
+                      "referencedDeclaration": 8151,
                       "src": "3052:33:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$_t_uint256_$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$__$",
@@ -13698,7 +13700,7 @@
                         "referencedDeclaration": 2756,
                         "src": "3228:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -13709,7 +13711,7 @@
                       "lValueRequested": false,
                       "memberName": "burn",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8220,
+                      "referencedDeclaration": 8240,
                       "src": "3228:22:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$__$",
@@ -13766,7 +13768,7 @@
                         "referencedDeclaration": 2756,
                         "src": "3272:17:16",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8221",
+                          "typeIdentifier": "t_contract$_INonFungiblePlayer_$8241",
                           "typeString": "contract INonFungiblePlayer"
                         }
                       },
@@ -13777,7 +13779,7 @@
                       "lValueRequested": false,
                       "memberName": "burn",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8220,
+                      "referencedDeclaration": 8240,
                       "src": "3272:22:16",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$__$",
@@ -13898,9 +13900,37 @@
     "name": "solc",
     "version": "0.8.4+commit.c7e474f2.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "97": {
+      "events": {
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x91ff7Ea4355CC9E9b6811D90fb576fBEe6dcaC86",
+      "transactionHash": "0x6823936b0ee59793f3643123e2c129ee570166603c6270e5d71078910c3161b5"
+    }
+  },
   "schemaVersion": "3.4.5",
-  "updatedAt": "2022-04-27T01:17:02.107Z",
+  "updatedAt": "2022-04-29T11:34:24.606Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {

@@ -5,12 +5,7 @@ import { useWeb3React } from '@web3-react/core'
 import { StakeContext } from 'contexts/StakeContext'
 import { LoadingContext } from 'contexts/LoadingContext'
 import { AbiItem } from 'web3-utils'
-import {
-  getNonFungiblePlayerAddress,
-  getAirNftAddress,
-  getStakingAddress,
-  getTrainingAddress,
-} from 'utils/addressHelpers'
+import { getNonFungiblePlayerAddress, getAirNftAddress, getTrainingAddress } from 'utils/addressHelpers'
 import Web3 from 'web3'
 import NonFungiblePlayer from 'config/abi/NonFungiblePlayer.json'
 import TrainingABI from 'config/abi/Training.json'

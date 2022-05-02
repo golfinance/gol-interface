@@ -5,8 +5,7 @@ import styled from 'styled-components'
 import toast from 'react-hot-toast'
 import { PINATA_BASE_URI } from 'config/constants/nfts'
 import NonFungiblePlayer from 'config/abi/NonFungiblePlayer.json'
-import AirNfts from 'config/abi/Genesis.json'
-import { getNonFungiblePlayerAddress, getTrainingAddress, getAirNftAddress } from 'utils/addressHelpers'
+import { getNonFungiblePlayerAddress, getTrainingAddress } from 'utils/addressHelpers'
 import { useWeb3React } from '@web3-react/core'
 import Training from 'config/abi/Training.json'
 import Web3 from 'web3'
@@ -72,11 +71,11 @@ const web3 = new Web3(Web3.givenProvider)
 const trainingContract = new web3.eth.Contract(Training.abi as AbiItem[], getTrainingAddress())
 const nfpContract = new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())
 
-const FusionCandidate = ({ data, closeRequest }) => {
+const FusionCandidate = ({ data, closeRequest, index }) => {
   const { account } = useWeb3React()
   const [nftInfo, setNFTInfo] = useState({ tokenName: '', tokenId: '', imgUrl: '', isAIR: false })
   const { setLoading } = useContext(LoadingContext)
-  const { initMyNFTS, initSelectedNFTs } = useContext(StakeContext)
+  const { initSelectedFirstNft, initSelectedSecondNft } = useContext(StakeContext)
 
   const fetchNft = useCallback(async () => {
     if (!data || !data.tokenId) return
@@ -96,40 +95,14 @@ const FusionCandidate = ({ data, closeRequest }) => {
     fetchNft()
   }, [fetchNft])
 
-  const nftSelected = async () => {
-    setLoading(true)
+  const nftSelected = () => {
+    if (index === 1) {
+      initSelectedFirstNft({ tokenId: data.tokenId, isAir: data.isAIR })
+    } else if (index === 2) {
+      initSelectedSecondNft({ tokenId: data.tokenId, isAir: data.isAIR })
+    }
+
     closeRequest()
-    await nfpContract.methods.approve(getTrainingAddress(), data.tokenId).send({ from: account })
-    await trainingContract.methods.stakeNfpToTrain(data.tokenId).send({ from: account })
-    toast.success('Successfully Staked NFT to Training Pool.')
-
-    const stakingItems = await trainingContract.methods.getStakedItems(account).call()
-    initSelectedNFTs(stakingItems)
-
-    const tokenIds = []
-    const tmpMyTokens = []
-    const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
-    _.map(nfpTokens, (itm) => {
-      tokenIds.push({ tokenId: itm, isAIR: false })
-    })
-
-    const myTokenHashes = []
-    for (let i = 0; i < tokenIds.length; i++) {
-      myTokenHashes.push(nfpContract.methods.tokenURI(tokenIds[i].tokenId).call())
-    }
-
-    const result = await Promise.all(myTokenHashes)
-    for (let i = 0; i < tokenIds.length; i++) {
-      if (!tmpMyTokens[i]) tmpMyTokens[i] = {}
-      tmpMyTokens[i].tokenId = tokenIds[i].tokenId
-      tmpMyTokens[i].tokenHash = result[i]
-      tmpMyTokens[i].isAIR = tokenIds[i].isAIR
-      if (!tokenIds[i].isAIR) tmpMyTokens[i].contractAddress = getNonFungiblePlayerAddress()
-      else tmpMyTokens[i].contractAddress = getAirNftAddress()
-    }
-    initMyNFTS(tmpMyTokens)
-
-    setLoading(false)
   }
 
   return (
