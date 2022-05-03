@@ -73,12 +73,14 @@ const nfpContract = new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], ge
 
 const FusionCandidate = ({ data, closeRequest, index }) => {
   const { account } = useWeb3React()
-  const [nftInfo, setNFTInfo] = useState({ tokenName: '', tokenId: '', imgUrl: '', isAIR: false })
+  const [nftInfo, setNFTInfo] = useState({ tokenName: '', tokenId: '', imgUrl: '', position: '', gen: '' })
   const { setLoading } = useContext(LoadingContext)
   const { initSelectedFirstNft, initSelectedSecondNft } = useContext(StakeContext)
-
   const fetchNft = useCallback(async () => {
     if (!data || !data.tokenId) return
+
+    const tmpPosition = await nfpContract.methods.getPosition(data.tokenId).call()
+    const tmpGen = await nfpContract.methods.getGeneration(data.tokenId).call()
 
     const res = await fetch(data.tokenHash)
     const json = await res.json()
@@ -88,7 +90,13 @@ const FusionCandidate = ({ data, closeRequest, index }) => {
     imageUrl = imageUrl.slice(7)
     imageUrl = `${PINATA_BASE_URI}${imageUrl}`
 
-    setNFTInfo({ tokenName: json.name, tokenId: data.tokenId, imgUrl: imageUrl, isAIR: data.isAIR })
+    setNFTInfo({
+      tokenName: json.name,
+      tokenId: data.tokenId,
+      imgUrl: imageUrl,
+      position: tmpPosition.toString(),
+      gen: tmpGen.toString(),
+    })
   }, [data])
 
   useEffect(() => {
@@ -97,9 +105,9 @@ const FusionCandidate = ({ data, closeRequest, index }) => {
 
   const nftSelected = () => {
     if (index === 1) {
-      initSelectedFirstNft({ tokenId: data.tokenId, isAir: data.isAIR })
+      initSelectedFirstNft({ tokenId: data.tokenId, isAIR: data.isAIR })
     } else if (index === 2) {
-      initSelectedSecondNft({ tokenId: data.tokenId, isAir: data.isAIR })
+      initSelectedSecondNft({ tokenId: data.tokenId, isAIR: data.isAIR })
     }
 
     closeRequest()
@@ -110,9 +118,9 @@ const FusionCandidate = ({ data, closeRequest, index }) => {
       <span>{nftInfo.tokenName}</span>
       <HoverWrapper>
         <TypeTag variant="success" outline>
-          {nftInfo.isAIR ? 'Genesis' : 'NonFungiblePlayer'}
+          {nftInfo.position}
         </TypeTag>
-        <MultiplierTag variant="secondary">{nftInfo.isAIR ? '10X' : '1X'}</MultiplierTag>
+        <MultiplierTag variant="secondary">{`Gen ${nftInfo.gen}`}</MultiplierTag>
       </HoverWrapper>
     </CandidateWrapper>
   )

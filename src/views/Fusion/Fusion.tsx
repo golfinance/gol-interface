@@ -17,7 +17,7 @@ const nfpContract = new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], ge
 const Fusion = () => {
   const { setLoading } = useContext(LoadingContext)
   const { account } = useWeb3React()
-  const { initMyNFTS } = useContext(StakeContext)
+  const { initMyNFTS, initSelectedFirstNft, initSelectedSecondNft } = useContext(StakeContext)
 
   useEffect(() => {
     const fetchMyNfts = async () => {
@@ -45,6 +45,10 @@ const Fusion = () => {
         else tmpMyTokens[i].contractAddress = getAirNftAddress()
       }
       initMyNFTS(tmpMyTokens)
+
+      initSelectedFirstNft({ tokenId: 0, isAIR: false })
+      initSelectedSecondNft({ tokenId: 0, isAIR: false })
+
       setLoading(false)
     }
     fetchMyNfts()

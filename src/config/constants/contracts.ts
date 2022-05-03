@@ -94,7 +94,7 @@ export default {
   },
   nonFungiblePlayer: {
     56: '0x',
-    97: '0xB0A5bd99821108a7eAA0fc24cA65dbEFad11b965'
+    97: '0xCA9eC4F134aDfD6CeE3A2a59aFf2b67300233082'
   },
   golToken: {
     56: '0x',
@@ -118,10 +118,10 @@ export default {
   },
   training: {
     56: '0x1',
-    97: '0x74A0fBE2a5947220C3a3eA1558DdF2d2d012C239'
+    97: '0xB6493f8d8645B1ebc4F7eC61ECBc9b30F5FCf525'
   },
   fusion: {
     56: '0x1',
-    97: '0x7Df98A2265EdeB768771EB29099495a0B9fb27e2'
+    97: '0x0F965B450615D20fDD92572e66404fd69223E8fb'
   }
 }

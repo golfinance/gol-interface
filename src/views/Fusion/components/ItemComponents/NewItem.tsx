@@ -95,7 +95,22 @@ const NewItem = ({ index }) => {
   useEffect(() => {
     const fetchNft = async () => {
       setLoading(true)
+
       if (index === 1) {
+        if (selectedFirstNft.tokenId === 0) {
+          setLoading(false)
+          setNftInfo({
+            tokenId: selectedFirstNft.tokenId,
+            tokenName: '',
+            imageUrl: '',
+            skillPoint: 0,
+            level: 0,
+            gen: 0,
+            position: '',
+            class: 'tmpClass',
+          })
+          return
+        }
         let tokenUri = ''
         let tmpSkillPoint = 0
         let tmpLevel = 0
@@ -112,10 +127,8 @@ const NewItem = ({ index }) => {
         const res = await fetch(tokenUri)
         const json = await res.json()
         let tmpImageUrl = json.image
-        if (!selectedFirstNft.isAIR) {
-          tmpImageUrl = tmpImageUrl.slice(7)
-          tmpImageUrl = `${PINATA_BASE_URI}${tmpImageUrl}`
-        }
+        tmpImageUrl = tmpImageUrl.slice(7)
+        tmpImageUrl = `${PINATA_BASE_URI}${tmpImageUrl}`
 
         setNftInfo({
           tokenId: selectedFirstNft.tokenId,
@@ -128,6 +141,20 @@ const NewItem = ({ index }) => {
           class: tmpClass,
         })
       } else {
+        if (selectedSecondNft.tokenId === 0) {
+          setLoading(false)
+          setNftInfo({
+            tokenId: selectedSecondNft.tokenId,
+            tokenName: '',
+            imageUrl: '',
+            skillPoint: 0,
+            level: 0,
+            gen: 0,
+            position: '',
+            class: 'tmpClass',
+          })
+          return
+        }
         let tokenUri = ''
         let tmpSkillPoint = 0
         let tmpLevel = 0
@@ -144,10 +171,8 @@ const NewItem = ({ index }) => {
         const res = await fetch(tokenUri)
         const json = await res.json()
         let tmpImageUrl = json.image
-        if (!selectedSecondNft.isAIR) {
-          tmpImageUrl = tmpImageUrl.slice(7)
-          tmpImageUrl = `${PINATA_BASE_URI}${tmpImageUrl}`
-        }
+        tmpImageUrl = tmpImageUrl.slice(7)
+        tmpImageUrl = `${PINATA_BASE_URI}${tmpImageUrl}`
 
         setNftInfo({
           tokenId: selectedSecondNft.tokenId,
