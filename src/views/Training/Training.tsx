@@ -53,6 +53,8 @@ const Training = () => {
       initMyNFTS(tmpMyTokens)
 
       const stakingItems = await trainingContract.methods.getStakedItems(account).call()
+
+      console.log('Staking Items:', stakingItems)
       initSelectedNFTs(stakingItems)
 
       setLoading(false)

@@ -71,7 +71,7 @@ const TrainingLevel = ({ trainingLevel }) => {
       </Flex>
       <Flex mt="12px">
         <Text color="secondary" fontSize="24px" pr="3px" ml="6px">
-          {trainingLevel}
+          {parseInt(trainingLevel) + 1}
         </Text>
       </Flex>
     </Flex>

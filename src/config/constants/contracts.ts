@@ -118,7 +118,7 @@ export default {
   },
   training: {
     56: '0x1',
-    97: '0x6e3E11619Aa60fd4125AA6ABE0aB99bf29153978'
+    97: '0x3845900B65ddEA4eBfB6083192f0A5B94A5b574c'
   },
   fusion: {
     56: '0x1',
