@@ -22,13 +22,28 @@ const Fusion = () => {
   useEffect(() => {
     const fetchMyNfts = async () => {
       setLoading(true)
+      const tmpTokenIds = []
       const tokenIds = []
       const tmpMyTokens = []
+      const tmpLevels = []
+      const tmpGens = []
+
       const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
       console.log('NFP Tokens: ', nfpTokens)
-      _.map(nfpTokens, (itm) => {
-        tokenIds.push({ tokenId: itm, isAIR: false })
+      _.map(nfpTokens, (itm, index) => {
+        tmpLevels[index] = nfpContract.methods.getLevel(itm).call()
+        tmpGens[index] = nfpContract.methods.getGeneration(itm).call()
+        tmpTokenIds.push({ tokenId: itm, isAIR: false })
       })
+
+      const levels = await Promise.all(tmpLevels)
+      const gens = await Promise.all(tmpGens)
+
+      for (let i = 0; i < tmpTokenIds.length; i++) {
+        if (parseInt(levels[i]) === (parseInt(gens[i]) + 1) * 10 - 1) {
+          tokenIds.push(tmpTokenIds[i])
+        }
+      }
 
       const myTokenHashes = []
       for (let i = 0; i < tokenIds.length; i++) {

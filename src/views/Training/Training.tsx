@@ -29,6 +29,9 @@ const Training = () => {
       const tokenIds = []
       const tmpMyTokens = []
       const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
+
+      console.log('NFP tokens:', nfpTokens)
+
       _.map(nfpTokens, (itm) => {
         tokenIds.push({ tokenId: itm, isAIR: false })
       })
