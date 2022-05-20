@@ -97,3 +97,7 @@ export const getBusdAddress = () => {
 export const getFusionAddress = () => {
   return getAddress(addresses.fusion)
 }
+
+export const getMatchAddress = () => {
+  return getAddress(addresses.match)
+}

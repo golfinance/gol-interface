@@ -123,5 +123,9 @@ export default {
   fusion: {
     56: '0x1',
     97: '0x05C1EA47Aaf45efee7e26b077F16E66CED27e920'
+  },
+  match: {
+    56: '0x1',
+    97: '0x24555daC00deF1252f3aD8f03aA98aDDBb1e0584'
   }
 }

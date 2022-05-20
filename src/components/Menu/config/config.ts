@@ -92,6 +92,10 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
         label: t('Fusion'),
         href: '/game-fusion'
       },
+      {
+        label: t('Match'),
+        href: '/game-match'
+      },
     ]
   },
   // {
