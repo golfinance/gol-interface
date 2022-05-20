@@ -232,7 +232,7 @@ const MatchContainer = () => {
             </TypeTag>
           ) : (
             <span style={{ color: '#f7941d', display: 'flex' }}>
-              {`You earned ${earnPrize}`}
+              {`You earned ${earnPrize / 100000}`}
               <img
                 style={{ width: '16px', height: '16px', marginLeft: '5px', transform: 'translateY(-.5px)' }}
                 src="/images/favicon-32x32.png"
