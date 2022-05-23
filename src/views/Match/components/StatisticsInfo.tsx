@@ -56,14 +56,16 @@ const StatisticsInfo = () => {
             <Flex flexDirection="column">
               <Text style={{ textAlign: 'center', fontSize: '20px' }}>Match Information</Text>
               <Text fontSize="15px" pr="3px" pt="6px" ml="6px">
-                - User could play match with 4 NFPs (Positions must be different & Levels must be same)
+                - To play matches you need to have a full Team of NFPs of the same level. (Must have all 4 positions)
               </Text>
               <Text fontSize="15px" pr="3px" ml="6px">
-                - User could earn prize with GOL token when he/she won the match and the Prize will increase by levels
-                of NFPs
+                - The higher the Team&apos;s level, the higher the $GOL prize.
               </Text>
               <Text fontSize="15px" pr="3px" ml="6px">
-                - Winning Chance will be calculate by the GolPower & GolPower Booster
+                - Chance of winning is determined by GolPower! The higher your power, the more chances of winning!
+              </Text>
+              <Text fontSize="15px" pr="3px" ml="6px">
+                - Increase your GolPower by leveling up your players or with GolPower Boosters!
               </Text>
             </Flex>
           </InfoWrapper>
