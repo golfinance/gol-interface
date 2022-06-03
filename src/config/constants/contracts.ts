@@ -94,11 +94,11 @@ export default {
   },
   nonFungiblePlayer: {
     56: '0x',
-    97: '0xf595B4744bb780406e5E10F69864bD7Bc683aF25'
+    97: '0xe17a9bA544025D848d54A4cbF8eA2a781A3c1a4b'
   },
   golToken: {
     56: '0x',
-    97: '0x8d4dec2E61a8BA0B79FFF3523738cBc33789BC08'
+    97: '0xF4073d05dBE7de995E7b4762C1645519b0f5D609'
   },
   market:{
     56: '0x',
@@ -118,14 +118,14 @@ export default {
   },
   training: {
     56: '0x1',
-    97: '0x3845900B65ddEA4eBfB6083192f0A5B94A5b574c'
+    97: '0x56fef7B7240b5b530fcA808Ea692A35cE20F59Db'
   },
   fusion: {
     56: '0x1',
-    97: '0x05C1EA47Aaf45efee7e26b077F16E66CED27e920'
+    97: '0x390D02BEd3BF7c3b4e80bC9F39325531409f32C6'
   },
   match: {
     56: '0x1',
-    97: '0x24555daC00deF1252f3aD8f03aA98aDDBb1e0584'
+    97: '0xD2DBF9D08119C01BE5e46357C7B27d11cf5316e9'
   }
 }
