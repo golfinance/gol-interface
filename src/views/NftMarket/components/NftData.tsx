@@ -7,7 +7,7 @@ import NftDataRightComponent from './NftDataRightComponent'
 const NftDataContainer = styled.div`
   position: relative;
   display: flex;
-  background: #fff;
+  background: blue;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 3%), 0 4px 6px -2px rgb(0 0 0 / 1%);
   border-radius: 32px;
   position: relative;
