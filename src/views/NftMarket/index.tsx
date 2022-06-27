@@ -14,7 +14,7 @@ const NftMarket = () => {
     <Page>
       <StyledHero>
         <Heading as="h1" size="lg" color="secondary" mb="20px">
-          NFT MarketPlace
+          NFT Market
         </Heading>
       </StyledHero>
       <NftHeader />
