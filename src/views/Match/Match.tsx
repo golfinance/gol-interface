@@ -15,11 +15,10 @@ import { StatisticsInfo, MatchContainer } from './components'
 const web3 = new Web3(Web3.givenProvider)
 
 const nfpContract = new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())
-const trainingContract = new web3.eth.Contract(TrainingABI.abi as AbiItem[], getTrainingAddress())
 
 const Match = () => {
   const { account } = useWeb3React()
-  const { initMyNFTS, initSelectedMatchNfts, selectedMatchNfts } = useContext(StakeContext)
+  const { initMyNFTS } = useContext(StakeContext)
   const { setLoading } = useContext(LoadingContext)
 
   useEffect(() => {
@@ -49,15 +48,7 @@ const Match = () => {
         else tmpMyTokens[i].contractAddress = getAirNftAddress()
       }
 
-      console.log('My Tokens', tmpMyTokens)
       initMyNFTS(tmpMyTokens)
-
-      // const emptySelectedNfts = []
-      // for (let i = 0; i < 4; i++) {
-      //   emptySelectedNfts.push(0)
-      // }
-
-      // initSelectedMatchNfts(emptySelectedNfts)
 
       setLoading(false)
     }

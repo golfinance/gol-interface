@@ -28,7 +28,8 @@ const TrainingLevel = ({ trainingLevel }) => {
 
   useEffect(() => {
     fetchUpdatingFee()
-  }, [fetchUpdatingFee])
+    // eslint-disable-next-line
+  }, [])
 
   const harvestHandler = async () => {
     setLoading(true)

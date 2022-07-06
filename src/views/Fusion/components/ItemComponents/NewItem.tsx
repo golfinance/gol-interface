@@ -16,7 +16,7 @@ const ImageContainer = styled.div`
   height: 0;
   border-top-right-radius: 16px;
   border-top-left-radius: 16px;
-  background-color: rgb(249, 244, 211);
+  background-color: #101820;
   cursor: pointer;
 `
 
@@ -33,9 +33,6 @@ const NftImage = styled.div`
   border-top-right-radius: 16px;
   border-top-left-radius: 16px;
   top: 0;
-  &:hover {
-    transform: scale(1.04);
-  }
 `
 
 const AddImage = styled.div`

@@ -16,8 +16,10 @@ const NftEachItemContainer = styled.div`
   margin-right: 15px;
   margin-bottom: 15px;
   border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 3%), 0 4px 6px -2px rgb(0 0 0 / 1%);
+  text-align: center;
+  color: white;
+  background: #27262c;
+  box-shadow: 0px 2px 12px -8px rgba(203, 203, 203, 0.7), 0px 1px 1px rgba(203, 203, 203, 0.05);
   position: relative;
 `
 const ItemTop = styled.div`
@@ -39,6 +41,7 @@ const NftImage = styled.div`
   background-size: auto 100%;
   background-position: 50%;
   background-repeat: no-repeat;
+  margin-top: 24px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -59,15 +62,11 @@ const TitleText = styled.div`
   width: 100%;
   font-size: 18px;
   line-height: 1.2;
-  color: #431216;
   word-break: break-word;
   font-weight: 700;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
   line-clamp: 2;
-  display: flex;
-  justify-content: space-between;
 `
 
 const ItemSeperation = styled.div`
@@ -81,6 +80,7 @@ const ItemSeperation = styled.div`
 `
 
 const ItemBottom = styled.div`
+  text-align: center;
   padding: 12px 24px 20px;
   margin: 0;
 `
@@ -89,12 +89,10 @@ const ItemTitle = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 14px;
-  color: #694f4e;
 `
 
 const ItemValue = styled.div`
   align-items: center;
-  color: #431216;
   margin-top: 5px;
   display: flex;
   justify-content: space-between;
@@ -170,41 +168,33 @@ const EachNft = ({ eachMyToken }: EachNftInterface) => {
 
   return (
     <div>
-      <NftEachItemContainer style={{ background: isDark ? '#27262c' : '' }}>
+      <NftEachItemContainer>
         <ItemTop>
           <NftImageContainer>
             <NftImage style={{ backgroundImage: `url(${imageIpfsHash})` }} />
           </NftImageContainer>
           <Title>
-            <TitleText style={{ color: isDark ? 'white' : '' }}>
+            <TitleText>
               <div>{name}</div>
             </TitleText>
           </Title>
         </ItemTop>
         <ItemSeperation />
-        {flgList ? (
-          <ItemBottom>
-            <ItemTitle style={{ color: isDark ? 'white' : '' }}>
-              Sale Price
+        <ItemBottom>
+          {flgList ? (
+            <div style={{ display: 'flex', width: 'fit-content', margin: 'auto' }}>
+              {`Price : ${getNumberSuffix(listedPrice)}`}
+              <img
+                src="/images/favicon-32x32.png"
+                alt="GolToken"
+                style={{ width: '18px', height: '18px', marginRight: '4px' }}
+              />
               <span> ≈ ${getNumberSuffix(Math.round(golPrice * parseInt(listedPrice) * 100) / 100)}</span>
-            </ItemTitle>
-            <ItemValue style={{ color: isDark ? 'white' : '' }}>
-              <ItemValueText>{getNumberSuffix(listedPrice)}</ItemValueText>
-              <ItemValueToken>
-                <img
-                  src="/images/favicon-32x32.png"
-                  alt="GolToken"
-                  style={{ width: '18px', height: '18px', marginRight: '4px' }}
-                />
-                GOL
-              </ItemValueToken>
-            </ItemValue>
-          </ItemBottom>
-        ) : (
-          <ItemBottom>
-            <div style={{ height: 50, color: isDark ? 'white' : '' }}>Not Listed</div>
-          </ItemBottom>
-        )}
+            </div>
+          ) : (
+            <div>Not Listed to Marketplace</div>
+          )}
+        </ItemBottom>
       </NftEachItemContainer>
     </div>
   )

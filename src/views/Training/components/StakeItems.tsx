@@ -1,7 +1,9 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { StakeContext } from 'contexts/StakeContext'
-import { StakeItem, NewItem } from './ItemComponents'
+import NewItem from './ItemComponents/NewItem'
+import StakeItem from './ItemComponents/StakeItem'
+// import { StakeItem, NewItem } from './ItemComponents'
 
 const StakeItemContainer = styled.div`
   display: flex;
@@ -16,10 +18,13 @@ const StakeItemEach = styled.div`
   }
 `
 const StakeItems = () => {
-  const { selectedNFTS } = useContext(StakeContext)
+  const { trainingSelectedNfts, initTrainingSelectedNfts } = useContext(StakeContext)
+  useEffect(() => {
+    console.log('Call Stake Candidate')
+  }, [trainingSelectedNfts])
   return (
     <StakeItemContainer>
-      {selectedNFTS.map((itm) => (
+      {trainingSelectedNfts.map((itm) => (
         <StakeItemEach>
           <StakeItem key={itm.tokenId} data={itm} />
         </StakeItemEach>

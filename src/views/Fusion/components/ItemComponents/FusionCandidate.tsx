@@ -73,7 +73,7 @@ const nfpContract = new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], ge
 
 const FusionCandidate = ({ data, closeRequest, index }) => {
   const { account } = useWeb3React()
-  const [nftInfo, setNFTInfo] = useState({ tokenName: '', tokenId: '', imgUrl: '', position: '', gen: '' })
+  const [nftInfo, setNFTInfo] = useState({ tokenName: '', tokenId: '', imgUrl: '', position: '', gen: '', lvl: '' })
   const { setLoading } = useContext(LoadingContext)
   const { initSelectedFirstNft, initSelectedSecondNft } = useContext(StakeContext)
   const fetchNft = useCallback(async () => {
@@ -81,6 +81,7 @@ const FusionCandidate = ({ data, closeRequest, index }) => {
 
     const tmpPosition = await nfpContract.methods.getPosition(data.tokenId).call()
     const tmpGen = await nfpContract.methods.getGeneration(data.tokenId).call()
+    const tmpLvl = await nfpContract.methods.getLevel(data.tokenId).call()
 
     const res = await fetch(data.tokenHash)
     const json = await res.json()
@@ -96,6 +97,7 @@ const FusionCandidate = ({ data, closeRequest, index }) => {
       imgUrl: imageUrl,
       position: tmpPosition.toString(),
       gen: tmpGen.toString(),
+      lvl: tmpLvl.toString(),
     })
   }, [data])
 
@@ -121,6 +123,7 @@ const FusionCandidate = ({ data, closeRequest, index }) => {
           {nftInfo.position}
         </TypeTag>
         <MultiplierTag variant="secondary">{`Gen ${nftInfo.gen}`}</MultiplierTag>
+        <MultiplierTag variant="primary">{`Lvl ${nftInfo.lvl}`}</MultiplierTag>
       </HoverWrapper>
     </CandidateWrapper>
   )

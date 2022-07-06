@@ -5,9 +5,7 @@ import styled from 'styled-components'
 import toast from 'react-hot-toast'
 import { PINATA_BASE_URI } from 'config/constants/nfts'
 import NonFungiblePlayer from 'config/abi/NonFungiblePlayer.json'
-import { getNonFungiblePlayerAddress, getTrainingAddress } from 'utils/addressHelpers'
-import { useWeb3React } from '@web3-react/core'
-import Training from 'config/abi/Training.json'
+import { getNonFungiblePlayerAddress, getMatchAddress } from 'utils/addressHelpers'
 import Web3 from 'web3'
 import { AbiItem } from 'web3-utils'
 import { LoadingContext } from 'contexts/LoadingContext'
@@ -68,12 +66,10 @@ const CandidateWrapper = styled.div`
 `
 
 const web3 = new Web3(Web3.givenProvider)
-const trainingContract = new web3.eth.Contract(Training.abi as AbiItem[], getTrainingAddress())
 const nfpContract = new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())
 
 const MatchCandidate = ({ data, closeRequest, index }) => {
-  const { account } = useWeb3React()
-  const [nftInfo, setNFTInfo] = useState({ tokenName: '', tokenId: '', imgUrl: '', position: '', gen: '' })
+  const [nftInfo, setNFTInfo] = useState({ tokenName: '', tokenId: '', imgUrl: '', position: '', gen: '', lvl: '' })
   const { setLoading } = useContext(LoadingContext)
   const { selectedMatchNfts, initSelectedMatchNfts } = useContext(StakeContext)
   const fetchNft = useCallback(async () => {
@@ -81,6 +77,7 @@ const MatchCandidate = ({ data, closeRequest, index }) => {
 
     const tmpPosition = await nfpContract.methods.getPosition(data.tokenId).call()
     const tmpGen = await nfpContract.methods.getGeneration(data.tokenId).call()
+    const tmpLvl = await nfpContract.methods.getLevel(data.tokenId).call()
 
     const res = await fetch(data.tokenHash)
     const json = await res.json()
@@ -96,6 +93,7 @@ const MatchCandidate = ({ data, closeRequest, index }) => {
       imgUrl: imageUrl,
       position: tmpPosition.toString(),
       gen: tmpGen.toString(),
+      lvl: tmpLvl.toString(),
     })
   }, [data])
 
@@ -119,6 +117,7 @@ const MatchCandidate = ({ data, closeRequest, index }) => {
           {nftInfo.position}
         </TypeTag>
         <MultiplierTag variant="secondary">{`Gen ${nftInfo.gen}`}</MultiplierTag>
+        <MultiplierTag variant="primary">{`Lvl ${nftInfo.lvl}`}</MultiplierTag>
       </HoverWrapper>
     </CandidateWrapper>
   )

@@ -36,17 +36,6 @@ const web3 = new Web3(Web3.givenProvider)
 const fusionContract = new web3.eth.Contract(Fusion.abi as AbiItem[], getFusionAddress())
 
 const StatisticsInfo = () => {
-  const [fusionPrice, setFusionPrice] = useState('')
-
-  const fetchInfo = useCallback(async () => {
-    const tmpFusionFee = await fusionContract.methods.fusionFee().call()
-    console.log(fusionPrice)
-    setFusionPrice(tmpFusionFee.toString())
-  }, [fusionPrice])
-
-  useEffect(() => {
-    fetchInfo()
-  }, [fetchInfo])
   return (
     <BoxShadow style={{ borderRadius: '32px', padding: '24px' }}>
       <Flex flexDirection="column" alignItems="center">

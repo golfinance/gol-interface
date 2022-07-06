@@ -72,18 +72,18 @@ const web3 = new Web3(Web3.givenProvider)
 const trainingContract = new web3.eth.Contract(Training.abi as AbiItem[], getTrainingAddress())
 const nfpContract = new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())
 
-const StakeCandidate = ({ data, closeRequest }) => {
+const TrainingCandidate = ({ data, closeRequest }) => {
   const { account } = useWeb3React()
-  const [nftInfo, setNFTInfo] = useState({ tokenName: '', tokenId: '', imgUrl: '', position: '', gen: '' })
+  const [nftInfo, setNFTInfo] = useState({ tokenName: '', tokenId: '', imgUrl: '', position: '', gen: '', lvl: '' })
   const { setLoading } = useContext(LoadingContext)
-  const { initMyNFTS, initSelectedNFTs } = useContext(StakeContext)
+  const { initTrainingNfts, initTrainingSelectedNfts } = useContext(StakeContext)
 
   const fetchNft = useCallback(async () => {
     if (!data || !data.tokenId) return
 
     const tmpPosition = await nfpContract.methods.getPosition(data.tokenId).call()
     const tmpGen = await nfpContract.methods.getGeneration(data.tokenId).call()
-
+    const tmpLvl = await nfpContract.methods.getLevel(data.tokenId).call()
     const res = await fetch(data.tokenHash)
     const json = await res.json()
 
@@ -98,6 +98,7 @@ const StakeCandidate = ({ data, closeRequest }) => {
       imgUrl: imageUrl,
       position: tmpPosition.toString(),
       gen: tmpGen.toString(),
+      lvl: tmpLvl.toString(),
     })
   }, [data])
 
@@ -111,22 +112,18 @@ const StakeCandidate = ({ data, closeRequest }) => {
     await nfpContract.methods.approve(getTrainingAddress(), data.tokenId).send({ from: account })
     await trainingContract.methods.stakeNfpToTrain(data.tokenId).send({ from: account })
     toast.success('Successfully Staked NFT to Training Pool.')
-
     const stakingItems = await trainingContract.methods.getStakedItems(account).call()
-    initSelectedNFTs(stakingItems)
-
+    initTrainingSelectedNfts(stakingItems)
     const tokenIds = []
     const tmpMyTokens = []
     const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
     _.map(nfpTokens, (itm) => {
       tokenIds.push({ tokenId: itm, isAIR: false })
     })
-
     const myTokenHashes = []
     for (let i = 0; i < tokenIds.length; i++) {
       myTokenHashes.push(nfpContract.methods.tokenURI(tokenIds[i].tokenId).call())
     }
-
     const result = await Promise.all(myTokenHashes)
     for (let i = 0; i < tokenIds.length; i++) {
       if (!tmpMyTokens[i]) tmpMyTokens[i] = {}
@@ -136,8 +133,7 @@ const StakeCandidate = ({ data, closeRequest }) => {
       if (!tokenIds[i].isAIR) tmpMyTokens[i].contractAddress = getNonFungiblePlayerAddress()
       else tmpMyTokens[i].contractAddress = getAirNftAddress()
     }
-    initMyNFTS(tmpMyTokens)
-
+    initTrainingNfts(tmpMyTokens)
     setLoading(false)
   }
 
@@ -149,9 +145,10 @@ const StakeCandidate = ({ data, closeRequest }) => {
           {nftInfo.position}
         </TypeTag>
         <MultiplierTag variant="secondary">{`Gen ${nftInfo.gen}`}</MultiplierTag>
+        <MultiplierTag variant="primary">{`Lvl ${nftInfo.lvl}`}</MultiplierTag>
       </HoverWrapper>
     </CandidateWrapper>
   )
 }
 
-export default StakeCandidate
+export default TrainingCandidate

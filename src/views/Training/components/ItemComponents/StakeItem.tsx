@@ -14,6 +14,16 @@ import { AbiItem } from 'web3-utils'
 import styled from 'styled-components'
 import { getNumberSuffix } from 'utils/formatBalance'
 
+const TypeTag = styled(Tag)`
+  backdrop-filter: blur(10px);
+  margin-top: 10px;
+`
+
+const MultiplierTag = styled(Tag)`
+  margin-left: 4px;
+  margin-top: 10px;
+`
+
 const ImageContainer = styled.div`
   position: relative;
   padding-bottom: 100%;
@@ -34,6 +44,8 @@ const NftImage = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
+  text-align: center;
+  margin-top: 24px;
   top: 0;
   &:hover {
     transform: scale(1.04);
@@ -90,15 +102,24 @@ const trainingContract = new web3.eth.Contract(Training.abi as AbiItem[], getTra
 const StakeItem = ({ data }) => {
   const { account } = useWeb3React()
   const { setLoading } = useContext(LoadingContext)
-  const { initMyNFTS, initSelectedNFTs } = useContext(StakeContext)
+  const { initTrainingNfts, initTrainingSelectedNfts } = useContext(StakeContext)
 
-  const [nftInfo, setNFTInfo] = useState({ tokenName: '', tokenId: '', imgUrl: '', skillPoint: 0, upgradableSP: 0 })
+  const [nftInfo, setNFTInfo] = useState({
+    tokenName: '',
+    tokenId: '',
+    imgUrl: '',
+    skillPoint: 0,
+    upgradableSP: 0,
+    position: '',
+  })
 
   const fetchNft = useCallback(async () => {
     if (!data || !data.tokenId) return
     const tokenURI = await nfpContract.methods.tokenURI(data.tokenId).call()
     const tmpSkillPoint = await nfpContract.methods.getSkillPoint(data.tokenId).call()
+    const tmpPosition = await nfpContract.methods.getPosition(data.tokenId).call()
     const tmpUpgradableSP = await trainingContract.methods.getUpgradableSP(data.itemId).call()
+
     console.log('Skill Point: ', tmpSkillPoint)
     const res = await fetch(tokenURI)
     const json = await res.json()
@@ -112,6 +133,7 @@ const StakeItem = ({ data }) => {
       imgUrl: imageUrl,
       skillPoint: tmpSkillPoint,
       upgradableSP: tmpUpgradableSP,
+      position: tmpPosition,
     })
   }, [data])
 
@@ -130,7 +152,7 @@ const StakeItem = ({ data }) => {
     }
 
     const stakingItems = await trainingContract.methods.getStakedItems(account).call()
-    initSelectedNFTs(stakingItems)
+    initTrainingSelectedNfts(stakingItems)
 
     const tokenIds = []
     const tmpMyTokens = []
@@ -153,7 +175,7 @@ const StakeItem = ({ data }) => {
       if (!tokenIds[i].isAIR) tmpMyTokens[i].contractAddress = getNonFungiblePlayerAddress()
       else tmpMyTokens[i].contractAddress = getAirNftAddress()
     }
-    initMyNFTS(tmpMyTokens)
+    initTrainingNfts(tmpMyTokens)
     setLoading(false)
   }
   return (
@@ -167,6 +189,13 @@ const StakeItem = ({ data }) => {
           <Text fontSize="20px" style={{ textAlign: 'center', marginBottom: '15px' }}>
             {nftInfo.tokenName}
           </Text>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '8px' }}>
+            <Text fontWeight="200">Position: </Text> &nbsp;&nbsp;
+            <Text fontWeight="200" fontSize="15px">
+              {nftInfo.position}
+            </Text>
+          </div>
+
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '5px' }}>
             <Text>Current Skill Point: </Text> &nbsp;&nbsp;
             <Text fontSize="15px">{nftInfo.skillPoint}</Text>

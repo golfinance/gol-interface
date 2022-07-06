@@ -287,6 +287,7 @@ const FusionContainer = () => {
             width: '70vw',
             maxWidth: '70vw',
             minWidth: '70vw',
+            maxHeight: '85vh',
             borderRadius: '15px',
             background: '#27262c',
             zindex: 15,

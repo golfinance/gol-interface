@@ -19,7 +19,7 @@ const trainingContract = new web3.eth.Contract(TrainingABI.abi as AbiItem[], get
 
 const Training = () => {
   const { account } = useWeb3React()
-  const { initMyNFTS, initSelectedNFTs } = useContext(StakeContext)
+  const { initTrainingNfts, initTrainingSelectedNfts } = useContext(StakeContext)
   const { setLoading } = useContext(LoadingContext)
 
   useEffect(() => {
@@ -29,10 +29,22 @@ const Training = () => {
       const tokenIds = []
       const tmpMyTokens = []
       const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
+      const tmpSp = []
+      const tmpGen = []
 
-      _.map(nfpTokens, (itm) => {
-        tokenIds.push({ tokenId: itm, isAIR: false })
-      })
+      for (let i = 0; i < nfpTokens.length; i++) {
+        tmpSp.push(nfpContract.methods.getSkillPoint(nfpTokens[i]).call())
+        tmpGen.push(nfpContract.methods.getGeneration(nfpTokens[i]).call())
+      }
+
+      const sp = await Promise.all(tmpSp)
+      const gen = await Promise.all(tmpGen)
+
+      console.log('TMP mY TOKENS => ', nfpTokens)
+
+      for (let i = 0; i < nfpTokens.length; i++) {
+        if (parseInt(sp[i]) < (parseInt(gen[i]) + 1) * 100 - 1) tokenIds.push({ tokenId: nfpTokens[i], isAIR: false })
+      }
 
       const myTokenHashes = []
       for (let i = 0; i < tokenIds.length; i++) {
@@ -48,12 +60,12 @@ const Training = () => {
         if (!tokenIds[i].isAIR) tmpMyTokens[i].contractAddress = getNonFungiblePlayerAddress()
         else tmpMyTokens[i].contractAddress = getAirNftAddress()
       }
-      initMyNFTS(tmpMyTokens)
+
+      initTrainingNfts(tmpMyTokens)
 
       const stakingItems = await trainingContract.methods.getStakedItems(account).call()
 
-      console.log('Staking Items:', stakingItems)
-      initSelectedNFTs(stakingItems)
+      initTrainingSelectedNfts(stakingItems)
 
       setLoading(false)
     }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Flex, Text, Tag } from '@pancakeswap-libs/uikit'
 import styled from 'styled-components'
 import SelectNFT from './SelectNFT'
@@ -83,6 +83,7 @@ const NewItem = () => {
   const addNFT2Stake = (val) => {
     return false
   }
+  const modalRef = useRef(undefined)
 
   return (
     <ItemContainer style={{ background: '#27262c' }}>
@@ -97,7 +98,9 @@ const NewItem = () => {
           </Text>
         </Flex>
       </Flex>
-      <SelectNFT isOpen={isOpen} closeDialog={closeDialog} addNFTHandler={addNFT2Stake} />
+      <div ref={modalRef}>
+        <SelectNFT isOpen={isOpen} closeDialog={closeDialog} />
+      </div>
     </ItemContainer>
   )
 }

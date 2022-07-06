@@ -54,7 +54,7 @@ const trainingContract = new web3.eth.Contract(Training.abi as AbiItem[], getTra
 const StatisticsInfo = () => {
   const { account } = useWeb3React()
 
-  const { selectedNFTS } = useContext(StakeContext)
+  const { trainingSelectedNfts } = useContext(StakeContext)
 
   const [poolInfo, setPoolInfo] = useState({
     trainingLevel: 0,
@@ -72,11 +72,11 @@ const StatisticsInfo = () => {
     const feeToString = tmpUpdateTrainingLevelFee.toString()
     setPoolInfo({
       trainingLevel: tmpTrainingLevel,
-      totalStakedCount: selectedNFTS.length,
+      totalStakedCount: trainingSelectedNfts.length,
       updateTrainingLevelFee: feeToString,
       updateHour: hour,
     })
-  }, [account, selectedNFTS])
+  }, [account, trainingSelectedNfts])
 
   useEffect(() => {
     fetchInfo()

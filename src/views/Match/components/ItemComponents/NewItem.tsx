@@ -5,9 +5,12 @@ import NonFungiblePlayer from 'config/abi/NonFungiblePlayer.json'
 import Web3 from 'web3'
 import { PINATA_BASE_URI } from 'config/constants/nfts'
 import { AbiItem } from 'web3-utils'
-import { getNonFungiblePlayerAddress } from 'utils/addressHelpers'
+import { getNonFungiblePlayerAddress, getMatchAddress } from 'utils/addressHelpers'
+import Match from 'config/abi/Match.json'
 import { LoadingContext } from 'contexts/LoadingContext'
 import { StakeContext } from 'contexts/StakeContext'
+import { useWeb3React } from '@web3-react/core'
+import { secondsToHours, secondsToMinutes } from 'date-fns/esm'
 import SelectNFT from './SelectNFT'
 
 const ImageContainer = styled.div`
@@ -16,8 +19,9 @@ const ImageContainer = styled.div`
   height: 0;
   border-top-right-radius: 16px;
   border-top-left-radius: 16px;
-  background-color: rgb(249, 244, 211);
+  background-color: #101820;
   cursor: pointer;
+  color: white;
 `
 
 const NftImage = styled.div`
@@ -33,9 +37,6 @@ const NftImage = styled.div`
   border-top-right-radius: 16px;
   border-top-left-radius: 16px;
   top: 0;
-  &:hover {
-    transform: scale(1.04);
-  }
 `
 
 const AddImage = styled.div`
@@ -76,11 +77,16 @@ const ItemContainer = styled.div`
 
 const web3 = new Web3(Web3.givenProvider)
 const nfpContract = new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())
+const matchContract = new web3.eth.Contract(Match.abi as AbiItem[], getMatchAddress())
 
 const NewItem = ({ index }) => {
+  const { account } = useWeb3React()
   const [isOpen, setModalOpen] = useState(false)
   const { setLoading } = useContext(LoadingContext)
   const { selectedMatchNfts } = useContext(StakeContext)
+  const [canPlayMatch, setCanPlayMatch] = useState(false)
+  const [remainTime, setRemainTime] = useState({ hr: 0, min: 0, sec: 0 })
+  const [remainTimeSecs, setRemainTimeSecs] = useState(0)
   const [nftInfo, setNftInfo] = useState({
     tokenId: 0,
     tokenName: '',
@@ -123,6 +129,32 @@ const NewItem = ({ index }) => {
       tmpGen = await nfpContract.methods.getGeneration(selectedMatchNfts[index]).call()
       tmpClass = await nfpContract.methods.getClass(selectedMatchNfts[index]).call()
       tmpPosition = await nfpContract.methods.getPosition(selectedMatchNfts[index]).call()
+
+      const passedBlocks = parseInt(await matchContract.methods.getPassedBlocks(account, tmpGen).call())
+      const flgPlayedMatch = await matchContract.methods.isPlayedMatch(account, tmpGen).call()
+      let matchPeriod = parseInt(await matchContract.methods.matchPeriod().call())
+
+      tmpGen++
+      matchPeriod /= tmpGen
+
+      if (!flgPlayedMatch) setCanPlayMatch(true)
+      else if (passedBlocks >= matchPeriod) setCanPlayMatch(true)
+      else {
+        const remainSec = (matchPeriod - passedBlocks) * 3
+        // const tmpHr = Math.round(remainSec / 3600)
+        // remainSec -= tmpHr * 3600
+        // const tmpMin = Math.round(remainSec / 60)
+        // remainSec -= tmpMin * 60
+        // const tmpSec = remainSec
+
+        // setRemainTime({ hr: tmpHr, min: tmpMin, sec: tmpSec })
+        console.log(matchPeriod, passedBlocks, remainSec)
+        const tmpHr = Math.round(remainSec / (60 * 60))
+        const tmpMin = Math.round((remainSec % (60 * 60)) / 60)
+        const tmpSecs = remainSec % 60
+
+        setRemainTime({ hr: tmpHr, min: tmpMin, sec: tmpSecs })
+      }
       const res = await fetch(tokenUri)
       const json = await res.json()
       let tmpImageUrl = json.image
@@ -135,7 +167,7 @@ const NewItem = ({ index }) => {
         imageUrl: tmpImageUrl,
         skillPoint: tmpSkillPoint,
         level: tmpLevel,
-        gen: tmpGen,
+        gen: tmpGen--,
         position: tmpPosition,
         class: tmpClass,
       })
@@ -144,9 +176,34 @@ const NewItem = ({ index }) => {
     fetchNft()
     // eslint-disable-next-line
   }, [selectedMatchNfts, index])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (remainTime.hr > 0 || remainTime.min > 0 || remainTime.sec > 0) {
+        let tmpSec = remainTime.sec
+        let tmpMin = remainTime.min
+        let tmpHr = remainTime.hr
+        tmpSec--
+        if (tmpSec < 0) {
+          tmpMin--
+          tmpSec = 59
+          if (tmpMin < 0) {
+            tmpHr--
+            tmpMin = 59
+          }
+        }
+
+        setRemainTime({ hr: tmpHr, min: tmpMin, sec: tmpSec })
+      }
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [remainTime])
   const closeDialog = () => {
     setModalOpen(false)
   }
+
+  const Completionist = () => <span>You are good to go!</span>
 
   return (
     <ItemContainer style={{ background: '#27262c' }}>
@@ -165,7 +222,16 @@ const NewItem = ({ index }) => {
       ) : (
         <Flex flexDirection="column">
           <ImageContainer onClick={(e) => setModalOpen(true)}>
-            <NftImage style={{ backgroundImage: `url('${nftInfo.imageUrl}')` }} />
+            <NftImage
+              style={{ backgroundImage: `url('${nftInfo.imageUrl}')`, filter: !canPlayMatch ? 'blur(10px)' : '' }}
+            />
+            {!canPlayMatch ? (
+              <div
+                style={{ fontSize: '28px', position: 'absolute', left: '10px', top: '10px' }}
+              >{`${remainTime.hr} : ${remainTime.min} : ${remainTime.sec}`}</div>
+            ) : (
+              ''
+            )}
           </ImageContainer>
           <Divider />
           <Flex flexDirection="column" style={{ padding: '24px' }}>
