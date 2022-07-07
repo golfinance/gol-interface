@@ -161,13 +161,14 @@ const NewItem = ({ index }) => {
       tmpImageUrl = tmpImageUrl.slice(7)
       tmpImageUrl = `${PINATA_BASE_URI}${tmpImageUrl}`
 
+      tmpGen--
       setNftInfo({
         tokenId: selectedMatchNfts[index],
         tokenName: json.name,
         imageUrl: tmpImageUrl,
         skillPoint: tmpSkillPoint,
         level: tmpLevel,
-        gen: tmpGen--,
+        gen: tmpGen,
         position: tmpPosition,
         class: tmpClass,
       })

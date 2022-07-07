@@ -31,16 +31,13 @@ const NftMarketRule = () => {
 
   return (
     <NftMarketRuleContainer>
-      <NftMarketRuleTitle style={{ color: isDark ? 'white' : '' }}>Market Rules</NftMarketRuleTitle>
-      <NftMarketRuleContent style={{ color: isDark ? 'white' : '' }}>
-        <NftMarketRuleEach>1. NFTs can be purchased in the NFT Market only by using $MILK;</NftMarketRuleEach>
+      <NftMarketRuleTitle style={{ color: 'white' }}>Market Rules</NftMarketRuleTitle>
+      <NftMarketRuleContent style={{ color: 'white' }}>
+        <NftMarketRuleEach>1. NFTs can be purchased in the NFT Market only by using $GOL.</NftMarketRuleEach>
         <NftMarketRuleEach>
           2. After NFT is listed in the trading market, operations such as transfer, auction and stake are not allowed.
         </NftMarketRuleEach>
-        <NftMarketRuleEach>
-          3. The market will charge 10% of the seller his revenue as a service fee, which is used for burning both $MILK
-          and $COW, adding $MILK liquidity and for Treasury.
-        </NftMarketRuleEach>
+        <NftMarketRuleEach>3. The market will charge 5% of the seller his revenue as a service fee.</NftMarketRuleEach>
       </NftMarketRuleContent>
     </NftMarketRuleContainer>
   )

@@ -324,7 +324,7 @@ const SelectNFT = ({ isOpen, closeDialog }) => {
     }
     initNFTs()
     // eslint-disable-next-line
-  }, [filteredMyNfts])
+  }, [])
 
   return (
     <Modal

@@ -95,8 +95,19 @@ const MatchContainer = () => {
           positions[2].toString() !== positions[3].toString()
         )
           isStatusMatch = 3
+      }
 
-        if (isStatusMatch === 3) {
+      if (isStatusMatch === 3) {
+        const tmpGen = parseInt(await nfpContract.methods.getGeneration(parseInt(selectedMatchNfts[0])).call())
+        const passedBlocks = parseInt(await matchContract.methods.getPassedBlocks(account, tmpGen).call())
+        const flgPlayedMatch = await matchContract.methods.isPlayedMatch(account, tmpGen).call()
+        const matchPeriod = parseInt(await matchContract.methods.matchPeriod().call())
+
+        if (!flgPlayedMatch) {
+          isStatusMatch = 4
+        } else if (passedBlocks >= matchPeriod) isStatusMatch = 4
+
+        if (isStatusMatch === 4) {
           const tmpWinningChance = await matchContract.methods.getWinningChance(selectedMatchNfts, account).call()
 
           setWinningChance(parseInt(tmpWinningChance) / 100)
@@ -179,6 +190,10 @@ const MatchContainer = () => {
         ) : statusMatch === 2 ? (
           <Button style={{ width: '25%' }} disabled>
             Positions Must be Different
+          </Button>
+        ) : statusMatch === 3 ? (
+          <Button style={{ width: '25%' }} disabled>
+            Not Passed Match Period
           </Button>
         ) : (
           <Button style={{ width: '25%' }} onClick={startMatch}>
