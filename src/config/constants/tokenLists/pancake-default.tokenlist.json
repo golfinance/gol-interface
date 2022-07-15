@@ -73,8 +73,9 @@
       "chainId": 56,
       "decimals": 18,
       "logoURI": "https://www.cashcowprotocol.com/MilkToken.png"
-    },
-    /*
+    }
+    /*,
+    
     {
       "name": "Venus",
       "symbol": "XVS",
