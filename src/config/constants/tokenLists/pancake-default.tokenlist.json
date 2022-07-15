@@ -67,6 +67,14 @@
       "logoURI": "https://www.gol.finance/logo.png"
     },
     {
+      "name": "Milk Token",
+      "symbol": "MILK",
+      "address": "0xe5bd6c5b1c2df8f499847a545838c09e45f4a262",
+      "chainId": 56,
+      "decimals": 18,
+      "logoURI": "https://www.cashcowprotocol.com/MilkToken.png"
+    },
+    {
       "name": "Venus",
       "symbol": "XVS",
       "address": "0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63",
