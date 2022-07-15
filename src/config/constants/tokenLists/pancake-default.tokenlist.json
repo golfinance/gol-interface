@@ -74,7 +74,8 @@
       "decimals": 18,
       "logoURI": "https://www.cashcowprotocol.com/MilkToken.png"
     },
-    /*{
+    /*
+    {
       "name": "Venus",
       "symbol": "XVS",
       "address": "0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63",
