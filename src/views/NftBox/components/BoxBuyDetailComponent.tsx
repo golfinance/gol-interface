@@ -244,7 +244,7 @@ const BoxBuyDetailComponent = () => {
       <RemainingAmount style={{ color: isDark ? 'white' : '' }}>
         Remaining Amount:{' '}
         <span style={{ fontSize: '18px', color: isDark ? 'white' : '#431216', fontWeight: 700 }}>
-          {1000 - mintedAmount}
+          {6400 - mintedAmount}
         </span>
       </RemainingAmount>
       <BoxPrice

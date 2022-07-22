@@ -130,12 +130,9 @@ const NewItem = ({ index }) => {
       tmpClass = await nfpContract.methods.getClass(selectedMatchNfts[index]).call()
       tmpPosition = await nfpContract.methods.getPosition(selectedMatchNfts[index]).call()
 
-      const passedBlocks = parseInt(await matchContract.methods.getPassedBlocks(account, tmpGen).call())
-      const flgPlayedMatch = await matchContract.methods.isPlayedMatch(account, tmpGen).call()
-      let matchPeriod = parseInt(await matchContract.methods.matchPeriod().call())
-
-      tmpGen++
-      matchPeriod /= tmpGen
+      const passedBlocks = parseInt(await matchContract.methods.getPassedBlocks(account).call())
+      const flgPlayedMatch = await matchContract.methods.isPlayedMatch(account).call()
+      const matchPeriod = parseInt(await matchContract.methods.matchPeriod().call())
 
       if (!flgPlayedMatch) setCanPlayMatch(true)
       else if (passedBlocks >= matchPeriod) setCanPlayMatch(true)
@@ -161,7 +158,6 @@ const NewItem = ({ index }) => {
       tmpImageUrl = tmpImageUrl.slice(7)
       tmpImageUrl = `${PINATA_BASE_URI}${tmpImageUrl}`
 
-      tmpGen--
       setNftInfo({
         tokenId: selectedMatchNfts[index],
         tokenName: json.name,

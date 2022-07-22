@@ -108,12 +108,10 @@ const StakeItem = ({ data, index }) => {
     const res = await fetch(tokenURI)
     const json = await res.json()
     let imageUrl = json.image
-    // if (!isAIR) {
-    //   imageUrl = imageUrl.slice(7)
-    //   imageUrl = `${PINATA_BASE_URI}${imageUrl}`
-    // }
-    imageUrl = imageUrl.slice(7)
-    imageUrl = `${PINATA_BASE_URI}${imageUrl}`
+    if (!isAIR) {
+      imageUrl = imageUrl.slice(7)
+      imageUrl = `${PINATA_BASE_URI}${imageUrl}`
+    }
 
     setNFTInfo({ tokenName: json.name, tokenId: data.tokenId, imgUrl: imageUrl, isAIR: data.isAIR })
   }, [data])

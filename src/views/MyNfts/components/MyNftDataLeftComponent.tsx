@@ -193,14 +193,12 @@ const MyNftDataLeftComponent = ({ myToken }: NftDataLeftComponentInterface) => {
     setDescription(json.description)
 
     let imageUrl = json.image
-    // if (!myToken.isAIR) {
-    //   imageUrl = imageUrl.slice(7)
-    //   setImage(`${PINATA_BASE_URI}${imageUrl}`)
-    // } else {
-    //   setImage(imageUrl)
-    // }
-    imageUrl = imageUrl.slice(7)
-    setImage(`${PINATA_BASE_URI}${imageUrl}`)
+    if (!myToken.isAIR) {
+      imageUrl = imageUrl.slice(7)
+      setImage(`${PINATA_BASE_URI}${imageUrl}`)
+    } else {
+      setImage(imageUrl)
+    }
     setGolPrice(cakePriceUsd.toNumber())
   }, [account, myToken, cakePriceUsd])
 

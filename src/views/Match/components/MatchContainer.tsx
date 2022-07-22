@@ -99,8 +99,8 @@ const MatchContainer = () => {
 
       if (isStatusMatch === 3) {
         const tmpGen = parseInt(await nfpContract.methods.getGeneration(parseInt(selectedMatchNfts[0])).call())
-        const passedBlocks = parseInt(await matchContract.methods.getPassedBlocks(account, tmpGen).call())
-        const flgPlayedMatch = await matchContract.methods.isPlayedMatch(account, tmpGen).call()
+        const passedBlocks = parseInt(await matchContract.methods.getPassedBlocks(account).call())
+        const flgPlayedMatch = await matchContract.methods.isPlayedMatch(account).call()
         const matchPeriod = parseInt(await matchContract.methods.matchPeriod().call())
 
         if (!flgPlayedMatch) {

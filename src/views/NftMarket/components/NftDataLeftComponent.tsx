@@ -177,14 +177,12 @@ const NftDataLeftComponent = ({ itemId }: NftDataLeftComponentInterface) => {
     const json = await res.json()
 
     let imageUrl = json.image
-    // if (isAirToken) {
-    //   setImage(imageUrl)
-    // } else {
-    //   imageUrl = imageUrl.slice(7)
-    //   setImage(`${PINATA_BASE_URI}${imageUrl}`)
-    // }
-    imageUrl = imageUrl.slice(7)
-    setImage(`${PINATA_BASE_URI}${imageUrl}`)
+    if (isAirToken) {
+      setImage(imageUrl)
+    } else {
+      imageUrl = imageUrl.slice(7)
+      setImage(`${PINATA_BASE_URI}${imageUrl}`)
+    }
     setIsAIR(isAirToken)
     setName(json.name)
     setDescription(json.description)
