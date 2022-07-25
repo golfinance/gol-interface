@@ -40,8 +40,6 @@ const Training = () => {
       const sp = await Promise.all(tmpSp)
       const gen = await Promise.all(tmpGen)
 
-      console.log('TMP mY TOKENS => ', nfpTokens)
-
       for (let i = 0; i < nfpTokens.length; i++) {
         if (parseInt(sp[i]) < (parseInt(gen[i]) + 1) * 100 - 1) tokenIds.push({ tokenId: nfpTokens[i], isAIR: false })
       }

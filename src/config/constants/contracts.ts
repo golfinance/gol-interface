@@ -97,7 +97,7 @@ export default {
     97: '0xF01C4D46381fECDFafBf8188aDfE8fDC9021CDaD'
   },
   golToken: {
-    56: '0x2f1281a9f84cf6f551db39156d32a5d6153f25a5',
+    56: '0x52f6a03a53840c01470f33a0b016e4c3e3dfe796',
     97: '0xF4073d05dBE7de995E7b4762C1645519b0f5D609'
   },
   market:{

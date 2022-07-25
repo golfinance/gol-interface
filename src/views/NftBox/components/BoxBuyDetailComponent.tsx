@@ -5,7 +5,6 @@ import { Button, Heading, Tag } from '@pancakeswap-libs/uikit'
 import { useWeb3React } from '@web3-react/core'
 import NonFungiblePlayer from 'config/abi/NonFungiblePlayer.json'
 import Busd from 'config/abi/Busd.json'
-import { usePriceCakeBusd } from 'state/farms/hooks'
 import { toWei, AbiItem, toBN } from 'web3-utils'
 import { LoadingContext } from 'contexts/LoadingContext'
 import { getNonFungiblePlayerAddress, getBusdAddress } from 'utils/addressHelpers'
@@ -122,7 +121,6 @@ const BoxBuyDetailComponent = () => {
   const [mintedAmount, setMintedAmount] = useState(0)
   const [isOpen, setModalOpen] = useState(false)
   const [price, setPrice] = useState('0')
-  const [golPrice, setGolPrice] = useState(0)
   const [mintedNft, setMintedNft] = useState({
     tokenId: 0,
     tokenName: '',
@@ -133,7 +131,6 @@ const BoxBuyDetailComponent = () => {
     position: '',
     class: '',
   })
-  const cakePriceUsd = usePriceCakeBusd()
 
   /** Styles Div */
 
@@ -152,16 +149,15 @@ const BoxBuyDetailComponent = () => {
         setMintingState(false)
       }
 
-      const currentBlockNumber = await web3.eth.getBlockNumber()
-      const blockNumber = await nfpContract.methods.blockNumber().call()
+      // const currentBlockNumber = await web3.eth.getBlockNumber()
+      // const blockNumber = await nfpContract.methods.blockNumber().call()
 
       // if (currentBlockNumber < blockNumber) {
       //     setMintingState(false);
       // }
     }
-    setGolPrice(cakePriceUsd.toNumber())
     getTotalSupply()
-  }, [account, cakePriceUsd])
+  }, [account])
 
   const buyButtonHandler = async () => {
     setMintingState(false)
@@ -201,8 +197,6 @@ const BoxBuyDetailComponent = () => {
     }
 
     if (mintedTokenId !== 0) {
-      console.log('TMp Fusioned Token Id', mintedTokenId)
-
       tokenUri = await nfpContract.methods.tokenURI(mintedTokenId).call()
       tmpSkillPoint = await nfpContract.methods.getSkillPoint(mintedTokenId).call()
       tmpLevel = await nfpContract.methods.getLevel(mintedTokenId).call()
@@ -214,8 +208,6 @@ const BoxBuyDetailComponent = () => {
       let tmpImageUrl = json.image
       tmpImageUrl = tmpImageUrl.slice(7)
       tmpImageUrl = `${PINATA_BASE_URI}${tmpImageUrl}`
-
-      console.log(mintedTokenId, json.name, tmpImageUrl)
 
       setMintedNft({
         tokenId: mintedTokenId,
@@ -264,7 +256,7 @@ const BoxBuyDetailComponent = () => {
             {price}
             <span
               style={{ fontSize: '14px', color: isDark ? 'white' : '#694f4e', fontWeight: 400, marginLeft: '4px' }}
-            >{` ≈ $${Math.round(golPrice * parseInt(price) * 100) / 100}`}</span>
+            >{` ≈ $${price}`}</span>
           </PriceDetailContainer>
         </BoxPriceContainer>
       </BoxPrice>

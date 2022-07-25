@@ -35,6 +35,7 @@ const TrainingLevel = ({ trainingLevel }) => {
     setLoading(true)
     const priceWei = toWei(toBN('10000000000000000000000000000000000000000'), 'ether')
     const allowance = await golTokenContract.methods.allowance(account, getTrainingAddress()).call()
+    console.log('Allowance => ')
 
     if (parseInt(allowance.toString()) < parseInt(updatingFee))
       await golTokenContract.methods.approve(getTrainingAddress(), priceWei).send({ from: account })
