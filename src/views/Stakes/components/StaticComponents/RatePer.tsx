@@ -1,8 +1,11 @@
 import React from 'react'
 import { Flex, Image, Text } from '@pancakeswap-libs/uikit'
 import { getNumberSuffix } from 'utils/formatBalance'
+import { usePriceCakeBusd } from 'state/farms/hooks'
 
 const RatePer = ({ dailyGolRate }) => {
+  const cakePriceUsd = usePriceCakeBusd()
+
   return (
     <Flex flexDirection="column">
       <Text style={{ textAlign: 'left' }}>Daily Gol / 100 GolPower</Text>
@@ -12,7 +15,7 @@ const RatePer = ({ dailyGolRate }) => {
           {getNumberSuffix(dailyGolRate / 1000000, 0)}
         </Text>
         <Text textTransform="uppercase" color="textSubtle" fontSize="18px" style={{ lineHeight: 2 }}>
-          ≈ $0
+          {`≈ $${getNumberSuffix((cakePriceUsd.toNumber() * dailyGolRate) / 1000000, 3)}`}
         </Text>
       </Flex>
     </Flex>

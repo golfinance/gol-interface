@@ -117,7 +117,8 @@ const StakeItem = ({ data, index }) => {
   }, [data])
 
   const fetchGolPower = useCallback(async () => {
-    const poolInfo = await stakingContract.methods.pools(index).call()
+    const tmpIndex = index === '1' ? '2' : '1'
+    const poolInfo = await stakingContract.methods.pools(tmpIndex).call()
     const tmpGolPower = poolInfo.golPower
     setGolPower(tmpGolPower)
   }, [index])
