@@ -99,13 +99,30 @@ const MatchContainer = () => {
 
       if (isStatusMatch === 3) {
         const tmpGen = parseInt(await nfpContract.methods.getGeneration(parseInt(selectedMatchNfts[0])).call())
-        const passedBlocks = parseInt(await matchContract.methods.getPassedBlocks(account).call())
+        const passedBlocks0 = parseInt(
+          await matchContract.methods.getPassedBlocks(parseInt(selectedMatchNfts[0])).call(),
+        )
+        const passedBlocks1 = parseInt(
+          await matchContract.methods.getPassedBlocks(parseInt(selectedMatchNfts[1])).call(),
+        )
+        const passedBlocks2 = parseInt(
+          await matchContract.methods.getPassedBlocks(parseInt(selectedMatchNfts[2])).call(),
+        )
+        const passedBlocks3 = parseInt(
+          await matchContract.methods.getPassedBlocks(parseInt(selectedMatchNfts[3])).call(),
+        )
         const flgPlayedMatch = await matchContract.methods.isPlayedMatch(account).call()
         const matchPeriod = parseInt(await matchContract.methods.matchPeriod().call())
 
         if (!flgPlayedMatch) {
           isStatusMatch = 4
-        } else if (passedBlocks >= matchPeriod) isStatusMatch = 4
+        } else if (
+          passedBlocks0 >= matchPeriod &&
+          passedBlocks1 >= matchPeriod &&
+          passedBlocks2 >= matchPeriod &&
+          passedBlocks3 >= matchPeriod
+        )
+          isStatusMatch = 4
 
         if (isStatusMatch === 4) {
           const tmpWinningChance = await matchContract.methods.getWinningChance(selectedMatchNfts, account).call()

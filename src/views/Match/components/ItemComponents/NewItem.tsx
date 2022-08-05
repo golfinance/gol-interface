@@ -130,7 +130,9 @@ const NewItem = ({ index }) => {
       tmpClass = await nfpContract.methods.getClass(selectedMatchNfts[index]).call()
       tmpPosition = await nfpContract.methods.getPosition(selectedMatchNfts[index]).call()
 
-      const passedBlocks = parseInt(await matchContract.methods.getPassedBlocks(account).call())
+      const passedBlocks = parseInt(
+        await matchContract.methods.getPassedBlocks(parseInt(selectedMatchNfts[index])).call(),
+      )
       const flgPlayedMatch = await matchContract.methods.isPlayedMatch(account).call()
       const matchPeriod = parseInt(await matchContract.methods.matchPeriod().call())
 
