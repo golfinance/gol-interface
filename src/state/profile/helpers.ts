@@ -49,7 +49,6 @@ export const getUsername = async (address: string): Promise<string> => {
 export const getProfileAvatar = async (address: string) => {
   try {
     const hasRegistered = await profileContract.hasRegistered(address)
-
     if (!hasRegistered) {
       return null
     }
@@ -84,6 +83,7 @@ export const getProfileAvatar = async (address: string) => {
 }
 
 export const getProfile = async (address: string): Promise<GetProfileResponse> => {
+  console.log('STEP 1: getting profile from helper for: ', address)
   try {
     const hasRegistered = await profileContract.hasRegistered(address)
 
@@ -92,6 +92,7 @@ export const getProfile = async (address: string): Promise<GetProfileResponse> =
     }
 
     const profileResponse = await profileContract.getUserProfile(address)
+    console.log('STEP 2: profileResponse from await: ', profileResponse)
     const { userId, points, teamId, tokenId, collectionAddress, isActive } = transformProfileResponse(profileResponse)
     const team = await getTeam(teamId)
     const username = await getUsername(address)

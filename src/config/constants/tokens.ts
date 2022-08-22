@@ -1690,7 +1690,8 @@ export const testnetTokens = {
   ),
   gol: new Token(
     TESTNET,
-    '0xBC16DF9309D7997bD5EeD62169BFd4d34666F196',
+    // '0xBC16DF9309D7997bD5EeD62169BFd4d34666F196',
+    '0xF4073d05dBE7de995E7b4762C1645519b0f5D609',
     18,
     'GOL',
     'GOLToken',

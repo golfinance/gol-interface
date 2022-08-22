@@ -20,17 +20,24 @@ export default {
     97: '0x5790c3534F30437641541a0FA04C992799602998',
     56: '0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c',
   },
+  // Gol Profile Must Go Here
   pancakeProfile: {
     56: '0xDf4dBf6536201370F95e06A0F8a7a70fE40E388a',
-    97: '0x4B683C7E13B6d5D7fd1FeA9530F451954c1A7c8A',
+    // FIXME: GolProfile for GolFinance
+    // 97: '0x4B683C7E13B6d5D7fd1FeA9530F451954c1A7c8A',
+    97: '0x1E1e8b794d08895ed602f82EaEcC7Cb5bC985004'
   },
   pancakeRabbits: {
     56: '0xDf7952B35f24aCF7fC0487D01c8d5690a60DBa07',
-    97: '0x60935F36e4631F73f0f407e68642144e07aC7f5E',
+    // FIXME: PancakeBunnies for GolFinance
+    // 97: '0x60935F36e4631F73f0f407e68642144e07aC7f5E',
+    97: '0x742466914848c6AB0e7AD36Acd1e4fbf4ee773b1'
   },
   bunnyFactory: {
     56: '0xfa249Caa1D16f75fa159F7DFBAc0cC5EaB48CeFf',
-    97: '0x707CBF373175fdB601D34eeBF2Cf665d08f01148',
+    // FIXME: BunnyFactory contract for GolFinance
+    // 97: '0x707CBF373175fdB601D34eeBF2Cf665d08f01148',
+    97: '0x76D4D814fF3c2dC6D43db05eC49Faf4fdeEe43F7'
   },
   claimRefund: {
     56: '0xE7e53A7e9E3Cf6b840f167eF69519175c497e149',

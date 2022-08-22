@@ -16,8 +16,12 @@ const Market = () => {
   const initializationState = useGetNFTInitializationState()
   // const initializationState = 'INITIALIZED'
 
+  console.log('BEFORE useFetchCollecions()');
 
   useFetchCollections()
+
+  
+
 
 
   if (initializationState !== NFTMarketInitializationState.INITIALIZED) {
@@ -37,6 +41,7 @@ const Market = () => {
         <Collection />
       </Route>
       <Route path={`${nftsBaseUrl}/profile/:accountAddress?`}>
+        {console.log('routed to Profile')}
         <NftProfile />
       </Route>
       <Route exact path={`${nftsBaseUrl}/profile`}>

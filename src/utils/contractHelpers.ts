@@ -40,6 +40,7 @@ import bep20Abi from 'config/abi/erc20.json'
 import erc721Abi from 'config/abi/erc721.json'
 import lpTokenAbi from 'config/abi/lpToken.json'
 import golAbi from 'config/abi/gol.json'
+import golTeamsAbi from 'config/abi/golTeamsAbi.json'
 import ifoV1Abi from 'config/abi/ifoV1.json'
 import ifoV2Abi from 'config/abi/ifoV2.json'
 import pointCenterIfo from 'config/abi/pointCenterIfo.json'
@@ -66,6 +67,8 @@ import pancakeSquadAbi from 'config/abi/pancakeSquad.json'
 import { ChainLinkOracleContract, FarmAuctionContract, PancakeProfileContract, PredictionsContract } from './types'
 
 const getContract = (abi: any, address: string, signer?: ethers.Signer | ethers.providers.Provider) => {
+  // FIXME: Signer
+  console.log('inside getContract Function ***')
   const signerOrProvider = signer ?? simpleRpcProvider
   return new ethers.Contract(address, abi, signerOrProvider)
 }
@@ -74,7 +77,10 @@ export const getBep20Contract = (address: string, signer?: ethers.Signer | ether
   return getContract(bep20Abi, address, signer)
 }
 export const getErc721Contract = (address: string, signer?: ethers.Signer | ethers.providers.Provider) => {
-  return getContract(erc721Abi, address, signer)
+  // FIXME: Signer
+  console.log('signing: ', address)
+  console.log('Erc721signer: ', signer)
+  return getContract(golTeamsAbi, address, signer)
 }
 export const getLpContract = (address: string, signer?: ethers.Signer | ethers.providers.Provider) => {
   return getContract(lpTokenAbi, address, signer)

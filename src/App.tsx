@@ -53,7 +53,9 @@ const Liquidity = lazy(() => import('./views/Pool'))
 const PoolFinder = lazy(() => import('./views/PoolFinder'))
 const RemoveLiquidity = lazy(() => import('./views/RemoveLiquidity'))
 const Info = lazy(() => import('./views/Info'))
-const NftMarket = lazy(() => import('./views/NftMarket'))
+// FIXME
+// const NftMarket = lazy(() => import('./views/NftMarket'))
+const NftMarket = lazy(() => import('./views/Nft/market'))
 const NftMarketDetail = lazy(() => import('./views/NftMarket/NftMarketDetail'))
 const MyNfts = lazy(() => import('./views/MyNfts'))
 const MyNftsDetail = lazy(() => import('./views/MyNfts/MyNftsDeatail'))
@@ -144,6 +146,10 @@ const App: React.FC = () => {
 
             <Route path="/myNfts/:myTokenId">
               <MyNftsDetail />
+            </Route>
+
+            <Route path="/nfts">
+              <NftMarket />
             </Route>
 
             <Route exact path="/nft-marketplace">

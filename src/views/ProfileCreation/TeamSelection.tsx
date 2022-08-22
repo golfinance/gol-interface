@@ -3,6 +3,7 @@ import { Card, CardBody, CommunityIcon, Flex, Heading, Text } from 'gol-uikit'
 import shuffle from 'lodash/shuffle'
 import { useTeams } from 'state/teams/hooks'
 import { useTranslation } from 'contexts/Localization'
+import { golTeams } from 'config/constants/nftsCollections/golTeams'
 import SelectionCard from './SelectionCard'
 import NextStepButton from './NextStepButton'
 import useProfileCreation from './contexts/hook'
@@ -10,9 +11,37 @@ import useProfileCreation from './contexts/hook'
 const Team: React.FC = () => {
   const { teamId: currentTeamId, actions } = useProfileCreation()
   const { t } = useTranslation()
+
+
   const { teams } = useTeams()
   const handleTeamSelection = (value: string) => actions.setTeamId(parseInt(value, 10))
-  const teamValues = useMemo(() => shuffle(Object.values(teams)), [teams])
+  // const teamValues = useMemo(() => shuffle(Object.values(teams)), [teams])
+
+  const teamValues = golTeams;
+//   const teamValues =   [
+//     {  
+//       "id": 0,
+//       "name": "Topos",
+//       "description": "string",
+//       "isJoinable": true,
+//       "images": {
+//         "md": "1",
+//         "alt": "1"
+//       },
+//       "users": 10
+//     },
+//     {  
+//       "id": 1,
+//       "name": "Otros",
+//       "description": "string",
+//       "isJoinable": true,
+//       "images": {
+//         "md": "1",
+//         "alt": "1"
+//       },
+//       "users": 10
+//     }
+// ]
 
   return (
     <>

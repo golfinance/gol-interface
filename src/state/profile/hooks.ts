@@ -84,6 +84,7 @@ export const useAchievementsForAddress = (address: string) => {
 }
 
 export const useProfile = () => {
+  console.log('useProfile HOOK')
   const { isInitialized, isLoading, data, hasRegistered }: ProfileState = useSelector((state: State) => state.profile)
   return { profile: data, hasProfile: isInitialized && hasRegistered, isInitialized, isLoading }
 }

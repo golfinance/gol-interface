@@ -15,6 +15,7 @@ import { useGetCollections } from 'state/nftMarket/hooks'
 import { getNftsFromCollectionApi } from 'state/nftMarket/helpers'
 import { ApiSingleTokenData } from 'state/nftMarket/types'
 import { pancakeBunniesAddress } from 'views/Nft/market/constants'
+import { golStarterTeams } from 'config/constants/nftsCollections/golStarterTeams'
 import SelectionCard from './SelectionCard'
 import NextStepButton from './NextStepButton'
 import useProfileCreation from './contexts/hook'
@@ -33,35 +34,54 @@ const Mint: React.FC = () => {
   const dispatch = useAppDispatch()
 
   const { account } = useWeb3React()
+  // FIXME: Hooks para llamar al contrato de Cake (GOL) y bunnyFactory (GolTeams)
   const cakeContract = useCake()
   const bunnyFactoryContract = useBunnyFactory()
+  // END FIXME
   const { t } = useTranslation()
   const { balance: cakeBalance, fetchStatus } = useGetCakeBalance()
-  const hasMinimumCakeRequired = fetchStatus === FetchStatus.SUCCESS && cakeBalance.gte(MINT_COST)
+  // FIXME: Put HasMiniumCakeRequired on True
+  // const hasMinimumCakeRequired = fetchStatus === FetchStatus.SUCCESS && cakeBalance.gte(MINT_COST)
+  // console.log('hasMiniumCakeRequired: ', hasMinimumCakeRequired)
+  const hasMinimumCakeRequired = true;
+  // END FIXME
   const { callWithGasPrice } = useCallWithGasPrice()
 
   useEffect(() => {
-    const getStarterNfts = async () => {
-      const { data: allPbTokens } = await getNftsFromCollectionApi(pancakeBunniesAddress)
-      const nfts = STARTER_NFT_BUNNY_IDS.map((bunnyId) => {
-        if (allPbTokens && allPbTokens[bunnyId]) {
-          return { ...allPbTokens[bunnyId], bunnyId }
-        }
-        return undefined
-      })
-      setStarterNfts(nfts)
-    }
-    if (starterNfts.length === 0) {
-      getStarterNfts()
-    }
-  }, [starterNfts])
+    // FIXME: Simulo la respuesta de la API
+    // const getStarterNfts = async () => {
+    //   const { data: allPbTokens } = await getNftsFromCollectionApi(pancakeBunniesAddress)
+
+    //   console.log('allPbTokens', allPbTokens);
+
+    //   const nfts = STARTER_NFT_BUNNY_IDS.map((bunnyId) => {
+    //     if (allPbTokens && allPbTokens[bunnyId]) {
+    //       return { ...allPbTokens[bunnyId], bunnyId }
+    //     }
+    //     return undefined
+    //   })
+
+    //   console.log('filtered nfts', nfts)
+    //   setStarterNfts(nfts)
+    // }
+
+    // if (starterNfts.length === 0) {
+    //   getStarterNfts()
+    // }
+
+    setStarterNfts(golStarterTeams);
+
+  }, [])
 
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         // TODO: Move this to a helper, this check will be probably be used many times
         try {
+          // FIXME: Logging Approval Request
+          console.log('Approving Cake Spend')
           const response = await cakeContract.allowance(account, bunnyFactoryContract.address)
+          console.log('response: ', response)
           return response.gte(minimumCakeRequired)
         } catch (error) {
           return false

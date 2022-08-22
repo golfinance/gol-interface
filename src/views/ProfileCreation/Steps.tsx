@@ -13,6 +13,10 @@ const Steps = () => {
   const { isInitialized, currentStep } = useContext(ProfileCreationContext)
   const { account } = useWeb3React()
 
+  // FIXME: Testing Purposes
+  // const isInitialized = true;
+  // const currentStep = 3;
+
   if (!account) {
     return <NoWalletConnected />
   }

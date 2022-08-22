@@ -16,6 +16,8 @@ import Achievements from './components/Achievements'
 import ActivityHistory from './components/ActivityHistory'
 import SubMenu from './components/SubMenu'
 import UserNfts from './components/UserNfts'
+// FIXME
+import {profileResponse} from './simulatedResponses';
 
 const TabMenuWrapper = styled(Box)`
   position: absolute;
@@ -31,12 +33,16 @@ const TabMenuWrapper = styled(Box)`
 
 const ConnectedProfile = () => {
   const { profile } = useProfile()
+  // const { profile } = profileResponse;
   const achievements = useAchievements()
   const { account } = useWeb3React()
   const { nfts: userNfts } = useUserNfts()
 
+
   useFetchAchievements()
   useFetchUserNfts(account)
+
+  console.log('PROFILE: ', profile)
 
   return (
     <>

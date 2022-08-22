@@ -12,6 +12,7 @@ import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useFetchUserNfts from 'views/Nft/market/Profile/hooks/useFetchUserNfts'
 import { nftsBaseUrl } from 'views/Nft/market/constants'
 import { UserNftInitializationState } from 'state/nftMarket/types'
+import { golProfilePictures } from 'config/constants/nftsCollections/golProfilePictures'
 import SelectionCard from './SelectionCard'
 import NextStepButton from './NextStepButton'
 import { ProfileCreationContext } from './contexts/ProfileCreationProvider'
@@ -30,15 +31,88 @@ const ProfilePicture: React.FC = () => {
   const [isApproving, setIsApproving] = useState(false)
   const { selectedNft, actions } = useContext(ProfileCreationContext)
 
-  const { nfts, userNftsInitializationState } = useUserNfts()
+  // const { nfts, userNftsInitializationState } = useUserNfts()
+
+  // const nfts = [
+  //   {
+  //     "tokenId": "0",
+  //     "name": "Tiger Warriors: 7",
+  //     "description": "Tiger Warriors are Planet ZUUD's first limited edition 2222 count fully hand-drawn collection on the BNB Chain.",
+  //     "collectionName": "Bitpunks",
+  //     "collectionAddress": "0x742466914848c6AB0e7AD36Acd1e4fbf4ee773b1",
+  //     "image": {
+  //       "original": "https://static-nft.pancakeswap.com/mainnet/0xa61da6E5B8F61285d46C2ED65eBE0E7c2FA27044/tiger-warriors-7.png",
+  //       "thumbnail": "https://static-nft.pancakeswap.com/mainnet/0xa61da6E5B8F61285d46C2ED65eBE0E7c2FA27044/tiger-warriors-7-1000.png",
+  //       "mp4": null,
+  //       "webm": null,
+  //       "gif": null
+  //     },
+  //     "attributes": [
+  //       {
+  //         "traitType": "Weapon",
+  //         "value": "None"
+  //       },
+  //       {
+  //         "traitType": "Necklace",
+  //         "value": "None"
+  //       },
+  //       {
+  //         "traitType": "Mouth",
+  //         "value": "None"
+  //       },
+  //       {
+  //         "traitType": "Eye",
+  //         "value": "Green"
+  //       },
+  //       {
+  //         "traitType": "Head",
+  //         "value": "None"
+  //       },
+  //       {
+  //         "traitType": "Earing",
+  //         "value": "None"
+  //       },
+  //       {
+  //         "traitType": "Background",
+  //         "value": "Cider"
+  //       },
+  //       {
+  //         "traitType": "Body",
+  //         "value": "Magma"
+  //       },
+  //       {
+  //         "traitType": "Cloth",
+  //         "value": "Gladiator"
+  //       }
+  //     ],
+  //     "collection": {
+  //       "name": "Planet ZUUD: Tiger Warriors"
+  //     }
+  //   },
+  // ];
+
+  const nfts = golProfilePictures;
+
+  const userNftsInitializationState = 'INITIALIZED';
+
   useFetchUserNfts(account)
+
+  console.log('fetching nfts ', nfts)
 
   const { t } = useTranslation()
   const { toastError, toastSuccess } = useToast()
   const { callWithGasPrice } = useCallWithGasPrice()
 
   const handleApprove = async () => {
+    console.log('Approving')
+    console.log('selectedNft: ', selectedNft)
+    console.log('signer: ', library.getSigner())
+    
     const contract = getErc721Contract(selectedNft.collectionAddress, library.getSigner())
+    // const contract = selectedNft.collectionAddress;
+
+    console.log('Contract: ', contract)
+
     const tx = await callWithGasPrice(contract, 'approve', [getPancakeProfileAddress(), selectedNft.tokenId])
     setIsApproving(true)
     const receipt = await tx.wait()
@@ -103,6 +177,7 @@ const ProfilePicture: React.FC = () => {
                   image={walletNft.image.thumbnail}
                   isChecked={firstTokenId === selectedNft.tokenId}
                   onChange={(value: string) => actions.setSelectedNft(value, walletNft.collectionAddress)}
+                // onChange={(value: string) => console.log('picked: ', value)}
                 >
                   <Text bold>{walletNft.name}</Text>
                 </SelectionCard>
