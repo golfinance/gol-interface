@@ -11,7 +11,8 @@ export const SNAPSHOT_HUB_API = `${SNAPSHOT_BASE_URL}/api/message`
 export const BITQUERY_API = 'https://graphql.bitquery.io'
 
 // Profile Related 2022 - Testing
-export const API_PROFILE = 'https://api.thegraph.com/subgraphs/name/pancakeswap/profile'
+// export const API_PROFILE = 'https://api.thegraph.com/subgraphs/name/pancakeswap/profile'
+export const API_PROFILE = 'https://profile.pancakeswap.com'
 
 export const API_NFT = 'https://nft.pancakeswap.com/api/v1'
 export const GRAPH_API_NFTMARKET = 'https://api.thegraph.com/subgraphs/name/pancakeswap/nft-market'

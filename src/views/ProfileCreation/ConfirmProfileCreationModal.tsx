@@ -53,8 +53,16 @@ const ConfirmProfileCreationModal: React.FC<Props> = ({
         return callWithGasPrice(cakeContract, 'approve', [profileContract.address, allowance.toJSON()])
       },
       onConfirm: () => {
-        return callWithGasPrice(profileContract, 'createProfile', [
+        // FIXME: Modal
+        console.log('Calling GolProfile Contract: ', profileContract)
+        console.log('Calling with data: ', [
           teamId,
+          selectedNft.collectionAddress,
+          selectedNft.tokenId,
+        ])
+        // END FIXME: Modal
+        return callWithGasPrice(profileContract, 'createProfile', [
+          1,
           selectedNft.collectionAddress,
           selectedNft.tokenId,
         ])

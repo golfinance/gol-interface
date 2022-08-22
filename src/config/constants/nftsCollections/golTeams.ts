@@ -1,6 +1,6 @@
 export const golTeams = [
     {
-        "id": 0,
+        "id": 1,
         "name": "Afterburn",
         "description": "string",
         "isJoinable": true,
@@ -11,7 +11,7 @@ export const golTeams = [
         "users": 10
     },
     {
-        "id": 1,
+        "id": 2,
         "name": "Bullchargers",
         "description": "string",
         "isJoinable": true,
@@ -22,7 +22,7 @@ export const golTeams = [
         "users": 10
     },
     {
-        "id": 2,
+        "id": 3,
         "name": "Fero",
         "description": "string",
         "isJoinable": true,
@@ -33,7 +33,7 @@ export const golTeams = [
         "users": 10
     },
     {
-        "id": 3,
+        "id": 4,
         "name": "GolSquad",
         "description": "string",
         "isJoinable": true,
@@ -44,7 +44,7 @@ export const golTeams = [
         "users": 10
     },
     {
-        "id": 4,
+        "id": 5,
         "name": "MagikaFc",
         "description": "string",
         "isJoinable": true,
@@ -55,7 +55,7 @@ export const golTeams = [
         "users": 10
     },
     {
-        "id": 5,
+        "id": 6,
         "name": "Nemesis",
         "description": "string",
         "isJoinable": true,
@@ -66,7 +66,7 @@ export const golTeams = [
         "users": 10
     },
     {
-        "id": 6,
+        "id": 7,
         "name": "The Pack",
         "description": "string",
         "isJoinable": true,
@@ -77,7 +77,7 @@ export const golTeams = [
         "users": 10
     },
     {
-        "id": 7,
+        "id": 8,
         "name": "Thunderbolts",
         "description": "string",
         "isJoinable": true,
@@ -88,7 +88,7 @@ export const golTeams = [
         "users": 10
     },
     {
-        "id": 8,
+        "id": 9,
         "name": "Ultimus",
         "description": "string",
         "isJoinable": true,
@@ -99,7 +99,7 @@ export const golTeams = [
         "users": 10
     },
     {
-        "id": 9,
+        "id": 10,
         "name": "Winterbers",
         "description": "string",
         "isJoinable": true,

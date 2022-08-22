@@ -140,23 +140,26 @@ const UserName: React.FC = () => {
   // Perform an initial check to see if the wallet has already created a username
   useEffect(() => {
     const fetchUser = async () => {
-      try {
-        const response = await fetch(`${API_PROFILE}/api/users/${account}`)
-        const data = await response.json()
+      console.log('Initializing')
+      setExistingUserState(ExistingUserState.NEW)
 
-        if (response.ok) {
-          const dateCreated = formatDistance(parseISO(data.created_at), new Date())
-          setMessage(t('Created %dateCreated% ago', { dateCreated }))
+      // try {
+      //   const response = await fetch(`${API_PROFILE}/api/users/${account}`)
+      //   const data = await response.json()
 
-          actions.setUserName(data.username)
-          setExistingUserState(ExistingUserState.CREATED)
-          setIsValid(true)
-        } else {
-          setExistingUserState(ExistingUserState.NEW)
-        }
-      } catch (error) {
-        toastError(t('Error'), t('Unable to verify username'))
-      }
+      //   if (response.ok) {
+      //     const dateCreated = formatDistance(parseISO(data.created_at), new Date())
+      //     setMessage(t('Created %dateCreated% ago', { dateCreated }))
+
+      //     actions.setUserName(data.username)
+      //     setExistingUserState(ExistingUserState.CREATED)
+      //     setIsValid(true)
+      //   } else {
+      //     setExistingUserState(ExistingUserState.NEW)
+      //   }
+      // } catch (error) {
+      //   toastError(t('Error'), t('Unable to verify username'))
+      // }
     }
 
     if (account) {
