@@ -42,6 +42,8 @@ const ConnectedProfile = () => {
   useFetchAchievements()
   useFetchUserNfts(account)
 
+  // FIXME: Connected Profile View
+  console.log('Inside ConnectedProfile')
   console.log('PROFILE: ', profile)
 
   return (

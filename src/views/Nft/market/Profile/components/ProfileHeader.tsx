@@ -41,13 +41,29 @@ const ProfileHeader: React.FC<HeaderProps> = ({ accountPath, profile, achievemen
 
   const getBannerImage = () => {
     const imagePath = '/images/teams'
+    // FIXME: Change on Profiles TeamId for Images
+    console.log('Switching Profile TeamId: ', profile.teamId)
     if (profile) {
       switch (profile.teamId) {
         case 1:
-          return `${imagePath}/storm-banner.png`
+          return `${imagePath}/banners/afterburn-banner.png`
         case 2:
           return `${imagePath}/flippers-banner.png`
         case 3:
+          return `${imagePath}/cakers-banner.png`
+        case 4:
+          return `${imagePath}/cakers-banner.png`
+        case 5:
+          return `${imagePath}/storm-banner.png`
+        case 6:
+          return `${imagePath}/flippers-banner.png`
+        case 7:
+          return `${imagePath}/cakers-banner.png`
+        case 8:
+          return `${imagePath}/cakers-banner.png`
+        case 9:
+          return `${imagePath}/cakers-banner.png`
+        case 10:
           return `${imagePath}/cakers-banner.png`
         default:
           break

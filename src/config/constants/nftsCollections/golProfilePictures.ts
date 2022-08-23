@@ -1,6 +1,6 @@
 export const golProfilePictures = [
     {
-      "tokenId": "2",
+      "tokenId": "3",
       "name": "Profile Image 1",
       "description": "Tiger Warriors are Planet ZUUD's first limited edition 2222 count fully hand-drawn collection on the BNB Chain.",
       "collectionName": "Bitpunks",
@@ -55,7 +55,7 @@ export const golProfilePictures = [
       }
     },
     {
-      "tokenId": "2",
+      "tokenId": "3",
       "name": "Profile Image 2",
       "description": "Tiger Warriors are Planet ZUUD's first limited edition 2222 count fully hand-drawn collection on the BNB Chain.",
       "collectionName": "Bitpunks",

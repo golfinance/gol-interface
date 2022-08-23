@@ -19,6 +19,8 @@ const NftProfile = () => {
   const isConnectedProfile = account?.toLowerCase() === accountAddress?.toLowerCase()
   const invalidAddress = !accountAddress || isAddress(accountAddress) === false
 
+  // FIXME: Profile View
+  console.log('account: ', account)
   console.log('isConnectedProfile: ', isConnectedProfile)
 
   if (invalidAddress) {
