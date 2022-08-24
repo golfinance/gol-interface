@@ -545,6 +545,8 @@ export const fetchWalletTokenIdsForCollections = async (
   const walletNftPromises = map(collections, async (collection): Promise<TokenIdWithCollectionAddress[]> => {
     const { address: collectionAddress } = collection
     const contract = getErc721Contract(collectionAddress)
+    // FIXME: Fetching NFT Balance for Step 2
+    console.log('Contract (Fetching Balance: )', contract)
     let balanceOfResponse
 
     try {
@@ -725,6 +727,8 @@ export const getCompleteAccountNftData = async (
   profileNftWithCollectionAddress?: TokenIdWithCollectionAddress,
 ): Promise<NftToken[]> => {
   const walletNftIds = await fetchWalletTokenIdsForCollections(account, collections)
+  // FIXME: WalletNftIds
+  console.log('walletNftIds: ', walletNftIds);
   if (profileNftWithCollectionAddress?.tokenId) {
     walletNftIds.push(profileNftWithCollectionAddress)
   }

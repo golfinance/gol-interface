@@ -182,6 +182,11 @@ export const fetchUserNfts = createAsyncThunk<
   NftToken[],
   { account: string; profileNftWithCollectionAddress?: TokenIdWithCollectionAddress; collections: ApiCollections }
 >('nft/fetchUserNfts', async ({ account, profileNftWithCollectionAddress, collections }) => {
+  // FIXME: Console for Step 2 
+  console.log('Fetching User NFTS from Reducer:')
+  console.log('Account: ', account)
+  console.log('Collections: ', collections)
+  console.log('CollectionAddress: ', profileNftWithCollectionAddress)
   const completeNftData = await getCompleteAccountNftData(account, collections, profileNftWithCollectionAddress)
   return completeNftData
 })
