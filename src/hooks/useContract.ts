@@ -86,6 +86,12 @@ export const usePancakeRabbits = () => {
   return useMemo(() => getPancakeRabbitContract(library.getSigner()), [library])
 }
 
+// Add Custom hook to use GolTeams contract @dev:topospec
+export const useGolTeams = () => {
+  const customContract = getErc721Contract('0x742466914848c6AB0e7AD36Acd1e4fbf4ee773b1');
+  return customContract;
+}
+
 export const useProfile = () => {
   const { library } = useActiveWeb3React()
   return useMemo(() => getProfileContract(library.getSigner()), [library])

@@ -39,6 +39,8 @@ const ProfileHeader: React.FC<HeaderProps> = ({ accountPath, profile, achievemen
 
   const avatarImage = profile?.nft?.image?.thumbnail || '/images/nfts/no-profile-md.png'
 
+  console.log('Full Profile Header: ', profile);
+
   const getBannerImage = () => {
     const imagePath = '/images/teams'
     // FIXME: Change on Profiles TeamId for Images

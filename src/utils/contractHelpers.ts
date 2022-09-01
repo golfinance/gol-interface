@@ -41,6 +41,7 @@ import erc721Abi from 'config/abi/erc721.json'
 import lpTokenAbi from 'config/abi/lpToken.json'
 import golAbi from 'config/abi/gol.json'
 import golTeamsAbi from 'config/abi/golTeamsAbi.json'
+import golNfpsAbi from 'config/abi/golNfpsAbi.json'
 import ifoV1Abi from 'config/abi/ifoV1.json'
 import ifoV2Abi from 'config/abi/ifoV2.json'
 import pointCenterIfo from 'config/abi/pointCenterIfo.json'
@@ -76,12 +77,20 @@ const getContract = (abi: any, address: string, signer?: ethers.Signer | ethers.
 export const getBep20Contract = (address: string, signer?: ethers.Signer | ethers.providers.Provider) => {
   return getContract(bep20Abi, address, signer)
 }
+
+// Modify ERC721 contract
 export const getErc721Contract = (address: string, signer?: ethers.Signer | ethers.providers.Provider) => {
   // FIXME: Signer
   console.log('signing: ', address)
   console.log('Erc721signer: ', signer)
   return getContract(golTeamsAbi, address, signer)
 }
+
+// Add support for Gol NFPs
+export const getGolNfpsContract = (address: string, signer?: ethers.Signer | ethers.providers.Provider) => {
+  return getContract(golNfpsAbi, address, signer)
+}
+
 export const getLpContract = (address: string, signer?: ethers.Signer | ethers.providers.Provider) => {
   return getContract(lpTokenAbi, address, signer)
 }
