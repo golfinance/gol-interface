@@ -56,6 +56,7 @@ export const getProfileAvatar = async (address: string) => {
     }
 
     const profileResponse = await profileContract.getUserProfile(address)
+    console.log('Profile Info from Contract: ', profileResponse)
     const { tokenId, collectionAddress, isActive } = transformProfileResponse(profileResponse)
 
     let nft = null
@@ -100,6 +101,8 @@ export const getProfile = async (address: string): Promise<GetProfileResponse> =
     console.log('PROFILEDATA ', [userId, points, teamId, tokenId, collectionAddress, isActive])
     // FIXME: Cambio en la funcion que obtiene el team con el teamId:
     const team = await getTeam(teamId)
+
+    console.log('TeamID from CONTRACT: ', team)
     
     const username = await getUsername(address)
     console.log('PROCESSED 2 ', [team, username])
@@ -146,8 +149,8 @@ export const getProfile = async (address: string): Promise<GetProfileResponse> =
         "createdAt": "2022-07-26T09:11:41.287Z",
         "updatedAt": "2022-07-26T09:11:41.287Z",
         "image": {
-          "original": "https://static-nft.pancakeswap.com/mainnet/0xa61da6E5B8F61285d46C2ED65eBE0E7c2FA27044/tiger-warriors-2.png",
-          "thumbnail": "https://static-nft.pancakeswap.com/mainnet/0xa61da6E5B8F61285d46C2ED65eBE0E7c2FA27044/tiger-warriors-2.png",
+          "original": "https://ipfs.io/ipfs/QmSg9S31grKw5rx9JrFJo2qPR9bsTmUsFS4vouvajTEoaM/1.png",
+          "thumbnail": "https://ipfs.io/ipfs/QmSg9S31grKw5rx9JrFJo2qPR9bsTmUsFS4vouvajTEoaM/1.png",
         },
       }
 

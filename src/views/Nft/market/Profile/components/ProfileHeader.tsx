@@ -50,23 +50,23 @@ const ProfileHeader: React.FC<HeaderProps> = ({ accountPath, profile, achievemen
         case 1:
           return `${imagePath}/banners/afterburn-banner.png`
         case 2:
-          return `${imagePath}/flippers-banner.png`
+          return `${imagePath}/banners/bulls-banner.png`
         case 3:
-          return `${imagePath}/cakers-banner.png`
+          return `${imagePath}/banners/fero-banner.png`
         case 4:
-          return `${imagePath}/cakers-banner.png`
+          return `${imagePath}/banners/golsquad-banner.png`
         case 5:
-          return `${imagePath}/storm-banner.png`
+          return `${imagePath}/banners/magika-banner.png`
         case 6:
-          return `${imagePath}/flippers-banner.png`
+          return `${imagePath}/banners/nemesis-banner.png`
         case 7:
-          return `${imagePath}/cakers-banner.png`
+          return `${imagePath}/banners/pack-banner.png`
         case 8:
-          return `${imagePath}/cakers-banner.png`
+          return `${imagePath}/banners/thunderbolts-banner.png`
         case 9:
-          return `${imagePath}/cakers-banner.png`
+          return `${imagePath}/banners/ultimus-banner.png`
         case 10:
-          return `${imagePath}/cakers-banner.png`
+          return `${imagePath}/banners/winterbears-banner.png`
         default:
           break
       }

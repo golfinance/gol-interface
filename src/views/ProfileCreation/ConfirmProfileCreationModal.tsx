@@ -62,7 +62,7 @@ const ConfirmProfileCreationModal: React.FC<Props> = ({
         ])
         // END FIXME: Modal
         return callWithGasPrice(profileContract, 'createProfile', [
-          1,
+          teamId,
           selectedNft.collectionAddress,
           selectedNft.tokenId,
         ])
