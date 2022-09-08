@@ -134,7 +134,7 @@ const ProfilePicture: React.FC = () => {
       }
       console.log('FINISHED ARRAY: ', finishedArray)
 
-      if (finishedArray.length > 2) {
+      if (finishedArray.length > 1) {
         setNfps(finishedArray);
         setLoadingNfps(false);
       }
