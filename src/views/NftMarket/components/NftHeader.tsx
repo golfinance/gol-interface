@@ -94,7 +94,7 @@ const NftHeader = () => {
 
   return (
     <NftHeaderContainer>
-      <LeftContainer style={{ color: isDark ? 'white' : '#f4ae01' }}>NFT Market</LeftContainer>
+      <LeftContainer style={{ color: isDark ? 'white' : '#f4ae01' }}>Nft Marketplace</LeftContainer>
       <RightContainer>
         <Select
           options={sortByItems}

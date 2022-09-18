@@ -49,11 +49,11 @@ const MyNftsDeatail = () => {
 
   const getTokenHashes = useCallback(async () => {
     const tmpMyTokens = []
+    const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
     const tokenIds = []
-    // const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
-    // _.map(nfpTokens, (itm) => {
-    //   tokenIds.push({ tokenId: itm, isAIR: false })
-    // })
+    _.map(nfpTokens, (itm) => {
+      tokenIds.push({ tokenId: itm, isAIR: false })
+    })
 
     // retrieve my nft from air
     // const airNftOwners = []
@@ -75,8 +75,7 @@ const MyNftsDeatail = () => {
     let currentIndex = 0
     for (let i = 0; i < items.length; i++) {
       if (items[i].isSold === false) {
-        if (items[i].nftContract === getAirNftAddress()) tokenIds.push({ tokenId: items[i].tokenId, isAIR: true })
-        else tokenIds.push({ tokenId: items[i].tokenId, isAIR: false })
+        tokenIds.push({ tokenId: items[i].tokenId, isAIR: false })
         if (!tmpMyTokens[currentIndex + tokenIdLength]) tmpMyTokens[currentIndex + tokenIdLength] = {}
         tmpMyTokens[currentIndex + tokenIdLength].itemId = items[i].itemId
         currentIndex++
@@ -111,7 +110,7 @@ const MyNftsDeatail = () => {
           My NFT Detail
         </Heading>
       </StyledHero>
-      <MyNftDetailHeader collectionName={isAIR ? 'Gol Genesis NFT' : 'NonFungiblePlayer'} />
+      <MyNftDetailHeader collectionName={isAIR ? 'Air NFT' : 'NonFungiblePlayer'} />
       <NftDetailContainer>
         <MyNftData myToken={myToken} />
       </NftDetailContainer>

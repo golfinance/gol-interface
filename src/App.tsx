@@ -57,6 +57,8 @@ const NftMarket = lazy(() => import('./views/NftMarket'))
 const NftMarketDetail = lazy(() => import('./views/NftMarket/NftMarketDetail'))
 const MyNfts = lazy(() => import('./views/MyNfts'))
 const MyNftsDetail = lazy(() => import('./views/MyNfts/MyNftsDeatail'))
+const NftBox = lazy(() => import('./views/NftBox'))
+const NftBoxDetail = lazy(() => import('./views/NftBox/NftBoxDetail'))
 const Stakes = lazy(() => import('./views/Stakes'))
 const Training = lazy(() => import('./views/Training'))
 const Fusion = lazy(() => import('./views/Fusion'))
@@ -84,9 +86,9 @@ const App: React.FC = () => {
 
   return (
     <Router history={history}>
-      {loading && <BackLoader />}
       <ResetCSS />
       <GlobalStyle />
+      {loading && <BackLoader />}
       <GlobalCheckClaimStatus excludeLocations={[]} />
       <Menu>
         <SuspenseWithChunkError fallback={<PageLoader />}>
@@ -147,6 +149,14 @@ const App: React.FC = () => {
 
             <Route path="/myNfts/:myTokenId">
               <MyNftsDetail />
+            </Route>
+
+            <Route exact path="/nft-box">
+              <NftBox />
+            </Route>
+
+            <Route path="/nft-box/:index">
+              <NftBoxDetail />
             </Route>
 
             <Route exact path="/nft-marketplace">
