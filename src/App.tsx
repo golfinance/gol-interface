@@ -58,6 +58,9 @@ const NftMarketDetail = lazy(() => import('./views/NftMarket/NftMarketDetail'))
 const MyNfts = lazy(() => import('./views/MyNfts'))
 const MyNftsDetail = lazy(() => import('./views/MyNfts/MyNftsDeatail'))
 const Stakes = lazy(() => import('./views/Stakes'))
+const Training = lazy(() => import('./views/Training'))
+const Fusion = lazy(() => import('./views/Fusion'))
+const Match = lazy(() => import('./views/Match'))
 const ProfileCreation = lazy(() => import('./views/ProfileCreation'))
 const PancakeSquad = lazy(() => import('./views/PancakeSquad'))
 
@@ -156,6 +159,18 @@ const App: React.FC = () => {
 
             <Route path="/nft-staking/:index">
               <Stakes />
+            </Route>
+
+            <Route exact path="/game-training">
+              <Training />
+            </Route>
+
+            <Route exact path="/game-fusion">
+              <Fusion />
+            </Route>
+
+            <Route exact path="/game-match">
+              <Match />
             </Route>
 
             {/* Info pages */}

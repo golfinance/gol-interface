@@ -39,13 +39,13 @@ const StatisticsInfo = ({ index }) => {
   })
 
   const fetchInfo = useCallback(async () => {
-    const poolId = await stakingContract.methods.poolIdOfContract(getAirNftAddress()).call()
-    const pendingGol = await stakingContract.methods.getPendingGol(poolId.toString(), account).call()
-    const pool = await stakingContract.methods.pools(poolId.toString()).call()
+    const pid = index === '1' ? 2 : 1
+    const pendingGol = await stakingContract.methods.getPendingGol(pid, account).call()
+    const pool = await stakingContract.methods.pools(pid).call()
     const totalStkCount = pool.stakedCount
-    const tmpTotalGolToken = await stakingContract.methods.getTotalGolPower(poolId.toString()).call()
-    const tmpMyGolPower = await stakingContract.methods.getMyGolPower(poolId.toString(), account).call()
-    const tmpDailyGolRate = await stakingContract.methods.getDailyGolRate(poolId.toString()).call()
+    const tmpTotalGolToken = await stakingContract.methods.getTotalGolPower(pid).call()
+    const tmpMyGolPower = await stakingContract.methods.getMyGolPower(pid, account).call()
+    const tmpDailyGolRate = await stakingContract.methods.getDailyGolRate(pid).call()
     setPoolInfo({
       rewardAllGol: pendingGol,
       totalStakedCount: totalStkCount,

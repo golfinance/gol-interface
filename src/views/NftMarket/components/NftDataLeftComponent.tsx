@@ -126,6 +126,7 @@ const NftDataLeftComponent = ({ itemId }: NftDataLeftComponentInterface) => {
   const [description, setDescription] = useState('')
   const [flgButtonState, setFlgButtonState] = useState(true)
   const [flgMyNft, setFlgMyNft] = useState(false)
+  const [nftInfo, setNftInfo] = useState({ lvl: '', gen: '', class: '', rarity: '', position: '' })
   const { setLoading } = useContext(LoadingContext)
   const cakePriceUsd = usePriceCakeBusd()
 
@@ -162,7 +163,16 @@ const NftDataLeftComponent = ({ itemId }: NftDataLeftComponentInterface) => {
 
     let nftHash = null
     if (isAirToken) nftHash = await airnftContract.methods.tokenURI(toBN(tokenId)).call({ from: account })
-    else nftHash = await nfpContract.methods.tokenURI(toBN(tokenId)).call({ from: account })
+    else {
+      nftHash = await nfpContract.methods.tokenURI(toBN(tokenId)).call({ from: account })
+      const tmpLvl = await nfpContract.methods.getLevel(toBN(tokenId)).call()
+      const tmpGen = await nfpContract.methods.getGeneration(toBN(tokenId)).call()
+      const tmpClass = await nfpContract.methods.getClass(toBN(tokenId)).call()
+      const tmpRarity = await nfpContract.methods.getRarity(toBN(tokenId)).call()
+      const tmpPosition = await nfpContract.methods.getPosition(toBN(tokenId)).call()
+
+      setNftInfo({ lvl: tmpLvl, gen: tmpGen, class: tmpClass, rarity: tmpRarity, position: tmpPosition })
+    }
     const res = await fetch(nftHash)
     const json = await res.json()
 
@@ -173,7 +183,6 @@ const NftDataLeftComponent = ({ itemId }: NftDataLeftComponentInterface) => {
       imageUrl = imageUrl.slice(7)
       setImage(`${PINATA_BASE_URI}${imageUrl}`)
     }
-
     setIsAIR(isAirToken)
     setName(json.name)
     setDescription(json.description)
@@ -212,9 +221,44 @@ const NftDataLeftComponent = ({ itemId }: NftDataLeftComponentInterface) => {
     <NftMetaDataContainer>
       <NftImageContainer>
         <NftImage style={{ backgroundImage: `url(${image})` }} />
-        <div style={{ paddingTop: '10px', fontSize: '17px', color: isDark ? 'white' : 'rgb(105, 79, 78)' }}>
+        <div
+          style={{
+            paddingTop: '10px',
+            fontSize: '17px',
+            color: isDark ? 'white' : 'rgb(105, 79, 78)',
+            width: 'fit-content',
+            margin: 'auto',
+          }}
+        >
           {description}
         </div>
+        {!isAIR ? (
+          <div
+            style={{
+              textAlign: 'center',
+              paddingTop: '10px',
+              fontSize: '17px',
+              color: isDark ? 'white' : 'rgb(105, 79, 78)',
+            }}
+          >
+            <div style={{ paddingTop: '5px' }}>{`Level : ${nftInfo.lvl}`}</div>
+            <div style={{ paddingTop: '5px' }}>{`Generation : ${nftInfo.gen}`}</div>
+            <div style={{ paddingTop: '5px' }}>{`Class : ${nftInfo.class}`}</div>
+            <div style={{ paddingTop: '5px' }}>{`Rarity : ${nftInfo.rarity}`}</div>
+            <div style={{ paddingTop: '5px' }}>{`Position : ${nftInfo.position}`}</div>
+          </div>
+        ) : (
+          <div
+            style={{
+              textAlign: 'center',
+              paddingTop: '10px',
+              fontSize: '17px',
+              color: isDark ? 'white' : 'rgb(105, 79, 78)',
+            }}
+          >
+            Genesis Token
+          </div>
+        )}
       </NftImageContainer>
       <NftInfo>
         <NftTitleContainer style={{ color: isDark ? 'white' : '' }}>{name}</NftTitleContainer>

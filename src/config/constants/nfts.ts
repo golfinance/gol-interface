@@ -2,7 +2,7 @@ import { Nft } from './types'
 
 export const RABBIT_MINTING_FARM_ADDRESS = '0x7c8b60d2b859a38c8B9b5B6CB4565485cb637c7a'
 export const PANCAKE_RABBITS_ADDRESS = '0xDf7952B35f24aCF7fC0487D01c8d5690a60DBa07'
-export const PINATA_BASE_URI = 'https://cashcowprotocol.mypinata.cloud/ipfs/'
+export const PINATA_BASE_URI = 'https://golfinance.mypinata.cloud/ipfs/'
 export const PINATA_METADATA_CID = 'QmQNivyb2MZzxw1iJ2zUKMiLd4grG5KnzDkd8f5Be7R5hB'
 
 const Nfts: Nft[] = [

@@ -88,3 +88,16 @@ export const getAirNftAddress = () => {
 export const getStakingAddress = () => {
   return getAddress(addresses.staking)
 }
+export const getTrainingAddress = () => {
+  return getAddress(addresses.training)
+}
+export const getBusdAddress = () => {
+  return getAddress(addresses.busd)
+}
+export const getFusionAddress = () => {
+  return getAddress(addresses.fusion)
+}
+
+export const getMatchAddress = () => {
+  return getAddress(addresses.match)
+}

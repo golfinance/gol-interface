@@ -66,7 +66,7 @@ const airnftContract = new web3.eth.Contract(AirNfts.abi as AbiItem[], getAirNft
 const StakeItem = ({ data, index }) => {
   const { account } = useWeb3React()
   const { setLoading } = useContext(LoadingContext)
-  const { appendCandidate, initMyNFTS, initSelectedNFTs } = useContext(StakeContext)
+  const { initMyNFTS, initSelectedNFTs } = useContext(StakeContext)
 
   const [golPower, setGolPower] = useState(0)
 
@@ -117,8 +117,8 @@ const StakeItem = ({ data, index }) => {
   }, [data])
 
   const fetchGolPower = useCallback(async () => {
-    const poolId = await stakingContract.methods.poolIdOfContract(getAirNftAddress()).call()
-    const poolInfo = await stakingContract.methods.pools(poolId.toString()).call()
+    const tmpIndex = index === '1' ? '2' : '1'
+    const poolInfo = await stakingContract.methods.pools(tmpIndex).call()
     const tmpGolPower = poolInfo.golPower
     setGolPower(tmpGolPower)
   }, [])

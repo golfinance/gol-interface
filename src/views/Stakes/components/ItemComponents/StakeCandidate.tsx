@@ -87,10 +87,12 @@ const StakeCandidate = ({ data, closeRequest, index }) => {
     const json = await res.json()
 
     let imageUrl = json.image
+
     if (!data.isAIR) {
       imageUrl = imageUrl.slice(7)
       imageUrl = `${PINATA_BASE_URI}${imageUrl}`
     }
+
     setNFTInfo({ tokenName: json.name, tokenId: data.tokenId, imgUrl: imageUrl, isAIR: data.isAIR })
   }, [data])
 

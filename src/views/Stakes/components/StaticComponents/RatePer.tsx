@@ -2,6 +2,7 @@ import React from 'react'
 import { Flex, Image, Text } from '@pancakeswap-libs/uikit'
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import { getNumberSuffix } from 'utils/formatBalance'
+import { usePriceCakeBusd } from 'state/farms/hooks'
 
 const RatePer = ({ dailyGolRate }) => {
   const cakePriceUsd = usePriceCakeBusd()
