@@ -254,12 +254,14 @@ const MyNftDataLeftComponent = ({ myToken }: NftDataLeftComponentInterface) => {
   }
 
   const unlistNFTHandler = async () => {
+    console.log('aa')
+
     setFlgButtonState(false)
     setLoading(true)
 
     try {
       await marketContract.methods
-        .unlistMarketItem(myToken.isAIR ? '' : getNonFungiblePlayerAddress(), itemId)
+        .unlistMarketItem(myToken.isAIR ? getAirNftAddress() : getNonFungiblePlayerAddress(), itemId)
         .send({ from: account })
         .on('transactionHash', function () {
           toast.success('Transaction submitted.')

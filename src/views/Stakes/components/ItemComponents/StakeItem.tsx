@@ -121,7 +121,7 @@ const StakeItem = ({ data, index }) => {
     const poolInfo = await stakingContract.methods.pools(tmpIndex).call()
     const tmpGolPower = poolInfo.golPower
     setGolPower(tmpGolPower)
-  }, [index])
+  }, [])
   useEffect(() => {
     fetchNft()
     fetchGolPower()

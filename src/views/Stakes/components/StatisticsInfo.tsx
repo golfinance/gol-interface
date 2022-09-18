@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Flex, BaseLayout } from '@pancakeswap-libs/uikit'
 import Staking from 'config/abi/Staking.json'
-import { getStakingAddress } from 'utils/addressHelpers'
+import { getStakingAddress, getAirNftAddress } from 'utils/addressHelpers'
 import Web3 from 'web3'
 import { AbiItem } from 'web3-utils'
 import { useWeb3React } from '@web3-react/core'
@@ -54,7 +54,7 @@ const StatisticsInfo = ({ index }) => {
       myGolPower: tmpMyGolPower,
       dailyGolRate: tmpDailyGolRate,
     })
-  }, [account, selectedNFTS, index])
+  }, [account, selectedNFTS])
 
   useEffect(() => {
     fetchInfo()

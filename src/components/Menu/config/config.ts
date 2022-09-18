@@ -37,15 +37,7 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     ],
   },
   {
-    label: t('NFT Box'),
-    href: '/nft-box',
-    icon: 'Earn',
-    showItemsOnMobile: false,
-    showOnMobile: true,
-    items: [],
-  },
-  {
-    label: t('Marketplace'),
+    label: t('NFT Market'),
     href: '/nft-marketplace',
     icon: 'Earn',
     showItemsOnMobile: false,
@@ -54,20 +46,21 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
   },
   {
     label: t('NFT Staking'),
-    href: '/nft-staking/1',
+    href: '/nft-staking/2',
     icon: 'Earn',
     showItemsOnMobile: false,
     showOnMobile: true,
-    items: [
-      {
-        label: t('NonFungiblePlayer'),
-        href: '/nft-staking/1'
-      },
-      {
-        label: t('Genesis'),
-        href: '/nft-staking/2'
-      },
-    ]
+    items:[]
+    // items: [
+    //   {
+    //     label: t('NonFungiblePlayer'),
+    //     href: '/nft-staking/1'
+    //   },
+    //   {
+    //     label: t('Genesis'),
+    //     href: '/nft-staking/2'
+    //   },
+    // ]
   },
   {
     label: t('Analytics'),
