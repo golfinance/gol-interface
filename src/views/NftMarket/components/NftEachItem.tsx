@@ -151,7 +151,6 @@ const NftEachItem = ({ nftEachItem }: NftEachItemInterface) => {
       imageUrl = imageUrl.slice(7)
       setImage(`${PINATA_BASE_URI}${imageUrl}`)
     }
-
     setName(json.name)
 
     setGolPrice(cakePriceUsd.toNumber())
