@@ -1,5 +1,6 @@
 import React from 'react'
 import { NoProfileAvatarIcon } from 'gol-uikit'
+import { ipfsImagePrefixTestnet } from 'config/constants/nftsCollections/golProfiles'
 import { Profile } from 'state/types'
 import styled from 'styled-components'
 
@@ -43,11 +44,23 @@ const AvatarInactive = styled(NoProfileAvatarIcon)`
   height: 100%;
 `
 
+
+
 const ProfileAvatarWithTeam: React.FC<ProfileAvatarProps> = ({ profile }) => {
+
+  const avatarSrc = `${ipfsImagePrefixTestnet}${profile.tokenId}.png`
+
   return (
-    <AvatarWrapper bg={profile.nft?.image.thumbnail}>
+    <AvatarWrapper 
+      bg={avatarSrc}
+      // bg={profile.nft?.image.thumbnail}
+      >
       {!profile.isActive && <AvatarInactive />}
-      <TeamAvatar src={`/images/teams/${profile.team.images.alt}`} alt={profile.team.name} />
+      <TeamAvatar 
+        // src={`/images/teams/${profile.team.images.alt}`} 
+        src='https://gol.finance/logo.png'
+        alt={profile.team.name} 
+        />
     </AvatarWrapper>
   )
 }

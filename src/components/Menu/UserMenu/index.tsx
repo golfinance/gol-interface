@@ -4,6 +4,7 @@ import { Flex, LogoutIcon, useModal, UserMenu as UIKitUserMenu, UserMenuDivider,
 import history from 'routerHistory'
 import useAuth from 'hooks/useAuth'
 import { useProfile } from 'state/profile/hooks'
+import { ipfsImagePrefixTestnet } from 'config/constants/nftsCollections/golProfiles'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { FetchStatus, useGetBnbBalance } from 'hooks/useTokenBalance'
 import { useTranslation } from 'contexts/Localization'
@@ -21,7 +22,10 @@ const UserMenu = () => {
   const [onPresentWalletModal] = useModal(<WalletModal initialView={WalletView.WALLET_INFO} />)
   const [onPresentTransactionModal] = useModal(<WalletModal initialView={WalletView.TRANSACTIONS} />)
   const hasProfile = isInitialized && !!profile
-  const avatarSrc = profile?.nft?.image?.thumbnail
+  // const avatarSrc = profile?.nft?.image?.thumbnail
+  // console.log('full profile from header: ', profile)
+  // const avatarSrc = `${ipfsImagePrefixTestnet}${profile.tokenId}.png`
+  const avatarSrc = 'https://gol.finance/logo.png'
   const hasLowBnbBalance = fetchStatus === FetchStatus.SUCCESS && balance.lte(LOW_BNB_BALANCE)
 
   if (!account) {

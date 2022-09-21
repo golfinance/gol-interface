@@ -3,7 +3,8 @@ import { useTranslation } from 'contexts/Localization'
 import { useWeb3React } from '@web3-react/core'
 import NoWalletConnected from './WalletNotConnected'
 import { ProfileCreationContext } from './contexts/ProfileCreationProvider'
-import Mint from './Mint'
+// import Mint from './Mint'
+import Mint from './BuyYourNfp'
 import ProfilePicture from './ProfilePicture'
 import TeamSelection from './TeamSelection'
 import UserName from './UserName'
@@ -12,10 +13,6 @@ const Steps = () => {
   const { t } = useTranslation()
   const { isInitialized, currentStep } = useContext(ProfileCreationContext)
   const { account } = useWeb3React()
-
-  // FIXME: Testing Purposes
-  // const isInitialized = true;
-  // const currentStep = 3;
 
   if (!account) {
     return <NoWalletConnected />
@@ -27,6 +24,7 @@ const Steps = () => {
 
   if (currentStep === 0) {
     return <Mint />
+    // return <ProfilePicture />
   }
 
   if (currentStep === 1) {

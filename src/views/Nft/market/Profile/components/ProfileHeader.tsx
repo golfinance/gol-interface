@@ -8,6 +8,7 @@ import { formatNumber } from 'utils/formatBalance'
 import truncateHash from 'utils/truncateHash'
 import { Achievement, Profile } from 'state/types'
 import { useWeb3React } from '@web3-react/core'
+import { ipfsImagePrefixTestnet } from 'config/constants/nftsCollections/golProfiles'
 import EditProfileAvatar from './EditProfileAvatar'
 import BannerHeader from '../../components/BannerHeader'
 import StatBox, { StatBoxItem } from '../../components/StatBox'
@@ -37,7 +38,9 @@ const ProfileHeader: React.FC<HeaderProps> = ({ accountPath, profile, achievemen
   const numPoints = profile?.points ? formatNumber(profile.points, 0, 0) : '-'
   const numAchievements = achievements?.length ? formatNumber(achievements.length, 0, 0) : '-'
 
-  const avatarImage = profile?.nft?.image?.thumbnail || '/images/nfts/no-profile-md.png'
+  // const avatarImage = profile?.nft?.image?.thumbnail || '/images/nfts/no-profile-md.png'
+  const avatarImage = `${ipfsImagePrefixTestnet}${profile.tokenId}.png`
+  // const avatarImage = `https://ipfs.io/ipfs/QmSg9S31grKw5rx9JrFJo2qPR9bsTmUsFS4vouvajTEoaM/${profile.tokenId}.png`
 
   console.log('Full Profile Header: ', profile);
 

@@ -143,23 +143,6 @@ const UserName: React.FC = () => {
       console.log('Initializing')
       setExistingUserState(ExistingUserState.NEW)
 
-      // try {
-      //   const response = await fetch(`${API_PROFILE}/api/users/${account}`)
-      //   const data = await response.json()
-
-      //   if (response.ok) {
-      //     const dateCreated = formatDistance(parseISO(data.created_at), new Date())
-      //     setMessage(t('Created %dateCreated% ago', { dateCreated }))
-
-      //     actions.setUserName(data.username)
-      //     setExistingUserState(ExistingUserState.CREATED)
-      //     setIsValid(true)
-      //   } else {
-      //     setExistingUserState(ExistingUserState.NEW)
-      //   }
-      // } catch (error) {
-      //   toastError(t('Error'), t('Unable to verify username'))
-      // }
     }
 
     if (account) {

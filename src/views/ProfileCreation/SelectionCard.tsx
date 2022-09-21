@@ -38,7 +38,7 @@ const StyledBackgroundImage = styled.div<{ src: string }>`
   background-position: center;
   background-repeat: no-repeat;
   flex: none;
-  width: 80px;
+  width: 60px;
 `
 
 const SelectionCard: React.FC<SelectionCardProps> = ({

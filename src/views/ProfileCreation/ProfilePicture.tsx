@@ -17,7 +17,7 @@ import { nftsBaseUrl } from 'views/Nft/market/constants'
 import { UserNftInitializationState } from 'state/nftMarket/types'
 import { golProfilePictures } from 'config/constants/nftsCollections/golProfilePictures'
 import { golIndividualProfilePicture } from 'config/constants/nftsCollections/golIndividualProfilePicture'
-import { useGolTeams } from 'hooks/useContract'
+import { useGolNfp, useGolTeams } from 'hooks/useContract'
 import SelectionCard from './SelectionCard'
 import NextStepButton from './NextStepButton'
 import { ProfileCreationContext } from './contexts/ProfileCreationProvider'
@@ -48,13 +48,10 @@ const ProfilePicture: React.FC = () => {
     return new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())
   }, [])
 
-  // const { nfts, userNftsInitializationState } = useUserNfts()
-
   console.log('userNfts: ', useUserNfts())
-
-  // const customContract = getErc721Contract('0x742466914848c6AB0e7AD36Acd1e4fbf4ee773b1')
-  const customContract = useGolTeams();
-  console.log('customContract: ', customContract)
+  // Hook to use GolNfps Contract
+  const customContract = useGolNfp()
+  // Defining NFPs and Nfp Initialization State
   const nfts = golProfilePictures;
   // const nfts = [];
   const userNftsInitializationState = 'INITIALIZED';
@@ -63,13 +60,13 @@ const ProfilePicture: React.FC = () => {
     // Function to replace the original PCS useUserNft hook
     const balanceOfResponse = await customContract.balanceOf(account);
     const balanceOf = await balanceOfResponse.toNumber();
-    const tokenId = await customContract.tokenOfOwnerByIndex(account, 0);
-    const tokenIdNumber = await tokenId.toNumber();
-    console.log('balanceOfResponse: ', balanceOf)
-    console.log('tokenIndex: ', tokenIdNumber)
-    setMintedNftTokenId(tokenIdNumber);
+    const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
+    console.log('my nfp tokens: ', nfpTokens)
+    console.log('balanceOf NFP: ', balanceOf)
+    setMintedNftTokenId(nfpTokens[0]);
   }
 
+  // Method to get the NFP Image
   const getNfpSimpleImage = async (tokenIdUrl) => {
     const res = await fetch(tokenIdUrl)
     const json = await res.json()
@@ -78,13 +75,13 @@ const ProfilePicture: React.FC = () => {
     return (imageUrl)
   }
 
+  // Method to get the User Nfp Balance
   const getBalanceOfUserNfp = async () => {
     // Function to replace the original PCS useUserNft hook
     if (loadingNfps) {
 
       const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
       console.log('nfpTokens: ', nfpTokens)
-
       const profilePicturesFromNfps = [];
 
       for (let i = 0; i < nfpTokens.length; i++) {
@@ -92,13 +89,13 @@ const ProfilePicture: React.FC = () => {
       }
 
       const result = await Promise.all(profilePicturesFromNfps)
-
       console.log('nfpLinkArray: ', result)
 
       const images = [];
+
       for (let i = 0; i < result.length; i++) {
+        console.log('result: ', result[i])
         images.push(getNfpSimpleImage(result[i]))
-        // console.log('IMAGE: ', getNfpSimpleImage(result[i]));
       }
 
       const imagesResult = await Promise.all(images)
@@ -106,14 +103,14 @@ const ProfilePicture: React.FC = () => {
 
       const finishedArray = [];
       for (let i = 0; i < imagesResult.length; i++) {
-        // const thisProfilePicture = golIndividualProfilePicture;
-
+        // FIXME: Getting token id from Image URL. In future versions must change
+        const nfpTokenId = (imagesResult[i].slice(-7)).split('.')[0];
         const thisProfilePicture = {
-          "tokenId": "0",
-          "name": `NonFungiblePlayer #${i}`,
+          "tokenId": nfpTokenId,
+          "name": `NonFungiblePlayer #${nfpTokenId}`,
           "description": "NonFungiblePlayer",
-          "collectionName": "Bitpunks",
-          "collectionAddress": "0x742466914848c6AB0e7AD36Acd1e4fbf4ee773b1",
+          "collectionName": "Non Fungible Player",
+          "collectionAddress": "0xC12100771bCcae1f8b87598c6449f041E46a1Ef9",
           "image": {
             "original": imagesResult[i].replace("ipfs://", "https://ipfs.io/ipfs/"),
             "thumbnail": imagesResult[i].replace("ipfs://", "https://ipfs.io/ipfs/"),
@@ -123,18 +120,14 @@ const ProfilePicture: React.FC = () => {
           },
           "attributes": [],
           "collection": {
-            "name": "Planet ZUUD: Tiger Warriors"
+            "name": "Gol NFPs"
           }
         }
-
-        // thisProfilePicture.image.original = imagesResult[i].replace("ipfs://", "https://ipfs.io/ipfs/");
-        // thisProfilePicture.image.thumbnail = imagesResult[i].replace("ipfs://", "https://ipfs.io/ipfs/");
-        // console.log(i, thisProfilePicture)
         finishedArray.push(thisProfilePicture);
       }
-      console.log('FINISHED ARRAY: ', finishedArray)
+      // console.log('FINISHED ARRAY: ', finishedArray)
 
-      if (finishedArray.length > 1) {
+      if (finishedArray.length > 0) {
         setNfps(finishedArray);
         setLoadingNfps(false);
       }
@@ -154,8 +147,6 @@ const ProfilePicture: React.FC = () => {
 
   useFetchUserNfts(account)
 
-  console.log('fetching nfts ', nfts)
-
   const { t } = useTranslation()
   const { toastError, toastSuccess } = useToast()
   const { callWithGasPrice } = useCallWithGasPrice()
@@ -167,12 +158,14 @@ const ProfilePicture: React.FC = () => {
     selectedNft.tokenId = mintedNftTokenId;
     console.log('selectedNft: ', selectedNft)
 
-    const contract = getErc721Contract(selectedNft.collectionAddress, library.getSigner())
+    // const contract = getErc721Contract(selectedNft.collectionAddress, library.getSigner())
+
+    const contract = getGolNfpsContract(selectedNft.collectionAddress, library.getSigner())
+
     // const contract = selectedNft.collectionAddress;
 
-    console.log('Contract: ', contract)
-
     const tx = await callWithGasPrice(contract, 'approve', [getPancakeProfileAddress(), selectedNft.tokenId])
+
     setIsApproving(true)
     const receipt = await tx.wait()
     if (receipt.status) {
@@ -214,13 +207,16 @@ const ProfilePicture: React.FC = () => {
       <Card mb="24px">
         <CardBody>
           <Heading as="h4" scale="lg" mb="8px">
-            {t('Choose collectible')}
+            {/* {t('Choose collectible')} */}
+            Choose your NFP
           </Heading>
           <Text as="p" color="textSubtle">
-            {t('Choose a profile picture from the eligible collectibles (NFT) in your wallet, shown below.')}
+            {/* {t('Choose a profile picture from the eligible collectibles (NFT) in your wallet, shown below.')} */}
+            Choose a profile picture from the eligible collectibles (NFPs) in your wallet, shown below.
           </Text>
           <Text as="p" color="textSubtle" mb="24px">
-            {t('Only approved Pancake Collectibles can be used.')}
+            {/* {t('Only approved Pancake Collectibles can be used.')} */}
+            Only approved Gol NFPs can be used.
             <Link to={`${nftsBaseUrl}/collections`} style={{ marginLeft: '4px' }}>
               {t('See the list >')}
             </Link>
@@ -242,6 +238,7 @@ const ProfilePicture: React.FC = () => {
                 </SelectionCard>
               )
             })} */}
+            {/* Refactor of previous function */}
             {loadingNfps ? <></> : <>
               {nfps.map((walletNft) => {
                 const firstTokenId = nfts[0].tokenId

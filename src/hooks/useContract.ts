@@ -29,6 +29,7 @@ import {
   getNftMarketContract,
   getNftSaleContract,
   getPancakeSquadContract,
+  getGolNfpsContract
 } from 'utils/contractHelpers'
 import { getMulticallAddress, getPancakeRabbitsAddress, getPancakeSquadAddress } from 'utils/addressHelpers'
 
@@ -89,6 +90,11 @@ export const usePancakeRabbits = () => {
 // Add Custom hook to use GolTeams contract @dev:topospec
 export const useGolTeams = () => {
   const customContract = getErc721Contract('0x742466914848c6AB0e7AD36Acd1e4fbf4ee773b1');
+  return customContract;
+}
+
+export const useGolNfp = () => {
+  const customContract = getGolNfpsContract('0xC12100771bCcae1f8b87598c6449f041E46a1Ef9');
   return customContract;
 }
 
