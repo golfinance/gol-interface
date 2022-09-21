@@ -31,8 +31,8 @@ const NftMarketRule = () => {
 
   return (
     <NftMarketRuleContainer>
-      <NftMarketRuleTitle style={{ color: '#f7941d' }}>Market Rules</NftMarketRuleTitle>
-      <NftMarketRuleContent style={{ color: '#f7941d' }}>
+      <NftMarketRuleTitle style={{ color: 'white' }}>Market Rules</NftMarketRuleTitle>
+      <NftMarketRuleContent style={{ color: 'white' }}>
         <NftMarketRuleEach>1. NFTs can be purchased in the NFT Market only by using $GOL.</NftMarketRuleEach>
         <NftMarketRuleEach>
           2. After NFT is listed in the trading market, operations such as transfer, auction and stake are not allowed.

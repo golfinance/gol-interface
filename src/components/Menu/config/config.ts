@@ -37,7 +37,15 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     ],
   },
   {
-    label: t('NFT Market'),
+    label: t('NFT Box'),
+    href: '/nft-box',
+    icon: 'Earn',
+    showItemsOnMobile: false,
+    showOnMobile: true,
+    items: [],
+  },
+  {
+    label: t('Marketplace'),
     href: '/nft-marketplace',
     icon: 'Earn',
     showItemsOnMobile: false,
@@ -46,21 +54,20 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
   },
   {
     label: t('NFT Staking'),
-    href: '/nft-staking/2',
+    href: '/nft-staking/1',
     icon: 'Earn',
     showItemsOnMobile: false,
     showOnMobile: true,
-    items:[]
-    // items: [
-    //   {
-    //     label: t('NonFungiblePlayer'),
-    //     href: '/nft-staking/1'
-    //   },
-    //   {
-    //     label: t('Genesis'),
-    //     href: '/nft-staking/2'
-    //   },
-    // ]
+    items: [
+      {
+        label: t('NonFungiblePlayer'),
+        href: '/nft-staking/1'
+      },
+      {
+        label: t('Genesis'),
+        href: '/nft-staking/2'
+      },
+    ]
   },
   {
     label: t('Analytics'),
@@ -69,6 +76,27 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     showItemsOnMobile: false,
     showOnMobile: true,
     items: [],
+  },
+  {
+    label: t('Game'),
+    href: '/game-training',
+    icon: 'Earn',
+    showItemsOnMobile: false,
+    showOnMobile: true,
+    items: [
+      {
+        label: t('Training'),
+        href: '/game-training'
+      },
+      {
+        label: t('Fusion'),
+        href: '/game-fusion'
+      },
+      {
+        label: t('Match'),
+        href: '/game-match'
+      },
+    ]
   },
   // {
   //   label: t('Win'),

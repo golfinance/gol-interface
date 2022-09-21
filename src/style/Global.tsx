@@ -8,7 +8,7 @@ declare module 'styled-components' {
 }
 
 const GlobalStyle = createGlobalStyle`
-  #root {
+  #root{
     position: relative;
   }
   * {
