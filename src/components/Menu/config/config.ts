@@ -98,6 +98,14 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
       },
     ]
   },
+  {
+    label: 'Profile',
+    icon: 'Info',
+    href: '/create-profile',
+    showItemsOnMobile: false,
+    showOnMobile: true,
+    items: [],
+  },
   // {
   //   label: t('Win'),
   //   href: '/prediction',
