@@ -1,5 +1,5 @@
 {
-  "name": "PancakeSwap Default List",
+  "name": "GolFinance Default List",
   "timestamp": "2021-05-06T00:00:00Z",
   "version": {
     "major": 3,
@@ -7,8 +7,8 @@
     "patch": 0
   },
   "tags": {},
-  "logoURI": "https://pancakeswap.finance/logo.png",
-  "keywords": ["pancake", "default"],
+  "logoURI": "https://www.gol.finance/logo.png",
+  "keywords": ["gol", "default"],
   "tokens": [
     {
       "name": "WBNB Token",
