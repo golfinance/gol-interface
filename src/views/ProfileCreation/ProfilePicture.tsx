@@ -61,8 +61,8 @@ const ProfilePicture: React.FC = () => {
     const balanceOfResponse = await customContract.balanceOf(account);
     const balanceOf = await balanceOfResponse.toNumber();
     const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
-    console.log('my nfp tokens: ', nfpTokens)
-    console.log('balanceOf NFP: ', balanceOf)
+    // console.log('my nfp tokens: ', nfpTokens)
+    console.log('Balance Of GOL NFPs: ', balanceOf)
     setMintedNftTokenId(nfpTokens[0]);
   }
 
@@ -70,7 +70,7 @@ const ProfilePicture: React.FC = () => {
   const getNfpSimpleImage = async (tokenIdUrl) => {
     const res = await fetch(tokenIdUrl)
     const json = await res.json()
-    console.log('full json ', json)
+    // console.log('full json ', json)
     const imageUrl = json.image
     return (imageUrl)
   }
@@ -81,7 +81,7 @@ const ProfilePicture: React.FC = () => {
     if (loadingNfps) {
 
       const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
-      console.log('nfpTokens: ', nfpTokens)
+      // console.log('nfpTokens: ', nfpTokens)
       const profilePicturesFromNfps = [];
 
       for (let i = 0; i < nfpTokens.length; i++) {
@@ -89,17 +89,16 @@ const ProfilePicture: React.FC = () => {
       }
 
       const result = await Promise.all(profilePicturesFromNfps)
-      console.log('nfpLinkArray: ', result)
 
       const images = [];
 
       for (let i = 0; i < result.length; i++) {
-        console.log('result: ', result[i])
         images.push(getNfpSimpleImage(result[i]))
       }
 
+      // FIXME: Getting Images from each User NFP
       const imagesResult = await Promise.all(images)
-      console.log('IMAGES LINKS: ', imagesResult)
+      // console.log('IMAGES LINKS: ', imagesResult)
 
       const finishedArray = [];
       for (let i = 0; i < imagesResult.length; i++) {
@@ -125,7 +124,8 @@ const ProfilePicture: React.FC = () => {
         }
         finishedArray.push(thisProfilePicture);
       }
-      // console.log('FINISHED ARRAY: ', finishedArray)
+
+      // FIXME: finishedArray is now the Full Array with NFPs Info.
 
       if (finishedArray.length > 0) {
         setNfps(finishedArray);
@@ -134,7 +134,7 @@ const ProfilePicture: React.FC = () => {
 
     } else {
       // FIXME: Not fetching more nfps
-      console.log('NFP AlreadyFetched')
+      console.log('NFPs AlreadyFetched.')
     }
 
   }
@@ -152,18 +152,9 @@ const ProfilePicture: React.FC = () => {
   const { callWithGasPrice } = useCallWithGasPrice()
 
   const handleApprove = async () => {
-    console.log('Approving')
-    console.log('signer: ', library.getSigner())
-
-    selectedNft.tokenId = mintedNftTokenId;
-    console.log('selectedNft: ', selectedNft)
-
-    // const contract = getErc721Contract(selectedNft.collectionAddress, library.getSigner())
+    console.log('Approving...')
 
     const contract = getGolNfpsContract(selectedNft.collectionAddress, library.getSigner())
-
-    // const contract = selectedNft.collectionAddress;
-
     const tx = await callWithGasPrice(contract, 'approve', [getPancakeProfileAddress(), selectedNft.tokenId])
 
     setIsApproving(true)
@@ -238,19 +229,22 @@ const ProfilePicture: React.FC = () => {
                 </SelectionCard>
               )
             })} */}
+
             {/* Refactor of previous function */}
             {loadingNfps ? <></> : <>
               {nfps.map((walletNft) => {
-                const firstTokenId = nfts[0].tokenId
+                const firstTokenId = nfps[0].tokenId;
                 return (
                   <SelectionCard
                     name="profilePicture"
                     key={walletNft.tokenId}
-                    value={firstTokenId}
+                    value={walletNft.tokenId}
                     image={walletNft.image.thumbnail}
-                    isChecked={firstTokenId === selectedNft.tokenId}
-                    onChange={(value: string) => actions.setSelectedNft(value, walletNft.collectionAddress)}
-                  // onChange={(value: string) => console.log('picked: ', value)}
+                    isChecked={walletNft.tokenId === selectedNft.tokenId}
+                    // FIXME: Small Changes on Picture Selection @dev:topospec
+                    onChange={(value: string) => {
+                      actions.setSelectedNft(value, walletNft.collectionAddress)
+                    }}
                   >
                     <Text bold>{walletNft.name}</Text>
                   </SelectionCard>
