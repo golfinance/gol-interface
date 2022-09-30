@@ -22,10 +22,10 @@ const UserMenu = () => {
   const [onPresentWalletModal] = useModal(<WalletModal initialView={WalletView.WALLET_INFO} />)
   const [onPresentTransactionModal] = useModal(<WalletModal initialView={WalletView.TRANSACTIONS} />)
   const hasProfile = isInitialized && !!profile
-  // const avatarSrc = profile?.nft?.image?.thumbnail
+  // const defaultAvatar = profile?.nft?.image?.thumbnail
   // console.log('full profile from header: ', profile)
-  // const avatarSrc = `${ipfsImagePrefixTestnet}${profile.tokenId}.png`
-  const avatarSrc = 'https://gol.finance/logo.png'
+  const avatarSrc = hasProfile ? `${ipfsImagePrefixTestnet}${profile.tokenId}.png` : profile?.nft?.image?.thumbnail
+  // const avatarSrc = 'https://gol.finance/logo.png'
   const hasLowBnbBalance = fetchStatus === FetchStatus.SUCCESS && balance.lte(LOW_BNB_BALANCE)
 
   if (!account) {
@@ -33,8 +33,15 @@ const UserMenu = () => {
   }
 
   return (
-    <UIKitUserMenu account={account} avatarSrc={avatarSrc}>
+    <UIKitUserMenu
+      account={account}
+      avatarSrc={avatarSrc}
+    >
       <WalletUserMenuItem hasLowBnbBalance={hasLowBnbBalance} onPresentWalletModal={onPresentWalletModal} />
+      <UserMenuItem as="button" onClick={() => history.push(`/create-profile`)}>
+        {/* {t('Your NFTs')} */}
+        Profile
+      </UserMenuItem>
       <UserMenuItem as="button" onClick={onPresentTransactionModal}>
         {t('Transactions')}
       </UserMenuItem>
