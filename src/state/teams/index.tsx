@@ -57,8 +57,10 @@ export const fetchTeam = (teamId: number) => async (dispatch) => {
 
 export const fetchTeams = () => async (dispatch) => {
   try {
+    console.log('>>>> fetchTeamsHook')
     dispatch(fetchStart())
     const teams = await getTeams()
+    console.log('fetchedTeamsfromHook: ', teams)
     dispatch(teamsFetchSucceeded(teams))
   } catch (error) {
     dispatch(fetchFailed())

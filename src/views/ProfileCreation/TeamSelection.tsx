@@ -12,36 +12,14 @@ const Team: React.FC = () => {
   const { teamId: currentTeamId, actions } = useProfileCreation()
   const { t } = useTranslation()
 
-
   const { teams } = useTeams()
-  const handleTeamSelection = (value: string) => actions.setTeamId(parseInt(value, 10))
-  // const teamValues = useMemo(() => shuffle(Object.values(teams)), [teams])
 
-  const teamValues = golTeams;
-//   const teamValues =   [
-//     {  
-//       "id": 0,
-//       "name": "Topos",
-//       "description": "string",
-//       "isJoinable": true,
-//       "images": {
-//         "md": "1",
-//         "alt": "1"
-//       },
-//       "users": 10
-//     },
-//     {  
-//       "id": 1,
-//       "name": "Otros",
-//       "description": "string",
-//       "isJoinable": true,
-//       "images": {
-//         "md": "1",
-//         "alt": "1"
-//       },
-//       "users": 10
-//     }
-// ]
+  console.log('fetched teams: ', teams);
+
+  const handleTeamSelection = (value: string) => actions.setTeamId(parseInt(value, 10))
+  const teamValues = useMemo(() => shuffle(Object.values(teams)), [teams])
+
+  // const teamValues = golTeams;
 
   return (
     <>

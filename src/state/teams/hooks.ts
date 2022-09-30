@@ -17,6 +17,7 @@ export const useTeam = (id: number) => {
 }
 
 export const useTeams = () => {
+  console.log('>>> TRIGGERING useTeams Hook')
   const { isInitialized, isLoading, data }: TeamsState = useSelector((state: State) => state.teams)
   const dispatch = useAppDispatch()
 

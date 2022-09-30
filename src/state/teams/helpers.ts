@@ -10,6 +10,7 @@ import { getPancakeProfileAddress } from 'utils/addressHelpers'
 const profileContract = getProfileContract()
 
 export const getTeam = async (teamId: number): Promise<Team> => {
+  console.log('>>>>>>FETCHING TEAM ID: ', teamId)
   try {
     const { 0: teamName, 2: numberUsers, 3: numberPoints, 4: isJoinable } = await profileContract.getTeamProfile(teamId)
     const staticTeamInfo = teamsList.find((staticTeam) => staticTeam.id === teamId)
@@ -30,6 +31,7 @@ export const getTeam = async (teamId: number): Promise<Team> => {
  */
 export const getTeams = async (): Promise<TeamsById> => {
   try {
+    console.log('>>>INSIDE getTeams function')
     const teamsById = teamsList.reduce((accum, team) => {
       return {
         ...accum,
