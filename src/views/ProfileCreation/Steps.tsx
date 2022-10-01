@@ -23,8 +23,9 @@ const Steps = () => {
   }
 
   if (currentStep === 0) {
-    // return <Mint />
-    return <TeamSelection />  }
+    return <Mint />
+    // return <TeamSelection />  
+  }
 
   if (currentStep === 1) {
     return <ProfilePicture />
