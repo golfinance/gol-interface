@@ -105,7 +105,8 @@ export default {
     97: '0xE9f1027ae6bd649C70D3e14bF7fF224D9647D16D'
   },
   genesis:{
-    56: '0xF5db804101d8600c26598A1Ba465166c33CdAA4b',
+    // Genesis NFTs Address (only on Mainnet) dev@topospec
+    56: '0xf5db804101d8600c26598a1ba465166c33cdaa4b',
     97: '0x06337dd5ccD59AfBFBACBE9638cfE8a57A9fdc04'
   },
   staking:{

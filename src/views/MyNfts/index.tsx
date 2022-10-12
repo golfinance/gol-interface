@@ -43,24 +43,25 @@ const MyNfts = () => {
   }, [])
 
   const getTokenHashes = useCallback(async () => {
+    console.log('Reading NFTs >>> ')
     const tmpMyTokens = []
     const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
+    console.log('> nfpTokens: ', nfpTokens)
     const tokenIds = []
     _.map(nfpTokens, (itm) => {
       tokenIds.push({ tokenId: itm, isAIR: false })
     })
 
-    // retrieve my nft from air
-    // const airNftOwners = []
-    // _.map(airNFTs, (nft) => {
-    //   airNftOwners.push(airnftContract.methods.ownerOf(nft).call())
-    // })
-    // const owners = await Promise.all(airNftOwners)
-    // _.map(owners, (owner, idx) => {
-    //   if (owner !== account) return
-
-    //   tokenIds.push({ tokenId: airNFTs[idx], isAIR: true })
-    // })
+    // Method to fetch airNfts (Genesis) dev@topospec
+    const airNftOwners = []
+    _.map(airNFTs, (nft) => {
+      airNftOwners.push(airnftContract.methods.ownerOf(nft).call())
+    })
+    const owners = await Promise.all(airNftOwners)
+    _.map(owners, (owner, idx) => {
+      if (owner !== account) return
+      tokenIds.push({ tokenId: airNFTs[idx], isAIR: true })
+    })
 
     const items = await marketContract.methods.fetchItemsCreated().call({ from: account })
     const tokenIdLength = tokenIds.length
