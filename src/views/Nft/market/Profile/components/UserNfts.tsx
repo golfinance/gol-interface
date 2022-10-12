@@ -1,105 +1,103 @@
-import React, { useState, useEffect } from 'react'
-import { Grid, useModal, Text, Flex } from 'gol-uikit'
-import { useUserNfts } from 'state/nftMarket/hooks'
-import { NftLocation, UserNftInitializationState, NftToken } from 'state/nftMarket/types'
-import { useTranslation } from 'contexts/Localization'
-import { CollectibleActionCard } from '../../components/CollectibleCard'
-import GridPlaceholder from '../../components/GridPlaceholder'
-import ProfileNftModal from '../../components/ProfileNftModal'
-import NoNftsImage from './NoNftsImage'
-import SellModal from '../../components/BuySellModals/SellModal'
+import _ from 'lodash'
+import React, { useEffect, useState, useMemo, useCallback } from 'react'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { Heading } from '@pancakeswap-libs/uikit'
+import { AbiItem } from 'web3-utils'
+import { useWeb3React } from '@web3-react/core'
+import Web3 from 'web3'
+import Genesis from 'config/abi/Genesis.json'
+import NonFungiblePlayer from 'config/abi/NonFungiblePlayer.json'
+import Market from 'config/abi/Market.json'
+import { getNonFungiblePlayerAddress, getMarketAddress, getAirNftAddress } from 'utils/addressHelpers'
+import airNFTs from 'config/constants/airnfts'
+import Page from '../../../../../components/Layout/Page'
+import EachNft from '../../../../MyNfts/components/EachNft'
 
-interface ProfileNftProps {
-  nft: NftToken
-  location: NftLocation
-}
+const StyledHero = styled.div`
+  border-bottom: 1px solid #e8e8e8;
+  margin-bottom: 20px;
+`
+const NftItemContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+`
 
-interface SellNftProps {
-  nft: NftToken
-  location: NftLocation
-  variant: 'sell' | 'edit'
-}
+const web3 = new Web3(Web3.givenProvider)
 
-const UserNfts = () => {
-  const { nfts, userNftsInitializationState } = useUserNfts()
-  const [clickedProfileNft, setClickedProfileNft] = useState<ProfileNftProps>({ nft: null, location: null })
-  const [clickedSellNft, setClickedSellNft] = useState<SellNftProps>({ nft: null, location: null, variant: null })
-  const [onPresentProfileNftModal] = useModal(<ProfileNftModal nft={clickedProfileNft.nft} />)
-  const [onPresentSellModal] = useModal(<SellModal variant={clickedSellNft.variant} nftToSell={clickedSellNft.nft} />)
-  const { t } = useTranslation()
+const MyNfts = () => {
+  const { account } = useWeb3React()
+  const [myTokens, setMyTokens] = useState([])
 
-  const handleCollectibleClick = (nft: NftToken, location: NftLocation) => {
-    switch (location) {
-      case NftLocation.PROFILE:
-        setClickedProfileNft({ nft, location })
-        break
-      case NftLocation.WALLET:
-        setClickedSellNft({ nft, location, variant: 'sell' })
-        break
-      case NftLocation.FORSALE:
-        setClickedSellNft({ nft, location, variant: 'edit' })
-        break
-      default:
-        break
+  const nfpContract = useMemo(() => {
+    return new web3.eth.Contract(NonFungiblePlayer.abi as AbiItem[], getNonFungiblePlayerAddress())
+  }, [])
+
+  const marketContract = useMemo(() => {
+    return new web3.eth.Contract(Market.abi as AbiItem[], getMarketAddress())
+  }, [])
+
+  const airnftContract = useMemo(() => {
+    return new web3.eth.Contract(Genesis.abi as AbiItem[], getAirNftAddress())
+  }, [])
+
+  const getTokenHashes = useCallback(async () => {
+    const tmpMyTokens = []
+    const nfpTokens = await nfpContract.methods.fetchMyNfts().call({ from: account })
+    const tokenIds = []
+    _.map(nfpTokens, (itm) => {
+      tokenIds.push({ tokenId: itm, isAIR: false })
+    })
+
+    const items = await marketContract.methods.fetchItemsCreated().call({ from: account })
+    const tokenIdLength = tokenIds.length
+    for (let i = 0; i < tokenIdLength; i++) {
+      if (!tmpMyTokens[i]) tmpMyTokens[i] = {}
+      tmpMyTokens[i].itemId = '0'
     }
-  }
+    let currentIndex = 0
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].isSold === false) {
+        tokenIds.push({ tokenId: items[i].tokenId, isAIR: false })
+        if (!tmpMyTokens[currentIndex + tokenIdLength]) tmpMyTokens[currentIndex + tokenIdLength] = {}
+        tmpMyTokens[currentIndex + tokenIdLength].itemId = items[i].itemId
+        currentIndex++
+      }
+    }
 
+    const myTokenHashes = []
+    for (let i = 0; i < tokenIds.length; i++) {
+      if (!tokenIds[i].isAIR) myTokenHashes.push(nfpContract.methods.tokenURI(tokenIds[i].tokenId).call())
+      else myTokenHashes.push(airnftContract.methods.tokenURI(tokenIds[i].tokenId).call())
+    }
+    const result = await Promise.all(myTokenHashes)
+
+    for (let i = 0; i < tokenIds.length; i++) {
+      if (!tmpMyTokens[i]) tmpMyTokens[i] = {}
+      tmpMyTokens[i].tokenId = tokenIds[i].tokenId
+      tmpMyTokens[i].tokenHash = result[i]
+      tmpMyTokens[i].isAIR = tokenIds[i].isAIR
+    }
+    setMyTokens(tmpMyTokens)
+  }, [account, nfpContract, marketContract, airnftContract])
   useEffect(() => {
-    if (clickedProfileNft.nft) {
-      onPresentProfileNftModal()
-    }
-    // exhaustive deps disabled as the useModal dep causes re-render loop
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [clickedProfileNft])
-
-  useEffect(() => {
-    if (clickedSellNft.nft) {
-      onPresentSellModal()
-    }
-    // exhaustive deps disabled as the useModal dep causes re-render loop
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [clickedSellNft])
+    getTokenHashes()
+  }, [getTokenHashes])
 
   return (
-    <>
-      {/* User has no NFTs */}
-      {nfts.length === 0 && userNftsInitializationState === UserNftInitializationState.INITIALIZED ? (
-        <Flex p="24px" flexDirection="column" alignItems="center">
-          <NoNftsImage />
-          <Text pt="8px" bold>
-            {t('No NFTs found')}
-          </Text>
-        </Flex>
-      ) : // User has NFTs and data has been fetched
-      nfts.length > 0 ? (
-        <Grid
-          gridGap="16px"
-          gridTemplateColumns={['1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)', null, 'repeat(4, 1fr)']}
-          alignItems="start"
-        >
-          {nfts.map((nft) => {
-            const { marketData, location } = nft
-
-            return (
-              <CollectibleActionCard
-                isUserNft
-                onClick={() => handleCollectibleClick(nft, location)}
-                key={`${nft.tokenId}-${nft.collectionName}`}
-                nft={nft}
-                currentAskPrice={
-                  marketData?.currentAskPrice && marketData?.isTradable && parseFloat(marketData.currentAskPrice)
-                }
-                nftLocation={location}
-              />
-            )
-          })}
-        </Grid>
-      ) : (
-        // User NFT data hasn't been fetched
-        <GridPlaceholder />
-      )}
-    </>
+    <Page>
+      <NftItemContainer>
+        {myTokens.map((EachMyToken, index) => {
+          return (
+            <Link key={EachMyToken.tokenHash} to={`/myNFTs/${index}`} style={{ width: '25%' }}>
+              <EachNft eachMyToken={EachMyToken} key={EachMyToken.tokenId} />
+            </Link>
+          )
+        })}
+      </NftItemContainer>
+    </Page>
   )
 }
 
-export default UserNfts
+export default MyNfts

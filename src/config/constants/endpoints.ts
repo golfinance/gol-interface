@@ -31,6 +31,7 @@ export const GRAPH_API_PREDICTION_V1 = 'https://api.thegraph.com/subgraphs/name/
 /**
  * subgrafico de gol finance de volumen y liquidez
  */
-export const INFO_CLIENT = 'https://api.thegraph.com/subgraphs/name/golfinance/gol-exchange'
+// export const INFO_CLIENT = 'https://api.thegraph.com/subgraphs/name/golfinance/gol-exchange'
+export const INFO_CLIENT = 'https://api.thegraph.com/subgraphs/name/topospec/genesystest';
 export const BLOCKS_CLIENT = 'https://api.thegraph.com/subgraphs/name/pancakeswap/blocks'
 // export const GRAPH_API_NFTMARKET = process.env.REACT_APP_GRAPH_API_NFT_MARKET
