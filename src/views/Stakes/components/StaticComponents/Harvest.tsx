@@ -30,9 +30,11 @@ const Harvet = ({ rewardAllGol, index }) => {
   const harvestHandler = async () => {
     setLoading(true)
 
+    const poolId = await stakingContract.methods.poolIdOfContract(getAirNftAddress()).call();
+
     try {
-      await stakingContract.methods.harvest(index).send({ from: account })
-      toast.success('Successfully Harvest For All NFT.')
+      await stakingContract.methods.harvest(poolId).send({ from: account })
+      toast.success('Successfully Harvest For All NFT.');
     } catch (error) {
       const { message } = error as Error
       toast.error(message)
