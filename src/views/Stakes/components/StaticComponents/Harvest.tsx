@@ -30,7 +30,13 @@ const Harvet = ({ rewardAllGol, index }) => {
   const harvestHandler = async () => {
     setLoading(true)
 
-    const poolId = await stakingContract.methods.poolIdOfContract(getAirNftAddress()).call();
+    let poolId;
+
+    if (index === "1") {
+      poolId = await stakingContract.methods.poolIdOfContract(getNonFungiblePlayerAddress()).call();
+    } else if (index === "2") {
+      poolId = await stakingContract.methods.poolIdOfContract(getAirNftAddress()).call();
+    }
 
     try {
       await stakingContract.methods.harvest(poolId).send({ from: account })
