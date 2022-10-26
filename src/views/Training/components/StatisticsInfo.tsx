@@ -68,7 +68,7 @@ const StatisticsInfo = () => {
     const tmpUpdateTrainingLevelFee = await trainingContract.methods.updateTrainingLevelFee().call()
     const maxStakedBlock = await trainingContract.methods.maxStakedBlock().call()
 
-    const hour = (parseInt(maxStakedBlock.toString()) * 3) / 999 / 3600
+    const hour = (parseInt(maxStakedBlock.toString()) * 3) / 499 / 3600
     const feeToString = tmpUpdateTrainingLevelFee.toString()
     setPoolInfo({
       trainingLevel: tmpTrainingLevel,
