@@ -127,7 +127,7 @@ const MatchContainer = () => {
         if (isStatusMatch === 4) {
           const tmpWinningChance = await matchContract.methods.getWinningChance(selectedMatchNfts, account).call()
 
-          setWinningChance(parseInt(tmpWinningChance) / 1000)
+          setWinningChance(parseInt(tmpWinningChance) / 10)
           const level = await nfpContract.methods.getLevel(selectedMatchNfts[0]).call()
           const tmpWinningPrize = await matchContract.methods.getWinningPrize(parseInt(level)).call()
           setWinningPrize(parseInt(tmpWinningPrize) / 100000)
