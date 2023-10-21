@@ -111,5 +111,8 @@
     "source-map-explorer": "^2.5.2",
     "start-server-and-test": "^1.14.0",
     "ts-node": "^9.1.1"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
